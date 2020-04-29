@@ -1,14 +1,46 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/find/index",
+    "pages/card/index",
+    "pages/my/index"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarTitleText": "杜高生物",
+    "navigationBarBackgroundColor": "#FFF",
+    "backgroundColor": "#FFF"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/tabbar/home.png",
+        "selectedIconPath": "/static/tabbar/home-a.png"
+      },
+      {
+        "pagePath": "pages/find/index",
+        "text": "发现",
+        "iconPath": "/static/tabbar/find.png",
+        "selectedIconPath": "/static/tabbar/find-a.png"
+      },
+      {
+        "pagePath": "pages/card/index",
+        "text": "购物车",
+        "iconPath": "/static/tabbar/card.png",
+        "selectedIconPath": "/static/tabbar/card-a.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/static/tabbar/my.png",
+        "selectedIconPath": "/static/tabbar/my-a.png"
+      }
+    ]
+  },
+  "usingComponents": {}
 }

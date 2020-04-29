@@ -754,7 +754,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7082,7 +7082,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7103,14 +7103,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7186,7 +7186,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7611,9 +7611,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!********************************!*\
-  !*** E:/demo/dugao/pages.json ***!
-  \********************************/
+/*!***********************************!*\
+  !*** E:/project/dugao/pages.json ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8518,20 +8518,20 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 
 /***/ }),
 /* 7 */
-/*!*************************************************!*\
-  !*** E:/demo/dugao/pages.json?{"type":"style"} ***!
-  \*************************************************/
+/*!****************************************************!*\
+  !*** E:/project/dugao/pages.json?{"type":"style"} ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "uni-app" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/find/index": { "navigationBarTitleText": "发现", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/card/index": { "navigationBarTitleText": "购物车", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/my/index": { "navigationBarTitleText": "我的", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "杜高生物", "navigationBarBackgroundColor": "#FFF", "backgroundColor": "#FFF" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
-/*!************************************************!*\
-  !*** E:/demo/dugao/pages.json?{"type":"stat"} ***!
-  \************************************************/
+/*!***************************************************!*\
+  !*** E:/project/dugao/pages.json?{"type":"stat"} ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8662,6 +8662,90 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
+/*!*****************************************************!*\
+  !*** E:/project/dugao/static/icons/search-icon.png ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAACF0lEQVRIia3W24tNYRjH8c92njBDGiQkk4wbo3a4mDAiNaXhggvulENuHcofQI00xZ2U3FFy4XCBTMbpwmGvC4OGmiuU0STHIqnt4n2XttXac9y/Wj3PWutdz3c9b+/zvG+hVCqpotnYjXasxLz4fAC9uIlL+FwtQLFYBJNy3tXhEI5gVs77xfHaihPoxBn8qgabkLlfiqc4HgHdOIAmTMU0LIvP7sUxnXiMJdUglZksxP1oX+NgDJRVf7zOYSPOogUP0Yq31TKpw9UK0JoqgKx6sBoP4rfXhGxzIYdRRB+24fsIAKm+oQNvsArH8iBzcBRl7MHXUQBSfcXeih9uyEJ2oR538GQMgFSPhIUyA9uzkPboXx4HINWVaDuykJbo360BJI1RzELSSn5XA8j7aOdmIakm1wAyJdrfWcjH6C+qAWRBtB+ykOfRX1cDyPpoX2Uht6K/swaQHdHeyEIuClW7BWvHAWjFZvwQWtR/kE84hQIuCIU5WjXgfPS7xK6RJIkkSf6tri5hHlfgOmaOAlAvdN7lMUZndkAK+Sm0ggFsEPaUthEA2uLYNPuJeT9YWSf9wry+RLPQxm9jX7yfLtRSE/YL1d0TM+gT9qBmoX81VkIKOXv8cNtvpb7gJE7HDLqF80CvsAgGq0FSZQ8S84XtYKiDRGMeaCjIWFUJeoFNhXK5PK6ISZIMByplTyu10qAwVc/w5y+CFHxGrYuGWgAAAABJRU5ErkJggg=="
+
+/***/ }),
+/* 20 */
+/*!*******************************************************!*\
+  !*** E:/project/dugao/static/icons/classify-icon.png ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAXCAYAAAD3CERpAAAAwElEQVRIie2W0Q3CIBBAH4Qh7EjOoYGZ+GANnajRLeoHNiENlHqgTRNfwkeP0rsA91JlrT0DARjI8wAuwN17D4BzrvDqNnQlIe+5kIlP0mGShKqQdKoU9TGmYW2pyO8knc9Wim5a/U9awRD7cCDe0hLP9KFHn16XH10wEuXQDQPckPXh2s6sstuZSmmSw2bhz4EecpAKX8wuwj/OReohh5/T0jLHkoMm9iGU/2kg72YlHYYo/ACcCoWNgE0DrXJ4ARgZOPRcqNtFAAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 21 */
+/*!***********************************************!*\
+  !*** E:/project/dugao/static/home/banner.png ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/img/banner.7bc075b6.png";
+
+/***/ }),
+/* 22 */
+/*!***********************************************!*\
+  !*** E:/project/dugao/static/icons/arrow.png ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAVCAYAAACdbmSKAAABPUlEQVQ4jY3ToYtUURQH4M9xm9jEMH/ACBaLTYQVDcouNoNBcBV+4BaLYLEtW+y7+A6Ii9HsFBEWWYNgEQSTYNMgGw2mZ7kDw6hv5sCFe+49H+dw4eq67nvXdYd931t1jfAO61X1sapOWyFGSW5jBxfxtaomy9CJvu9BVW1jr51fTvL+v51mmyT72GzpUVXdWYoanOI8fuFlVe0OjjcfVXUWR5jgIMnWUtTgCFNcxxvcTPJ7EM3hF7iLb7iU5MdS1OAOnuAnNlZCDd7DcxZebwCcw/2W7q+tANZx2NLHSZ4Ooqq6hVct3UpyMDheVT2aA1dnAP7Zqar2sI1jXEnyef7+L1RVr7GBT7iW5HixZm2u+Aze4gKmSTYXi2cxamCCLw0cDAE4OR6Pb+ADTmE3ycMhMBtv9vEeJHm2DMAf95yY6v4kyN0AAAAASUVORK5CYII="
+
+/***/ }),
+/* 23 */
+/*!****************************************************!*\
+  !*** E:/project/dugao/static/home/share-list1.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/img/share-list1.8b8806e1.png";
+
+/***/ }),
+/* 24 */
+/*!*****************************************************!*\
+  !*** E:/project/dugao/static/icons/video-arrow.png ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAcCAYAAABlL09dAAAA0UlEQVRIibXWsW3CUBSG0WsK2vTJBLBCWCJbJFF2gClgizAEWYFkgdC7TUEOBXoCWcJgfP1Lrz3F06dnBz7xiMg84bgarxhlw2UbTIaA4Q9zjLPhsi1mQ8CwxxIP2XDZL16GgMtuTrMrzCnNKhsua02zD0xLmn3hsi2eh4BppFlB5G4XER+jZDQiooqIKvsqVuUqsuBvjXclI7eF5Nw2mDbBPnCNN1e+Nl3hNZ7awK7wTvKz+e8soSz4R/Kn6WJCfeAvLQndA9d4l/zDcnNCXc4BceC7lYokw7QAAAAASUVORK5CYII="
+
+/***/ }),
+/* 25 */
+/*!***************************************************!*\
+  !*** E:/project/dugao/static/icons/arrow-top.png ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAHCAYAAADTcMcaAAAAcklEQVQYlY3OIQ7CUBAE0LcUwwE4Bp6TVCPwJSGpqaAC2QQE5iOQvU0PgeYSmIqK37TjNpuXmUgpmckev9xjMwNO+KJciyp8sEOP8xK64YkY7wJvXHMo8ECbaQ50uE9RMc655PZP0uCF2KLGAcMCgiOqP0AcDwtzDaD5AAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 26 */
+/*!**********************************************!*\
+  !*** E:/project/dugao/static/home/list1.png ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/img/list1.c8f732f9.png";
 
 /***/ })
 ]]);
