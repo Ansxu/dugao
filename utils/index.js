@@ -10,12 +10,12 @@ const hostPath = 'http://top.naosongduan.cn/h5/index.html';//主机路径
 // const filePath = 'http://hn.wtvxin.com';//文件域名
 // const hostPath = 'http://hnapi.wtvxin.com/index.html';//主机路径
 const LoginPath = "/pages/login/login";//登录路径
-// const RegisterPath = "/pages/login/register";//注册路径
+const RegisterPath = "/pages/login/register";//注册路径
 
 import {get,post,requestHideLoading} from '@/utils/request';
 import {editTime,dateUtils,timeDiff,formatNumber} from '@/utils/date-tools';
 export {
-  host,filePath,hostPath,LoginPath,
+  host,filePath,hostPath,LoginPath,RegisterPath,
   editTime,dateUtils,timeDiff,formatNumber,
   get,post,requestHideLoading
 }

@@ -27,7 +27,7 @@
             <input type="text" class="ipt" placeholder="邀请码" disabled v-model="inviteCode" />
             <button
               class="getcode"
-              style="font-size:28rpx;background:#ccc;width:26%;"
+              style="font-size:28upx;background:#ccc;width:26%;"
             >邀请码</button>
           </div> -->
           <!-- <div class="from-line">
@@ -41,16 +41,16 @@
           
           <!-- <div class="flex flexAlignCenter">
             <label class=" flex flexAlignCenter" @click="onCheckedStatus">
-              <div class="IconsCK IconsCK-radio checked" style="margin-right:12rpx;vertical-align:top;"></div>
+              <div class="IconsCK IconsCK-radio checked" style="margin-right:12upx;vertical-align:top;"></div>
               <input
                 type="checkbox"
                 class="checkbox-cart"
                 :checked="checkedStatus"
                 v-model="checkedStatus"
               />
-              <text style="font-size:28rpx">我已阅读并同意</text>
+              <text style="font-size:28upx">我已阅读并同意</text>
               </label>
-              <text style="color:#3172f5;font-size:28rpx" @click="goUrl('deal')">《银查查认证服务协议》</text>
+              <text style="color:#3172f5;font-size:28upx" @click="goUrl('deal')">《银查查认证服务协议》</text>
           </div> -->
         </div>
         <div class="ftbtn pd10">
@@ -270,7 +270,7 @@ export default {
 .logo{
 	display:flex;
 	align-items:center;
-	height:400rpx;
+	height:400upx;
 	flex-direction: column;
 	justify-content: center;
 }
@@ -278,9 +278,9 @@ export default {
     color:#fff;
     background: #cc9f68;
     text-align: center;
-    height: 86rpx;
-    line-height: 86rpx;
-    border-radius:15rpx;
+    height: 86upx;
+    line-height: 86upx;
+    border-radius:15upx;
 }
 .inlineflex{
     display: flex;
@@ -289,45 +289,45 @@ export default {
 }
 
 .pl10 {
-	padding-left: 20rpx !important;
+	padding-left: 20upx !important;
 }
 
 .pr10 {
-	padding-right: 20rpx !important;
+	padding-right: 20upx !important;
 }
 
 .pt10 {
-	padding-top: 20rpx !important;
+	padding-top: 20upx !important;
 }
 .pb10 {
-	padding-bottom: 20rpx !important;
+	padding-bottom: 20upx !important;
 }
 .aLine a {
 	color: #505050;
 }
 
 .regLoginBox {
-	padding: 0 30rpx;
+	padding: 0 30upx;
 }
 
 .from .from-line {
-	margin-bottom: 30rpx;
+	margin-bottom: 30upx;
 	position: relative;
 	display:flex;
 	align-items:center;
 	border: 1px solid #d9d9d9;
-	border-radius: 200rpx;
+	border-radius: 200upx;
 	overflow:hidden;
 	.phone-input{
-		width:500rpx;
+		width:500upx;
 	}
 }
 
 .from .ipt {
-	height: 80rpx;
+	height: 80upx;
 	/* width: 100%; */
-	padding: 0 20rpx 0 20rpx;
-	font-size: 30rpx;
+	padding: 0 20upx 0 20upx;
+	font-size: 30upx;
 }
 
 .from .ipt:focus {
@@ -336,7 +336,7 @@ export default {
 
 .from .from-line .icon {
 	height: 100%;
-	width: 120rpx;
+	width: 120upx;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -345,17 +345,17 @@ export default {
 
 
 .from .from-line .getcode {
-	height: 84rpx;
-	line-height: 84rpx;
+	height: 84upx;
+	line-height: 84upx;
 	position: absolute;
 	right: 0;
 	top: 0;
 	background: #cc9f68;
 	color: #fff;
-	padding: 0 20rpx;
-	border-radius: 0 200rpx 200rpx 0;
+	padding: 0 20upx;
+	border-radius: 0 200upx 200upx 0;
 	z-index: 5;
-	font-size:28rpx;
+	font-size:28upx;
 }
 
 .from .from-txt {
@@ -367,22 +367,24 @@ export default {
 	color: #0bd5a9;
 }
 .phone-icon{
-	width:40rpx;
-	margin-left:20rpx;
+	width:40upx;
+	height:40upx;
+	margin-left:20upx;
 }
 .phoneCode-icon{
-	width:40rpx;
-	margin-left:20rpx;
+	width:40upx;
+	height:40upx;
+	margin-left:20upx;
 }
 .img {
-  width:300rpx;
-  height:300rpx;
+  width:300upx;
+  height:300upx;
   img {
    width:100%;
    height:100%;
   }
 }
 .font30{
-  font-size:40rpx;
+  font-size:40upx;
 }
 </style>

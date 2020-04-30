@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<div class="countdown" v-if="diff>0">
-			{{day}}<span>{{dStr}}</span>
+			<block v-if="day>0">
+				{{day}}<span>{{dStr}}</span>
+			</block>
 			{{hour}}<span>{{hStr}}</span>
 			{{minute}}<span>{{mStr}}</span>
 			{{second}}<span>{{sStr}}</span>
@@ -92,10 +94,10 @@ export default {
 			let s = parseInt(diff % nd % nh % nm /ns);
 			clearInterval(this.interval);
 			this.interval = setInterval(()=>{
-				if(s<1&&m>0){
+				if(s<1&&(m>0||h>0||d>0)){
 					m-=1;
 					s=60;
-					if(m<1&&h>0){
+					if(m<1&&(h>0||d>0)){
 						h-=1;
 						m=59;
 						if(h<1&&d>0){
@@ -105,7 +107,7 @@ export default {
 					}
 				}
 				s-=1;
-				this.day = formatNumber(d);
+				this.day = d;
 				this.hour = formatNumber(h);
 				this.minute = formatNumber(m);
 				this.second = formatNumber(s);

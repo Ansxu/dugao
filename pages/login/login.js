@@ -29,7 +29,7 @@ export default function logins(params) {
                         //userInfo.avatarUrl 用户头像图片的URL;
                         //userInfo.gender 用户性别
                         if (code) {
-                            wx.request({
+                          uni.request({
                                 method: "POST",
                                 //提交数据到服务器，如果没有绑定手机号码，则提示用户需要绑定手机号码
                                 url: host + LoginRequestUrl,//请求登录

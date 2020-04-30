@@ -59,66 +59,66 @@ export default {
 .login {
     .icon {
       display: block;
-      margin: 100rpx auto 64rpx;
-      width: 200rpx;
-      height: 200rpx;
+      margin: 100upx auto 64upx;
+      width: 200upx;
+      height: 200upx;
   }
   
   .icon_circular_bead {
-      width: 200rpx;
-      height: 200rpx;
+      width: 200upx;
+      height: 200upx;
       border-radius: 50%;
       overflow: hidden;
   }
   
   .auth-text {
-      margin: 50rpx 64rpx;
-      padding: 32rpx 0;
+      margin: 50upx 64upx;
+      padding: 32upx 0;
       border-top: 1px solid #ddd;
       text-align: justify;
   }
   
   .auth-text .main {
       display: block;
-      font-size: 28rpx;
+      font-size: 28upx;
   }
   
   .auth-text .sub {
       display: block;
-      font-size: 24rpx;
+      font-size: 24upx;
       color: #888;
-      margin-top: 16rpx;
+      margin-top: 16upx;
   }
   
   .msxcx-widget-btn {
-      margin-left: 64rpx;
-      margin-right: 64rpx;
+      margin-left: 64upx;
+      margin-right: 64upx;
   }
   
     // .logo {
-    //   width: 600rpx;
-    //   height: 100rpx;
+    //   width: 600upx;
+    //   height: 100upx;
     //   background: url('http://img.su-cloud.cn/mini/logo.png') no-repeat;
     //   background-size: 100% 100%;
-    //   margin: 200rpx auto 0 auto;
+    //   margin: 200upx auto 0 auto;
     // }
     .login-btn {
       text-align: center;
       background: #cc9f68;
       width: 90%;
-      height: 80rpx;
-      line-height: 80rpx;
+      height: 80upx;
+      line-height: 80upx;
       color: #fff;
-      font-size: 28rpx;
-      margin-top: 30rpx;
+      font-size: 28upx;
+      margin-top: 30upx;
     }
     .item {
-      width: 690rpx;
-      height: 70rpx;
-      line-height: 70rpx;
+      width: 690upx;
+      height: 70upx;
+      line-height: 70upx;
       margin: 0 auto;
-      padding: 10rpx 0;
-      border-bottom: 1rpx solid #f4f4f4;
+      padding: 10upx 0;
+      border-bottom: 1upx solid #f4f4f4;
       input {
         width: 100%;
         height: 100%;
@@ -130,9 +130,9 @@ export default {
         display: inline;
       }
       .btn{
-        padding: 0 10rpx;
+        padding: 0 10upx;
         margin: 0;
-        font-size: 28rpx;
+        font-size: 28upx;
         text-align: center;
         background: transparent;
         color: #a07941;

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<countdown timeEnd="2020/5/2 12:30:12"></countdown>
+		<countdown timeEnd="2020/5/1 12:41:12"></countdown>
 	</div>
 </template>
 
