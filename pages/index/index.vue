@@ -115,15 +115,19 @@
 </template>
 
 <script>
+import {post} from '@/utils';
 	export default {
 		data() {
 			return {
 				nav:[],
 				navWidth:[],
 				navindex:0,
+
+				interval:null,
 			}
 		},
 		onLoad() {
+			this.getData();
 			setTimeout(()=>{
 				this.nav=['改良土壤','土壤','改良土','改良土壤','改壤','改良土','改良土壤','改壤']
 				this.$nextTick(()=>{
@@ -132,6 +136,9 @@
 			},2000)
 		},
 		methods: {
+			getData(){
+				
+			},
 			// 获取导航的宽
 			getScrollWidth(){
 				const that =this;

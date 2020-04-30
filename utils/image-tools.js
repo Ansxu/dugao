@@ -1,5 +1,35 @@
+
+// 打开选取图片，获取图片临时路径
+export function getImgPath(num = 1, sourceType = ["album", "camera"], sizeType = ['original']) {
+	return new Promise((resolve, reject) => {
+	  uni.chooseImage({
+		count: num, //最大图片数量=最大数量-临时路径的数量
+		sizeType, //图片尺寸 original--原图；compressed--压缩图
+		sourceType, //选择图片的位置 album--相册选择, 'camera--使用相机
+		success: res => {
+		  resolve(res.tempFilePaths) //返回选择的图片临时地址数组，
+		},
+		fail(err) {
+		  uni.showToast({
+			title: '图片选择失败，请重试！',
+			icon: 'none'
+		  })
+		  reject(err)
+		}
+	  });
+	})
+}
+// 全屏浏览图片
+export function previewImage(url){
+	uni.previewImage({
+	  urls:url
+	})
+}
+// 临时路径转base64，
 export function pathToBase64(path) {
+	// uni.arrayBufferToBase64(arr)转bast64
 	return new Promise(function(resolve, reject) {
+		// h5图片路径必须同域
 		if (typeof window === 'object' && 'document' in window) {
 			var canvas = document.createElement('canvas')
 			var c2x = canvas.getContext('2d')
@@ -28,6 +58,7 @@ export function pathToBase64(path) {
 			img.src = path
 			return
 		}else
+		// app
 		if (typeof plus === 'object') {
 			var bitmap = new plus.nativeObj.Bitmap('bitmap' + Date.now())
 			bitmap.load(path, function() {
@@ -44,10 +75,11 @@ export function pathToBase64(path) {
 			})
 			return
 		}else
+		// wx
 		if (typeof wx === 'object' && wx.canIUse('getFileSystemManager')) {
 			wx.getFileSystemManager().readFile({
-				filePath: path,
-				encoding: 'base64',
+				filePath: path, //选择图片返回的相对路径
+				encoding: 'base64',//编码格式
 				success: function(res) {
 					resolve('data:image/png;base64,' + res.data)
 				},
