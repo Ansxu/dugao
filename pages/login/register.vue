@@ -54,7 +54,7 @@
           </div> -->
         </div>
         <div class="ftbtn pd10">
-          <a class="btn" @click="onRegister()">确认注册</a>
+          <div class="btn" @click="onRegister()">确认注册</div>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { host, post, get, throtte } from "@/utils";
+import { host, post, get, debounce,verifyPhone,toast,navigate } from "@/utils";
 import logins from "./login";
 export default {
   data() {
@@ -91,14 +91,15 @@ export default {
     this.shareId = params.shareId || "";
   },
   onShow() {
-    if(wx.getStorageSync('theyCode') !='undefined'){
-      this.inviteCode = wx.getStorageSync('theyCode')
+    // 邀请码
+    if(uni.getStorageSync('theyCode') !='undefined'){
+      this.inviteCode = uni.getStorageSync('theyCode')
     }else{
     }
   },
   methods: {
     setBarTitle() {
-      wx.setNavigationBarTitle({
+      uni.setNavigationBarTitle({
         title: "注册"
       });
     },
@@ -106,17 +107,17 @@ export default {
     onCheckedStatus(e) {
       this.checkedStatus = !this.checkedStatus;
     },
-    // 事件节流
+    // 事件防抖
     onRegister() {
-      throtte(this.Register);
+      if (!this.registerCheck()) return;
+      debounce(this.Register);
     },
     //注册账号
     async Register() {
-      // if (!this.registerCheck()) return;
-      const userInfo = wx.getStorageSync("userInfo");
-      const openId = wx.getStorageSync("openId");
-      const token = wx.getStorageSync("wxToken");
-      const unionid = wx.getStorageSync("unionid");
+      const userInfo = uni.getStorageSync("userInfo");
+      const openId = uni.getStorageSync("openId");
+      // const token = uni.getStorageSync("uniToken");
+      const unionid = uni.getStorageSync("unionid");
       const res = await post("Login/BindOrRegister", {
         mobile: this.phoneNumber,
         yzCode: this.verifyCode,
@@ -136,29 +137,18 @@ export default {
       });
       const _res = res.data;
       if(res.code==0){
-        wx.showToast({
-          title: "绑定手机成功",
-          icon: "success",
-          duration: 2000
-        });
+        toast('绑定手机成功',{icon:true})
       }else{
-        wx.showToast({
-        title: res.msg,
-        icon:'none',
-        duration: 2000
-      });
+        toast(res.msg)
       }
       //绑定手机成功之后,延时2秒跳转到会员中心
       setTimeout(function() {
         // 登录
         logins({
           success() {
-            wx.navigateBack();
+            uni.navigateBack();
           }
         });
-        // wx.switchTab({
-        //   url: "/pages/mine/main"
-        // });
       }, 1500);
     },
     // 发送验证码
@@ -169,74 +159,46 @@ export default {
       const TIME_COUNT = 60; // 60s后重新获取验证码
       let codeNum = this.verificationCode;
       let phoneNum = this.phoneNumber;
-      if (!/^1(3|4|5|6|7|8)\d{9}$/.test(phoneNum)) {
-        wx.showToast({
-          title: "请输入正确的手机号",
-          icon: "none",
-          duration: 1500
-        });
-        return false;
-      } else {
+      if(!verifyPhone()) return;
         // 验证码类型 会员注册0,会员登录1,会员找回密码2,会员找回支付密码3,会员修改手机号4,
         // 会员重新绑定手机号5,会员微信绑定手机号6, 师傅登录7,师傅注册8,师傅绑定银行卡9,
         // 师傅微信绑定手机号10,师傅修改手机号11,师傅重新绑定手机号12,师傅找回密码13,
         // 客服登录14,客服找回密码15,客服绑定账号16
-        const result = get("Login/GetMiniAppBindTelCode", {
-          mobile: this.phoneNumber,
-        });
-        wx.showToast({
-          title: "短信已发送",
-          icon: "success",
-          duration: 2000
-        });
-        if (!this.timer) {
-          this.count = TIME_COUNT;
+      const result = get("Login/GetMiniAppBindTelCode", {
+        mobile: this.phoneNumber,
+      });
+      toast( "短信已发送",{icon:true})
+      if (!this.timer) {
+        this.count = TIME_COUNT;
 
-          this.disabled = true;
-          this.timer = setInterval(() => {
-            if (this.count > 0 && this.count <= TIME_COUNT) {
-              this.count--;
-              this.btnText = this.count + "s后重新获取";
-            } else {
-              this.disabled = false;
-              clearInterval(this.timer);
-              this.timer = null;
-              this.btnText = "获取验证码";
-            }
-          }, 1000);
-        }
+        this.disabled = true;
+        this.timer = setInterval(() => {
+          if (this.count > 0 && this.count <= TIME_COUNT) {
+            this.count--;
+            this.btnText = this.count + "s后重新获取";
+          } else {
+            this.disabled = false;
+            clearInterval(this.timer);
+            this.timer = null;
+            this.btnText = "获取验证码";
+          }
+        }, 1000);
       }
     },
     // 注册校验
     registerCheck() {
       if (!this.checkedStatus) {
-        wx.showToast({
-          title: "请阅读并同意用户协议",
-          icon: "none",
-          duration: 2000
-        });
+        toast("请阅读并同意用户协议");
         return false;
       }
 
       if (!this.phoneNumber || !this.verifyCode) {
-        wx.showToast({
-          title: "请填写手机号和验证码",
-          icon: "none",
-          duration: 2000
-        });
+        toast("请填写手机号和验证码");
         return false;
       }
-
-      if (!/^1(3|4|5|6|7|8)\d{9}$/.test(this.phoneNumber)) {
-        wx.showToast({
-          title: "请填写正确的手机号",
-          icon: "none",
-          duration: 2000
-        });
-        return false;
-      }
+      if(!verifyPhone())return;
       // if (!this.password) {
-      //   wx.showToast({
+      //   uni.showToast({
       //     title: "请填写密码！",
       //     icon: "none",
       //     duration: 2000
@@ -244,7 +206,7 @@ export default {
       //   return false;
       // }
       // if (this.password !== this.password2) {
-      //   wx.showToast({
+      //   uni.showToast({
       //     title: "两次输入的密码不相同！",
       //     icon: "none",
       //     duration: 2000
@@ -254,9 +216,7 @@ export default {
       return true;
     },
     goUrl(url) {
-      wx.navigateTo({
-        url: `/pages/member2/${url}/main`
-      });
+      navigate(`/pages/member2/${url}/main`);
     }
   },
   computed: {}

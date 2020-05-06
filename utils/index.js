@@ -16,8 +16,8 @@ import {get,post,requestHideLoading} from '@/utils/request';
 import {editTime,dateUtils,timeDiff,formatNumber} from '@/utils/date-tools';
 export {
   host,filePath,hostPath,LoginPath,RegisterPath,
+  get,post,requestHideLoading,
   editTime,dateUtils,timeDiff,formatNumber,
-  get,post,requestHideLoading
 }
 
 // icon--是否显示图标，mask--是否显示防触摸穿透蒙层
@@ -55,8 +55,8 @@ export function trim(str) {
   return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 //验证手机号
-export function valPhone(tel) {
-  var r_phone = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+export function verifyPhone(tel) {
+  var r_phone = /^1(3|4|5|6|7|8)\d{9}$/;
   // var phoneNumber = $.trim($('#phoneNumber').val());
   if (trim(tel) == "") {
     toast( "手机号不能为空!");

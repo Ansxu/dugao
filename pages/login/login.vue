@@ -25,7 +25,7 @@ export default {
   onShow() {
     const that =this;
     // 判断是否已授权，未授权做不同提示
-    wx.getSetting({
+    uni.getSetting({
       success(res){
         // 已授权
         if(res.authSetting['scope.userInfo']){
@@ -47,7 +47,7 @@ export default {
         logins({
           success(res){
             setTimeout(()=>{
-              wx.navigateBack();
+              uni.navigateBack();
             },1500)
           }
         });

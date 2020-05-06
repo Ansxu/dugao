@@ -1,13 +1,11 @@
 
-
-
-*,view{padding:0;margin:0;box-sizing:border-box;font-size:28upx;}
 page{
   // font-family:"Microsoft YaHei",'微软雅黑',sans-serif;
   color:$font;background:$white;
   font-size:28upx;
   width:100%;
 }
+view{padding:0;margin:0;box-sizing:border-box;}
 a{text-decoration: none;color:inherit;}
 
 image {
