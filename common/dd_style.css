@@ -1260,7 +1260,7 @@ button.fill {
 }
 
 .noDataImg {
-	width: 300upx;
+	/* width: 300upx; */
 	margin: 0 auto;
 	margin-bottom: 32upx;
 }

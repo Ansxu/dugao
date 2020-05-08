@@ -7,7 +7,11 @@
 		},{
 			"path": "pages/find/index",
 			"style": {
-				"navigationBarTitleText": "发现"
+				"navigationBarTitleText": "发现",
+				"enablePullDownRefresh" : true,
+				"app-plus": {
+					"titleNView": false //首页去除原生导航
+				}
 			}
 		},{
 			"path": "pages/card/index",
@@ -26,10 +30,31 @@
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
+			
 		},{
 			"path": "pages/login/register",
 			"style": {
 				"navigationBarTitleText": "注册"
+			}
+		},{
+			"path": "pages/scheme/solvecase",
+			"style": {
+				"navigationBarTitleText": "保花保果解决方案"
+			}
+		},{
+			"path": "pages/scheme/videozone",
+			"style": {
+				"navigationBarTitleText": "视频专区"
+			}
+		},{
+			"path": "pages/scheme/fertilizer",
+			"style": {
+				"navigationBarTitleText": "施肥方案"
+			}
+		},{
+			"path": "pages/scheme/videodetails",
+			"style": {
+				"navigationBarTitleText": "视频详情"
 			}
 		}
 	],

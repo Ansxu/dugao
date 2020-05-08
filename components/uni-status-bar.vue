@@ -8,11 +8,11 @@
     export default {
         computed: {
             style() {
-                //#ifdef APP-PLUS
+                //#ifdef MP-WEIXIN
                 var systemInfo = uni.getSystemInfoSync()
-                return `height:${systemInfo.statusBarHeight}px`
+                //return `height:${systemInfo.statusBarHeight}px`
                 //#endif
-                //#ifndef APP-PLUS
+                //#ifdef APP-PLUS
                 return ''
                 //#endif
             }

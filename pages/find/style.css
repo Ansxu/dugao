@@ -1,0 +1,32 @@
+.content{position: relative;z-index: 2;}
+.uni-head-tab{
+	text-align: center;
+	height: 88upx;
+}
+.uni-head-tab .tab-item{
+   display: inline-block;
+   vertical-align: middle;
+   margin: 0 20upx;
+   padding: 0 10upx;
+}
+.uni-head-tab .tab-item .s{
+	height: 88upx;
+	line-height: 88upx;
+	font-size: 30upx;
+}
+.uni-head-tab .tab-item.active .s{
+	position: relative;
+	color: #89674c;
+}
+.uni-head-tab .tab-item.active .s:after{
+	content: "";
+	display: block;
+	height: 2px;
+	width: 100%;
+	background: #89674c;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+.list{background: #fff;}
+

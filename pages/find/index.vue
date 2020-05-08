@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<!-- 固定在顶部的导航栏 -->
-		<!-- <uni-nav-bar color="#333333" background-color="#f5f5f5" shadow="false" fixed="true" left-icon="search"
+		<uni-nav-bar color="#333333" background-color="#f5f5f5" shadow="false" fixed="true" left-icon="search"
 		 @click-left="search" right-icon="plus" @click-right="Issue">
 			<view class="uni-head-tab">
 				<view v-for="tab in tabBars" :key="tab.type" :class="['tab-item',tabIndex==tab.type ? 'active' : '']"
@@ -9,16 +9,16 @@
 					<view class="s"> {{tab.name}} </view>
 				</view>
 			</view>
-		</uni-nav-bar> -->
+		</uni-nav-bar>
 		<view style="height:44px;"></view>
 		<!-- 使用非原生导航栏后需要在页面顶部占位 -->
 		<view class="list" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
 				<block v-if="tabIndex!=6">
-				<media-list :datas="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
+				<media-list :data="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
 				</block>
 				<block v-else>
-				<actiList :datas="item"></actiList>
+				<actiList :data="item"></actiList>
 				</block>
 			</block>
 			
@@ -34,16 +34,16 @@
 </template>
 
 <script>
-	// import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/utils';
-	import {host,post,get,dateUtils} from '@/utils';
-	// import uniNavBar from '@/components/uni-nav-bar.vue';
-	import mediaList from './tab-nvue/mediaList.vue';//发现列表
-	import actiList from './tab-nvue/actiList.vue';//活动（体验）
+	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import uniNavBar from '@/components/uni-nav-bar.vue';
+	import mediaList from '@/components/tab-nvue/mediaList.vue';//发现列表
+	import actiList from '@/components/tab-nvue/actiList.vue';//活动（体验）
 	import noData from '@/components/noData.vue'; //暂无数据
-	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'; //加载更多
+	import uniLoadMore from '@/components/uni-load-more.vue'; //加载更多
+	import '@/common/head.css';
 	export default {
 		components: {
-			// uniNavBar,
+			uniNavBar,
 			mediaList,
 			actiList,
 			noData,
@@ -218,6 +218,7 @@
 						"ShopId":ShopId
 					});
 				}
+				if (result.code === 0) {
 					uni.showToast({
 						title: result.msg
 					})
@@ -227,6 +228,26 @@
 						this.medialist[index].IsFollow=0;
 					}
 
+				} else if (result.code === 2) {
+					let _this = this;
+					uni.showModal({
+						content: "您还没有登录，是否重新登录？",
+						success(res) {
+							if (res.confirm) {
+								uni.navigateTo({
+								  url: "/pages/login/login?askUrl="+_this.curPage
+								});
+							} else if (res.cancel) {
+							}
+						}
+					});
+				} else {
+					uni.showToast({
+						title: result.msg,
+						icon: "none",
+						duration: 2000
+					});
+				}
 			},
 			//预览图片
 			previewImg(obj){
@@ -260,6 +281,6 @@
 	}
 </script>
 
-<style scoped lang="scss">
-	@import "./style.scss";
+<style scoped>
+	@import "./style";
 </style>

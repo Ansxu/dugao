@@ -1,0 +1,250 @@
+	.content {
+		height: 100%;
+		width: 750upx;
+		overflow-x: hidden!important;
+		position:relative;
+	}
+	.content::before{
+		display: block; 
+	    content: '';
+	    background: #ff3333;
+	    width: 150vw;
+	    height: 680upx;
+	    position: absolute;
+	    top: 50px;
+	    left: 50%;
+	    -webkit-transform: translate(-50%,-50%);
+	    transform: translate(-50%,-50%);
+	    border-radius: 50%;
+	}
+	.hasContentPage {
+		/* height: 100%; */
+		position: relative;
+		overflow-y: auto;
+	}
+/* #ifdef MP-WEIXIN */
+.hasContentPage {
+		height: calc(100% - 90upx);
+		overflow-y: auto;
+	}
+/* #endif */
+	.cartGroupList .item .outside {
+		padding: 20upx;
+	}
+
+	.btn_receive {
+		color: #FF3333;
+		font-size: 26upx;
+	}
+	.levelPanel{border-bottom: 1px dashed #f5f5f5;}
+	.levelPanel .item .outside .txtBox .skuBox .type {
+		display: inline-block;
+		background-color: #f6f6f6;
+		padding: 0 10upx;
+		position: relative;
+	}
+
+	.cartGroupList {
+		padding: 0 20upx 120upx;
+
+	}
+
+	.cartGroupList>.item {
+		overflow: hidden;
+	}
+	
+	.btnPay:after{
+		display: none;
+	}
+	.right .deletbox{
+  height: 74upx;
+		
+	}
+	.right .deletbox .delet{
+		padding: 0 20upx;
+		height: 60upx;
+		line-height: 60upx;
+		border-radius: 30upx;
+		border: #999 1upx solid;
+		color: #999;
+		font-size: 27upx;
+		display: inline-block;
+		margin-top: 8upx;
+		margin-left: 30upx;
+	}
+	.right .deletbox .delet2{
+		padding: 0 20upx;
+		height: 60upx;
+		line-height: 60upx;
+		border-radius: 30upx;
+		border: #FF3333 1upx solid;
+		color: #FF3333;
+		font-size: 27upx;
+		display: inline-block;
+		margin-top: 8upx;
+	}
+	.carthead{
+		background-color: #FF3333;
+		width: 710upx;
+		padding: 0 20upx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 88upx;
+		z-index: 8;
+		position: fixed;
+		top: 0;
+		box-sizing: content-box;
+	}
+	.wxcarthead{
+		background-color: #FF3333;
+		width: 100%;
+		padding: 0 20upx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		height: 88upx;
+		z-index: 8;
+		position: fixed;
+		top: 0;
+		/* left: 20upx; */
+	}
+	.wxcarthead text{color: #fff;}
+	.carthead text:nth-child(1){
+		font-size: 32upx;
+		font-weight: bold;
+		color: #fff;
+	}
+	.carthead text:nth-child(2){
+		position: absolute;
+		right: 20upx;
+		color: #fff;
+	}
+	.nodatalocal{
+		position: fixed;
+		top: 0;
+		background: #f2f2f2;
+	}
+	.pictrue .mark{ position: absolute; left: 0; top: 10upx; z-index: 3; background: #ff6666; color: #fff; font-size: 24upx; padding: 2upx 16upx; border-radius: 0 100px 100px 0;}
+	/* 弹出优惠券 */
+	.uni-popup .bottom-title {
+		line-height: 60upx;
+		font-size: 32upx;
+	}
+	.uni-popup .bottom-btn {
+		height: 80upx;
+		line-height: 80upx;
+		background: #ff9800;
+		font-size: 32upx;
+		color: #fff;
+		border-radius: 40upx;
+	}
+	.uni-modal-Coupon{ background: #fff; padding: 20upx; border-radius: 6px 6px 0 0;}
+	.uni-modal-Coupon .bottom-content{ margin-bottom: 20upx; max-height: 800upx; overflow-y: auto;}
+	.saleScore{ text-align: left; margin-bottom: 20upx;}
+	.saleScore .txtbox .ico{ font-size: 24upx; color: #FF5722; background: #facec0; border-radius: 4px; margin-right: 6upx; padding: 2upx 8upx;}
+	
+	.uni-modal-Coupon .lab{ text-align: left; color: #999; margin-bottom: 16upx;}
+	.coupon1{
+		margin-bottom: 20upx;
+		background-image: url("http://shop.dadanyipin.com/static/coupon2.png");
+		background-repeat:no-repeat;
+	  background-size:100% ;
+	}
+	.topbox{
+		display: flex;
+		position: relative;
+		width: 100%;
+		height: 203upx;
+	}
+	.coupontxt{
+		height: 58upx;
+		padding-top: 20upx;
+		padding-left: 16upx;
+		line-height: 58upx;
+		font-size: 23upx;
+		color: #999;
+	}
+	.couponbtn{
+		height: 200upx;
+		width: 200upx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.couponbtn .btn{
+		width: 120upx;
+		height: 64upx;
+		border-radius: 8upx;
+		background-color: #ff6666;
+		color: #fff;
+		font-size: 24upx;
+		text-align: center;
+		line-height: 64upx;
+	}
+	.couponleft{
+		width: 210upx;
+		align-items: center;
+		color: #fff;
+	}
+	.couponleft .price{
+		margin: 0 auto;
+		margin-top: 50upx;
+		text-align: center;
+	}
+	.couponleft .price text{
+		font-size: 30upx;
+	}
+	.couponleft .price .num{
+		font-size: 54upx;
+		line-height: 60upx;
+	}
+	.lefttxt{
+		width: 100%;
+		text-align: center;
+		font-size: 23upx;
+	}
+	.couponright{
+		width: 280upx;
+		margin-left: 18upx;
+		color: #333;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.couponbtn .rightimg{
+		width: 120upx;
+		height: 120upx;
+	}
+	.couponbtn .rightimg image{
+		width: 100%;
+		height: 100%;
+	}
+	.couponname{
+		line-height: 44upx;
+		margin-bottom: 10upx;
+		word-break: break-all;
+	    display: -webkit-box;
+	    overflow: hidden;
+	    -o-text-overflow: ellipsis;
+	    text-overflow: ellipsis;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 2;
+	}
+	.coupontime{
+		font-size: 19upx;
+		color: #999;
+	}
+	.btnBox .btn{
+		color: #ff6f00;
+		border-color: #ff6f00 !important;
+	}
+	.cartFoot .flexAlignCneter{
+		box-sizing: border-box;
+	}
+	/* #ifdef APP-PLUS */
+	.cartFoot .inner{
+		bottom:0
+	}
+	/* #endif */
