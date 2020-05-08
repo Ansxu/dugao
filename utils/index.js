@@ -6,7 +6,9 @@
 // const filePath = 'http://top.naosongduan.cn';//文件域名
 // const hostPath = 'http://top.naosongduan.cn/h5/index.html';//主机路径
 // 测试
-const host = 'http://ddypapi.wtvxin.com/api/';// 
+const host = 'http://ddypapi.wtvxin.com/api/';//
+ // const host = 'https://scapi.sc-mall.net/api/';  //发现页面套用社交云商接口地址
+
 const filePath = 'http://ddypapi.wtvxin.com';//文件域名
 const hostPath = 'http://hnapi.wtvxin.com/index.html';//主机路径
 const LoginPath = "login/login";//登录路径

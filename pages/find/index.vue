@@ -15,10 +15,10 @@
 		<view class="list" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
 				<block v-if="tabIndex!=6">
-				<media-list :data="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
+				<media-list :datas="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
 				</block>
 				<block v-else>
-				<actiList :data="item"></actiList>
+				<actiList :datas="item"></actiList>
 				</block>
 			</block>
 			
