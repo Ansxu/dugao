@@ -48,7 +48,7 @@ export default function logins(params) {
                                 },
                                 success: function (res) {
                                     //后台返回的MemberOpenId,可更改标识
-                                    if (res.data!==200 || !res.data.data.MemberOpenId) {
+                                    if (res.data.code==='undefined'||res.data.code===undefined) {
                                       toast('登录失败！请重新尝试')
                                       reject();
                                       return;
@@ -69,7 +69,7 @@ export default function logins(params) {
                                         params.success&&params.success(res.data)
                                         resolve(res.data);
                                     } else 
-                                    //100--没有绑定手机，则跳转到绑定手机的页面--看业务需求
+                                    //--没有绑定手机，则跳转到绑定手机的页面--看业务需求
                                     if (_res.code === LoginNotRegisterCode) {
                                         toast('请绑定手机号码进行登录！')
                                         setTimeout(()=>{

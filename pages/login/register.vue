@@ -4,16 +4,16 @@
       <div class="regLoginBox">
         <div class="logo">
           <div class="img">
-            <img src="/static/images/logo.png" />
+            <img src="/static/logo.png" />
           </div>
         </div>
         <div class="from pd10">
           <div class="from-line">
-            <img src="/static/images/icons/phone1.png" class="phone-icon" alt="" mode="widthFix">
+            <img src="@/static/icons/phonecon.png" class="phone-icon" alt="" mode="widthFix">
             <input type="text" class="ipt phone-input" placeholder="请输入手机号码" v-model="phoneNumber" />
           </div>
           <div class="from-line">
-            <img src="/static/images/icons/phoneCode.png" class="phoneCode-icon" alt="" mode="widthFix">
+            <img src="@/static/icons/d_code.png" class="phoneCode-icon" alt="" mode="widthFix">
             <input type="text" class="ipt" placeholder="请输入验证码" v-model="verifyCode" />
             <!-- <div class="getcode" @click="getCode(this)">{{btnText}}</div> -->
             <button
@@ -39,21 +39,15 @@
             <input type="password" class="ipt" placeholder="请确认密码" v-model="password2" />
           </div> -->
           
-          <!-- <div class="flex flexAlignCenter">
-            <label class=" flex flexAlignCenter" @click="onCheckedStatus">
-              <div class="IconsCK IconsCK-radio checked" style="margin-right:12upx;vertical-align:top;"></div>
-              <input
-                type="checkbox"
-                class="checkbox-cart"
-                :checked="checkedStatus"
-                v-model="checkedStatus"
-              />
+          <div class="flex-center">
+            <label class=" flex-center " @click="onCheckedStatus">
+              <radio color="#ff6f00" :checked="checkedStatus"></radio>
               <text style="font-size:28upx">我已阅读并同意</text>
-              </label>
-              <text style="color:#3172f5;font-size:28upx" @click="goUrl('deal')">《银查查认证服务协议》</text>
-          </div> -->
+            </label>
+            <text class="primary" @click="goUrl('deal')">《杜高用户协议》</text>
+          </div>
         </div>
-        <div class="ftbtn pd10">
+        <div class="ftbtn">
           <div class="btn" @click="onRegister()">确认注册</div>
         </div>
       </div>
@@ -103,10 +97,6 @@ export default {
         title: "注册"
       });
     },
-    // 用户协议
-    onCheckedStatus(e) {
-      this.checkedStatus = !this.checkedStatus;
-    },
     // 事件防抖
     onRegister() {
       if (!this.registerCheck()) return;
@@ -136,19 +126,20 @@ export default {
         InviteCode:this.inviteCode
       });
       const _res = res.data;
-      if(res.code==0){
+      if(res.code===0){
         toast('绑定手机成功',{icon:true})
       }else{
         toast(res.msg)
       }
       //绑定手机成功之后,延时2秒跳转到会员中心
       setTimeout(function() {
+        uni.navigateBack();
         // 登录
-        logins({
-          success() {
-            uni.navigateBack();
-          }
-        });
+        // logins({
+        //   success() {
+        //     uni.navigateBack();
+        //   }
+        // });
       }, 1500);
     },
     // 发送验证码
@@ -159,13 +150,13 @@ export default {
       const TIME_COUNT = 60; // 60s后重新获取验证码
       let codeNum = this.verificationCode;
       let phoneNum = this.phoneNumber;
-      if(!verifyPhone()) return;
+      if(!verifyPhone(phoneNum)) return;
         // 验证码类型 会员注册0,会员登录1,会员找回密码2,会员找回支付密码3,会员修改手机号4,
         // 会员重新绑定手机号5,会员微信绑定手机号6, 师傅登录7,师傅注册8,师傅绑定银行卡9,
         // 师傅微信绑定手机号10,师傅修改手机号11,师傅重新绑定手机号12,师傅找回密码13,
         // 客服登录14,客服找回密码15,客服绑定账号16
       const result = get("Login/GetMiniAppBindTelCode", {
-        mobile: this.phoneNumber,
+        Mobile: this.phoneNumber,
       });
       toast( "短信已发送",{icon:true})
       if (!this.timer) {
@@ -196,7 +187,7 @@ export default {
         toast("请填写手机号和验证码");
         return false;
       }
-      if(!verifyPhone())return;
+      if(!verifyPhone(this.phoneNumber))return;
       // if (!this.password) {
       //   uni.showToast({
       //     title: "请填写密码！",
@@ -214,6 +205,10 @@ export default {
       //   return false;
       // }
       return true;
+    },
+    // 用户协议
+    onCheckedStatus(e) {
+      this.checkedStatus = !this.checkedStatus;
     },
     goUrl(url) {
       navigate(`/pages/member2/${url}/main`);
@@ -234,13 +229,20 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 }
-.btn{
-    color:#fff;
-    background: #cc9f68;
-    text-align: center;
-    height: 86upx;
-    line-height: 86upx;
-    border-radius:15upx;
+/* 单选钮样式 */
+radio {
+  transform:scale(0.8);
+}
+.ftbtn{
+  margin-top:20upx;
+  .btn{
+      color:#fff;
+      background: $primary;
+      text-align: center;
+      height: 86upx;
+      line-height: 86upx;
+      border-radius:15upx;
+  }
 }
 .inlineflex{
     display: flex;
@@ -291,7 +293,7 @@ export default {
 }
 
 .from .ipt:focus {
-	border-color: #ff5c29;
+	border-color: $primary;
 }
 
 .from .from-line .icon {
@@ -310,7 +312,7 @@ export default {
 	position: absolute;
 	right: 0;
 	top: 0;
-	background: #cc9f68;
+	background: $primary;
 	color: #fff;
 	padding: 0 20upx;
 	border-radius: 0 200upx 200upx 0;
@@ -327,9 +329,9 @@ export default {
 	color: #0bd5a9;
 }
 .phone-icon{
-	width:40upx;
+	width:30upx;
 	height:40upx;
-	margin-left:20upx;
+	margin-left:30upx;
 }
 .phoneCode-icon{
 	width:40upx;
@@ -337,8 +339,8 @@ export default {
 	margin-left:20upx;
 }
 .img {
-  width:300upx;
-  height:300upx;
+  width:200upx;
+  height:200upx;
   img {
    width:100%;
    height:100%;
@@ -346,5 +348,8 @@ export default {
 }
 .font30{
   font-size:40upx;
+}
+.primary{
+  color:$primary;
 }
 </style>

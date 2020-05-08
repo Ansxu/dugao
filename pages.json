@@ -18,7 +18,9 @@
 		},{
 			"path": "pages/my/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor":"#ff6f00",
+				"navigationBarTextStyle":"white"
 			}
 		},{
 			"path": "pages/login/login",
@@ -32,6 +34,286 @@
 			}
 		}
 	],
+	"subPackages":[
+		{
+			"root":"pages/other",
+			"pages":[
+				{
+					"path":"hotBrand/hotBrand",
+					"style": {
+						"navigationBarTitleText": "热销榜",
+						"navigationBarBackgroundColor": "#94aebe",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path":"kefu/kefu",
+					"style": {
+						"navigationBarTitleText": "在线客服",
+						"navigationBarBackgroundColor": "#ffffff"
+					}
+				},
+				{
+					"path":"kefuDeatil/kefuDeatil",
+					"style": {
+						"navigationBarTitleText": "在线客服",
+						"navigationBarBackgroundColor": "#ffffff"
+					}
+				},
+				{
+					"path":"set/set",
+					"style": {
+						"navigationBarTitleText": "设置",
+						"navigationBarBackgroundColor": "#ffffff"
+					}
+				},
+				{
+					"path":"setpwd/setpwd",
+					"style": {
+						"navigationBarTitleText": "设置支付密码",
+						"navigationBarBackgroundColor": "#ffffff"
+					}
+				},
+				{
+					"path":"changeLoginPwd/changeLoginPwd",
+					"style": {
+						"navigationBarTitleText": "修改登录密码",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"account/account",
+					"style": {
+						"navigationBarTitleText": "账户管理"
+					}
+				},
+				{
+					"path":"verPhone/verPhone",
+					"style": {
+						"navigationBarTitleText": "验证手机号"
+					}
+				},
+				{
+					"path":"myAcount/myAcount",
+					"style": {
+						"navigationBarTitleText": "我的收益"
+					}
+				},
+				{
+					"path":"withdraw/withdraw",
+					"style": {
+						"navigationBarTitleText": "提现"
+					}
+				},
+				{
+					"path":"getCome/getCome",
+					"style": {
+						"navigationBarTitleText": "收益明细"
+					}
+				},
+				{
+					"path":"money/money",
+					"style": {
+						"navigationBarTitleText": "交易明细"
+					}
+				},
+				{
+					"path":"myguest/myguest",
+					"style": {
+						"navigationBarTitleText": "我的团队"
+						// "enablePullDownRefresh" : true
+						
+					}
+				},
+				{
+					"path":"chooseCity/chooseCity",
+					"style": {
+						"navigationBarTitleText": "城市选择"
+						// "enablePullDownRefresh" : true
+						
+					}
+				}
+			]
+		},
+		{
+			"root":"pages/member",
+			"pages":[
+				{
+					"path":"question/question",
+					"style": {
+						"navigationBarTitleText": "常见问题"
+						// "enablePullDownRefresh" : false
+					}
+				},
+				{
+					"path":"address/address",
+					"style": {
+						"navigationBarTitleText": "收货地址",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"addsite/addsite",
+					"style": {
+						"navigationBarTitleText": "新增地址",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"invoiceList/invoiceList",
+					"style": {
+						"navigationBarTitleText": "发票信息",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"addInvoice/addInvoice",
+					"style": {
+						"navigationBarTitleText": "新增发票",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"logistics/logistics",
+					"style": {
+						"navigationBarTitleText": "物流信息",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"apply/apply",
+					"style": {
+						"navigationBarTitleText": "申请退款",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"order/order",
+					"style": {
+						"navigationBarTitleText": "我的订单",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"myAppraise/myAppraise",
+					"style": {
+						"navigationBarTitleText": "我的评价",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"coupon/coupon",
+					"style": {
+						"navigationBarTitleText": "优惠券",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"afterSaleType/afterSaleType",
+					"style": {
+						"navigationBarTitleText": "售后服务",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"applyReturn/applyReturn",
+					"style": {
+						"navigationBarTitleText": "售后服务",
+						"navigationBarBackgroundColor": "#ffffff"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"orderDetail/orderDetail",
+					"style": {
+						"navigationBarTitleText": "订单详情",
+						"navigationBarTextStyle": "white",
+						"navigationBarBackgroundColor": "#ff3333"
+						// "enablePullDownRefresh" : true
+					}
+				},
+				{
+					"path":"invite/invite",
+					"style": {
+						"navigationBarTitleText": "邀请好友",
+						"navigationBarBackgroundColor": "#ffffff",
+						"enablePullDownRefresh": true
+					}
+				},{
+					"path" : "editinfo/editinfo",
+					"style": {
+						"navigationBarTitleText": "个人资料"
+					}
+				}
+				,{
+					"path" : "editNickName/editNickName",
+					"style" : {
+						"navigationBarTitleText": "编辑昵称"
+					}
+				},{
+					"path" : "addComment/addComment",
+					"style": {
+						"navigationBarTitleText": "发布评价"
+					}
+				},{
+					"path" : "orderTui/orderTui",
+					"style" : {
+						"navigationBarTitleText": "售后订单"
+					}
+				},{
+					"path" : "orderTuidetail/orderTuidetail",
+					"style" : {
+						"navigationBarTitleText": "售后详情"
+					}
+				}
+			    ,{
+                    "path" : "couponCenter/couponCenter",
+                    "style" : {
+						"navigationBarTitleText": "优惠券",
+						"navigationBarBackgroundColor": "#ffffff"
+					}
+                }
+            ]
+		},
+		{
+			"root":"pages/message",
+			"pages":[{
+						"path" : "messageClass/messageClass",
+						"style" : {
+							"navigationBarTitleText": "消息中心"
+						}
+					}
+					,{
+						"path" : "messageList/messageList",
+						"style" : {}
+					}
+					,{
+						"path" : "msgDetail/msgDetail",
+						"style" : {
+							"navigationBarTitleText": "详情"
+						}
+					},
+					{
+						"path" : "agreement/agreement",
+						"style" : {
+							"navigationBarTitleText": "用户协议"
+						}
+					}
+			]
+		}
+	],
+	
 	"tabBar": {
 		"color":"#666",
 		"selectedColor":"#333",

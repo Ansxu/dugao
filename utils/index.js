@@ -2,15 +2,15 @@
 
 //API接口地址
 // 线上
-const host = 'https://api.naomiebie.cn/api/';//
-const filePath = 'http://top.naosongduan.cn';//文件域名
-const hostPath = 'http://top.naosongduan.cn/h5/index.html';//主机路径
+// const host = 'https://api.naomiebie.cn/api/';//
+// const filePath = 'http://top.naosongduan.cn';//文件域名
+// const hostPath = 'http://top.naosongduan.cn/h5/index.html';//主机路径
 // 测试
-// const host = 'http://hnapi.wtvxin.com/api/';// 
-// const filePath = 'http://hn.wtvxin.com';//文件域名
-// const hostPath = 'http://hnapi.wtvxin.com/index.html';//主机路径
-const LoginPath = "/pages/login/login";//登录路径
-const RegisterPath = "/pages/login/register";//注册路径
+const host = 'http://ddypapi.wtvxin.com/api/';// 
+const filePath = 'http://ddypapi.wtvxin.com';//文件域名
+const hostPath = 'http://hnapi.wtvxin.com/index.html';//主机路径
+const LoginPath = "login/login";//登录路径
+const RegisterPath = "login/register";//注册路径
 
 import {get,post,requestHideLoading} from '@/utils/request';
 import {editTime,dateUtils,timeDiff,formatNumber} from '@/utils/date-tools';
@@ -23,23 +23,22 @@ export {
 // icon--是否显示图标，mask--是否显示防触摸穿透蒙层
 export function toast(title,data={icon:false,mask:false,time:2000}){
   uni.showToast({
-    title,
+    title:title,
     icon:data.icon?'success':'none',
-    mask:data.mask,
-    duration:data.time
+    mask:data.mask||false,
+    duration:data.time||2000
   })
 }
 //判断是否登录，未登录做弹窗跳转登录页面
 export function judgeLogin(){
+  // 未登录false，已登录true
   if (!uni.getStorageSync("userId") || !uni.getStorageSync("token")) {
       uni.showModal({
         title:'未登录',
         content:'是否跳转到登录页面？',
         success(res){
           if(res.confirm){
-            uni.navigateTo({
-              url: LoginPath
-            })
+            navigate( LoginPath)
           }else{
             goUrl('index/index')
           }
@@ -144,7 +143,11 @@ export function autoImg(img) {
 }
 
 // 跳转url,带参
-export function navigate(url,params){
+export function navigate(url,params,isLogin){
+  // 判断是否已登录
+  if(isLogin&&!judgeLogin()){
+    return;
+  }
   let p ='';
   if(params){
     let arr = Object.keys(params);
@@ -153,7 +156,25 @@ export function navigate(url,params){
       if(index<arr.length-1){p+='&'};
     })
   }
+  console.log(`/pages/${url}?${p}`)
   uni.navigateTo({
+    url:`/pages/${url}?${p}`
+  })
+}
+// 跳转url,带参
+export function switchTab(url,params,isLogin){
+  if(isLogin&&!judgeLogin()){
+    return;
+  }
+  let p ='';
+  if(params){
+    let arr = Object.keys(params);
+    arr.map((item,index)=>{
+      p+=`${item}=${params[item]}`;
+      if(index<arr.length-1){p+='&'};
+    })
+  }
+  uni.switchTab({
     url:`/pages/${url}?${p}`
   })
 }

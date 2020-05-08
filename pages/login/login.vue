@@ -89,22 +89,9 @@ export default {
       color: #888;
       margin-top: 16upx;
   }
-  
-  .msxcx-widget-btn {
-      margin-left: 64upx;
-      margin-right: 64upx;
-  }
-  
-    // .logo {
-    //   width: 600upx;
-    //   height: 100upx;
-    //   background: url('http://img.su-cloud.cn/mini/logo.png') no-repeat;
-    //   background-size: 100% 100%;
-    //   margin: 200upx auto 0 auto;
-    // }
     .login-btn {
       text-align: center;
-      background: #cc9f68;
+      background: $primary;
       width: 90%;
       height: 80upx;
       line-height: 80upx;
@@ -122,25 +109,6 @@ export default {
       input {
         width: 100%;
         height: 100%;
-      }
-      .code1{
-        width: 60%;
-        height: 100%;
-        float:left;
-        display: inline;
-      }
-      .btn{
-        padding: 0 10upx;
-        margin: 0;
-        font-size: 28upx;
-        text-align: center;
-        background: transparent;
-        color: #a07941;
-        border-color: #a07941;
-        display:inline;
-        width:30%;
-        float:right;
-   
       }
     
     }
