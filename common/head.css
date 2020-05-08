@@ -1,0 +1,59 @@
+.uni-navbar .title {
+	font-size: 15px;
+	line-height: 20px;
+	color: #333333;
+	padding: 15px;
+}
+
+.uni-navbar .input-view {
+	width: 100%;
+	display: flex;
+	background-color: #fff;
+	height: 30px;
+	border-radius: 15px;
+	padding: 0 4%;
+	flex-wrap: nowrap;
+	margin: 7px 0;
+	line-height: 30px;
+	box-sizing: border-box;
+}
+
+.uni-navbar .input-view .uni-icon {
+	display: block;
+	margin-top: 6px;
+	height: 18px;
+	width: 18px;
+	line-height:1;
+}
+
+.uni-navbar-header-btns .iconfont{
+	color: #333;
+	font-size: 48upx;
+}
+
+.iconfont.icon-xiaoxi .uni-badge{
+	position: absolute; top: 12upx; right: 12upx;
+	background: #fa3d34;
+	color: #fff;
+	transform: scale(.8);
+}
+.uni-navbar .input-view .input {
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+	padding: 0 3%;
+	box-sizing: border-box;
+}
+/* #ifdef MP-WEIXIN */
+.uni-swiper-tab{
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 44px;
+	z-index: 99;
+	background: #f5f5f5;
+}
+.uni-tab-bar .s{
+	box-sizing: content-box;
+}
+/* #endif */
