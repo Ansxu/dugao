@@ -36,11 +36,11 @@ export function judgeLogin(){
       uni.showModal({
         title:'未登录',
         content:'是否跳转到登录页面？',
+        cancelColor:'#999',
+        confirmColor:'#ff6f00',
         success(res){
           if(res.confirm){
-            navigate( LoginPath)
-          }else{
-            goUrl('index/index')
+            navigate(LoginPath)
           }
         }
       })
@@ -156,7 +156,6 @@ export function navigate(url,params,isLogin){
       if(index<arr.length-1){p+='&'};
     })
   }
-  console.log(`/pages/${url}?${p}`)
   uni.navigateTo({
     url:`/pages/${url}?${p}`
   })

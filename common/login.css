@@ -1,0 +1,158 @@
+*{
+	box-sizing: border-box;
+}
+.pl10 {
+	padding-left: 20upx !important;
+}
+
+.pr10 {
+	padding-right: 20upx !important;
+}
+.pd10 {
+    padding: 20upx;
+}
+.pt10 {
+	padding-top: 20upx !important;
+}
+.pb10 {
+	padding-bottom: 20upx !important;
+}
+
+.inline-block{
+	display: inline-block;
+}
+.aLine .aline {
+	color: #505050;
+}
+
+.regLoginBox {
+	padding: 0 30upx;
+}
+
+.logo {
+	padding: 0 0 80upx;
+}
+
+.logo .img {
+	width: 200upx;
+	margin: 0 auto;
+	
+}
+
+.logo .img image {
+	width: inherit;
+	height: 100%;
+	margin:0 auto;
+	border-radius: 46upx;
+}
+.logo .Title{ font-size: 32upx; font-weight: bold; text-align: center; display: none;}
+.from .from-line {
+	margin-bottom: 30upx;
+	position: relative;
+}
+
+.from .ipt {
+	border: 1px solid #d9d9d9;
+	border-radius: 200upx;
+	height: 80upx;
+	line-height: 80upx;
+	width: 100%;
+	padding: 0 20upx 0 100upx;
+	font-size: 30upx;
+	box-sizing: border-box;
+}
+
+.from .ipt:focus {
+	border-color: #ff5c29;
+}
+
+.from .from-line .iconfont {
+	height: 100%;
+	line-height: 80upx;
+	width: 100upx;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9;
+	font-size: 44upx;
+	color: #bfbdbd;
+}
+
+.from .from-line .getcode {
+	height: 80upx;
+	line-height: 80upx;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: #ff3333;
+	color: #fff;
+	padding: 0 20upx;
+	border-radius: 0 200upx 200upx 0;
+	z-index: 3;
+}
+
+.from .from-txt {
+	font-size: 28upx;
+	color: #656565;
+}
+
+.from .from-txt .link {
+	color: #0bd5a9;
+}
+
+.ftbtn .btn{
+	background: #ff3333;
+	color:#fff;
+	border-radius: 200upx;
+}
+.Otherway{padding:40upx 0;}
+.Otherway .title{ margin-bottom: 20upx;}
+.Otherway .title .txt{color: #999; display: inline-block; vertical-align: middle;}
+.Otherway .title:before,.Otherway .title:after{
+	display: inline-block;
+	vertical-align: middle;
+	content: "";
+	height: 1px;
+	width: 60upx;
+	background: #e6e6e6;
+	margin: 0 20upx;
+}
+.waylist{ justify-content: center;}
+.waylist .flex-item{ margin: 0 20upx;}
+.waylist .flex-item .iconfont{ height: 80upx; width: 80upx; line-height: 80upx; border-radius: 50upx; background: #e6e6e6; color: #fff; font-size: 40upx;}
+.waylist .iconfont.icon-shouji{ background: #ff3333;}
+.waylist .iconfont.icon-iconzh1{ background: #03a9f4;}
+.waylist .name{ color: #333;}
+/* 小程序特有样式 */
+/* #ifdef  MP-WEIXIN */
+.MP-login {
+    padding: 40upx;
+}
+
+.MP-login .logo {
+    width: 100%;
+    padding: 100upx 0;
+    text-align: center
+}
+
+.MP-login .logoimg {
+    width: 200upx;
+    height: 200upx;
+	margin:0 auto;
+	border-radius: 46upx;
+}
+.MP-login .logoimg .img_bb{
+	width:100%;height:100%
+}
+.login-btn {
+    padding: 6upx 0;
+    font-size: 30upx;
+    margin-bottom: 30upx
+}
+
+.btn_gree {
+    background: #1aad19;
+    color: #fff
+}
+/* #endif */

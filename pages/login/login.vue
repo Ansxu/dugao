@@ -97,7 +97,7 @@ export default {
       line-height: 80upx;
       color: #fff;
       font-size: 28upx;
-      margin-top: 30upx;
+      margin:30upx auto 0;
     }
     .item {
       width: 690upx;

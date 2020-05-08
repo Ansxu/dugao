@@ -1,0 +1,69 @@
+.top-box{
+	color:#ffffff;background: #ff3333;
+	height:315upx;padding:0 30upx;
+}
+.order_statu{
+	.statu{
+		font-size:35upx;margin-bottom:5upx;
+	}
+}
+.all_top{
+	padding-bottom: 80upx;
+	position: relative;top:-88upx;
+	.site,.pro_info,.order_info{
+		background: #ffffff;padding: 20upx;
+		border-radius: 15upx;
+	}
+	.site{
+		.dz{
+			width:60upx;height:60upx;margin-right:20upx;
+		}
+		.phone{
+			margin-left:60upx;
+		}
+	}
+	.pro_info{
+		.logo{
+			width:45upx;height:45upx;
+			margin-right:20upx;
+		}
+		.img{
+			width:120upx;height:120upx;margin-right:20upx;
+		}
+		.main{
+			.btn_tui{
+				border:1upx solid #999;padding: 0 20upx;
+				border-radius:8upx;
+			}
+		}
+	}
+	.order_info{
+		.info_head{
+			position: relative;padding-bottom:20upx;
+			&:after{
+				position: absolute;bottom:0;left:0;
+				height:2upx;
+				background: #f5f5f5;
+				content: '';
+				width:690upx;
+			}
+		}
+		.copy{
+			margin-left:10upx;
+		}
+	}
+}
+.bor_r15{
+	border-radius:15upx;
+}
+.bottom{
+	position: fixed;bottom:0;width:100%;left:0;
+}
+.dobule{
+	view{
+		width:50%;text-align:center;padding:20upx;
+	}
+	.btn_add{
+		background: #ff3333;color:#ffffff;
+	}
+}

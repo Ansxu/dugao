@@ -1,0 +1,219 @@
+
+.wrap{
+	width: 100%;
+	height: 100%;
+}
+.nav{
+	width: 100%;
+	display: flex;
+	align-items:center;
+	justify-content:space-around;
+	background-color: #fff;
+	border-bottom: #ececec solid 1upx;
+	height: 96upx;
+	position: fixed;
+	/* #ifndef MP */
+	top: 88upx;
+	/* #endif */
+	z-index: 10;
+}
+/* #ifdef MP-WEIXIN */
+.nav{
+	top: 0;
+}
+/* #endif */
+.nav .active{
+	color: #89674c;
+	border-bottom:#89674c solid 4upx ;
+}
+.nav view{
+	font-size: 28upx;
+	height: 92upx;
+	line-height: 96upx;
+	color: #666;
+	border-bottom:#fff solid 4upx ;
+}
+.couponbox{
+	padding: 20upx;
+}
+.listtop{
+	display: flex;
+	align-items: center;
+	justify-content:space-between;
+	background-color: #FFFFFF;
+	height: 96upx;
+	border-radius: 5upx;
+}
+.couponimg{
+	width: 58upx;
+	height: 58upx;
+}
+.nextimg{
+	width: 28upx;
+	height: 28upx;
+}
+.listtop text{
+	width: 530upx;
+	font-size: 26upx;
+	color: #000;
+}
+.coupon1{
+	margin-top: 20upx;
+	background-image: url("http://shop.dadanyipin.com/static/icons/c1.png");
+	background-repeat:no-repeat;
+  background-size:100% ;
+}
+.topbox{
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 203upx;
+}
+.coupontxt{
+	padding: 20upx;
+	font-size: 23upx;
+	color: #999;
+	background: #fff;
+	border-top: 1px dashed #E2E2E2;
+}
+.coupon2{
+	display: flex;
+	width: 100%;
+	height: 200upx;
+	margin-top: 20upx;
+	background-image: url("http://shop.dadanyipin.com/static/icons/c1.png");
+	background-repeat:no-repeat;
+  background-size:100% 100%;
+}
+.coupon3{
+	display: flex;
+	width: 100%;
+	height: 200upx;
+	margin-top: 20upx;
+	background-image: url("http://shop.dadanyipin.com/static/icons/c2.png");
+	background-repeat:no-repeat;
+  background-size:100% 100%;
+}
+.couponbtn{
+	height: 200upx;
+	width: 220upx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.couponbtn view{
+	width: 120upx;
+	height: 64upx;
+	border-radius: 8upx;
+	background-color: #ff6666;
+	color: #fff;
+	font-size: 24upx;
+	text-align: center;
+	line-height: 64upx;
+}
+.lookmore{
+	position: absolute;
+	right: 65upx;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80upx;
+	height: 50upx;
+}
+.couponleft{
+	width: 210upx;
+	align-items: center;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.price{
+	margin-top: 50upx auto 0;
+	text-align: center;
+}
+.price text{
+	font-size: 30upx;
+}
+.price .num{
+	font-size: 54upx;
+	line-height: 60upx;
+}
+.lefttxt{
+	width: 100%;
+	text-align: center;
+	font-size: 23upx;
+}
+.couponright{
+	width: 460upx;
+	margin-left: 18upx;
+	color: #333;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.bb_right{
+	width:230upx;
+	color:#ffffff;font-size:45upx;
+	text-align: center;height:180upx;line-height: 180upx;
+}
+.couponname{
+	line-height: 44upx;
+	margin-bottom: 10upx;
+	word-break: break-all;
+    display: -webkit-box;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.coupontime{
+	font-size: 19upx;
+	color: #999;
+}
+.nodata{
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+.nocoupon{
+	width: 140upx;
+	height: 106upx;
+	margin: 0 auto;
+}
+.nocoupon image{
+	width: 140upx;
+	height: 106upx;
+}
+.notxt1{
+	margin: 0 auto;
+	width: 400upx;
+	text-align: center;
+	margin-top: 48upx;
+	font-size: 26upx;
+	line-height: 30upx;
+	color: #999;
+}
+.notxt2{
+	margin: 0 auto;
+	width: 400upx;
+	text-align: center;
+	margin-top: 20upx;
+	font-size: 26upx;
+	line-height: 30upx;
+	color: #999;
+}
+.gotobtn{
+	width:186upx ;
+	height: 62upx;
+	border: 1upx solid #89674c;
+	color: #89674c;
+	text-align: center;
+	line-height: 64upx;
+	border-radius: 32upx;
+	font-size: 28upx;
+	margin: 0 auto;
+	margin-top: 60upx;
+}

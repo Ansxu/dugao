@@ -218,7 +218,6 @@
 						"ShopId":ShopId
 					});
 				}
-				if (result.code === 0) {
 					uni.showToast({
 						title: result.msg
 					})
@@ -228,26 +227,6 @@
 						this.medialist[index].IsFollow=0;
 					}
 
-				} else if (result.code === 2) {
-					let _this = this;
-					uni.showModal({
-						content: "您还没有登录，是否重新登录？",
-						success(res) {
-							if (res.confirm) {
-								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
-								});
-							} else if (res.cancel) {
-							}
-						}
-					});
-				} else {
-					uni.showToast({
-						title: result.msg,
-						icon: "none",
-						duration: 2000
-					});
-				}
 			},
 			//预览图片
 			previewImg(obj){

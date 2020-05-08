@@ -1,0 +1,160 @@
+.uni-navbar .title {
+	font-size: 15px;
+	line-height: 20px;
+	color: #333333;
+	padding: 15px;
+}
+
+.uni-navbar .input-view {
+	width: 100%;
+	display: flex;
+	background-color: #fff;
+	height: 30px;
+	border-radius: 15px;
+	padding: 0 4%;
+	flex-wrap: nowrap;
+	margin: 7px 0;
+	line-height: 30px;
+	box-sizing: border-box;
+}
+
+.uni-navbar .input-view .uni-icon {
+	display: block;
+	margin-top: 6px;
+	height: 18px;
+	width: 18px;
+	line-height: 1;
+}
+
+.uni-navbar-header-btns .iconfont {
+	color: #fff;
+	font-size: 48upx;
+}
+
+.iconfont.icon-xiaoxi .uni-badge {
+	position: absolute;
+	top: 12upx;
+	right: 12upx;
+	background: #ffac00;
+	color: #fff;
+	transform: scale(.8);
+}
+
+.uni-navbar .input-view .input {
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+	padding: 0 3%;
+	box-sizing: border-box;
+}
+
+/* #ifdef MP-WEIXIN */
+.uni-swiper-tab {
+	width: 100%;
+	/* position: fixed;
+	left: 0;
+	top: 178upx;
+	z-index: 99; */
+	background: #fff;
+}
+
+.uni-tab-bar .s {
+	box-sizing: content-box;
+}
+
+/* #endif */
+/* 自定义的头部(带返回的) */
+.head {
+	height: 90upx;
+}
+
+.index_head {
+	background: #fff;
+	height: 90upx;
+	width: 100%;
+	/* position: fixed;
+	z-index: 998; */
+}
+
+.index_head .logo {
+	display: block;
+	width: 460upx;
+	padding: 0 30upx;
+}
+
+.head .head_r {
+	text-align: center;
+	padding: 0 30upx;
+}
+
+.head .index_head .head_r {
+	padding-right: 10upx;
+}
+.head .index_head .head_r .icon{ position: relative;}
+.head .index_head .head_r .icon .num{
+	position: absolute;
+	left: 0;
+	top: 0;
+	min-width: 36upx;
+	height: 36upx;
+	text-align: center;
+	line-height: 36upx;
+	color: #fff; background: #FF3333;
+	border-radius: 100upx;
+	font-size: 22upx;
+	z-index: 1;
+}
+.head .head_l .iconfont {
+	font-size: 40upx;
+	padding: 0 20upx;
+}
+
+.head .head_r .icon {
+	width: 80upx;
+	height: 100%;
+}
+
+.head .head_r .icon .iconimg {
+	width: 76upx;
+	height: 76upx;
+	display: block;
+}
+
+.index_head .seach {
+	width: 690upx;
+	background: #eee;
+	margin: 0 30upx;
+	border-radius: 30upx;
+}
+
+.index_head .seach .iconfont {
+	font-size: 24upx;
+	color: #999;
+}
+
+.index_head .seach .iconfont:before {
+	font-size: 32upx;
+	margin-right: 10upx;
+}
+
+.seach_head {
+	background: #f5f5f5;
+	height: 90upx;
+	position: fixed;
+	width: 100%;
+	z-index: 998;
+}
+
+.seach_head .input-view {
+	width: 100%;
+	height: 60upx;
+	border-radius: 30upx;
+	padding: 0 20upx;
+	overflow: hidden;
+}
+
+.seach_head .input {
+	width: 100%;
+	font-size: 26upx;
+	height: 60upx;
+}

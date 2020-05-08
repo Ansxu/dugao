@@ -102,6 +102,10 @@
 						<image class="iconImg" src="/static/my/coupon.png" mode=""></image>
 						<view class="txt">优惠券</view>
 					</view>
+					<view class="item" @click="navigate('member/orderTui/orderTui')">
+						<image class="iconImg" src="/static/my/collect.png" mode=""></image>
+						<view class="txt">我的收藏</view>
+					</view>
 					<view class="item" @click="navigate('member/myAppraise/myAppraise')">
 						<image class="iconImg" src="/static/my/comment.png" mode=""></image>
 						<view class="txt">我的评价</view>
@@ -109,6 +113,10 @@
 					<view class="item" @click="navigate('member/invoiceList/invoiceList')">
 						<image class="iconImg" src="/static/my/footprint.png" mode=""></image>
 						<view class="txt">浏览记录</view>
+					</view>
+					<view class="item" @click="navigate('member/address/address')">
+						<image class="iconImg" src="/static/my/address.png" mode=""></image>
+						<view class="txt">收货地址</view>
 					</view>
 					<view class="item" @click="navigate('member/invite/invite')">
 						<image class="iconImg" src="/static/my/invite.png" mode=""></image>
@@ -118,11 +126,11 @@
 						<image class="iconImg" src="/static/my/feedback.png" mode=""></image>
 						<view class="txt">意见反馈</view>
 					</view>
-					<view class="item" @click="navigate('tabBar/my/browsing')">
+					<view class="item" @click="navigate('other/kefu/kefu')">
 						<image class="iconImg" src="/static/my/service.png" mode=""></image>
 						<view class="txt">在线客服</view>
 					</view>
-					<view class="item" @click="navigate('member/question/question')">
+					<view class="item" @click="navigate('other/set/set')">
 						<image class="iconImg" src="/static/my/setting.png" mode=""></image>
 						<view class="txt">设置</view>
 					</view>
@@ -130,15 +138,12 @@
 			</view>
 		</view>
 		<!-- 我的服务  end-->
-		<!-- <notlogin :showtype="1" v-if="false"></notlogin> -->
 	</view>
 </template>
 
 <script>
 	import {host,post,get,judgeLogin,navigate} from '@/utils';
-	// import notlogin from '/components/notlogin.vue'; 
 	export default {
-		// components: {notlogin},
 		data() {
 			return {
 				navigate,
@@ -162,17 +167,14 @@
 		onShow() {
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
-			if (toLogin()) {
+			if (judgeLogin()) {
 				this.NewsCount();
 			    this.getMemberInfo();
 			}
 		},
 		methods: {
-			error(e){
-				console.log(e)
-			},
 			gotab(url,type){
-				if(toLogin()){
+				if(judgeLogin()){
 					uni.setStorageSync('collectIndex',type)
 					uni.switchTab({
 						url:url
@@ -184,24 +186,9 @@
 					"UserId": this.userId,
 					"Token": this.token
 				})
-				if (result.code === 0) {
 					this.memberInfo = result.data;
+					// 推荐码
 					uni.setStorageSync('ReferralCode',result.data.ReferralCode)
-					this.$store.commit("update", {
-					  Wallet:result.data.Wallet
-					});  
-				} else if (result.code === 2) {
-					let _this = this;
-					uni.showModal({
-						content: "您还没有登录，是否重新登录？",
-						success(res) {
-							if (res.confirm) {
-								navigate('login/login')
-							} else if (res.cancel) {
-							}
-						}
-					});
-				}
 			},
 			async NewsCount() {
 				let result = await post("News/NewsCount", {
@@ -234,8 +221,8 @@
 	.Sevice .dd-list .item{ padding: 0; margin-bottom: 20upx;}
 	.WEIXIN_btn{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0;}
 	.item .iconImg{
-		width: 64rpx;
-		height: 64rpx;
+		width: 50upx;
+		height: 45upx;
 		display: block;
 	}
 	.myOrder .dd-list .iconImg{
@@ -246,8 +233,8 @@
 	}
 	/* #ifdef MP-WEIXIN */
 	.myOrder .dd-list .iconImg image {
-		width: 56upx;
-		height: 56upx;
+		width: 45upx;
+		height: 50upx;
 	}
 	/* #endif */
 	.vip-section{ padding: 0 30upx; position: relative;}

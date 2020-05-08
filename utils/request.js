@@ -1,5 +1,5 @@
 
-import {host,judgeLogin,toast} from '@/utils'
+import {host,judgeLogin,toast,navigate,LoginPath} from '@/utils'
 
 
   // get请求；
@@ -46,7 +46,7 @@ function request(url, method, data) {
         success: function (res) {
           if(res.statusCode===200){
             const ret = res.data;
-            switch (ret.errcode) {
+            switch (ret.code) {
               case code.success:
                 resolve(ret);
                 break;
@@ -59,14 +59,16 @@ function request(url, method, data) {
                 uni.setStorageSync("token",'')
                 if(!loginTipsStatus){
                     loginTipsStatus = true;
+                    
                     uni.showModal({
                       title:'需要登录',
                       content:'是否跳转到登录页面？',
+                      cancelColor:'#999',
+                      confirmColor:'#ff6f00',
                       success(res){
+                        console.log(res)
                         if(res.confirm){
-                          uni.navigateTo({
-                            url: LoginPath
-                          })
+                          navigate(LoginPath)
                         }
                       },
                       complete(){
@@ -99,8 +101,6 @@ function request(url, method, data) {
     })
   }
   
-
-
 //请求封装,隐藏加载
 export function requestHideLoading(url, data,method) {
     return new Promise((resolve, reject) => {
