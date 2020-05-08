@@ -65,7 +65,7 @@
 						</view>
 						<view class="txt">评价</view>
 					</view>
-					<view class="item flex1" @click="navigate('member/order/order?tabIndex=4')">
+					<view class="item flex1" @click="navigate('member/orderTui/orderTui')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/after-sale.png" mode="widthFix"></image>
 							<view class="circleNum" v-if="memberInfo.num_dpj>0">{{memberInfo.num_dpj}}</view>
@@ -86,7 +86,7 @@
 			</view>
 			<view class="section__bd Sevice">
 				<view class="dd-list col__list li_25 center clear">
-					<view class="item" @click="navigate('tabBar/my/wallet')">
+					<view class="item" @click="navigate('my/wallet')">
 						<image class="iconImg" src="/static/my/wallet.png" mode=""></image>
 						<view class="txt">我的钱包</view>
 					</view>
@@ -98,11 +98,11 @@
 						<image class="iconImg" src="/static/my/team.png" mode=""></image>
 						<view class="txt">我的团队</view>
 					</view>
-					<view class="item" @click="navigate('member/orderTui/orderTui')">
+					<view class="item" @click="navigate('member/coupon/coupon')">
 						<image class="iconImg" src="/static/my/coupon.png" mode=""></image>
 						<view class="txt">优惠券</view>
 					</view>
-					<view class="item" @click="navigate('member/orderTui/orderTui')">
+					<view class="item" @click="navigate('my/collect')">
 						<image class="iconImg" src="/static/my/collect.png" mode=""></image>
 						<view class="txt">我的收藏</view>
 					</view>
@@ -110,9 +110,9 @@
 						<image class="iconImg" src="/static/my/comment.png" mode=""></image>
 						<view class="txt">我的评价</view>
 					</view>
-					<view class="item" @click="navigate('member/invoiceList/invoiceList')">
+					<view class="item" @click="navigate('my/browsing')">
 						<image class="iconImg" src="/static/my/footprint.png" mode=""></image>
-						<view class="txt">浏览记录</view>
+						<view class="txt">浏览记录</view> 
 					</view>
 					<view class="item" @click="navigate('member/address/address')">
 						<image class="iconImg" src="/static/my/address.png" mode=""></image>
@@ -213,9 +213,6 @@
 
 <style scoped lang="scss">
 	@import './index.scss';
-	
-
-
 	.content{height: 100%;overflow-y: auto;}
 	.Sevice .dd-list{padding: 26upx 0 0;}
 	.Sevice .dd-list .item{ padding: 0; margin-bottom: 20upx;}

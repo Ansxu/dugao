@@ -325,7 +325,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../../common/dd_style.css"; 
+	@import "../../common/dd_style.css"; 
 
 	.hasContentPage {
 		position: relative;

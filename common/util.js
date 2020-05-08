@@ -1,6 +1,4 @@
-// const host = 'https://scapi.sc-mall.net/api/';  //发现页面套用社交云商接口地址
-const host = 'http://ddypapi.wtvxin.com/api/';  //测试接口地址
-// const host = 'https://api.dadanyipin.com/api/';  //正式接口地址
+
 
 function formatNumber(n) {
     const str = n.toString()
@@ -248,6 +246,7 @@ function uncodeUtf16(str){
   　　});
   　　return result;
  }
+ import {host} from '@/utils'
 import {get,post,requestHideLoading} from '@/utils/request.js'
 export {
 	formatTime,

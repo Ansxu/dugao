@@ -79,8 +79,6 @@
 	margin:80upx auto;
 	border-radius:15upx;
 	padding:10upx 0;text-align: center;
-}
-.kefu_btn a{
 	color:#ffffff;
 	text-decoration: none;
 }
