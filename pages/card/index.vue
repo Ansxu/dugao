@@ -1,18 +1,65 @@
 <template>
 	<view class="content">
-		<!--  #ifndef  MP-WEIXIN -->
-		<view class="carthead"  :style="{'padding-top':barHeight+'px'}">
-			<text>购物车</text>
-			<text @click="ManageCart">{{isEdittxt}}</text>
-		</view>
-		<!--  #endif -->
-		<!--  #ifdef  MP-WEIXIN -->
-		<view class="wxcarthead" v-if="hascartlist">
-			<text @click="ManageCart">{{isEdittxt}}</text>
-		</view>
-		<!--  #endif --> 
 		<view  :style="{'height':barHeight+44+'px'}"></view>
 		<view class="hasContentPage" v-if="hascartlist">
+			<view class="wxcarthead">
+				<image src="../../static/icons/shop.png" mode=""></image>
+				<text style="padding:0upx 67% 0 15upx;">杜高生物</text>
+				<text @click="ManageCart">{{isEdittxt}}</text>
+			</view>
+			<view class="cartGroupList">
+				<view class="item">
+					<!-- <view class="item__hd flex flex-start">
+						<view class="IconsCK IconsCK-radio"></view>
+						<view class="shop flex flex-start">
+							<view class="iconfont icon-dianpu"></view>
+							<view class="shopName uni-ellipsis">111</view>
+							<view class="uni-icon uni-icon-arrowright"></view>
+						</view>
+						<view class="btn_receive" @click="showCoupon()">领券</view>
+					</view> -->
+					<view class="column levelPanel">
+						<view class="item">
+							<view class="outside">
+								<view class="IconsCK IconsCK-radio"></view>
+								<view class="pictrueAll" @click="gotoDetail()">
+									<view class="pictrue">
+										<image src="../../static/card/card-empty.png" mode="aspectFill"></image>
+									</view>
+								</view>
+								<view class="txtBox">
+									<view class="title text-line2">磷酸二氢钾叶面肥磷钾肥养花</view>
+									<view class="flex skuBox">
+										<view class="flex-item flex1">
+											<view class="type">通用型250g*10瓶<view style="color: #9b9b9b; font-size: 30upx;" class="uni-icon uni-icon-arrowdown"></view>
+											</view>
+										</view>
+										<view class="flex-item">
+											<!-- <text class="buyNum">x1</text> -->
+										</view>
+									</view>
+									<view class="flex mt5 flexAlignCneter">
+										<view class="flex-item flex1">
+											<view class="new-price"><text class="yuan">￥</text>128.00
+											<!-- <text class="fz12">返两万</text> -->
+										</view>
+										</view>
+										<view class="flex-item selNumRow">
+											<uni-number-box :disabled="false" :value="1" :min="666" :max="777" v-on:change="change" :shopindex="index" :index="index2"></uni-number-box>
+										</view>
+									</view>
+								<!-- 	<view class="flex">
+										<view class="red fz12" v-if="item2.MinBuyNum>1">{{item2.MaxBuyNum}}件起购</view>
+										<view class="red fz12" v-if="item2.MaxBuyNum>0">限购{{item2.MaxBuyNum}}件</view>
+										<view class="red fz12" v-if="item2.Stock>0&&item2.Stock<10">仅剩{{item2.Stock}}件</view>
+										<view class="red fz12" v-if="item2.Isinvalid>0">{{Isinvalidstr[item2.Isinvalid]}}</view>
+									</view> -->
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
 			<view class="cartGroupList">
 				<view class="item" v-for="(item,index) in cartlist" :key="index">
 					<view class="item__hd flex flex-start">
@@ -91,7 +138,7 @@
 		<view class="noConPage table bg_fff nodatalocal" v-if="noDataIsShow">
 			<view class="table-cell">
 				<view class="noDataImg">
-					<image src="http://shop.dadanyipin.com/static/icons/nocart.png" mode="widthFix"></image>
+					<image src="/static/card/card-empty.png" mode="widthFix"></image>
 				</view>
 				<view class="tips">购物车空空如也~</view>
 				<view class="btnBox">
