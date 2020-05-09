@@ -222,12 +222,12 @@ export default {
           }
           .price span:nth-child(1){
             font-size: 20rpx;
-            color: #ff3333;
+            color: #ff6f00;
             font-weight: 900;
           }
           .price span:nth-child(2){
             font-size: 36rpx;
-            color: #ff3333;
+            color: #ff6f00;
             font-weight: 900;
           }
           .price span:nth-child(3){
@@ -257,7 +257,7 @@ export default {
     }
   }
   .tit_red{
-    background: #ff3333;width:100%;height:320rpx;
+    background: #ff6f00;width:100%;height:320rpx;
     color:#ffffff;
     .gou_w{
       width:48rpx;height:48rpx;

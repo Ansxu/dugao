@@ -232,7 +232,7 @@ export default {
 };
 </script>
 
-<style scoped>	
+<style scoped lang="scss">	
 .browsing {
 	background: #ffffff;
 }
@@ -324,13 +324,13 @@ export default {
 }
 .correct {
 	font-size: 28rpx;
-	color: rgba(255, 51, 51, 1);
+	color: $primary;
 	padding-left: 20rpx;
 	line-height: 66rpx;
 }
 .spanl {
 	font-size: 20rpx;
-	color: rgba(255, 51, 51, 1);
+	color: $primary;
 }
 .spanr {
 	font-size: 22rpx;
@@ -367,7 +367,7 @@ export default {
 .covers {
 	width: 30%;
 	height: 100rpx;
-	background: rgba(255, 51, 51, 1);
+	background: $primary;
 	display: flex;
 	align-items: center;
 	justify-content: center;

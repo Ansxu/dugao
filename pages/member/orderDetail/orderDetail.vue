@@ -309,7 +309,7 @@ export default {
     padding-bottom:300upx;
   }
 .back_col{
-  background-color: #f00!important;
+  background-color: #ff6f00!important;
 }
 .or_list{
   position: relative;top:180upx;left:0;
@@ -342,24 +342,24 @@ export default {
     color:#858585;
   }
   .btn_red{
-    color:#ffffff;background:#ff3333; 
+    color:#ffffff;background:#ff6f00; 
   }
   .btnbox .btn:nth-child(2){
-    color:#ffffff;background:#ff3333;
+    color:#ffffff;background:#ff6f00;
   }
   .order_title{
-   border-left:4upx solid #f00;padding-left:20upx;
+   border-left:4upx solid #ff6f00;padding-left:20upx;
  }
  .order_info p{
    padding:5upx 0;
  }
  .copy{
-   padding:0upx 20upx;border:1upx solid red;color:#f00;font-size:20upx;
+   padding:0upx 20upx;border:1upx solid red;color:#ff6f00;font-size:20upx;
    border-radius: 5upx;
  }
 
  .bg_statu{
-   width:750upx;background: #ff3333;
+   width:750upx;background: #ff6f00;
    height:245upx;position: absolute;top:0;left:0;
    color:#ffffff;
  }

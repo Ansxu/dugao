@@ -116,7 +116,7 @@ export default {
     .mai{
       width: 200rpx;
       height: 60rpx;
-      background-color: #ff3333;
+      background-color: #ff6f00;
       border-radius: 30rpx;
       font-size: 30rpx;
       color: #ffffff;
@@ -167,7 +167,7 @@ export default {
         margin-bottom: 20rpx
       }
       span{
-        color: #ff3333;
+        color: #ff6f00;
         font-size: 36rpx;
         font-weight: bold;
         span{

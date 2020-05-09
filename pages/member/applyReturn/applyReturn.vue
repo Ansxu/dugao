@@ -204,7 +204,7 @@ export default {
     width:144rpx;height:144rpx;
   }
   .sub_btn{
-    background: #ff3333;color:#ffffff;width:100%;
+    background: #ff6f00;color:#ffffff;width:100%;
     height:98rpx;line-height: 98rpx;text-align: center;
     position: fixed;bottom:0;
   }

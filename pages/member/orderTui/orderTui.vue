@@ -156,7 +156,7 @@
 				border:1upx solid #999999;
 			}
 			.btn_r{
-				background: #ff3333;color:#ffffff;
+				background: #ff6f00;color:#ffffff;
 			}
 			.btn_c{
 				background: #ccc;color:#ffffff;

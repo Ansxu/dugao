@@ -197,7 +197,7 @@ export default {
     margin-right: 0;
   }
   &.active{
-    border:1rpx solid #f00;color:#f00;
+    border:1rpx solid #ff6f00;color:#ff6f00;
   }
 }
 .com_text{
@@ -213,7 +213,7 @@ export default {
       position: absolute;
       width: 32rpx;
       height: 32rpx;
-      background-color: #ff3333;
+      background-color: #ff6f00;
       color: #fff;
       border-radius: 50%;
       top: -12rpx;

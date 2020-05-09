@@ -236,7 +236,7 @@ export default {
   background-color: #fff;
   position: relative;
   .active{
-    color: #f00
+    color: #ff6f00
   }
   span{
     position: absolute;
@@ -244,15 +244,15 @@ export default {
     transition: all .2s;
     height: 5upx;
     width: 50upx;
-    background-color: #f00
+    background-color: #ff6f00
   }
 }
 .back_col{
-  background-color: #FF3737!important;
+  background-color: #ff6f00!important;
 }
 .btn_de{
   width:100%;position: fixed;bottom:0;
-  height:88upx;line-height: 88upx;background: #FF3737;
+  height:88upx;line-height: 88upx;background: #ff6f00;
   color:#ffffff;text-align: center;
 }
 </style>

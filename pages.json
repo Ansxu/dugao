@@ -59,6 +59,11 @@
 				"navigationBarTitleText": "我的收藏"
 			}
 		},{
+            "path" : "pages/my/topup",
+            "style" : {
+				"navigationBarTitleText": "充值"
+			}
+        },{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "登录"
@@ -89,7 +94,24 @@
 			"style": {
 				"navigationBarTitleText": "视频详情"
 			}
-		}
+		},{
+            "path" : "pages/Wallet/bankCard/bankCard",
+            "style" : {
+				"navigationBarTitleText": "我的银行卡"
+			}
+        }
+        ,{
+            "path" : "pages/Wallet/bankAdd/bankAdd",
+            "style" : {
+				"navigationBarTitleText": "添加银行卡"
+			}
+        }
+        ,{
+            "path" : "pages/Wallet/bankChoose/bankChoose",
+            "style" : {
+				"navigationBarTitleText": "选择银行"
+			}
+        }
 	],
 	"subPackages":[
 		{
@@ -115,6 +137,12 @@
 					"style": {
 						"navigationBarTitleText": "在线客服",
 						"navigationBarBackgroundColor": "#ffffff"
+					}
+				},
+				{
+					"path":"feedback/feedback",
+					"style": {
+						"navigationBarTitleText": "意见反馈"
 					}
 				},
 				{
@@ -148,7 +176,7 @@
 				{
 					"path":"verPhone/verPhone",
 					"style": {
-						"navigationBarTitleText": "验证手机号"
+						"navigationBarTitleText": "修改手机号"
 					}
 				},
 				{
@@ -296,7 +324,7 @@
 					"style": {
 						"navigationBarTitleText": "订单详情",
 						"navigationBarTextStyle": "white",
-						"navigationBarBackgroundColor": "#ff3333"
+						"navigationBarBackgroundColor": "#ff6f00"
 						// "enablePullDownRefresh" : true
 					}
 				},
@@ -345,7 +373,8 @@
 		},
 		{
 			"root":"pages/message",
-			"pages":[{
+			"pages":[
+				{
 						"path" : "messageClass/messageClass",
 						"style" : {
 							"navigationBarTitleText": "消息中心"

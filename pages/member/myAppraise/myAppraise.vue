@@ -287,7 +287,7 @@
 		view{
 			width:50%;padding:20upx;text-align: center;
 			&.active{
-				border-bottom: 1upx solid #ff3333;color:#ff3333
+				border-bottom: 1upx solid $primary;color:$primary
 			}
 		}
 	}

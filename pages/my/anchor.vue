@@ -189,7 +189,7 @@
 				height:4upx;
 				width:60upx;
 				left:50%;
-				background: #ff3333;
+				background: #ff6f00;
 				transform: translateX(-50%);
 			}
 		}

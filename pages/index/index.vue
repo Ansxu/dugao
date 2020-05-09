@@ -4,7 +4,7 @@
 			<img src="@/static/icons/search-icon.png" alt="">
 			<p>请输入要搜索的商品</p>
 		</div>
-		<div class="nav flex-center-between">
+		<div class="nav-home flex-center-between">
 			<scroll-view scroll-x="true" class="scroll-nav">
 				<div class="left flex-center">
 						<div class="item" :class="{'active':index==navindex}" 
@@ -144,7 +144,7 @@ import {post,navigate} from '@/utils';
 			getScrollWidth(){
 				const that =this;
 				const obj=wx.createSelectorQuery();
-				obj.selectAll('.nav .item').boundingClientRect();
+				obj.selectAll('.nav-home .item').boundingClientRect();
 				obj.exec(function (rect) {
 					let leftW=0;//左边所有元素的宽度相加
 					rect[0].map(item=>{
@@ -153,9 +153,11 @@ import {post,navigate} from '@/utils';
 						that.navWidth.push(val + 'px');
 						leftW +=(item.width+uni.upx2px(25));
 					})
+
 				}) ;
 			},
 			onNavIndex(index){
+				console.log(index,this.navWidth)
 				this.navindex = index
 			}
 		}
@@ -163,11 +165,14 @@ import {post,navigate} from '@/utils';
 </script>
 
 <style lang="scss" scoped>
+	.home,page{
+		background:#fff;
+	}
 	.search{
 		background:#f4f4f4;
 		color:#ccc;
 		border-radius:40upx;
-		margin:5upx 30upx;
+		margin:0 30upx 5upx;
 		padding:0 30upx;
 		height:65upx;
 		img{
@@ -176,7 +181,7 @@ import {post,navigate} from '@/utils';
 			margin-right:8upx;
 		}
 	}
-	.nav{
+	.nav-home{
 		// padding:20upx 0 30upx;
 		.scroll-nav{
 			width:83%;
@@ -341,7 +346,7 @@ import {post,navigate} from '@/utils';
 					.price{
 						height:51upx;
 						.main-price{
-							color:#ff3333;
+							color:#ff6f00;
 							font-size:36upx;
 							span{
 								font-size:20upx;

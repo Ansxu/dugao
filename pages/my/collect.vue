@@ -223,7 +223,7 @@
 				if (proIdArr.length > 0) {
 					uni.showModal({
 					  content: "您确定要删除所选商品吗？",
-					  confirmColor:"#ff3333",
+					  confirmColor:"#ff6f00",
 					cancelColor:'#999',
 					confirmColor:'#ff6f00',
 					  success: function(res) {
@@ -452,7 +452,7 @@
 				}
 
 				.color_red {
-					color: #f00000;
+					color: $primary;
 				}
 
 				.flag {
@@ -462,7 +462,7 @@
 					box-sizing: border-box;
 
 					.flag_pill {
-						background: #f00000;
+						background: $primary;
 						color: #ffffff;
 						line-height: 40upx;
 						padding: 0 15upx;
@@ -474,7 +474,7 @@
 						line-height: 40upx;
 						padding: 0 10upx;
 						height: 40upx;
-						border: 1px solid red;
+						border: 1px solid $primary;
 						border-radius: 0 5upx 5upx 0;
 					}
 				}
@@ -510,7 +510,7 @@
 			}
 			.btn0.active {
 				color: #fff;
-				background: #ff3333;
+				background: $primary;
 			}
 
 			.btn_100 {

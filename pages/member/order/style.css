@@ -12,13 +12,13 @@
 		flex-direction: column;
 		align-items: center;
 		&.active{
-			color:#ff3333;
+			color:#ff6f00;
 			position: relative;
 			&:after{
 				position: absolute;
 				content:'';bottom:0;
 				width:80upx;
-				left:50%;height:3upx;background: #ff3333;
+				left:50%;height:3upx;background: #ff6f00;
 				transform: translateX(-50%);
 			}
 		}
@@ -57,7 +57,7 @@
 			border:1upx solid #999999;
 		}
 		.btn_r{
-			background: #ff3333;color:#ffffff;
+			background: #ff6f00;color:#ffffff;
 		}
 		
 	}

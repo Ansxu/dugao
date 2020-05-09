@@ -89,7 +89,7 @@ export default {
 	padding-top: 20upx;
 }
 .btn{
-  background: #ff3333;
+  background: #ff6f00;
   height:80upx;height:80upx;line-height: 80upx;width:690upx;margin: 0 auto;color:#ffffff;border-radius: 15upx;
   margin-top:50upx;
   text-align: center;

@@ -6,7 +6,7 @@
         <view class="address">{{item.Address}}</view>
         <view class="ali-c jus-b foot gou flex justifyContentBetween flexAlignCenter">
           <label @click.stop="changeDefault(index)">
-              <radio class="radio" color="#FF3333" :checked="item.IsDefault==1">
+              <radio class="radio" color="#ff6f00" :checked="item.IsDefault==1">
                 <text>默认地址</text>
               </radio>
           </label> 
@@ -208,8 +208,8 @@ export default {
 .add_new{
   margin-top:80upx;
   width:200upx;
-  border:1upx solid #ff3333;border-radius:8upx;
-  color:#ff3333;
+  border:1upx solid $primary;border-radius:8upx;
+  color:$primary;
   height:60upx;line-height: 60upx;
   text-align: center;
 }
@@ -219,7 +219,7 @@ export default {
 .btnl{
   width: 100%;
 	height: 100upx;
-  background-color: #ff3333;
+  background-color: $primary;
   text-align: center;
   line-height: 100upx;
   position: fixed;

@@ -285,7 +285,7 @@ export default {
     border-radius: 16upx;margin:0 auto;
   }
   .bg_ff952e{
-    background: #ff3333;
+    background: #ff6f00;
   }
 }
 </style>

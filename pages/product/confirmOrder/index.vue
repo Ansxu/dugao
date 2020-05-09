@@ -50,15 +50,15 @@
       <div class="coupon plr30">
         <div class="item" @click="ChooseCoupon">
           <h3>优惠劵</h3>
-          <h4 class="flex-center"><span :class="[couponid>0?'red':'']">{{coupontxt}}</span> <span class="icon"><van-icon name="arrow" color="#999"/></span></h4>
+          <h4 class="flex-center-center"><span :class="[couponid>0?'red':'']">{{coupontxt}}</span> <span class="icon"><van-icon name="arrow" color="#999"/></span></h4>
         </div>
         <div class="item" @click="ChooseInvoice">
           <h3>开票类型</h3>
-          <h4 class="flex-center">{{Invoicetxt}}<span v-if="InvoiceId>0" @click.stop="delInvoicet" class="delinvoice">×</span><span class="icon"><van-icon name="arrow" color="#999"/></span> </h4>
+          <h4 class="flex-center-center">{{Invoicetxt}}<span v-if="InvoiceId>0" @click.stop="delInvoicet" class="delinvoice">×</span><span class="icon"><van-icon name="arrow" color="#999"/></span> </h4>
         </div>
         <div class="item" v-if="InvoiceId>0&&InvoiceType==2">
           <h3>接收邮箱</h3>
-          <h4 class="flex-center"><input type="text" v-model="InvoiceEmail" style="text-align: right;" placeholder="请填写接收发票邮箱"></h4>
+          <h4 class="flex-center-center"><input type="text" v-model="InvoiceEmail" style="text-align: right;" placeholder="请填写接收发票邮箱"></h4>
         </div>
       </div>
       <div class="price-box plr30">
@@ -610,7 +610,7 @@ export default {
       height:170rpx;
       overflow:hidden;
     div{
-      background:#ff3333;
+      background:#ff6f00;
       width:850rpx;
       height:170rpx;
       margin-left:-50rpx;
@@ -665,7 +665,7 @@ export default {
           .tag{ 
             color: #fff;
             font-size: 24rpx;
-            background: #ff3333;
+            background: #ff6f00;
             border-radius: 6rpx;
             padding: 0 10rpx;
             line-height: 1.6;
@@ -764,7 +764,7 @@ export default {
     div{
         font-size:32rpx;
         color:#fff;
-        background:#ff3333;
+        background:#ff6f00;
         border-radius:50rpx;
         text-align:center;
         width:200rpx;
@@ -824,7 +824,7 @@ export default {
     font-size:30rpx;
     bottom:10rpx; 
     text-align: center;
-    .btn_ok{ margin: 0 30rpx; border-radius: 40rpx; height: 80rpx; line-height: 80rpx; background:#ff3333;}
+    .btn_ok{ margin: 0 30rpx; border-radius: 40rpx; height: 80rpx; line-height: 80rpx; background:#ff6f00;}
   }
 
 }

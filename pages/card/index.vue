@@ -273,7 +273,7 @@
 					let that = this;
 					uni.showModal({
 						content: "您确定要删除所选商品吗？",
-						confirmColor:"#ff3333",
+						confirmColor:"#ff6f00",
 						success: function(res) {
 							if (res.confirm) {
 								_this.DelCart(dataArr);

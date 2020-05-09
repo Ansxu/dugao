@@ -10,7 +10,7 @@
 			return {
 				style: {
 				     progress: {
-				         color: '#FF3333'
+				         color: '#ff6f00'
 				     }
 				},
 				// src:"https://v1.live800.com/live800/chatClient/chatbox.jsp?companyID=1401965&configID=49203&jid=8559836776&s=1"
