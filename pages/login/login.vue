@@ -44,13 +44,7 @@ export default {
   methods: {
     // 点击登录
     doBind(){
-        logins({
-          success(res){
-            setTimeout(()=>{
-              uni.navigateBack();
-            },1500)
-          }
-        });
+        logins();
     },
   }
 };

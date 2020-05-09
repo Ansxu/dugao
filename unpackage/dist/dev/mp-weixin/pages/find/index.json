@@ -1,4 +1,11 @@
 {
   "navigationBarTitleText": "发现",
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more",
+    "uni-nav-bar": "/components/uni-nav-bar",
+    "media-list": "/components/tab-nvue/mediaList",
+    "acti-list": "/components/tab-nvue/actiList",
+    "no-data": "/components/noData"
+  }
 }

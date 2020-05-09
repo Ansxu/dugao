@@ -184,6 +184,24 @@ export function switchTab(url,params,isLogin){
   })
 }
 
+// 关闭当前页面跳转url,带参
+export function redirect(url,params,isLogin){
+  if(isLogin&&!judgeLogin()){
+    return;
+  }
+  let p ='';
+  if(params){
+    let arr = Object.keys(params);
+    arr.map((item,index)=>{
+      p+=`${item}=${params[item]}`;
+      if(index<arr.length-1){p+='&'};
+    })
+  }
+  uni.redirectTo({
+    url:`/pages/${url}?${p}`
+  })
+}
+
 //产生不相同的字符串
 export function CreatOnlyVal() {
   var d = new Date().getTime();
