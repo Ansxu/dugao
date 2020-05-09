@@ -50,15 +50,15 @@
       <div class="coupon plr30">
         <div class="item" @click="ChooseCoupon">
           <h3>优惠劵</h3>
-          <h4 class="flex-center"><span :class="[couponid>0?'red':'']">{{coupontxt}}</span> <span class="icon"><van-icon name="arrow" color="#999"/></span></h4>
+          <h4 class="flex-center-center"><span :class="[couponid>0?'red':'']">{{coupontxt}}</span> <span class="icon"><van-icon name="arrow" color="#999"/></span></h4>
         </div>
         <div class="item" @click="ChooseInvoice">
           <h3>开票类型</h3>
-          <h4 class="flex-center">{{Invoicetxt}}<span v-if="InvoiceId>0" @click.stop="delInvoicet" class="delinvoice">×</span><span class="icon"><van-icon name="arrow" color="#999"/></span> </h4>
+          <h4 class="flex-center-center">{{Invoicetxt}}<span v-if="InvoiceId>0" @click.stop="delInvoicet" class="delinvoice">×</span><span class="icon"><van-icon name="arrow" color="#999"/></span> </h4>
         </div>
         <div class="item" v-if="InvoiceId>0&&InvoiceType==2">
           <h3>接收邮箱</h3>
-          <h4 class="flex-center"><input type="text" v-model="InvoiceEmail" style="text-align: right;" placeholder="请填写接收发票邮箱"></h4>
+          <h4 class="flex-center-center"><input type="text" v-model="InvoiceEmail" style="text-align: right;" placeholder="请填写接收发票邮箱"></h4>
         </div>
       </div>
       <div class="price-box plr30">

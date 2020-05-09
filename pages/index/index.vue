@@ -153,9 +153,11 @@ import {post,navigate} from '@/utils';
 						that.navWidth.push(val + 'px');
 						leftW +=(item.width+uni.upx2px(25));
 					})
+
 				}) ;
 			},
 			onNavIndex(index){
+				console.log(index,this.navWidth)
 				this.navindex = index
 			}
 		}
