@@ -122,7 +122,7 @@
 						<image class="iconImg" src="/static/my/invite.png" mode=""></image>
 						<view class="txt">邀请好友</view>
 					</view>
-					<view class="item" @click="navigate('member/address/address')">
+					<view class="item" @click="navigate('other/feedback/feedback')">
 						<image class="iconImg" src="/static/my/feedback.png" mode=""></image>
 						<view class="txt">意见反馈</view>
 					</view>

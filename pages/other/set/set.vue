@@ -4,11 +4,15 @@
 			<view>账户和安全</view>
 			<view class="iconfont icon-arrow_r font26"></view>
 		</view> -->
-		<view class="flex flexAlignCenter justifyContentBetween item bg_fff" @click="golink('/pages/other/changeLoginPwd/changeLoginPwd')">
+		<!-- <view class="flex flexAlignCenter justifyContentBetween item bg_fff" @click="navigate('other/changeLoginPwd/changeLoginPwd')">
 			<view>修改登录密码</view>
 			<view class="iconfont icon-arrow_r font26"></view>
+		</view> -->
+		<view class="flex flexAlignCenter justifyContentBetween item bg_fff" @click="navigate('other/verPhone/verPhone')">
+			<view>修改手机号</view>
+			<view class="iconfont icon-arrow_r font26"></view>
 		</view>
-		<view class="flex flexAlignCenter justifyContentBetween item bg_fff" @click="golink('/pages/other/setpwd/setpwd')">
+		<view class="flex flexAlignCenter justifyContentBetween item bg_fff" @click="navigate('other/setpwd/setpwd')">
 			<view>设置支付密码</view>
 			<view class="iconfont icon-arrow_r font26"></view>
 		</view>
@@ -28,22 +32,23 @@
 			<view>{{version}}</view>
 		</view>
 		<!-- #endif -->
-		<view class="" style="text-align: center;padding-top: 80px;color: #ccc;">
+		<!-- <view class="" style="text-align: center;padding-top: 80px;color: #ccc;">
 			<view class="">Copyright© 2020</view>
 			<view class="">成都弘觅科技有限责任公司 版本所有</view>
 			
 			
-		</view>
+		</view> -->
 		
 		<view class="btn_fix" @click="logOut">退出登录</view>
 	</view>
 </template>
 
 <script>
-	import {host,post,get,toLogin} from '@/common/util.js';
+	import {host,post,get,navigate} from '@/utils';
 	export default{
 		data(){
 			return{
+				navigate,
 				version:''
 			}
 		},
@@ -53,13 +58,6 @@
 			// #endif
 		},
 		methods:{
-			golink(url){
-				if(toLogin()){
-					uni.navigateTo({
-						url:url
-					})
-				}
-			},
 			// 退出登录
 			logOut() {
 				uni.showModal({
@@ -71,8 +69,6 @@
 						if(res.confirm){
 							uni.setStorageSync('token', '');
 							uni.setStorageSync('userId', '');
-							uni.setStorageSync('liveUserId', '');//清除商家直播账号
-							uni.setStorageSync('liveToken', '');//清除商家直播账号
 							uni.setStorageSync("unionid", ""); 
 							uni.setStorageSync("openId", ""); 
 							uni.setStorageSync("userInfo", "");

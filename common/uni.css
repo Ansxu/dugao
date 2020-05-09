@@ -1595,7 +1595,7 @@ radio-group label, checkbox-group label{
 .IconsCK.IconsCK-radio.checked:after{
 	top: 0;
 	content: '\E442';
-	color:#ff3333;
+	color:#ff6f00;
 }
 .IconsCK.IconsCK-radio.disabled:after{
 	top: 0;

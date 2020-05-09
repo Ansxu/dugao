@@ -471,18 +471,18 @@ export default {
     width:160upx;height:160upx;
   }
   .yy_ma{
-    background: #7364ca;padding:2upx 15upx;border-radius: 20upx;
+    background: $primary;padding:2upx 15upx;border-radius: 20upx;
 	font-size:24upx;
     color:#ffffff;
   }
   .yy_scan{
-    background: #7364ca;color:#ffffff;border-radius: 30upx;
+    background: $primary;color:#ffffff;border-radius: 30upx;
     width:280upx;margin-left:30upx;
     padding:5upx 0;text-align: center;
     display: inline-block;
   }
   .yy_scan_save{
-	  background: #7364ca;color:#ffffff;border-radius: 30upx;
+	  background: $primary;color:#ffffff;border-radius: 30upx;
 	  width:560upx;margin:50upx auto;
 	  padding:5upx 0;text-align: center;
 	  display:block;

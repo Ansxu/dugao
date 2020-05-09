@@ -174,7 +174,7 @@
 		}
 	}
 	.btn_fix{
-		background: #ff3333;text-align: center;
+		background: $primary;text-align: center;
 		height:88upx;line-height: 88upx;
 		width:690upx;margin:100upx auto;
 		color:#ffffff;border-radius:15upx;

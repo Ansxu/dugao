@@ -101,6 +101,12 @@
 					}
 				},
 				{
+					"path":"feedback/feedback",
+					"style": {
+						"navigationBarTitleText": "意见反馈"
+					}
+				},
+				{
 					"path":"set/set",
 					"style": {
 						"navigationBarTitleText": "设置",
@@ -131,7 +137,7 @@
 				{
 					"path":"verPhone/verPhone",
 					"style": {
-						"navigationBarTitleText": "验证手机号"
+						"navigationBarTitleText": "修改手机号"
 					}
 				},
 				{
@@ -328,7 +334,8 @@
 		},
 		{
 			"root":"pages/message",
-			"pages":[{
+			"pages":[
+				{
 						"path" : "messageClass/messageClass",
 						"style" : {
 							"navigationBarTitleText": "消息中心"

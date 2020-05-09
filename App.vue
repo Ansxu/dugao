@@ -25,7 +25,6 @@
 		background: #f5f5f5;
 		height: 100%;
 		font-size: 28upx;
-		line-height: 1.8;
 	}
 	.uni-numbox__minus,.uni-numbox__plus{
 		height:56upx!important;line-height: 56upx!important;
