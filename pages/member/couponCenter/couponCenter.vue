@@ -181,13 +181,13 @@ export default {
     padding: 50upx 0 0 25upx;
     position: relative;
     .price{
-      color: #f00;
+      color: #ff6f00;
       font-size: 48upx;
       margin-right: 20upx;
       width:35%;
       span{
         font-size: 30upx!important;
-        color: #f00;
+        color: #ff6f00;
       }
     }
 	.coupoutag{
@@ -256,7 +256,7 @@ export default {
   background-color: #fff;
   position: relative;
   .active{
-    color: #f00
+    color: #ff6f00
   }
   span{
     position: absolute;
@@ -264,11 +264,11 @@ export default {
     transition: all .2s;
     height: 5upx;
     width: 50upx;
-    background-color: #f00
+    background-color: #ff6f00
   }
 }
 .back_col{
-  background-color: #FF3737!important;
+  background-color: #ff6f00!important;
 }
 
 </style>

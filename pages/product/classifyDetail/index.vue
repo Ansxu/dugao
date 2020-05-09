@@ -251,12 +251,12 @@ export default {
       }
       .price span:nth-child(1){
         font-size: 20rpx;
-        color: #ff3333;
+        color: #ff6f00;
         font-weight: 900;
       }
       .price span:nth-child(2){
         font-size: 36rpx;
-        color: #ff3333;
+        color: #ff6f00;
         font-weight: 900;
       }
       .price span:nth-child(3){
@@ -272,7 +272,7 @@ export default {
     color: #000;
     font-size: 28rpx;
     .active{
-      color: #ff3333;
+      color: #ff6f00;
     }
     .filterBtn{
       display: block;
@@ -298,10 +298,10 @@ export default {
       }
     }
     .f_1 .icon-top{
-      border-bottom-color: #ff3333
+      border-bottom-color: #ff6f00
     }
     .f_2 .icon-down{
-      border-top-color: #ff3333
+      border-top-color: #ff6f00
     }
   }
   .all{

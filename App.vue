@@ -30,12 +30,12 @@
 		height:56upx!important;line-height: 56upx!important;
 	}
 	.uni-radio-input.uni-radio-input-checked{
-		background-color: #FF3333!important;
-		border-color: #FF3333!important;
+		background-color: #ff6f00!important;
+		border-color: #ff6f00!important;
 	}
 	uni-switch .uni-switch-input.uni-switch-input-checked{
-		background-color: #FF3333!important;
-		border-color: #FF3333!important;
+		background-color: #ff6f00!important;
+		border-color: #ff6f00!important;
 	}
 	.dot uni-radio .uni-radio-input{
 		height: 40rpx!important;
@@ -45,7 +45,7 @@
 	}
 	.dot .uni-radio-input.uni-radio-input-checked{
 		background-color: #ffffff!important;
-		border-color: #FF3333!important; 
+		border-color: #ff6f00!important; 
 	}
 	.dot uni-radio .uni-radio-input.uni-radio-input-checked:before{
 		border-radius: 50%!important;
@@ -60,7 +60,7 @@
 		/* 对勾大小 30rpx */
 		color: #fff;
 		/* 对勾颜色 白色 */
-		background-color: #ff3333!important;
+		background-color: #ff6f00!important;
 		transform: translate(-50%, -50%) scale(1)!important;
 		-webkit-transform: translate(-50%, -50%) scale(1)!important;
 	}

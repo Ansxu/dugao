@@ -117,7 +117,7 @@ export default {
   .wa_bg{
     height:535upx;
     width:100%;
-    background: #ff3333;
+    background: #ff6f00;
     position: relative;
     .qiao{
       width:451upx;height:336upx;

@@ -592,11 +592,11 @@ button.fill {
 	display: block;
 	content: '';
 	background: #ff6f00;
-	/* background: linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -moz-linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -ms-linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -webkit-linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -o-linear-gradient(left,#ff5a5b,#ff3737); */
+	/* background: linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -moz-linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -ms-linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -webkit-linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -o-linear-gradient(left,#ff5a5b,#ff6f00); */
 	width: 150vw;
 	height: 720upx;
 	position: absolute;
@@ -646,7 +646,7 @@ button.fill {
 .memberTop .iconBtnBox {
 	text-align: right;
 }
-.iconBtnBox .iconfont.icon-xiaoxi .uni-badge{ position: absolute; top: 0; right: 0; border: 1px solid #ff6f00; background: #fff; color: #FF3737;transform: scale(.8);} 
+.iconBtnBox .iconfont.icon-xiaoxi .uni-badge{ position: absolute; top: 0; right: 0; border: 1px solid #ff6f00; background: #fff; color: #ff6f00;transform: scale(.8);} 
 .memberTop .iconBtn {
 	width: 30px;
     height: 30px;

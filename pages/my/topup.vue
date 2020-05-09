@@ -217,7 +217,7 @@
 	.recharge{
 		width:100%;
 		height:88rpx;
-		background:#FF3333;
+		background:#ff6f00;
 		border-radius:10rpx;
 		font-size:32rpx;
 		display: flex;

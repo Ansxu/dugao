@@ -282,7 +282,7 @@ export default {
   height:200upx;
 }
 .btn{
-  background: #FF3333;
+  background: #ff6f00;
   height:80upx;height:80upx;line-height: 80upx;width:690upx;margin: 0 auto;color:#ffffff;border-radius: 15upx;
   margin-top:50upx;
   text-align: center;
@@ -307,7 +307,7 @@ export default {
     div{ width: 50%; height: 80upx; line-height: 80upx; font-size: 30upx}
     div:hover{ background: #f5f5f5}
     .btn-cancel{ border-right: 1px solid #eee;}
-    .btn-confirm{color: #ff3333}
+    .btn-confirm{color: #ff6f00}
   }
 }
 </style>

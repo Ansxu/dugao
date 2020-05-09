@@ -200,7 +200,7 @@
     width: 240upx;
     height: 100upx;
     line-height: 100upx;
-    color: #ff3333;
+    color: #ff6f00;
     font-size: 40upx;
     /* border: #2AA8E1 1upx solid; */
 		border: #fff;
@@ -212,6 +212,6 @@
     background-size: 100%;
     color: #ffffff;
     font-size: 32upx;
-		background-color: #ff3333;
+		background-color: #ff6f00;
 }
 </style>

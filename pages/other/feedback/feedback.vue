@@ -229,7 +229,7 @@ export default {
     border-bottom: 1rpx solid #f5f5f5
   }
   .btn{
-    color:#ffffff;background: #f00;
+    color:#ffffff;background: #ff6f00;
     margin:50rpx auto 0rpx;
   }
   .bor20{

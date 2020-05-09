@@ -313,8 +313,8 @@
 		}
 
 		&.active {
-			border: 1upx solid #f00;
-			color: #f00;
+			border: 1upx solid #ff6f00;
+			color: #ff6f00;
 		}
 	}
 
@@ -337,7 +337,7 @@
 			position: absolute;
 			width: 32upx;
 			height: 32upx;
-			background-color: #ff3333;
+			background-color: #ff6f00;
 			color: #fff;
 			border-radius: 50%;
 			top: -12upx;
@@ -359,7 +359,7 @@
 	.porela {
 		width: 690upx;
 		margin: 0 auto;
-		background: #FF3333;
+		background: #ff6f00;
 		color: #ffffff;
 		height: 80upx;
 		line-height: 80upx;

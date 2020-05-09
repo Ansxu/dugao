@@ -52,8 +52,8 @@
 										<view class="fz12 c_999">已售{{item.SalesVolume}}</view>
 									</view>
 									<view class="flex" v-if="item.DistributionIncome!= '0'" style="padding-top: 5px;"> 
-										<view style="width: 70upx;height: 40upx;color: #fff;background: #FF3333;line-height: 40upx;text-align: center;">补贴</view>
-										<view style="height: 40upx;color: #FF3333;line-height: 40upx;text-align: center;border: 1upx solid pink;padding: 0 10upx;">¥{{item.DistributionIncome}}</view>
+										<view style="width: 70upx;height: 40upx;color: #fff;background: #ff6f00;line-height: 40upx;text-align: center;">补贴</view>
+										<view style="height: 40upx;color: #ff6f00;line-height: 40upx;text-align: center;border: 1upx solid pink;padding: 0 10upx;">¥{{item.DistributionIncome}}</view>
 									</view>
 								</view>
 							</view>

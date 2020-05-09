@@ -166,7 +166,7 @@
 					.item_bt{
 						width:100%;
 						.qiang{
-							background: #f00000;color:#ffffff;border-radius:50upx;font-size:22upx;padding:0 20upx;
+							background: #ff6f00;color:#ffffff;border-radius:50upx;font-size:22upx;padding:0 20upx;
 						}
 					}
 				}
@@ -175,7 +175,7 @@
 		.flag{
 			font-size:20upx;height:40upx;box-sizing: border-box;
 			.flag_pill{
-				background: #f00000;color:#ffffff;line-height: 40upx;padding:0 15upx;height:40upx;
+				background: #ff6f00;color:#ffffff;line-height: 40upx;padding:0 15upx;height:40upx;
 				border-radius: 5upx 0 0 5upx;
 			}
 			.flag_mon{

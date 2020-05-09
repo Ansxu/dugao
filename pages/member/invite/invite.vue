@@ -523,7 +523,7 @@ export default {
   bottom: 0;
   height: 88upx;
   line-height: 88upx;
-  background: #ff3333;
+  background: #ff6f00;
   color: #fff;
   text-align: center;
   z-index: 998;

@@ -610,7 +610,7 @@ export default {
       height:170rpx;
       overflow:hidden;
     div{
-      background:#ff3333;
+      background:#ff6f00;
       width:850rpx;
       height:170rpx;
       margin-left:-50rpx;
@@ -665,7 +665,7 @@ export default {
           .tag{ 
             color: #fff;
             font-size: 24rpx;
-            background: #ff3333;
+            background: #ff6f00;
             border-radius: 6rpx;
             padding: 0 10rpx;
             line-height: 1.6;
@@ -764,7 +764,7 @@ export default {
     div{
         font-size:32rpx;
         color:#fff;
-        background:#ff3333;
+        background:#ff6f00;
         border-radius:50rpx;
         text-align:center;
         width:200rpx;
@@ -824,7 +824,7 @@ export default {
     font-size:30rpx;
     bottom:10rpx; 
     text-align: center;
-    .btn_ok{ margin: 0 30rpx; border-radius: 40rpx; height: 80rpx; line-height: 80rpx; background:#ff3333;}
+    .btn_ok{ margin: 0 30rpx; border-radius: 40rpx; height: 80rpx; line-height: 80rpx; background:#ff6f00;}
   }
 
 }

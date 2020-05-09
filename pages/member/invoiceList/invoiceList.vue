@@ -226,6 +226,6 @@
 		font-size: 38upx;
 	}
 	.addInvoice__weui-cells .tag.active{
-		border-color: #FF3333
+		border-color: #ff6f00
 	}
 </style>

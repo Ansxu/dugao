@@ -226,7 +226,7 @@
 	}
 
 	.active {
-		color: #FF3333;
+		color: #ff6f00;
 	}
 
 	.order_title p {
@@ -241,7 +241,7 @@
 		content: "";
 		height: 2px;
 		width: 80rpx;
-		background: #FF3333;
+		background: #ff6f00;
 		left: 50%;
 		transform: translateX(-50%);
 		bottom: 0;

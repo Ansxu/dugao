@@ -164,18 +164,18 @@ export default {
       p{
         width: 140rpx;
         height: 53rpx;
-        background-color: #ff3333;
+        background-color: #ff6f00;
         border-radius: 26rpx;
         color: #fff
       }
     }
     .price span:nth-child(1){
-      color: #ff3333;
+      color: #ff6f00;
       font-size: 20rpx;
       font-weight: 900
     }
     .price span:nth-child(2){
-      color: #ff3333;
+      color: #ff6f00;
       font-size: 36rpx;
       font-weight: 900
     }

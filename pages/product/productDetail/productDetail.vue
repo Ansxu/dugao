@@ -1,6 +1,6 @@
 <template>
   <div>
-      <swiper class="swiper" @change="changeBanner" indicator-dots indicator-active-color="#ff3333">
+      <swiper class="swiper" @change="changeBanner" indicator-dots indicator-active-color="#ff6f00">
         <div class="numpage">{{bannerindex+1}}/{{BannerNum}}</div>
         <swiper-item class="flexc" v-for="(item,index) in proInfo.ProductImgList" :key="index">
           <img mode='aspectFill' :src="item.PicUrl" alt="">
@@ -699,7 +699,7 @@ export default {
     .right{
       width: 144rpx;
       height: 49rpx;
-      background-color: #ff3333;
+      background-color: #ff6f00;
       border-radius: 24rpx;
       font-size: 24rpx;
       color: #fff
@@ -715,7 +715,7 @@ export default {
         font-size: 24rpx;
         color: #666666;
         span{
-          color: #ff3333;
+          color: #ff6f00;
         }
       }
     }
@@ -783,7 +783,7 @@ export default {
     background-color: #fda33a
   }
   .right p:nth-child(2){
-    background-color: #ff3333
+    background-color: #ff6f00
   }
   .right p.dis{
     opacity: .5;
@@ -883,7 +883,7 @@ export default {
       }
     }
     .right{
-      color: #ff3333;
+      color: #ff6f00;
       font-size: 24rpx;
       img{
         width: 12rpx;
@@ -972,7 +972,7 @@ export default {
     color: #999
   }
   .limitTiem{
-    background: #ff3333;
+    background: #ff6f00;
     color: #fff;
     margin: 0 -30rpx;
     padding: 20rpx 30rpx;
@@ -1007,7 +1007,7 @@ export default {
     }
     .limt-right .txt{ font-size: 40rpx; font-weight: bold;text-align: right;}
     .countDown span{
-      background: #fff; color: #ff3333; border-radius: 4rpx; margin: 0 6rpx; padding: 0 4rpx;
+      background: #fff; color: #ff6f00; border-radius: 4rpx; margin: 0 6rpx; padding: 0 4rpx;
     }
   }
 }
@@ -1175,7 +1175,7 @@ export default {
             background-color: #fda33a;
         }
         p.btn_red{
-            background-color: #ff3333;
+            background-color: #ff6f00;
         }
         p.btn_ccc{ background-color: #ccc}
     }
@@ -1263,13 +1263,13 @@ export default {
     padding: 60rpx 0 0 35rpx;
     position: relative;
     .price{
-      color: #f00;
+      color: #ff6f00;
       font-size: 48rpx;
       margin-right: 20rpx;
       min-width: 100rpx;
       span{
         font-size: 30rpx!important;
-        color: #f00;
+        color: #ff6f00;
       }
     }
     .info{
@@ -1311,7 +1311,7 @@ export default {
   }
 }
 .back_col{
-  background-color: #ff3333!important;
+  background-color: #ff6f00!important;
 }
 }
 </style>

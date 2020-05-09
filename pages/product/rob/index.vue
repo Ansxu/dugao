@@ -275,7 +275,7 @@ export default {
       p{
         width: 140rpx;
         height: 53rpx;
-        background-color: #ff3333;
+        background-color: #ff6f00;
         border-radius: 26rpx;
         color: #fff
       }
@@ -287,12 +287,12 @@ export default {
       }
     }
     .price span:nth-child(1){
-      color: #ff3333;
+      color: #ff6f00;
       font-size: 20rpx;
       font-weight: 900
     }
     .price span:nth-child(2){
-      color: #ff3333;
+      color: #ff6f00;
       font-size: 36rpx;
       font-weight: 900
     }
@@ -334,7 +334,7 @@ export default {
       .txt{font-size: 24rpx}
     }
     .active{
-      background-color: #ff3333;
+      background-color: #ff6f00;
       color: #fff!important;
       position: relative;
       overflow: visible
@@ -343,7 +343,7 @@ export default {
       content:"";
       width: 16rpx;
       height: 16rpx;
-      background-color: #ff3333;
+      background-color: #ff6f00;
       position: absolute;
       bottom: -8rpx;
       left: 65rpx;

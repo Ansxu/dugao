@@ -156,7 +156,7 @@ export default {
   }
   .card_gu{
     border-radius:25rpx;
-    background: #fd6a4c;
+    background: #ff6f00;
     width:692rpx;
     // height:298rpx;
     color:#fff;
@@ -186,14 +186,14 @@ export default {
   .bb_gu_tab{
 	  width:50%;text-align: center;
 	  &.active{
-		  color:#fd6a4c;
+		  color:#ff6f00;
 		  position: relative;
 		  &:after{
 			  content:'';
 			  position: absolute;
 			  width:80upx;
 			  height:4upx;
-			  background: #fd6a4c;
+			  background: #ff6f00;
 			  bottom:-30upx;
 			  left:50%;
 			  transform: translateX(-50%);

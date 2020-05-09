@@ -157,9 +157,9 @@ image{ width: 100%; margin: 0 auto;}
 .uni-h5 {font-size: 28upx; color: #8f8f94;}
 .uni-h6 {font-size: 24upx; color: #8f8f94;}
 .uni-bold{font-weight:bold;}
-.red{ color: #FF3333 !important;}
+.red{ color: #ff6f00 !important;}
 .c_999{ color: #999;}
-.c_theme{color: #FF3333;}
+.c_theme{color: #ff6f00;}
 .c_blue{color: #5e729a;}
 .fz12{ font-size: 24upx !important;}
 .fz12 span{font-size: 24upx !important;}
@@ -963,8 +963,8 @@ radio-group label, checkbox-group label{
 	color: #555;
 }
 .uni-swiper-tab .active .s{
-	color: #ff3333;
-	border-bottom: 4upx solid #ff3333;
+	color: #ff6f00;
+	border-bottom: 4upx solid #ff6f00;
 	box-sizing: content-box;
 }
 .uni-tab-bar .swiper-box {
@@ -1018,7 +1018,7 @@ radio-group label, checkbox-group label{
 .uni-swiper-msg swiper{width:100%; height:50upx;}
 .uni-swiper-msg swiper-item{line-height:50upx;}
 .swiper .uni-swiper-dot{ background: #fff;}
-.swiper .uni-swiper-dot-active{ background: #ff3333;}
+.swiper .uni-swiper-dot-active{ background: #ff6f00;}
 .uni-swiper-wrapper .swiper{ height: 400upx;}
 
 /* product */
@@ -1077,7 +1077,7 @@ radio-group label, checkbox-group label{
 .uni-product-tip {
     position: absolute;
     right: 10upx;
-    background-color: #ff3333;
+    background-color: #ff6f00;
     color: #ffffff;
     padding: 0 10upx;
     border-radius: 5upx;
@@ -1632,7 +1632,7 @@ radio-group label, checkbox-group label{
 	color: #666;
 }
 .filterMenu .menu .item.active{
-	color:#ff3333;
+	color:#ff6f00;
 }
 .filterMenu .menu .filterBtn{
 	display: inline-block;
@@ -1661,11 +1661,11 @@ radio-group label, checkbox-group label{
 	border-top: 10upx solid #999;
 }
 .filterMenu .menu .item.active .filterBtn.upBtn::before{
-  border-bottom-color: #ff3333
+  border-bottom-color: #ff6f00
 }
 
 .filterMenu .menu .item.active .filterBtn.downBtn:after{
-  border-top-color: #ff3333
+  border-top-color: #ff6f00
 }
 
 .filterMenu .menu .icon-filter {

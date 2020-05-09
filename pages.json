@@ -285,7 +285,7 @@
 					"style": {
 						"navigationBarTitleText": "订单详情",
 						"navigationBarTextStyle": "white",
-						"navigationBarBackgroundColor": "#ff3333"
+						"navigationBarBackgroundColor": "#ff6f00"
 						// "enablePullDownRefresh" : true
 					}
 				},

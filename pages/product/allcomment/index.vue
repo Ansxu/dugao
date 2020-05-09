@@ -229,7 +229,7 @@ export default {
   }
   .btn_btn{
     width:164rpx;height:55rpx;line-height: 55rpx;text-align: center;
-    border:1rpx solid #f00;color:#f00;
+    border:1rpx solid #ff6f00;color:#ff6f00;
     margin-left:20rpx;
   }
 }

@@ -341,7 +341,7 @@ import {post,navigate} from '@/utils';
 					.price{
 						height:51upx;
 						.main-price{
-							color:#ff3333;
+							color:#ff6f00;
 							font-size:36upx;
 							span{
 								font-size:20upx;
