@@ -3,7 +3,7 @@
 	<view class="transaction">
 		<view class="head">
 			<view class="">
-				<view class="" style="color:rgba(255,51,51,1);">全部</view>
+				<view class="" style="color:#ff6f00;">全部</view>
 				<view class="across"></view>
 			</view>
 			<view class="">
@@ -58,7 +58,7 @@
 	.across{
 		width:72rpx;
 		height:4rpx;
-		background:rgba(255,51,51,1);
+		background:#ff6f00;
 		position: absolute;
 		bottom: 0;
 	}

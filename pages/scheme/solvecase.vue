@@ -53,7 +53,7 @@
 
 <script></script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .banner {
 	// height: 749upx;
 }

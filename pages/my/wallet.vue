@@ -3,6 +3,7 @@
 	<view class="wallet">
 		<view class="walletbox">
 			<view class="reveal">
+				<img src="@/static/my/wallet-bg.png" alt="">
 				<view class="symbol"><span>￥</span>{{wallet}}</view>
 				<view class="balance">账户余额(元)</view>
 			</view>
@@ -28,7 +29,7 @@
 			</view>
 		</view>
 		<view class="present">
-			<view class="recharge" style="width: 100%;"  @click="golink('/pages/tabBar/my/topup')">充值</view>
+			<view class="recharge" style="width: 100%;"  @click="golink('/pages/my/topup')">充值</view>
 			<!-- <view class="recharge" @click="golink('/pages/other/withdraw/withdraw')">提现</view> -->
 		</view>
 		
@@ -61,7 +62,7 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 	.wallet{
 	}
 	.walletbox{
@@ -76,21 +77,32 @@
 		width: 100%;
 		height: 300upx;
 		border-radius:30upx;
-		background:url(http://ddyp.wtvxin.com/static/icons/wallet2.png);
+		// background:url('@/static/my/wallet-bg.png');
 		font-family:PingFang;
 		font-weight:bold;
 		color:rgba(252,252,252,1);
 		text-align: center;
 		padding-top: 70upx;
+		position:relative;
+		img{
+			height:300upx;
+			width:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:0;
+		}
 	}
 	.symbol{
 		font-size:60upx;
+		position:relative;
 	}
 	.symbol span{
 		font-size:40upx;
 	}
 	.balance{
 		font-size:24upx;
+		position:relative;
 	}
 	.drawing{
 		display: flex;
@@ -124,7 +136,7 @@
 	.recharge{
 		width:320upx;
 		height:80upx;
-		background:rgba(255,51,51,1);
+		background:#ff6f00;
 		border-radius:10upx;
 		font-size:32upx;
 		display: flex;

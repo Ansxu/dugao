@@ -13,8 +13,7 @@
 .pages-Article-artPost-artPost .uni-page-head-btn{ margin: 0 16upx;}
 .pages-tabBar-cart-cart .uni-page-head{border-bottom: 1px solid #eee;}
 view{
-	font-size:28upx; 
-	line-height:1.8;
+	
 }
 progress, checkbox-group{
 	width: 100%;
@@ -22,7 +21,7 @@ progress, checkbox-group{
 form {
 	width: 100%;
 }
-image{ width: 100%; margin: 0 auto;}
+image{ width: 100%;}
 .fl{ float: left;}
 .fr{ float: right;}
 .clear:after,.clear:before {
