@@ -904,6 +904,7 @@ button.fill {
 	width: 100%;
 	padding-top: 100%;
 	background-color: #f5f5f5;
+	border-radius: 10upx;
 }
 
 .column .pictrueAll .pictrue image {
@@ -913,6 +914,7 @@ button.fill {
 	top: 0;
 	left: 0;
 	z-index: 2;
+	border-radius: 10rpx;
 }
 
 .levelPanel {
@@ -967,7 +969,7 @@ button.fill {
 .levelPanel .item .outside .txtBox .title {
 	line-height: 1.4;
 	margin-bottom: 10upx;
-	font-size: 30upx;
+	font-size: 28upx;
 }
 
 .levelPanel .item .outside .txtBox .progressLine {
@@ -1014,7 +1016,7 @@ button.fill {
 }
 
 .levelPanel .item .outside .txtBox .skuBox {
-	font-size: 26upx;
+	font-size: 24upx;
 	color: #999999;
 	padding: 0;
 	border-bottom: none;
@@ -1061,10 +1063,10 @@ button.fill {
 }
 .levelPanel .item .outside .txtBox .new-price {
 	color: #ff6666;
-	font-size: 36upx;
+	font-size: 28upx;
 	font-family: arial;
 }
-.levelPanel .item .outside .txtBox .new-price .yuan{ font-size: 24upx;}
+.levelPanel .item .outside .txtBox .new-price .yuan{ font-size: 20upx;}
 .levelPanel .item .outside .txtBox .new-price.plusprice{
 	color: #333;
 }

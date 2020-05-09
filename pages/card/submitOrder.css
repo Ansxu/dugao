@@ -1,0 +1,339 @@
+.wrap{
+	height: 100%;
+	width: 750upx;
+	overflow-x: hidden!important;
+	position:relative;
+	background: #f2f2f2;
+}
+.wrap::before{
+	display: block;
+	content: '';
+	/* background: #ff3333; */
+	width: 150vw;
+	height: 360upx;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	border-radius: 50%;
+}
+.addrbox{ padding: 20upx;}
+.address{
+	
+}
+.local{
+	width: 70upx;
+	display: flex;
+	align-items:center;
+}
+.local .localimg{
+	width: 42upx;
+	height: 42upx;
+	margin: 0 auto;
+}
+.local .iconfont{
+	font-size: 44upx; color: #999; margin-right: 20upx;
+}
+.noaddr .addtxt{  color: #999;}
+.noaddr .icon_addr{ width: 100upx; height: 100upx; margin: 0 auto;}
+
+.addrdetail{
+	width: 625upx;
+	font-size: 25upx;
+	color: #333;
+}
+.receiver text{
+	font-size: 30upx; 
+	font-weight: bold;
+	color: #333;
+	margin-right: 20upx;
+}
+.addrdetail .addr{ line-height: 1.2;}
+.next{
+	display: flex;
+	align-items:center;
+}
+.next .nextimg{
+	width: 17upx;
+	height: 17upx;
+	margin: 0 auto;
+}
+.addresstips{
+	color:#CBA882 ;
+	font-size: 23upx;
+}
+.addAddress{
+	display: flex;
+	align-items:center;
+	justify-content:space-between;
+	height: 144upx;
+	padding: 0 25upx;
+	background: #fff;
+}
+.addAddress .add3{
+	width: 64upx;
+	height: 64upx;
+}
+.addAddress .addtxt{
+	width: 575upx;
+}
+.addAddress .nextimg{
+	width: 17upx;
+	height: 17upx;
+}
+.procontent{
+	background-color: #fff;
+}
+.outside{
+	display: flex;
+	margin-bottom: 20upx;
+}
+.pictrueAll{
+	height: 200upx;
+}
+.outside .pictrue image{
+	width: 160upx;
+	height: 160upx;
+	margin: 0 20rpx 20rpx;
+	border-radius: 6upx;
+	display: block;
+}
+.txtBox{
+	width: 530upx;
+	padding: 0 20rpx 0 0;
+}
+.txtBox .title{
+	font-size: 26upx;
+  display: flex;
+	align-items: center;
+	line-height:38upx ;
+	height: 76upx;
+	color: #333;
+}
+.txtBox .protype{
+	font-size: 23upx;
+	color: #999;
+}
+.pronumber{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+}
+.pronumber .price{
+	color: #ff3333;
+	font-size: 28upx;
+	font-weight: 500;
+}
+.pronumber .number{
+	color: #999;
+	font-size: 24upx !important;
+}
+.orderbox{
+	padding: 0 20upx;
+}
+.orderbox .orderinfo{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	height: 80upx;
+	color: #333;
+}
+.orderinfo .orderleft{
+	width: 130upx;
+}
+.orderinfo .inputtxt{
+	width: 550upx;
+	height: 100%;
+	border: none;
+	font-size: 26upx;
+}
+.orderinfo .orderright{
+	display: flex;
+	height: 100%;
+	align-items:center;
+	color: #999;
+}
+.orderinfo .orderright .infotxt{
+	color: #999;
+	margin-right: 18upx;
+}
+.orderinfo .orderright .number{
+	width: 60upx;
+	color: #333;
+	text-align: center;
+}
+.orderinfo .orderright .addnumber{
+	width: 48upx;
+	height: 44upx;
+}
+.orderinfo .orderright image{
+	width: 17upx;
+	height: 17upx;
+}
+.allprice{
+	display: flex;
+	align-items:center;
+	justify-content:flex-end;
+	height: 90upx;
+}
+.allprice text{
+	margin-left: 16upx;
+	color: #999;
+	font-size: 25upx;
+}
+.allprice text:nth-child(3){
+	color: #ff3333;
+}
+.footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	width: 100%;
+	height: 100upx;
+	background-color: #fff;
+	padding: 12upx 20upx;
+	z-index: 10;
+}
+.footleft{
+	color: #000;
+	font-size: 25upx;
+}
+.footleft .num{
+	margin-right: 40upx;
+	color: #FF3333;
+	font-size: 40upx;
+}
+.footright{
+	width: 225upx;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	background-color:#FF6F00;
+	border-radius: 100px;
+}
+/* 弹窗 */
+.backout{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color:rgba(0,0,0,0.4);
+	display: flex;
+	align-items:center;
+	justify-content:center;
+	z-index: 9;
+}
+.backbox{
+	width: 540upx;
+	height: 310upx;
+	border-radius: 25upx;
+	background: #fff;
+}
+.backtxt{
+	text-align: center;
+	color: #000;
+	line-height: 45upx;
+	margin: 80upx 60upx 40upx 60upx;
+	height: 90upx;
+}
+.select{
+	display: flex;
+	height: 99upx;
+	border-top: 1upx solid #ECECEC;
+}
+.select view{
+	flex: 1;
+	color: #999;
+	text-align: center;
+	line-height: 99upx;
+}
+.select .keep{
+	border-left: 1upx solid #ECECEC;
+	color: #89674c;
+}
+.shopbox{
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	height: 90upx;
+	padding: 0 20upx;
+	width: 100%;
+	position: relative;
+}
+.noshop{border-bottom: 20upx solid #f5f5f5;}
+.noshop .shopbox:after{
+	display: block;
+	content: "";
+	width: 100%;
+	border-bottom: 1px solid #eee;
+	position: absolute;
+	left: 20upx;
+	bottom: 0;
+	right: 0;
+}
+.noshop .outside{
+	background: #fff;
+}
+.mixname{
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	height: 80upx;
+	padding: 0 20upx;
+	width: 100%;
+	border-bottom: #ECECEC 1upx solid;
+}
+.shopbox .icon-dianpu{
+	font-size: 36upx; margin-right: 10upx; color: #999;
+}
+/* 优惠券弹窗 */
+.couponbox{
+	background-color: #fff;
+	width: 100%;
+	padding: 20upx; border-radius: 6px 6px 0 0;
+}
+.uni-popup .bottom-title {
+	line-height: 60upx;
+	font-size: 32upx;
+}
+.uni-popup .bottom-btn {
+	height: 80upx;
+	line-height: 80upx;
+	background: #ff9800;
+	font-size: 32upx;
+	color: #fff;
+	border-radius: 40upx;
+}
+.uni-close-btn {
+    height: 60upx;
+    line-height: 60upx;
+    width: 60upx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30upx;
+    color: #999;
+}
+.couponitem{
+	width: 100%;
+	height: 120upx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1upx #ECECEC solid;
+}
+.couponname{
+	font-size: 30upx;
+}
+.delinvoice{ display: block; height: 36upx; width: 36upx; text-align: center; line-height: 36upx; border-radius: 50%; background: #ccc; color: #fff; margin-left: 20upx;}
+.fzred{
+	color: #FF3333;
+}
+

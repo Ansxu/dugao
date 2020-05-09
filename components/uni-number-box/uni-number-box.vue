@@ -120,7 +120,7 @@
 		display: inline-flex;
 		flex-direction: row;
 		justify-content: flex-start;
-		height: 70upx;
+		/* height: 70upx; */
 		position: relative
 	}
 
@@ -135,14 +135,14 @@
 		right: -50%;
 		bottom: -50%;
 		border: 1px solid #c8c7cc;
-		border-radius: 12upx;
-		transform: scale(.5)
+		border-radius: 55upx;
+		transform: scale(.5);
 	}
 
 	.uni-numbox__minus,
 	.uni-numbox__plus {
 		margin: 0;
-		background-color: #f8f8f8;
+		/* background-color: #f8f8f8; */
 		width: 70upx;
 		font-size: 40upx;
 		height: 100%;
@@ -156,9 +156,10 @@
 		position: relative;
 		background-color: #fff;
 		width: 80upx;
-		height: 100%;
+		/* height: 100%; */
 		text-align: center;
-		padding: 0
+		padding: 0;
+		padding-top: 6upx;
 	}
 
 	.uni-numbox__value:after {
@@ -177,7 +178,8 @@
 		border-right-width: 1px;
 		border-top-width: 0;
 		border-bottom-width: 0;
-		transform: scale(.5)
+		transform: scale(.5);
+		/* border-radius: 50%; */
 	}
 
 	.uni-numbox--disabled {
