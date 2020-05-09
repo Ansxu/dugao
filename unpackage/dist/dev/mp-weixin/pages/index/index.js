@@ -410,9 +410,9 @@ var _utils = __webpack_require__(/*! @/utils */ 29); //
 //
 //
 var _default = { data: function data() {return { navigate: _utils.navigate, nav: [], navWidth: [], navindex: 0, interval: null };}, onLoad: function onLoad() {var _this = this;this.getData();setTimeout(function () {_this.nav = ['改良土壤', '土壤', '改良土', '改良土壤', '改壤', '改良土', '改良土壤', '改壤'];_this.$nextTick(function () {_this.getScrollWidth();});}, 2000);}, methods: { getData: function getData() {}, // 获取导航的宽
-    getScrollWidth: function getScrollWidth() {var that = this;var obj = wx.createSelectorQuery();obj.selectAll('.nav .item').boundingClientRect();obj.exec(function (rect) {var leftW = 0; //左边所有元素的宽度相加
+    getScrollWidth: function getScrollWidth() {var that = this;var obj = wx.createSelectorQuery();obj.selectAll('.nav-home .item').boundingClientRect();obj.exec(function (rect) {var leftW = 0; //左边所有元素的宽度相加
         rect[0].map(function (item) {//其中25为margin-left:25upx;30为下标宽度
-          var val = leftW + ((item.width - uni.upx2px(32)) / 2 + uni.upx2px(25));that.navWidth.push(val + 'px');leftW += item.width + uni.upx2px(25);});});}, onNavIndex: function onNavIndex(index) {this.navindex = index;} } };exports.default = _default;
+          var val = leftW + ((item.width - uni.upx2px(32)) / 2 + uni.upx2px(25));that.navWidth.push(val + 'px');leftW += item.width + uni.upx2px(25);});});}, onNavIndex: function onNavIndex(index) {console.log(index, this.navWidth);this.navindex = index;} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

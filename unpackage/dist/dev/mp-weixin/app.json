@@ -10,12 +10,16 @@
     "pages/my/wallet",
     "pages/my/browsing",
     "pages/my/collect",
+    "pages/my/topup",
     "pages/login/login",
     "pages/login/register",
     "pages/scheme/solvecase",
     "pages/scheme/videozone",
     "pages/scheme/fertilizer",
-    "pages/scheme/videodetails"
+    "pages/scheme/videodetails",
+    "pages/Wallet/bankCard/bankCard",
+    "pages/Wallet/bankAdd/bankAdd",
+    "pages/Wallet/bankChoose/bankChoose"
   ],
   "subPackages": [
     {
@@ -24,6 +28,7 @@
         "hotBrand/hotBrand",
         "kefu/kefu",
         "kefuDeatil/kefuDeatil",
+        "feedback/feedback",
         "set/set",
         "setpwd/setpwd",
         "changeLoginPwd/changeLoginPwd",

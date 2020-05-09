@@ -83,7 +83,7 @@ view.data-v-50ce1e43 {
 	background-color: #F5F5F5 !important;
 }
 .bg_89674c.data-v-50ce1e43 {
-	background-color: #FF3333 !important;
+	background-color: #ff6f00 !important;
 }
 .pt0.data-v-50ce1e43{
 	padding-top:0 !important;
@@ -173,15 +173,15 @@ button[size="middle"].data-v-50ce1e43 {
 }
 .btn-active[type="primary"].data-v-50ce1e43,button[type="primary"].data-v-50ce1e43 {
 	color: #fff;
-	background-color: #FF3333;
+	background-color: #ff6f00;
 }
 .btn-active[type="primary"][plain="true"].data-v-50ce1e43 {
-	color: #FF3333;
-	border-color: #FF3333;
+	color: #ff6f00;
+	border-color: #ff6f00;
 }
 button.btnPay.data-v-50ce1e43 {
 	color: #fff;
-	background: #FF3333;
+	background: #ff6f00;
 }
 .ellipsis.data-v-50ce1e43 {
 	text-overflow: ellipsis;
@@ -321,8 +321,8 @@ button.btnPay.data-v-50ce1e43 {
 	top: -10rpx;
 	right: -16rpx;
 	font-size: 20rpx;
-	color: #ff3333;
-	border: 1rpx solid #ff3333;
+	color: #ff6f00;
+	border: 1rpx solid #ff6f00;
 	background-color: #fff;
 	min-width: 36rpx;
 	height: 36rpx;
@@ -385,7 +385,7 @@ button.fill.data-v-50ce1e43 {
 	color:#333;
 }
 .titleBox .weui-cell__bd .txt.active.data-v-50ce1e43:after{
-	background: #FF6666;
+	background: #ff6f00;
 }
 /* tag */
 .tag.data-v-50ce1e43 {
@@ -511,12 +511,12 @@ button.fill.data-v-50ce1e43 {
 .memberTop.data-v-50ce1e43:before{
 	display: block;
 	content: '';
-	background: #ff3333;
-	/* background: linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -moz-linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -ms-linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -webkit-linear-gradient(left,#ff5a5b,#ff3737); */
-	/* background: -o-linear-gradient(left,#ff5a5b,#ff3737); */
+	background: #ff6f00;
+	/* background: linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -moz-linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -ms-linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -webkit-linear-gradient(left,#ff5a5b,#ff6f00); */
+	/* background: -o-linear-gradient(left,#ff5a5b,#ff6f00); */
 	width: 150vw;
 	height: 720rpx;
 	position: absolute;
@@ -548,7 +548,7 @@ button.fill.data-v-50ce1e43 {
 	height: 40rpx;
 	background-color: #feed00;
 	border-radius: 16rpx;
-	color:  #ff3333;
+	color:  #ff6f00;
 	font-size:20rpx;
 	margin-left: 15rpx;
 }
@@ -563,7 +563,7 @@ button.fill.data-v-50ce1e43 {
 .memberTop .iconBtnBox.data-v-50ce1e43 {
 	text-align: right;
 }
-.iconBtnBox .iconfont.icon-xiaoxi .uni-badge.data-v-50ce1e43{ position: absolute; top: 0; right: 0; border: 1px solid #FF3333; background: #fff; color: #FF3737;-webkit-transform: scale(.8);transform: scale(.8);}
+.iconBtnBox .iconfont.icon-xiaoxi .uni-badge.data-v-50ce1e43{ position: absolute; top: 0; right: 0; border: 1px solid #ff6f00; background: #fff; color: #ff6f00;-webkit-transform: scale(.8);transform: scale(.8);}
 .memberTop .iconBtn.data-v-50ce1e43 {
 	width: 30px;
     height: 30px;
@@ -1154,7 +1154,7 @@ button.fill.data-v-50ce1e43 {
 	margin-right: 10rpx;
 }
 .cartFoot .inner .allPrice.data-v-50ce1e43 {
-	color: #ff6666;
+	color: #ff6f00;
 	font-size: 36rpx;
 }
 /* 收货地址 */
@@ -1221,7 +1221,7 @@ button.fill.data-v-50ce1e43 {
 	line-height: 1.4;
 	margin-bottom: 8rpx;
 	font-size: 30rpx;
-	color: #ff6666;
+	color: #ff6f00;
 }
 .newsLogistics .time.data-v-50ce1e43 {
 	color: #999;
@@ -1421,7 +1421,7 @@ button.fill.data-v-50ce1e43 {
   left: 0;
   height: 100%;
   top: 30rpx;
-  border-left: 1px dashed #FF3333;
+  border-left: 1px dashed #ff6f00;
 }
 .logistics .addr .inner.data-v-50ce1e43:before {
   position: absolute;
@@ -1430,7 +1430,7 @@ button.fill.data-v-50ce1e43 {
   height: 100%;
   top: 30rpx;
   width: 0;
-  border-left: 1px dashed #FF3333;
+  border-left: 1px dashed #ff6f00;
 }
 .logistics .addr .inner .dian.data-v-50ce1e43 {
   position: absolute;
@@ -1442,7 +1442,7 @@ button.fill.data-v-50ce1e43 {
   text-align: center;
   line-height: 52rpx;
   color: #fff;
-  background: #FF3333;
+  background: #ff6f00;
   border-radius: 50%;
 }
 .logistics .addr .inner .addrInfo.data-v-50ce1e43 {
@@ -1549,7 +1549,7 @@ button.fill.data-v-50ce1e43 {
 	margin-right: 40rpx;
 }
 .addInvoice__weui-cells .tag.active.data-v-50ce1e43{
-	border-color:#FF3333;
+	border-color:#ff6f00;
 }
 .addInvoice__weui-cells .msg.data-v-50ce1e43{
 	line-height: 1.2;
@@ -1578,7 +1578,7 @@ button.fill.data-v-50ce1e43 {
 	padding-left:60rpx;
 }
 .appraiseContent__hd .grade .item.active.data-v-50ce1e43{
-	color:#ff6666;
+	color:#ff6f00;
 }
 .appraiseContent__hd .grade .item.good.data-v-50ce1e43{
 	background: url(http://www.sc-mall.nethttp//shop.dadanyipin.com/static/ping_good.png) left center no-repeat;
@@ -1622,8 +1622,8 @@ button.fill.data-v-50ce1e43 {
 }
 .commet button[type=primary][plain].data-v-50ce1e43{
 	vertical-align: middle;
-	border-color:#ff6666;
-	color:#ff6666;
+	border-color:#ff6f00;
+	color:#ff6f00;
 	line-height: 2;
 	width: 160rpx;
 	padding:0;
@@ -1748,7 +1748,7 @@ button.fill.data-v-50ce1e43 {
 	vertical-align: middle;
 }
 .storeBaseInfo .btn_follow.active.data-v-50ce1e43{
-	background: #ff6666;
+	background: #ff6f00;
 	color:#fff;
 }
 .storeIndexTop .uni-tab-bar.data-v-50ce1e43{
@@ -1786,7 +1786,7 @@ button.fill.data-v-50ce1e43 {
 	color:#999;
 }
 .storeIndexBottom .navList .item.active .title.data-v-50ce1e43{
-	color:#ff6666;
+	color:#ff6f00;
 }
 .storeIndexBottom .navList .iconImg.data-v-50ce1e43{
 	height: 50rpx;
@@ -1851,7 +1851,7 @@ button.fill.data-v-50ce1e43 {
 	margin-right: 30rpx;
 }
 .rateList .item .num.data-v-50ce1e43 {
-	color:#ff6666;
+	color:#ff6f00;
 }
 .storeInfo .weui-label.data-v-50ce1e43{
 	display: block;
@@ -1917,7 +1917,7 @@ right:0;
 	        box-sizing: border-box;
 }
 .saleMenuList .item.active.data-v-50ce1e43{
-	color:#ff6666;
+	color:#ff6f00;
 }
 .saleTips.data-v-50ce1e43{
 	background: #fff9d5;
@@ -2157,7 +2157,7 @@ right:0;
   padding: 20rpx;
 }
 .btn_receive.data-v-50ce1e43 {
-  color: #FF3333;
+  color: #ff6f00;
   font-size: 26rpx;
 }
 .levelPanel.data-v-50ce1e43 {
@@ -2200,14 +2200,14 @@ right:0;
   height: 60rpx;
   line-height: 60rpx;
   border-radius: 30rpx;
-  border: #FF3333 1rpx solid;
-  color: #FF3333;
+  border: #ff6f00 1rpx solid;
+  color: #ff6f00;
   font-size: 27rpx;
   display: inline-block;
   margin-top: 8rpx;
 }
 .carthead.data-v-50ce1e43 {
-  background-color: #FF3333;
+  background-color: #ff6f00;
   width: 710rpx;
   padding: 0 20rpx;
   display: -webkit-box;

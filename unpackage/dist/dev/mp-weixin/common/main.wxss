@@ -40,8 +40,6 @@
 .pages-Article-artPost-artPost .uni-page-head-btn{ margin: 0 16rpx;}
 .pages-tabBar-cart-cart .uni-page-head{border-bottom: 1px solid #eee;}
 view{
-	font-size:28rpx; 
-	line-height:1.8;
 }
 progress, checkbox-group{
 	width: 100%;
@@ -49,7 +47,7 @@ progress, checkbox-group{
 form {
 	width: 100%;
 }
-image{ width: 100%; margin: 0 auto;}
+image{ width: 100%;}
 .fl{ float: left;}
 .fr{ float: right;}
 .clear:after,.clear:before {
@@ -206,9 +204,9 @@ image{ width: 100%; margin: 0 auto;}
 .uni-h5 {font-size: 28rpx; color: #8f8f94;}
 .uni-h6 {font-size: 24rpx; color: #8f8f94;}
 .uni-bold{font-weight:bold;}
-.red{ color: #FF3333 !important;}
+.red{ color: #ff6f00 !important;}
 .c_999{ color: #999;}
-.c_theme{color: #FF3333;}
+.c_theme{color: #ff6f00;}
 .c_blue{color: #5e729a;}
 .fz12{ font-size: 24rpx !important;}
 .fz12 ._span{font-size: 24rpx !important;}
@@ -1142,8 +1140,8 @@ radio-group label, checkbox-group label{
 	color: #555;
 }
 .uni-swiper-tab .active .s{
-	color: #ff3333;
-	border-bottom: 4rpx solid #ff3333;
+	color: #ff6f00;
+	border-bottom: 4rpx solid #ff6f00;
 	-webkit-box-sizing: content-box;
 	        box-sizing: content-box;
 }
@@ -1196,7 +1194,7 @@ radio-group label, checkbox-group label{
 .uni-swiper-msg swiper{width:100%; height:50rpx;}
 .uni-swiper-msg swiper-item{line-height:50rpx;}
 .swiper .uni-swiper-dot{ background: #fff;}
-.swiper .uni-swiper-dot-active{ background: #ff3333;}
+.swiper .uni-swiper-dot-active{ background: #ff6f00;}
 .uni-swiper-wrapper .swiper{ height: 400rpx;}
 /* product */
 .uni-product-list {
@@ -1257,7 +1255,7 @@ radio-group label, checkbox-group label{
 .uni-product-tip {
     position: absolute;
     right: 10rpx;
-    background-color: #ff3333;
+    background-color: #ff6f00;
     color: #ffffff;
     padding: 0 10rpx;
     border-radius: 5rpx;
@@ -1684,7 +1682,7 @@ radio-group label, checkbox-group label{
 .IconsCK.IconsCK-radio.checked:after{
 	top: 0;
 	content: '\E442';
-	color:#ff3333;
+	color:#ff6f00;
 }
 .IconsCK.IconsCK-radio.disabled:after{
 	top: 0;
@@ -1724,7 +1722,7 @@ radio-group label, checkbox-group label{
 	color: #666;
 }
 .filterMenu .menu .item.active{
-	color:#ff3333;
+	color:#ff6f00;
 }
 .filterMenu .menu .filterBtn{
 	display: inline-block;
@@ -1753,10 +1751,10 @@ radio-group label, checkbox-group label{
 	border-top: 10rpx solid #999;
 }
 .filterMenu .menu .item.active .filterBtn.upBtn::before{
-  border-bottom-color: #ff3333
+  border-bottom-color: #ff6f00
 }
 .filterMenu .menu .item.active .filterBtn.downBtn:after{
-  border-top-color: #ff3333
+  border-top-color: #ff6f00
 }
 .filterMenu .menu .icon-filter {
 	display: inline-block;
@@ -2098,21 +2096,12 @@ radio-group label, checkbox-group label{
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 }
-.flex-center{
-	display: -webkit-box;
-	display: -webkit-flex;
+/* .flex-center{
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
-}
+	flex-direction: row;
+	align-items: center;
+	justify-content: center; 
+} */
 .flex-start{
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -2972,7 +2961,7 @@ textarea {
   color: #ffffff;
 }
 .color_red {
-  color: #f00000;
+  color: #ff6f00;
 }
 .flex {
   display: -webkit-box;
@@ -3417,23 +3406,17 @@ textarea {
 .wd_wdd {
   width: 100%;
 }
-page {
-  background: #f5f5f5;
-  height: 100%;
-  font-size: 28rpx;
-  line-height: 1.8;
-}
 .uni-numbox__minus, .uni-numbox__plus {
   height: 56rpx !important;
   line-height: 56rpx !important;
 }
 .uni-radio-input.uni-radio-input-checked {
-  background-color: #FF3333 !important;
-  border-color: #FF3333 !important;
+  background-color: #ff6f00 !important;
+  border-color: #ff6f00 !important;
 }
 uni-switch .uni-switch-input.uni-switch-input-checked {
-  background-color: #FF3333 !important;
-  border-color: #FF3333 !important;
+  background-color: #ff6f00 !important;
+  border-color: #ff6f00 !important;
 }
 .dot uni-radio .uni-radio-input {
   height: 40rpx !important;
@@ -3443,7 +3426,7 @@ uni-switch .uni-switch-input.uni-switch-input-checked {
 }
 .dot .uni-radio-input.uni-radio-input-checked {
   background-color: #ffffff !important;
-  border-color: #FF3333 !important;
+  border-color: #ff6f00 !important;
 }
 .dot uni-radio .uni-radio-input.uni-radio-input-checked:before {
   border-radius: 50% !important;
@@ -3458,7 +3441,7 @@ uni-switch .uni-switch-input.uni-switch-input-checked {
   /* 对勾大小 30rpx */
   color: #fff;
   /* 对勾颜色 白色 */
-  background-color: #ff3333 !important;
+  background-color: #ff6f00 !important;
   transform: translate(-50%, -50%) scale(1) !important;
   -webkit-transform: translate(-50%, -50%) scale(1) !important;
 }
@@ -3469,7 +3452,7 @@ uni-switch .uni-switch-input.uni-switch-input-checked {
 /*每个页面公共css */
 page {
   color: #333;
-  background: #fff;
+  background: #f5f5f5;
   font-size: 28rpx;
   width: 100%;
 }
@@ -3514,7 +3497,7 @@ image {
   width: 100%;
 }
 .btn-min {
-  background: #ff91ab;
+  background: #ff6f00;
   color: #fff;
   display: inline-block;
   line-height: 30rpx;
@@ -3522,12 +3505,21 @@ image {
   -webkit-transition: all .2s;
   transition: all .2s;
   cursor: pointer;
-  border: 1rpx solid #ff91ab;
+  border: 1rpx solid #ff6f00;
 }
 .btn-min:hover {
   background: #fff;
-  color: #ff91ab;
-  border: 1rpx solid #ff91ab;
+  color: #ff6f00;
+  border: 1rpx solid #ff6f00;
+}
+.btn-max {
+  background: #ff6f00;
+  color: #fff;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 10rpx;
+  text-align: center;
 }
 .cursor {
   cursor: pointer;
@@ -3551,11 +3543,18 @@ image {
 .mt20 {
   margin-top: 20rpx;
 }
+.mt30 {
+  margin-top: 30rpx;
+}
 .mlr20 {
   margin: 0 20rpx;
 }
 .mlr30 {
-  margin: 0 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+.plr30 {
+  padding: 0 30rpx;
 }
 .flex-center {
   display: -webkit-box;
