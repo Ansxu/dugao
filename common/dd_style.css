@@ -1264,6 +1264,10 @@ button.fill {
 	margin: 0 auto;
 	margin-bottom: 32upx;
 }
+.noDataImg image{
+	width: 400upx;
+	height: 400upx;
+}
 
 .noConPage .tips {
 	color: #999999;
