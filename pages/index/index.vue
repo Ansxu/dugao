@@ -16,7 +16,7 @@
 						<div class="active-border" :style="'left:'+navWidth[navindex]"></div>
 				</div>
 			</scroll-view>
-			<div class="right flex-center">
+			<div class="right flex-center" @click="navigate('product/classify/classify')">
 				<img src="@/static/icons/classify-icon.png" alt="">
 				分类
 			</div>
@@ -115,10 +115,11 @@
 </template>
 
 <script>
-import {post} from '@/utils';
+import {post,navigate} from '@/utils';
 	export default {
 		data() {
 			return {
+				navigate,
 				nav:[],
 				navWidth:[],
 				navindex:0,

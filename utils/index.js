@@ -70,13 +70,13 @@ export function verifyPhone(tel) {
   return true;
 }
 
-// 函数防抖
+// 函数防抖,多少秒内只允许执行一次，重复点击会重新计时
 let timeout = null
 export function debounce(fn, wait = 500) {
   if (timeout !== null) clearTimeout(timeout)
   timeout = setTimeout(fn, wait)
 }
-// 函数节流
+// 函数节流,多少秒内只允许执行一次，重复点击会无视
 let throtteStatus = false
 export function throtte(fn, wait = 500) {
   if (throtteStatus) return;
@@ -144,6 +144,10 @@ export function autoImg(img) {
   return img;
 }
 
+// 后退到上一页,防抖
+export function navigateBack(){
+  debounce(function(){uni.navigateBack();console.log('回退了一次')},2000)
+}
 // 跳转url,带参
 export function navigate(url,params,isLogin){
   // 判断是否已登录

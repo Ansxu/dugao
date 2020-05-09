@@ -168,7 +168,6 @@
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			if (judgeLogin()) {
-				this.NewsCount();
 			    this.getMemberInfo();
 			}
 		},
@@ -190,15 +189,6 @@
 					// 推荐码
 					uni.setStorageSync('ReferralCode',result.data.ReferralCode)
 			},
-			async NewsCount() {
-				let result = await post("News/NewsCount", {
-					"UserId": this.userId,
-					"Token": this.token
-				});
-				if (result.code === 0) {
-					this.newscount = result.count;
-				} 
-			},
 			// #ifndef MP
 			QQSevice(){
 				navigate('home/kefu/kefu')
@@ -207,6 +197,14 @@
 				// }
 			}
 			// #endif
+		},
+		onPullDownRefresh(){
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
+			if (judgeLogin()) {
+			    this.getMemberInfo();
+			}
+			uni.stopPullDownRefresh()
 		}
 	}
 </script>

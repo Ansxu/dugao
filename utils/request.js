@@ -1,5 +1,5 @@
 
-import {host,judgeLogin,toast,navigate,LoginPath} from '@/utils'
+import {host,judgeLogin,toast,navigate,LoginPath,navigateBack} from '@/utils'
 
 
   // get请求；
@@ -87,11 +87,13 @@ function request(url, method, data) {
             }
           }else{
             toast('服务器繁忙，请稍后重试')
+            navigateBack();
             reject()
           }
         },
         fail: function (error) {
           toast('服务器繁忙，请稍后重试')
+          navigateBack();
           reject(error)
         },
         complete: function () {
