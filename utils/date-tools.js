@@ -4,6 +4,7 @@
 export function editTime(time, type = 'date') {
     let newTime = ''
     if (type === 'time') {
+      console.log(time,'editTime')
       newTime = time.substr(0, time.lastIndexOf(':'))
       newTime = newTime.replace('T', ' ')
     }
@@ -72,8 +73,8 @@ export let dateUtils = {
 		return date.getFullYear() + '-' + _format(date.getMonth() + 1) + '-' + _format(date.getDay()) + ' ' +
 			_format(date.getHours()) + ':' + _format(date.getMinutes())+':'+_format(date.getSeconds());
 	},
-	parse: function (str) { //将"yyyy-mm-dd HH:MM:ss"格式的字符串，转化为一个Date对象
-		var a = str.split(/[^0-9]/);
+  parse: function (str) { //将"yyyy-mm-dd HH:MM:ss"格式的字符串，转化为一个Date对象
+    var a = str.split(/[^0-9]/);
 		return new Date(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
 	}
 };

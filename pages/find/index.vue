@@ -34,7 +34,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,editTime} from '@/utils';
 	import uniNavBar from '@/components/uni-nav-bar.vue';
 	import mediaList from '@/components/tab-nvue/mediaList.vue';//发现列表
 	import actiList from '@/components/tab-nvue/actiList.vue';//活动（体验）
@@ -53,7 +53,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				loadingType: 0, //0加载前，1加载中，2没有更多了
 				isLoad: false,
 				hasData: false,
@@ -62,7 +61,7 @@
 				pageSize: 5,
 				allPage: 0,
 				count: 0,
-				medialist: {},
+				medialist: [],
 				tabIndex: 0, //0我的，1指定用户，2推荐，3资讯，4搜索，5店铺,6活动
 				tabBars: [{
 						name: '推荐',
@@ -84,7 +83,6 @@
 			}
 		},
 		onLoad: function() {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 		},
@@ -100,11 +98,9 @@
 				});
 			},
 			Issue() {
-				if(toLogin(this.curPage)){
-					uni.navigateTo({
-						url: '/pages/Article/artPost/artPost'
-					})
-				}
+				uni.navigateTo({
+					url: '/pages/Article/artPost/artPost'
+				})
 			},
 			/*获取发现列表*/
 			
@@ -132,14 +128,16 @@
 					});
 				}
 				if (result.code === 0) {
-					result.data.forEach(function(item) {
+					const data= result.data;
+					data.forEach(function(item) {
 						if(that.tabIndex==6){
-							item.AddTime=item.AddTime.split("T")[0];
+							item.AddTime=item.Addtime.replace('T', ' ');
 						}else{
-							item.Addtime=dateUtils.format(item.Addtime);
+							const time=item.Addtime.replace('T', ' ');
+							item.AddTime=dateUtils.format(time);
 						}
 					})
-					if (result.data.length > 0) {
+					if (data.length > 0) {
 						this.hasData = true;
 					}
 					this.count = result.count;
@@ -151,14 +149,9 @@
 					} else {
 						this.allPage = parseInt(this.count / this.pageSize) + 1;
 					}
-					if (this.page === 1) {
-						this.medialist = result.data;
-					}
-					if (this.page > 1) {
-						this.medialist = this.medialist.concat(
-							result.data
-						);
-					}
+					if (this.page === 1) {this.medialist = [];}
+					console.log(data,this.medialist)
+					this.medialist.push(...data);
 					if (this.allPage <= this.page) {
 						this.isLoad = false;
 						this.loadingType = 2;
@@ -170,12 +163,6 @@
 					 this.userId=uni.setStorageSync("token", "");
 					 this.token=uni.setStorageSync("userId", "");
 					 this.FindList();
-				} else {
-					uni.showToast({
-						title: result.msg,
-						icon: "none",
-						duration: 2000
-					});
 				}
 			},
 			tapTab(type) {
@@ -218,36 +205,16 @@
 						"ShopId":ShopId
 					});
 				}
-				if (result.code === 0) {
-					uni.showToast({
-						title: result.msg
-					})
-					if(this.medialist[index].IsFollow==0){
-						this.medialist[index].IsFollow=1;
-					}else{
-						this.medialist[index].IsFollow=0;
-					}
-
-				} else if (result.code === 2) {
-					let _this = this;
-					uni.showModal({
-						content: "您还没有登录，是否重新登录？",
-						success(res) {
-							if (res.confirm) {
-								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
-								});
-							} else if (res.cancel) {
-							}
-						}
-					});
-				} else {
-					uni.showToast({
-						title: result.msg,
-						icon: "none",
-						duration: 2000
-					});
+				uni.showToast({
+					title: result.msg
+				})
+				if(this.medialist[index].IsFollow==0){
+					this.medialist[index].IsFollow=1;
+				}else{
+					this.medialist[index].IsFollow=0;
 				}
+
+				
 			},
 			//预览图片
 			previewImg(obj){
