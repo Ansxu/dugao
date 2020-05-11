@@ -1,4 +1,5 @@
 <template>
+	<!-- 购物车确定订单 -->
 	<view class="wrap">
 		<view class="uni-pd10 p_re">
 			<view class="addrbox uni-bg-white b_radius uni-mb10" v-if="(info.IsAloneBuy==0&&info.IsSalesOffice==0&&orderSType==0) || orderSType==1">
@@ -37,7 +38,7 @@
 					</view>
 					<view class="outside procontent" v-for="(item2,index2) in item.ProData" :key="index2">
 						<view class="pictrueAll">
-							<view class="pictrue">
+							<view class="pictrue" @click="golink('/pages/product/productDetail/productDetail')">
 								<image :src="item2.PicNo" mode="aspectFill" ></image>
 							</view>
 						</view>
@@ -284,7 +285,7 @@
 </template>
 
 <script>
-	import {post,get} from '@/common/util.js';
+	import {post,get} from '@/utils';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	export default {
 		components: {
@@ -399,6 +400,7 @@
 		},
 		methods: {
 			golink(url){
+				console.log(url,'url')
 				uni.navigateTo({
 					url:url
 				})

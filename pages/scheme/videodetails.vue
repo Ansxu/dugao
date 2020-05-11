@@ -1,4 +1,5 @@
 <template>
+	<!-- 视频详情 -->
 	<view class="">
 		<view class="video">
 			<video class=""

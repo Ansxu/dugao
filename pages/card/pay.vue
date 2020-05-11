@@ -1,4 +1,5 @@
 <template>
+	<!-- 购物车支付订单 -->
 	<view>
 		 <view class="payinfo">
 		    <view class="p1">待付款金额</view>
@@ -258,7 +259,7 @@
 			},
 			//微信公众号支付  微信自带浏览器的h5支付
 			async payweixin() {
-				let NewUrl=this.GetUrlRelativePath() +'/#/pages/pay/pay?orderNo='+this.orderNo;
+				let NewUrl=this.GetUrlRelativePath() +'/#/pages/card/pay?orderNo='+this.orderNo;
 				let result = await post("Order/WechatPay", {
 					UserId: this.userId,
 					Token: this.token,
@@ -592,10 +593,11 @@
 	bottom: 0;
 	left: 0;
   }
-  .ftbtn .btn{ height: 80upx; width: 100%; border-radius: 16upx; background: #FF3333; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 30upx; color:  #fff;}
+  .ftbtn .btn{ height: 80upx; width: 100%; border-radius: 16upx; background: #FF6F00; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 30upx; color:  #fff;}
   .ftbtn .btn.disabled{ background-color: #C9C9C9;}
-  .payinfo{ background: #ff3333; text-align: center; color: #fff; padding: 40upx 0;}
+  .payinfo{ background: #FF6F00; text-align: center; color: #fff; padding: 40upx 0;}
   .payinfo .p1{font-size: 32upx;}
+  .payinfo .p2{justify-content: center;}
   .payinfo .p2 .payprice{ font-size: 76upx; line-height: 1.5}
   .payinfo .p2 .yuan{ font-size: 40upx}
   .countTiem{ background: rgba(255,255,255,.2); border-radius: 100px; padding: 4upx 30upx; display: inline-block;}

@@ -119,7 +119,7 @@
 						success: function() {
 							setTimeout(function() {
 								uni.switchTab({
-									url: "/pages/tabBar/my/my"
+									url: "/pages/my/my"
 								})
 							}, 2000);
 						}
