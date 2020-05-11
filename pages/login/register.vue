@@ -128,8 +128,8 @@ export default {
       const _res = res.data;
       if(res.code===0){
         toast('绑定手机成功',{icon:true})
-        uni.setStorageSync("userId", _res.data.UserId); //保存用户Id到本地缓存
-        uni.setStorageSync("token", _res.data.Token); //保存的令牌 accessToken
+        uni.setStorageSync("userId", _res.UserId); //保存用户Id到本地缓存
+        uni.setStorageSync("token", _res.Token); //保存的令牌 accessToken
         navigateBack()
       }else{
         toast(res.msg)

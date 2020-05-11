@@ -185,7 +185,11 @@
 					"UserId": this.userId,
 					"Token": this.token
 				})
+				console.log(this)
 					this.memberInfo = result.data;
+					this.$store.commit("update", {
+					  Wallet:result.data.Wallet
+					});  
 					// 推荐码
 					uni.setStorageSync('ReferralCode',result.data.ReferralCode)
 			},

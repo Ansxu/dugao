@@ -75,7 +75,7 @@
 					</view>
 				</view>
 				<view class="flex" v-else>
-					<view class="btn btn_100 red" @click="tolink('/pages/tabBar/index/index',true)">
+					<view class="btn btn_100 red" @click="tolink('/pages/index/index',true)">
 						去逛逛
 					</view>
 				</view>

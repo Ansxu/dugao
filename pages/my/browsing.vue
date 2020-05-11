@@ -235,6 +235,7 @@ export default {
 <style scoped lang="scss">	
 .browsing {
 	background: #ffffff;
+	min-height:100vh;
 }
 .nav {
 	height: 88upx;

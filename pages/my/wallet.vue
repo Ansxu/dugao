@@ -29,8 +29,8 @@
 			</view>
 		</view>
 		<view class="present">
-			<view class="recharge" style="width: 100%;"  @click="golink('/pages/my/topup')">充值</view>
-			<!-- <view class="recharge" @click="golink('/pages/other/withdraw/withdraw')">提现</view> -->
+			<view class="recharge"  @click="golink('/pages/my/topup')">充值</view>
+			<view class="recharge f333" @click="golink('/pages/other/withdraw/withdraw')">提现</view>
 		</view>
 		
 	</view>
@@ -143,5 +143,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
+	.f333{
+		background:#ff3333;
+	}
 </style>
