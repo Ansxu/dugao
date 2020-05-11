@@ -63,7 +63,7 @@
 			this.token = uni.getStorageSync("token");
 			// #ifdef  MP-WEIXIN
 			this.WxOpenid = uni.getStorageSync("openId");
-			this.WxCode = uni.getStorageSync('code')
+			this.WxCode = uni.getStorageSync('wxCode')
 			// #endif
 			console.log(this.WxOpenid,"///////")
 		},
@@ -156,12 +156,14 @@
 			},
 			//小程序支付
 			async ConfirmWeiXinSmallPay(){
-				  let result= await post("Order/WeiXinSmallRechAmount",{
+				  let result= await post("Order/WechatPayCZYE",{
 					WxCode: this.WxCode,
 					UserId: this.userId,
 					Token: this.token,
 					RechargeAmount:this.money,
-					WxOpenid:this.WxOpenid 
+					WxOpenid:this.WxOpenid,
+					WxCode:this.WxCode,
+					paytype:4
 				  });
 				  var payData=JSON.parse(result.data.JsParam)
 				  if(result.code===0){
