@@ -173,12 +173,12 @@
 			gotoProductList(type, id) {
 				if (type === 0) {
 					uni.navigateTo({
-						url: "/pages/homePage/proList?typeId="+this.categoryList[0].Id+'&isOpen=1'
+						url: "/pages/product/productDetail/productDetail?typeId="+this.categoryList[0].Id+'&isOpen=1'
 					}); //点击搜素页面跳转，不需要传入参数
 				}
 				if (type === 1) {
 					uni.navigateTo({
-						url: "/pages/homePage/proList?classId=" + id+"&typeId="+this.typeId
+						url: "/pages/product/productDetail/productDetail?classId=" + id+"&typeId="+this.typeId
 					}); //点击分类跳转，需要传入参数
 				}
 			},
@@ -219,7 +219,7 @@
 			},
 			goDetail(id) {
 				uni.navigateTo({
-					url: '/pages/homePage/details?id='+id
+					url: '/pages/product/productDetail/productDetail?id='+id
 				})
 			},
 			loadMore(){

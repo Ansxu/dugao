@@ -35,7 +35,7 @@
 				<view class="btn flex justifyContentEnd">
 					<view class="btn_g" v-if="item.IsCancel==1" @click.stop="chooseOrders(item.OrderNumber,1)">取消订单</view>
 					<view class="btn_g" v-if="item.IsDel==1" @click.stop="chooseOrders(item.OrderNumber,2)">删除</view>
-					<view class="btn_r" v-if="item.Ispay==1" @click.stop="goUrl('/pages/pay/pay?orderNo='+item.OrderNumber)">立即支付</view>
+					<view class="btn_r" v-if="item.Ispay==1" @click.stop="goUrl('/pages/card/pay?orderNo='+item.OrderNumber)">立即支付</view>
 					<view class="btn_r" v-if="item.IsComment==1" @click.stop="goPinJia(item.OrderDetails,item.OrderNumber)">去评价</view>
 					<view class="btn_r" v-if="item.IsConfirmReceipt==1" @click.stop="chooseOrders(item.OrderNumber,3)">确认收货</view>
 					<view class="btn_r" v-if="item.GroupRecordId>0" @click.stop="goUrl('/pages/pintuanOrder/pintuanOrder?id='+item.GroupRecordId)">拼团详情</view>

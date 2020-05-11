@@ -338,8 +338,8 @@ export default {
   },
   methods: {
     goCart(){
-      wx.navigateTo({
-        url:'/pages/cart/main'
+      wx.switchTab({
+        url:'/pages/card/index'
       })
     },
     gokefu(){
@@ -621,14 +621,14 @@ export default {
     },
     //获取购物车数
     async GetAllCartNumber(){
-      let res=await post("Cart/GetAllCartNumber",{
-        userId: this.userId,
-        token: this.token,
-        ShopId:this.shopid
-      })
-      if(res.code==0){
-        this.CartNumber=res.data.AllNumber;
-      }
+      // let res=await post("Cart/GetAllCartNumber",{
+      //   userId: this.userId,
+      //   token: this.token,
+      //   ShopId:this.shopid
+      // })
+      // if(res.code==0){
+      //   this.CartNumber=res.data.AllNumber;
+      // }
     },
     //添加取消收藏
 			async collect(){
@@ -780,10 +780,10 @@ export default {
     overflow: hidden;
   }
   .right p:nth-child(1){
-    background-color: #fda33a
+    background-color: #ff6f00
   }
   .right p:nth-child(2){
-    background-color: #ff6f00
+    background-color: #FF3333
   }
   .right p.dis{
     opacity: .5;
@@ -905,7 +905,7 @@ export default {
       span{
         font-size: 30rpx;
         color: #999999;
-        margin-right: 46rpx;
+        margin-right: 43rpx;
       }
       img{
         width: 31rpx;
@@ -913,7 +913,7 @@ export default {
         margin-right: 11rpx
       }
       p{
-        margin-right: 46rpx;
+        margin-right: 43rpx;
       }
     }
     .right{

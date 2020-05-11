@@ -1,4 +1,5 @@
 <template>
+	<!-- 购物车 -->
 	<view class="content">
 		<view  :style="{'height':barHeight+44+'px'}"></view>
 		<view class="hasContentPage" v-if="hascartlist">
@@ -201,7 +202,8 @@
 			gotoDetail(pid,Isinvalid){
 				if(Isinvalid!=2){
 					uni.navigateTo({
-						url:'/pages/homePage/details?id='+pid
+						// url:'/pages/homePage/details?id='+pid
+						url:'/pages/product/productDetail/productDetail?id='+pid
 					})
 				}else{
 					uni.showToast({

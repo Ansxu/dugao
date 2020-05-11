@@ -1,4 +1,5 @@
 <template>
+	<!-- 购物车支付成功 -->
 	<view>
 		<view class="payinfo">
 		  <view class="p1 flex flex-center"><view class="iconfont icon-gou2"></view>支付成功</view>
