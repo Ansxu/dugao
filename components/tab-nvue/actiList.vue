@@ -7,24 +7,24 @@
 				</view>
 				<view class="author-name uni-ellipsis">平台活动</view>
 			</view>
-			<view @click="bindClick(data.Id)">
-				<view class="media-title">{{data.Title}}</view>
-				<view v-if="data.PicImg" class="image-section image-section-one">
+			<view @click="bindClick(dataitem.Id)">
+				<view class="media-title">{{dataitem.Title}}</view>
+				<view v-if="dataitem.PicImg" class="image-section image-section-one">
 					<view class="image-list">
-						<image class="img" :src="data.PicImg" mode="widthFix" />
+						<image class="img" :src="dataitem.PicImg" mode="widthFix" />
 					</view>
 				</view>
-				<view class="media-location" v-if="data.Location">
-					<text class="info-text iconfont icon-dizhi1">{{data.Location}}</text>
+				<view class="media-location" v-if="dataitem.Location">
+					<text class="info-text iconfont icon-dizhi1">{{dataitem.Location}}</text>
 				</view>
 				<view class="media-foot">
 					<view class="media-info">
-						<text class="info-text">{{data.AddTime}}开始</text>
+						<text class="info-text">{{dataitem.AddTime}}开始</text>
 					</view>
 					<view class="media-info-r">
-						<text class="info-text scan">{{data.JoinNum}}人参与</text>
-						<text class="info-text comment" @click.stop="gotocommentlist(data.Id)">{{data.CommentNum}}</text>
-						<text :class="['info-text zan',data.IsLike==1?'active':'']" @click.stop="like(data.Id)">{{data.LikeNum}}</text>
+						<text class="info-text scan">{{dataitem.JoinNum}}人参与</text>
+						<text class="info-text comment" @click.stop="gotocommentlist(dataitem.Id)">{{dataitem.CommentNum}}</text>
+						<text :class="['info-text zan',dataitem.IsLike==1?'active':'']" @click.stop="like(dataitem.Id)">{{dataitem.LikeNum}}</text>
 					</view>
 				</view>
 			</view>
@@ -36,7 +36,7 @@
 	 import {host,post} from '@/utils';
 	export default {
 		props: {
-			data: {
+			dataitem: {
 				type: Object,
 				default: function(e) {
 					return {
@@ -88,12 +88,12 @@
 						icon: "none",
 						duration: 2000
 					});
-					if(this.data.IsLike==1){
-						this.data.IsLike=0;
-						this.data.LikeNum--;
+					if(this.dataitem.IsLike==1){
+						this.dataitem.IsLike=0;
+						this.dataitem.LikeNum--;
 					}else{
-						this.data.IsLike=1;
-						this.data.LikeNum++;
+						this.dataitem.IsLike=1;
+						this.dataitem.LikeNum++;
 					}
 				}
 			}

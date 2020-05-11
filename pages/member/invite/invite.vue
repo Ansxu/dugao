@@ -74,7 +74,7 @@ import {
 		base64ToPath
 	} from '@/common/image-tools.js';
  //#ifdef H5
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 //#endif
 export default {
   data () {
@@ -149,14 +149,14 @@ export default {
 	  },100)
 	  //#endif
 	  //#ifdef H5
-	  html2canvas(document.getElementById("bb_canvas"), {
-	  	allowTaint: true,
-	  	taintTest: false,
-	  	useCORS: true,
-	  }).then((canvas) => {
-	  		let shareImgUrl = canvas.toDataURL("image/png");//canvas画布导出图片地址
-	  		this.shareImgUrl = shareImgUrl;
-	  });
+	  // html2canvas(document.getElementById("bb_canvas"), {
+	  // 	allowTaint: true,
+	  // 	taintTest: false,
+	  // 	useCORS: true,
+	  // }).then((canvas) => {
+	  // 		let shareImgUrl = canvas.toDataURL("image/png");//canvas画布导出图片地址
+	  // 		this.shareImgUrl = shareImgUrl;
+	  // });
 	  //#endif
     },
 	blur() {

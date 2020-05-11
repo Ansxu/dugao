@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import util from '@/pages/findSon/components/amap-wx/js/util.js';
+import util from '@/components/amap-wx/js/util.js';
 import {host,post} from '@/utils';
 export default {
 	data() {

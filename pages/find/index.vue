@@ -1,30 +1,34 @@
 <template>
 	<view class="content">
 		<!-- 固定在顶部的导航栏 -->
-		<uni-nav-bar color="#333333" background-color="#f5f5f5" shadow="false" fixed="true" left-icon="search"
-		 @click-left="search" right-icon="plus" @click-right="Issue">
+		<uni-nav-bar color="#333333" background-color="#ffffff" shadow="false" fixed="true">
+			<block slot="left">
+				<view class="uni-icon uni-icon-search" style="color: #333;" @click="search"></view>
+			</block>
 			<view class="uni-head-tab">
 				<view v-for="tab in tabBars" :key="tab.type" :class="['tab-item',tabIndex==tab.type ? 'active' : '']"
 				 @click="tapTab(tab.type)">
 					<view class="s"> {{tab.name}} </view>
 				</view>
 			</view>
+			<block slot="right">
+				<view class="uni-icon uni-icon-plus" @click="Issue"></view>
+			</block>
 		</uni-nav-bar>
 		<view style="height:44px;"></view>
 		<!-- 使用非原生导航栏后需要在页面顶部占位 -->
 		<view class="list" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
 				<block v-if="tabIndex!=6">
-				<media-list :data="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
+				<media-list :dataitem="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
 				</block>
 				<block v-else>
-				<actiList :data="item"></actiList>
+				<actiList :dataitem="item"></actiList>
 				</block>
 			</block>
-			
-			<view class="uni-tab-bar-loading">
-				<uni-load-more :loadingType="loadingType"></uni-load-more>
-			</view>
+		</view>
+		<view class="uni-tab-bar-loading" v-if="hasData">
+			<uni-load-more :loadingType="loadingType"></uni-load-more>
 		</view>
 		<noData :isShow="noDataIsShow"></noData>
 		<!-- #ifndef MP -->
@@ -93,10 +97,10 @@
 		},
 		methods: {
 			search() {
-				navigate('findSon/Search/search_art/search_art');
+				navigate('Search/search_art/search_art');
 			},
 			Issue() {
-				navigate('findSon/Article/artPost/artPost',{},true)
+				navigate('Article/artPost/artPost',{},true)
 			},
 			/*获取发现列表*/
 			

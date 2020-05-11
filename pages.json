@@ -111,7 +111,70 @@
             "style" : {
 				"navigationBarTitleText": "选择银行"
 			}
-        }
+        },
+		{
+			"path": "pages/Search/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "搜索",
+							"fontSize": "14px",
+							"color": "#ff6f00"
+						}],
+						"searchInput": {
+							"backgroundColor": "#fff",
+							"borderRadius": "6px",
+							"placeholder": "想搜什么？",
+							"autoFocus": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/Search/search_art/search_art",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "搜索",
+							"fontSize": "14px",
+							"color": "#ff6f00"
+						}],
+						"searchInput": {
+							"backgroundColor": "#fff",
+							"borderRadius": "6px",
+							"placeholder": "想搜什么？",
+							"autoFocus": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/Search/search_pro/search_pro",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "搜索",
+							"fontSize": "14px",
+							"color": "#ff6f00"
+						}],
+						"searchInput": {
+							"backgroundColor": "#fff",
+							"borderRadius": "6px",
+							"placeholder": "想搜什么？",
+							"autoFocus": true
+						}
+					}
+				}
+			}
+		}
 	],
 	"subPackages":[
 		{
@@ -372,45 +435,128 @@
             ]
 		},
 		{
-			"root": "pages/findSon",
-			"pages":[
-				{
-					"path": "Search/search/search",
-					"style":{
-						"navigationBarTitleText": "搜索"
-					}
-				},
-				{
-					"path": "Search/search_art/search_art",
-					"style":{
-						"navigationBarTitleText": "搜索"
-					}
-				},
-				{
-					"path": "Search/search_pro/search_pro",
-					"style":{
-						"navigationBarTitleText": "搜索"
-					}
-				},
-				{
-					"path": "Article/artPost/artPost",
-					"style":{
-						"navigationBarTitleText": "文章"
-					}
-				},
-				{
-					"path": "Article/artDetail/artDetail",
-					"style":{
-						"navigationBarTitleText": "文章"
-					}
-				},
-				{
-					"path": "Article/NewsDetail/NewsDetail",
-					"style":{
-						"navigationBarTitleText": "文章"
+			"root": "pages/Article",
+			"pages":[{
+				"path": "myPost/myPost",
+				"style": {
+					"navigationBarTitleText": "我的发布",
+					"enablePullDownRefresh" : true
+				}
+			},
+			{
+				"path": "myflow/myflow",
+				"style": {
+					"navigationBarTitleText": "我的关注",
+					"enablePullDownRefresh" : true
+				}
+			},
+			{
+				"path": "myFensi/myFensi",
+				"style": {
+					"navigationBarTitleText": "我的粉丝"
+				}
+			}, 
+			{
+				"path": "myCenter/myCenter",
+				"style": {
+					"navigationBarTitleText": "我的主页",
+					"app-plus": {
+						"titleNView": {
+							"type": "transparent",
+							"titleColor": "#fff",
+							"backgroundColor": "#89674c"
+						}
 					}
 				}
-			]
+			},
+			{
+				"path": "TaActivity/TaActivity",
+				"style": {
+					"navigationBarTitleText": "TA的活动",
+					"enablePullDownRefresh" : true
+				}
+			},
+			{
+				"path": "artDetail/artDetail",
+				"style": {
+					"navigationBarTitleText": "详情",
+					"enablePullDownRefresh" : true,
+					"app-plus": {
+	
+					}
+				}
+			}, 
+			{
+				"path": "NewsDetail/NewsDetail",
+				"style": {
+					"navigationBarTitleText": "详情",
+					"enablePullDownRefresh" : true,
+					"app-plus": {
+						"titleNView": {
+							"type": "transparent"
+						}
+					}
+				}
+			},
+			{
+				"path": "activityDetail/activityDetail",
+				"style": {
+					"navigationBarTitleText": "详情",
+					"enablePullDownRefresh" : true,
+					"app-plus": {
+						"titleNView": {
+							"type": "transparent"
+						}
+					}
+				}
+			}, 
+			{
+				"path": "artPost/artPost",
+				"style": {
+					"navigationBarTitleText": "此刻"
+				}
+			}, 
+			{
+				"path": "replylist/replylist",
+				"style": {
+					"navigationBarTitleText": "全部评论",
+					"enablePullDownRefresh" : true
+				}
+			},
+			{
+				"path" : "Actreplylist/Actreplylist",
+				"style" : {
+					"navigationBarTitleText": "全部晒图",
+					"enablePullDownRefresh" : true
+				}
+			},
+			{
+				"path": "actSignup/actSignup",
+				"style": {
+					"navigationBarTitleText": "活动报名"
+				}
+			},
+			{
+				"path": "signupDetail/signupDetail",
+				"style": {
+					"navigationBarTitleText": "报名详情"
+				}
+			},
+			{
+				"path": "Suseess/Suseess",
+				"style": {
+					"navigationBarTitleText": "活动报名"
+				}
+			},
+			{
+				"path" : "commentPic/commentPic",
+				"style" : {
+					"navigationBarTitleText": "活动晒图",
+					"app-plus": {
+
+					}
+				}
+			}]
 		},
 		{
 			"root":"pages/message",

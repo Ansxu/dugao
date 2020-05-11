@@ -25,6 +25,6 @@
     padding-top:180upx;
     margin-top:0 !important;
   }
- .iconimg .img{ display: block; width: 280upx; height: 280upx; margin: 0 auto 20upx;}
+ .iconimg .img{ display: block; width: 200upx; height: 200upx; margin: 0 auto 20upx;}
  .emptybox .tips{ color: #999;}
 </style>

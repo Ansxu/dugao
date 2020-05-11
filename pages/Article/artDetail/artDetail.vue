@@ -47,8 +47,8 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
-	import replyList from '@/pages/findSon/components/reply.vue';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
+	import replyList from '@/components/reply.vue';
 	export default {
 		components: {
 			replyList
@@ -57,7 +57,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				Findid:"",
 				NewsInfo:{},
 				imgArr:[],
@@ -65,7 +64,6 @@
 			};
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.Findid=e.id;
@@ -125,7 +123,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
