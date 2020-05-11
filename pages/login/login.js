@@ -1,4 +1,4 @@
-import {host,LoginPath,RegisterPath,toast} from '@/utils';
+import {host,LoginPath,RegisterPath,toast,redirect,navigate,navigateBack} from '@/utils';
 const LoginRequestUrl = "Login/SignIn_New";//登录接口地址，
 const LoginSuccessCode = 0;//登录成功
 const LoginNotRegisterCode = 2;//未注册
@@ -60,13 +60,15 @@ export default function logins(params) {
                                     // uni.setStorageSync("Token", _res.data.WxToken); //保存的令牌 accessToken
                                     // 登录成功
                                     if (_res.code === LoginSuccessCode) {
+										console.log(_res,'code')
                                         uni.setStorageSync("userId", _res.data.UserId); //保存用户Id到本地缓存
                                         uni.setStorageSync("token", _res.data.Token); //保存的令牌 accessToken
 
                                         // 自动登录不刷新页面时
                                           toast('登录成功',{icon:true})
                                         // 登录成功执行的方法封装，在index的请求封装，code为2时
-                                        params.success&&params.success(res.data)
+                                        // params.success&&params.success(res.data)
+										navigateBack();
                                         resolve(res.data);
                                     } else 
                                     //--没有绑定手机，则跳转到绑定手机的页面--看业务需求
@@ -74,9 +76,7 @@ export default function logins(params) {
                                         toast('请绑定手机号码进行登录！')
                                         setTimeout(()=>{
                                           // 跳转注册
-                                          uni.redirectTo({
-                                            url: RegisterPath
-                                          });
+										  redirect(RegisterPath)
                                           reject();
                                         },1500)
                                     } else 

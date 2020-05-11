@@ -45,12 +45,14 @@
 	}
 
 	.cartGroupList {
-		padding: 0 20upx 120upx;
+		padding: 20upx 30upx 120upx;
 		background: #f2f2f2;
+		// height: 100%;
 	}
 
 	.cartGroupList>.item {
 		overflow: hidden;
+		border-radius: 20upx;
 	}
 	
 	.btnPay:after{

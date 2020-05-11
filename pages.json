@@ -19,6 +19,23 @@
 				"navigationBarTitleText": "购物车"
 			}
 		},{
+			"path": "pages/card/submitOrder",
+			"style": {
+				"navigationBarTitleText": "确定订单"
+			}
+		},{
+			"path": "pages/card/pay",
+			"style": {
+				"navigationBarTitleText": "支付订单"
+			}
+		},{
+			"path": "pages/card/paysuccess",
+			"style": {
+				"navigationBarTitleText": "支付成功",
+				"navigationBarBackgroundColor":"#ff6f00",
+				"navigationBarTextStyle":"white"
+			}
+		},{
 			"path": "pages/my/my",
 			"style": {
 				"navigationBarTitleText": "我的",

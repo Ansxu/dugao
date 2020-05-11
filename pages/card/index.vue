@@ -8,61 +8,8 @@
 				<text @click="ManageCart">{{isEdittxt}}</text>
 			</view>
 			<view class="cartGroupList">
-				<view class="item">
-					<!-- <view class="item__hd flex flex-start">
-						<view class="IconsCK IconsCK-radio"></view>
-						<view class="shop flex flex-start">
-							<view class="iconfont icon-dianpu"></view>
-							<view class="shopName uni-ellipsis">111</view>
-							<view class="uni-icon uni-icon-arrowright"></view>
-						</view>
-						<view class="btn_receive" @click="showCoupon()">领券</view>
-					</view> -->
-					<view class="column levelPanel">
-						<view class="item">
-							<view class="outside">
-								<view class="IconsCK IconsCK-radio"></view>
-								<view class="pictrueAll" @click="gotoDetail()">
-									<view class="pictrue">
-										<image src="../../static/card/card-empty.png" mode="aspectFill"></image>
-									</view>
-								</view>
-								<view class="txtBox">
-									<view class="title text-line2">磷酸二氢钾叶面肥磷钾肥养花</view>
-									<view class="flex skuBox">
-										<view class="flex-item flex1">
-											<view class="type">通用型250g*10瓶<view style="color: #9b9b9b; font-size: 30upx;" class="uni-icon uni-icon-arrowdown"></view>
-											</view>
-										</view>
-										<view class="flex-item">
-											<!-- <text class="buyNum">x1</text> -->
-										</view>
-									</view>
-									<view class="flex mt5 flexAlignCneter">
-										<view class="flex-item flex1">
-											<view class="new-price"><text class="yuan">￥</text>128.00
-											<!-- <text class="fz12">返两万</text> -->
-										</view>
-										</view>
-										<view class="flex-item selNumRow">
-											<uni-number-box :disabled="false" :value="1" :min="666" :max="777" v-on:change="change" :shopindex="index" :index="index2"></uni-number-box>
-										</view>
-									</view>
-								<!-- 	<view class="flex">
-										<view class="red fz12" v-if="item2.MinBuyNum>1">{{item2.MaxBuyNum}}件起购</view>
-										<view class="red fz12" v-if="item2.MaxBuyNum>0">限购{{item2.MaxBuyNum}}件</view>
-										<view class="red fz12" v-if="item2.Stock>0&&item2.Stock<10">仅剩{{item2.Stock}}件</view>
-										<view class="red fz12" v-if="item2.Isinvalid>0">{{Isinvalidstr[item2.Isinvalid]}}</view>
-									</view> -->
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="cartGroupList">
 				<view class="item" v-for="(item,index) in cartlist" :key="index">
-					<view class="item__hd flex flex-start">
+					<!-- <view class="item__hd flex flex-start">
 						<view :class="['IconsCK IconsCK-radio',item.select?'checked':'']" @click="shopcheck(index)"></view>
 						<view class="shop flex flex-start" @click="golink('/pages/brand/shopIndex/shopIndex?ShopId='+item.ShopId)">
 							<view class="iconfont icon-dianpu"></view>
@@ -70,7 +17,7 @@
 							<view class="uni-icon uni-icon-arrowright"></view>
 						</view>
 						<view class="btn_receive" @click="showCoupon(item.ShopId)">领券</view>
-					</view>
+					</view> -->
 					<view class="column levelPanel">
 						<view class="item" v-for="(item2,index2) in item.ProData" :key="index2">
 							<view class="outside">
@@ -81,7 +28,7 @@
 									</view>
 								</view>
 								<view class="txtBox">
-									<view class="title text-line2" @click="gotoDetail(item2.ProductId,item2.Isinvalid)">{{item2.Name}}</view>
+									<view class="title ellipsis" @click="gotoDetail(item2.ProductId,item2.Isinvalid)">{{item2.Name}}</view>
 									<view class="flex skuBox">
 										<view class="flex-item flex1" v-if="item2.SpecText" @click="showSku(item2.ProductId,item2.Id,item2.Number,0)">
 											<view class="type">{{item2.SpecText}}<view style="color: #9b9b9b; font-size: 30upx;" class="uni-icon uni-icon-arrowdown"></view>
@@ -91,7 +38,7 @@
 											<!-- <text class="buyNum">x1</text> -->
 										</view>
 									</view>
-									<view class="flex mt5 flexAlignCneter">
+									<view class="flex mt10 flexAlignCneter">
 										<view class="flex-item flex1">
 											<view class="new-price"><text class="yuan">￥</text>{{item2.Price}}
 											<!-- <text class="fz12">返两万</text> -->
@@ -178,7 +125,6 @@
 				<view class="bottom-btn" @click="hidePopup">完成</view>
 			</view>
 		</uni-popup>
-		<!-- <notlogin v-if="!gologin"></notlogin> -->
 	</view>
 </template>
 
@@ -188,7 +134,6 @@
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	import noData from '@/components/noData.vue'; //暂无数据
 	import popupsku from '@/components/popupSku.vue';
-	// import notlogin from '@/components/notlogin.vue'; 
 	
 	export default {
 		components: {
@@ -613,7 +558,7 @@
 				});
 				if(dataArr.length){
 					uni.navigateTo({ 
-						url: "/pages/submitOrder/submitOrder?cartItem=" + dataArr.join(",") +'&orderSType=1'
+						url: "/pages/card/submitOrder?cartItem=" + dataArr.join(",") +'&orderSType=1'
 					});
 				}else{
 					uni.showToast({
