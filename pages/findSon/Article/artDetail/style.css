@@ -1,0 +1,215 @@
+.Detailbox {
+	background: #fff;
+	padding: 20upx;
+}
+.media-list {
+	flex: 1;
+	flex-direction: column;
+	border-bottom-width: 1upx;
+	border-bottom-style: solid;
+	border-bottom-color: #eee;
+}
+
+.list-cell:last-child .media-list {
+	border-bottom: none;
+}
+
+.media-hd {
+	height: 80upx;
+	margin-bottom: 10upx;
+}
+
+.media-hd .media-author {
+	float: left;
+	height: 80upx;
+	width: 80upx;
+	margin-right: 20upx;
+}
+
+.media-hd .media-author .img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.media-hd .media-hd-l {
+	float: left;
+	max-width: 60%;
+	padding: 8upx 0;
+}
+
+.media-hd .media-hd-l .txt {
+	display: block;
+	padding: 0;
+	float: none;
+	height: 32upx;
+	line-height: 32upx;
+}
+.media-hd .media-hd-l .author-name{
+	width: 100%;
+	color: #333;
+	font-size: 28upx;
+	margin: 0;
+}
+.media-hd .media-hd-l .media-time {
+	color: #999;
+	font-size: 24upx;
+}
+
+.media-hd .flow-btn {
+	width: 130upx;
+	height: 60upx;
+	line-height: 60upx;
+	text-align: center;
+	float: right;
+	background: #fcf4e3;
+	color: #89674c;
+	border-radius: 30upx;
+	margin-top: 10upx;
+}
+
+.media-hd .flow-btn.flowed {
+	background: #eee;
+	color: #999;
+}
+
+.media-title {
+	line-height: 1.5;
+}
+
+.image-section {
+	margin-top: 20upx;
+	margin-right: -12upx;
+	margin-bottom: -12upx;
+	flex-direction: row;
+	justify-content: space-between;
+	position: relative;
+	overflow: hidden;
+}
+
+.image-section .image-list {
+	height: 230upx;
+	width: 33.3%;
+	float: left;
+	padding-right: 12upx;
+	margin-bottom: 12upx;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.image-section .image-list .img {
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+}
+
+.image-section .count {
+	position: absolute;
+	right: 30upx;
+	bottom: 16upx;
+	font-size: 40upx;
+	color: #fff;
+}
+
+.media-foot {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20upx;
+	justify-content: space-between;
+}
+
+.media-info {
+	display: flex;
+	flex-direction: row;
+}
+
+.info-text {
+	display: flex;
+	margin-right: 20upx;
+	color: #999999;
+	font-size: 24upx;
+}
+
+.icon-dizhi1:before {
+	color: #bbb;
+	font-size: 36upx;
+	line-height: 1;
+}
+
+.comment {
+	padding-left: 40upx;
+	background: url(http://www.sc-mall.net/static/pl_icon.png) left center no-repeat;
+	background-size: 32upx;
+}
+
+.zan {
+	padding-left: 40upx;
+	background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat;
+	background-size: 32upx;
+}
+
+.zan.active {
+	background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat;
+	background-size: 32upx;
+}
+
+.scan {
+	padding-left: 46upx;
+	background: url(http://www.sc-mall.net/static/eye.png) left top no-repeat;
+	background-size: 40upx;
+}
+
+.media-info-r {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+/*3列样式*/
+.Grid3.image-section {
+	margin-top: 20upx;
+	margin-right: -12upx;
+	margin-bottom: -12upx;
+	flex-direction: row;
+	justify-content: space-between;
+	position: relative;
+	overflow: hidden;
+}
+
+.Grid3.image-section .image-list {
+	height: 230upx;
+	width: 33.3%;
+	float: left;
+	padding-right: 12upx;
+	margin-bottom: 12upx;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.Grid3.image-section.image-section-one {
+	display: block;
+}
+
+.Grid3.image-section.image-section-one .image-list {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.Grid3.image-section.image-section-one .image-list .img {
+	display: block;
+	height: auto;
+}
+/* #ifdef MP-WEIXIN */
+.Detailbox .list-cell{
+	padding: 0;
+	width: 100%;
+}
+.Detailbox .media-list{padding: 0;}
+.media-location{margin: 0;}
+/* #endif */
+
+
+
+
+

@@ -372,6 +372,47 @@
             ]
 		},
 		{
+			"root": "pages/findSon",
+			"pages":[
+				{
+					"path": "Search/search/search",
+					"style":{
+						"navigationBarTitleText": "搜索"
+					}
+				},
+				{
+					"path": "Search/search_art/search_art",
+					"style":{
+						"navigationBarTitleText": "搜索"
+					}
+				},
+				{
+					"path": "Search/search_pro/search_pro",
+					"style":{
+						"navigationBarTitleText": "搜索"
+					}
+				},
+				{
+					"path": "Article/artPost/artPost",
+					"style":{
+						"navigationBarTitleText": "文章"
+					}
+				},
+				{
+					"path": "Article/artDetail/artDetail",
+					"style":{
+						"navigationBarTitleText": "文章"
+					}
+				},
+				{
+					"path": "Article/NewsDetail/NewsDetail",
+					"style":{
+						"navigationBarTitleText": "文章"
+					}
+				}
+			]
+		},
+		{
 			"root":"pages/message",
 			"pages":[
 				{

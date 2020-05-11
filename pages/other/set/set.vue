@@ -73,7 +73,7 @@
 							uni.setStorageSync("openId", ""); 
 							uni.setStorageSync("userInfo", "");
 							uni.switchTab({
-								url: '/pages/tabBar/index/index'
+								url: '/pages/index/index'
 							});
 						}
 					}

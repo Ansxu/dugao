@@ -1,0 +1,43 @@
+.wrapper{background: #fff; border-bottom: 1px solid #eee;}
+.tabList .swiper-tab-list{ width: 50%; box-sizing: border-box;}
+.uni-tab-bar .s{ display: inline-block;}
+.uni-media-list {
+		padding: 24upx 20upx;
+	}
+
+	.uni-list-cell::after {
+		left: 0;
+	}
+
+	.uni-media-list-logo {
+		height: 140upx;
+		width: 140upx;
+		border-radius: 6px;
+		overflow: hidden;
+	}
+
+	.uni-media-list-body {
+		height: 140upx;
+		padding: 6upx 0;
+		box-sizing: border-box;
+	}
+
+	.uni-media-list-text-top {
+		line-height: 1.5;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		color: #333;
+	}
+
+	.uni-media-list-info {
+		font-size: 26upx;
+		color: #999;
+		word-break: break-all;
+		display: -webkit-box;
+		overflow: hidden;
+		line-height: 1.5;
+		text-overflow: ellipsis;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}

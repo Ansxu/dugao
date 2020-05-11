@@ -66,7 +66,6 @@ function request(url, method, data) {
                       cancelColor:'#999',
                       confirmColor:'#ff6f00',
                       success(res){
-                        console.log(res)
                         if(res.confirm){
                           navigate(LoginPath)
                         }

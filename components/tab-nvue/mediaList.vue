@@ -22,22 +22,22 @@
 				<view class="media-title" v-else-if="data.ContentDetails">{{data.ContentDetails}}</view>
 				<!-- 一排两列 -->
 				<block v-if="Grid==='2'">
-					<view v-if="imgArr" :class="['image-section',imgArr.length==1?'image-section-one':'',imgArr.length==2?'image-section-two':'',imgArr.length==3?'image-section-three':'',imgArr.length>3?'image-section-four':'']">
-						<view class="image-list" v-if="imgArr&&i<4" v-for="(source, i) in imgArr" :key="i" >
-							<image class="img" :src="source" v-if="imgArr.length==1" mode="widthFix" @click.stop="previewImg(imgArr,i)" />
-							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(imgArr,i)"/>
+					<view v-if="data.imgArr" :class="['image-section',data.imgArr.length==1?'image-section-one':'',data.imgArr.length==2?'image-section-two':'',data.imgArr.length==3?'image-section-three':'',data.imgArr.length>3?'image-section-four':'']">
+						<view class="image-list" v-show="source&&i<4" v-for="(source, i) in data.imgArr" :key="i" >
+							<image class="img" :src="source" v-if="data.imgArr.length==1" mode="widthFix" @click.stop="previewImg(data.imgArr,i)" />
+							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(data.imgArr,i)"/>
 						</view>
-						<view v-if="imgArr.length>4" class="count">{{imgArr.length}}</view>
+						<view v-if="data.imgArr.length>4" class="count">{{data.imgArr.length}}</view>
 					</view>
 				</block>
 				<!-- 一排3列 -->
 				<block v-else>
-					<view v-if="imgArr" :class="['image-section Grid3',imgArr.length==1?'image-section-one':'']">
-						<view class="image-list" v-if="imgArr&&i<3" v-for="(source, i) in imgArr" :key="i" >
-							<image class="img" :src="source" v-if="imgArr.length==1" mode="widthFix" @click.stop="previewImg(imgArr,i)" />
-							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(imgArr,i)" />
+					<view v-if="data.imgArr" :class="['image-section Grid3',data.imgArr.length==1?'image-section-one':'']">
+						<view class="image-list" v-show="source&&i<3" v-for="(source, i) in data.imgArr" :key="i" >
+							<image class="img" :src="source" v-if="data.imgArr.length==1" mode="widthFix" @click.stop="previewImg(data.imgArr,i)" />
+							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(data.imgArr,i)" />
 						</view>
-						<view v-if="imgArr.length>3" class="count">{{imgArr.length}}</view>
+						<view v-if="data.imgArr.length>3" class="count">{{data.imgArr.length}}</view>
 					</view>
 				</block>
 			
@@ -46,7 +46,7 @@
 			</view>
 			<view class="media-foot">
 				<view class="media-info">
-					<text class="info-text">{{data.Addtime}}</text>
+					<text class="info-text">{{data.AddTime}}</text>
 				</view>
 				<view class="media-info-r">
 					<text class="info-text scan">{{data.BrowseNum}}</text>
@@ -59,7 +59,7 @@
 	</view>
 </template>
 <script>
-    import {host,post,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+    import {host,post} from '@/utils';
 	export default {
 		props: {
 			Grid:{
@@ -80,7 +80,6 @@
 			}
 		},
 		created(){
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 		},
@@ -88,13 +87,9 @@
 			return{
 				userId: "",
 				token: "",
-				curPage:""
 			}
 		},
 		computed: {
-			imgArr() {
-				return this.data.ImgList.split(",");
-			}
 		},
 		onLoad(){
 		},
@@ -148,25 +143,6 @@
 						this.data.IsLike=1;
 						this.data.LikeNum++;
 					}
-				}else if (result.code === 2) {
-					let _this =this;
-					uni.showModal({
-						content: "您还没有登录，是否重新登录？",
-						success(res) {
-							if (res.confirm) {
-								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
-								});
-							} else if (res.cancel) {
-							}
-						}
-					});
-				} else {
-					uni.showToast({
-						title: result.msg,
-						icon: "none",
-						duration: 2000
-					});
 				}
 			}
 		}

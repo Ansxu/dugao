@@ -15,10 +15,10 @@
 		<view class="list" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
 				<block v-if="tabIndex!=6">
-				<media-list :datas="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
+				<media-list :data="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
 				</block>
 				<block v-else>
-				<actiList :datas="item"></actiList>
+				<actiList :data="item"></actiList>
 				</block>
 			</block>
 			
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,editTime} from '@/utils';
+	import {host,post,get,dateUtils,editTime,navigate} from '@/utils';
 	import uniNavBar from '@/components/uni-nav-bar.vue';
 	import mediaList from '@/components/tab-nvue/mediaList.vue';//发现列表
 	import actiList from '@/components/tab-nvue/actiList.vue';//活动（体验）
@@ -44,7 +44,7 @@
 	export default {
 		components: {
 			uniNavBar,
-			mediaList,
+			mediaList, 
 			actiList,
 			noData,
 			uniLoadMore
@@ -58,7 +58,7 @@
 				hasData: false,
 				noDataIsShow: false,
 				page: 1,
-				pageSize: 5,
+				pageSize: 8,
 				allPage: 0,
 				count: 0,
 				medialist: [],
@@ -93,14 +93,10 @@
 		},
 		methods: {
 			search() {
-				uni.navigateTo({
-					url: '/pages/Search/search_art/search_art'
-				});
+				navigate('findSon/Search/search_art/search_art');
 			},
 			Issue() {
-				uni.navigateTo({
-					url: '/pages/Article/artPost/artPost'
-				})
+				navigate('findSon/Article/artPost/artPost',{},true)
 			},
 			/*获取发现列表*/
 			
@@ -126,7 +122,7 @@
 						"MemberId": "",
 						"SearchKey": ""
 					});
-				}
+				}  
 				if (result.code === 0) {
 					const data= result.data;
 					data.forEach(function(item) {
@@ -135,6 +131,7 @@
 						}else{
 							const time=item.Addtime.replace('T', ' ');
 							item.AddTime=dateUtils.format(time);
+							item.imgArr = item.ImgList.split(',')
 						}
 					})
 					if (data.length > 0) {
@@ -150,7 +147,6 @@
 						this.allPage = parseInt(this.count / this.pageSize) + 1;
 					}
 					if (this.page === 1) {this.medialist = [];}
-					console.log(data,this.medialist)
 					this.medialist.push(...data);
 					if (this.allPage <= this.page) {
 						this.isLoad = false;
@@ -180,13 +176,9 @@
 			//链接详情页
 			goDetail(e) {
 				if(e.artType==0){//用户发布详情
-					uni.navigateTo({
-						url: '/pages/Article/artDetail/artDetail?id='+e.id
-					})
+					navigate( 'Article/artDetail/artDetail',{id:+e.id})
 				}else{//资讯详情、店铺
-					uni.navigateTo({
-						url: '/pages/Article/NewsDetail/NewsDetail?id='+e.id
-					})
+					navigate( 'Article/NewsDetail/NewsDetail',{id:+e.id})
 				}
 			},
 			//关注

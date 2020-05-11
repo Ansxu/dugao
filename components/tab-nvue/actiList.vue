@@ -33,7 +33,7 @@
 </template>
 
 <script>
-	 import {host,post,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	 import {host,post} from '@/utils';
 	export default {
 		props: {
 			data: {
@@ -46,7 +46,6 @@
 			}
 		},
 		created(){
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 		},
@@ -54,7 +53,6 @@
 			return{
 				userId: "",
 				token: "",
-				curPage:""
 			}
 		},
 		computed: {},
@@ -97,25 +95,6 @@
 						this.data.IsLike=1;
 						this.data.LikeNum++;
 					}
-				}else if (result.code === 2) {
-					let _this =this;
-					uni.showModal({
-						content: "您还没有登录，是否重新登录？",
-						success(res) {
-							if (res.confirm) {
-								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
-								});
-							} else if (res.cancel) {
-							}
-						}
-					});
-				} else {
-					uni.showToast({
-						title: result.msg,
-						icon: "none",
-						duration: 2000
-					});
 				}
 			}
 		}

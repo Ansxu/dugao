@@ -42,6 +42,7 @@ export function judgeLogin(){
         confirmColor:'#ff6f00',
         success(res){
           if(res.confirm){
+            console.log('a')
             navigate(LoginPath)
           }
         }
