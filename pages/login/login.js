@@ -22,6 +22,7 @@ export default function logins(params) {
               }
                 const code = ret.code; //拿到code进行下一步操作
                 uni.setStorageSync("wxCode",ret.code);//*支付*可能要用到的code
+                uni.setStorageSync("code",ret.code);//*支付*可能要用到的code
                 uni.getUserInfo({
                     lang:'zh_CN',
                     withCredentials:true,
@@ -54,9 +55,10 @@ export default function logins(params) {
                                       return;
                                     }
                                     const _res =res.data;
+                                    console.log(_res,'login')
                                     // 设置一些缓存，注册或者支付要使用的，直接在缓存获取
                                     uni.setStorageSync("unionid", _res.data.unionid);
-                                    uni.setStorageSync("openId", _res.data.openId);
+                                    uni.setStorageSync("openId", _res.data.OpenId);
                                     // uni.setStorageSync("Token", _res.data.WxToken); //保存的令牌 accessToken
                                     // 登录成功
                                     if (_res.code === LoginSuccessCode) {

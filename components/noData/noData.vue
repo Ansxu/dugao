@@ -7,7 +7,12 @@
 
 <script>
 	export default {
-		props: ["isShow"],
+		props: {
+			isShow:{
+				type:Boolean,
+				default:true
+			}
+			},
 		data() {
 			return {
 				

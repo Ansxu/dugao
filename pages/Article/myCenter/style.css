@@ -1,0 +1,55 @@
+.userTop{ position: relative; height: 420upx; background: #fff url(http://www.sc-mall.net/static/mybg.png) bottom center no-repeat; background-size: cover;}
+.infobox{ position: absolute; bottom: 0; left: 20upx; right: 20upx; background: #fff; padding: 20upx; border-radius: 8px; box-shadow: 0 0 40upx rgba(0,0,0,.3);}
+.infobox .tx{ height: 120upx; width: 120upx; margin: -84upx auto 0;}
+.infobox .tx .img{ width: 100%; height: 100%; border: 4upx solid #fff; border-radius: 50%; background: #fff;}
+.infobox .location{ position: absolute; max-width: 200upx; right: 20upx; top: 20upx; color: #999; font-size: 24upx;}
+.infobox .location .iconfont{ font-size: 30upx; margin-right: 4upx;}
+.infobox .username{margin-top: 20upx; }
+.infobox .username .txt { display: inline-block; vertical-align: middle; font-size: 32upx; margin: 0 10upx;}
+.infobox .username .iconfont{ display: inline-block; vertical-align: middle; height: 40upx; width: 40upx; line-height: 40upx; font-size: 24upx; background: #fea9cb; color: #fff; border-radius: 50%;}
+.infobox .username .iconfont.icon-nan{ background: #86d9f5;}
+.infobox .userdesc{ font-size: 26upx; color: #5e5e5e;}
+.infobox .userdesc .txt{ display: inline-block; vertical-align: middle; max-width: 70%;}
+.infobox .userdesc .iconfont{display: inline-block; vertical-align: middle; color: #89664C; margin-left: 20upx;}
+.infobox-ft{ margin-top: 20upx;}
+.infobox-ft .uni-flex-item{ color: #5e5e5e;}
+.MYfubu{background: #fff; padding-top: 20upx;}
+.Activity{background: #fff; margin-top: 20upx;}
+.Activity .list{ padding: 20upx;}
+.Activity .list-item{ position: relative; border-radius: 6px; overflow: hidden; margin-bottom: 20upx;}
+.Activity .list-item .img{ display: block; height: 400upx;}
+.Activity .list-item .mark{ position: absolute; right: 0; top: 20upx; background: #bbb; font-size: 26upx; color: #FFFFFF; z-index: 9; padding: 0 20upx 0 28upx; border-radius: 200upx 0 0 200upx;}
+.Activity .list-item .mark.active{ background: #ffc107;}
+.foot-fiexd{height: 90upx;}
+.foot-fiexd .foot{
+	height: 90upx;
+	line-height: 90upx;
+	background: #89674c;
+	text-align: center;
+	box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 998;
+}
+.foot-fiexd .foot .btn{ height: 90upx;
+	line-height: 90upx;
+	background: #89674c; color: #fff; font-size: 30upx;}
+.foot-fiexd .foot .btn.white{ background: #fff; color: #89674c; border-top: 1px solid #eee;}	
+.content .uni-list-cell::after{ left: 0;}
+.content .uni-list-cell .list-cell-r{ font-size: 26upx; color: #999;}
+.foot-fiexd .foot .icon-fabu:before{
+	margin-right: 10upx;
+	font-size: 40upx;
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-import { post} from "@/common/util.js";
+import { post,navigateBack} from "@/utils";
 export default {
   onLoad(e) {
 	  // #ifdef APP-PLUS
@@ -167,7 +167,7 @@ export default {
     submitWithdraw() {
       //提现
       if (this.valOther()) {
-		this.DrawMoneyApply();//佣金提现
+		  this.DrawMoneyApply();//佣金提现
       }
     },
    
@@ -225,11 +225,7 @@ export default {
             icon: "none",
             duration: 1500,
             success: function() {
-              setTimeout(function() {
-                uni.redirectTo({
-                  url: "/pages/tabBar/my/wallet"
-                });
-              }, 1500);
+              navigateBack();
             }
           });
         }

@@ -1,4 +1,7 @@
 .content{position: relative;z-index: 2;}
+.content /deep/ .uni-navbar.uni-navbar-fixed{border-bottom: 1px solid #e6e6e6;}
+.uni-navbar /deep/ .uni-navbar-header-btns  .uni-icon{ line-height: 44px;}
+.uni-navbar .tx image{ height: 60upx; width: 60upx; border-radius: 50%; overflow: hidden;}
 .uni-head-tab{
 	text-align: center;
 	height: 88upx;
@@ -21,7 +24,7 @@
 .uni-head-tab .tab-item.active .s:after{
 	content: "";
 	display: block;
-	height: 2px;
+	height: 6upx;
 	width: 100%;
 	background: #89674c;
 	position: absolute;
@@ -29,4 +32,17 @@
 	bottom: 0;
 }
 .list{background: #fff;}
-
+.fubuBtn{
+	position: fixed;
+	right: 20upx;
+	bottom: 20upx;
+    width: 80upx;
+    height: 80upx;
+	text-align: center;
+	line-height: 80upx;
+	color: #fff;
+	background: #89674C;
+	border-radius: 50%;
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+    z-index: 11;
+}

@@ -1,57 +1,57 @@
 <template>
 	<view class="list-cell">
 		<view class="media-list">
-			<view class="media-hd" v-if="data.FindType!=2">
+			<view class="media-hd" v-if="dataitem.FindType!=2">
 				<view class="media-author" @click="gotoPensonal">
-					<image class="img" v-if="data.Avatar" :src="data.Avatar" mode="aspectFill"></image>
-					<image class="img" v-else-if="data.FindType==2" src="/static/logo.png" mode="aspectFill"></image>
-					<image class="img" v-else src="/static/default.png"></image>
+					<image class="img" v-if="dataitem.Avatar" :src="dataitem.Avatar" mode="aspectFill"></image>
+					<image class="img" v-else-if="dataitem.FindType==2" src="/static/logo.png" mode="aspectFill"></image>
+					<image class="img" v-else src="http://ddyp.wtvxin.com/static/default.png"></image>
 				</view>
 				<view class="author-name uni-ellipsis" @click="gotoPensonal">
-					<block v-if="data.NickName">{{data.NickName}}</block>
-					<block v-else-if="data.FindType==1">店铺动态</block>
-					<block v-else-if="data.FindType==2">平台资讯</block>
+					<block v-if="dataitem.NickName">{{dataitem.NickName}}</block>
+					<block v-else-if="dataitem.FindType==1">店铺动态</block>
+					<block v-else-if="dataitem.FindType==2">平台资讯</block>
 				</view>
-				<block v-if="data.IsMy==0&&data.FindType!=2&&isBtn==true">
-					<view class="flow-btn" v-if="data.IsFollow==0" @click="flowbtn">关注</view>
+				<block v-if="dataitem.IsMy==0&&dataitem.FindType!=2&&isBtn==true">
+					<view class="flow-btn" v-if="dataitem.IsFollow==0" @click="flowbtn">关注</view>
 					<view class="flow-btn flowed" v-else @click="flowbtn">已关注</view>
 				</block>
 			</view>
-			<view @click="bindClick(data.FindType,data.Id)">
-				<view class="media-title" v-if="data.Title">{{data.Title}}</view>
-				<view class="media-title" v-else-if="data.ContentDetails">{{data.ContentDetails}}</view>
+			<view @click="bindClick(dataitem.FindType,dataitem.Id)">
+				<view class="media-title" v-if="dataitem.Title">{{dataitem.Title}}</view>
+				<view class="media-title" v-else-if="dataitem.ContentDetails">{{dataitem.ContentDetails}}</view>
 				<!-- 一排两列 -->
 				<block v-if="Grid==='2'">
-					<view v-if="data.imgArr" :class="['image-section',data.imgArr.length==1?'image-section-one':'',data.imgArr.length==2?'image-section-two':'',data.imgArr.length==3?'image-section-three':'',data.imgArr.length>3?'image-section-four':'']">
-						<view class="image-list" v-show="source&&i<4" v-for="(source, i) in data.imgArr" :key="i" >
-							<image class="img" :src="source" v-if="data.imgArr.length==1" mode="widthFix" @click.stop="previewImg(data.imgArr,i)" />
-							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(data.imgArr,i)"/>
+					<view v-if="dataitem.imgArr" :class="['image-section',dataitem.imgArr.length==1?'image-section-one':'',dataitem.imgArr.length==2?'image-section-two':'',dataitem.imgArr.length==3?'image-section-three':'',dataitem.imgArr.length>3?'image-section-four':'']">
+						<view class="image-list" v-show="source&&i<4" v-for="(source, i) in dataitem.imgArr" :key="i" >
+							<image class="img" :src="source" v-if="dataitem.imgArr.length==1" mode="widthFix" @click.stop="previewImg(dataitem.imgArr,i)" />
+							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(dataitem.imgArr,i)"/>
 						</view>
-						<view v-if="data.imgArr.length>4" class="count">{{data.imgArr.length}}</view>
+						<view v-if="dataitem.imgArr.length>4" class="count">{{dataitem.imgArr.length}}</view>
 					</view>
 				</block>
 				<!-- 一排3列 -->
 				<block v-else>
-					<view v-if="data.imgArr" :class="['image-section Grid3',data.imgArr.length==1?'image-section-one':'']">
-						<view class="image-list" v-show="source&&i<3" v-for="(source, i) in data.imgArr" :key="i" >
-							<image class="img" :src="source" v-if="data.imgArr.length==1" mode="widthFix" @click.stop="previewImg(data.imgArr,i)" />
-							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(data.imgArr,i)" />
+					<view v-if="dataitem.imgArr" :class="['image-section Grid3',dataitem.imgArr.length==1?'image-section-one':'']">
+						<view class="image-list" v-show="source&&i<3" v-for="(source, i) in dataitem.imgArr" :key="i" >
+							<image class="img" :src="source" v-if="dataitem.imgArr.length==1" mode="widthFix" @click.stop="previewImg(dataitem.imgArr,i)" />
+							<image class="img" :src="source" v-else mode="aspectFill" @click.stop="previewImg(dataitem.imgArr,i)" />
 						</view>
-						<view v-if="data.imgArr.length>3" class="count">{{data.imgArr.length}}</view>
+						<view v-if="dataitem.imgArr.length>3" class="count">{{dataitem.imgArr.length}}</view>
 					</view>
 				</block>
 			
-			<view class="media-location" v-if="data.Location">
-				<text class="info-text iconfont icon-dizhi1">{{data.Location}}</text>
+			<view class="media-location" v-if="dataitem.Location">
+				<text class="info-text iconfont icon-dizhi1">{{dataitem.Location}}</text>
 			</view>
 			<view class="media-foot">
 				<view class="media-info">
-					<text class="info-text">{{data.AddTime}}</text>
+					<text class="info-text">{{dataitem.Addtime}}</text>
 				</view>
 				<view class="media-info-r">
-					<text class="info-text scan">{{data.BrowseNum}}</text>
-					<text class="info-text comment" @click.stop="gotocommentlist">{{data.CommentNum}}</text>
-					<text :class="['info-text zan',data.IsLike==1?'active':'']" @click.stop="like(data.Id)">{{data.LikeNum}}</text>
+					<text class="info-text scan">{{dataitem.BrowseNum}}</text>
+					<text class="info-text comment" @click.stop="gotocommentlist">{{dataitem.CommentNum}}</text>
+					<text :class="['info-text zan',dataitem.IsLike==1?'active':'']" @click.stop="like(dataitem.Id)">{{dataitem.LikeNum}}</text>
 				</view>
 			</view>
 			</view>
@@ -70,7 +70,7 @@
 				type:Boolean,
 				default:true
 			},
-			data: {
+			datajson: {
 				type: Object,
 				default: function(e) {
 					return {
@@ -82,14 +82,17 @@
 		created(){
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
+			this.dataitem=this.datajson;
 		},
 		data(){
 			return{
 				userId: "",
 				token: "",
+				dataitem:{}
 			}
 		},
 		computed: {
+			
 		},
 		onLoad(){
 		},
@@ -101,21 +104,21 @@
 				this.$emit('click',{artType,id});
 			},
 			gotoPensonal() {
-				if(this.data.FindType==0){//指定用户个人主页
+				if(this.dataitem.FindType==0){//指定用户个人主页
 					uni.navigateTo({
-						url: '/pages/Article/myCenter/myCenter?Memberid='+this.data.MemberId
+						url: '/pages/Article/myCenter/myCenter?Memberid='+this.dataitem.MemberId
 					})	
 				}
-				if(this.data.FindType==1){//指定店铺主页
+				if(this.dataitem.FindType==1){//指定店铺主页
 					uni.navigateTo({
-						url: '/pages/store/storeIndex/storeIndex?shopId='+this.data.ShopId
+						url: '/pages/store/storeIndex/storeIndex?shopId='+this.dataitem.ShopId
 					})	
 				}
 			},
 			//全部评论
 			gotocommentlist(){
 				uni.navigateTo({
-					url:'/pages/Article/replylist/replylist?id='+this.data.Id
+					url:'/pages/Article/replylist/replylist?id='+this.dataitem.Id
 				})
 			},
 			//预览图片
@@ -136,12 +139,12 @@
 						icon: "none",
 						duration: 2000
 					});
-					if(this.data.IsLike==1){
-						this.data.IsLike=0;
-						this.data.LikeNum--;
+					if(this.dataitem.IsLike==1){
+						this.dataitem.IsLike=0;
+						this.dataitem.LikeNum--;
 					}else{
-						this.data.IsLike=1;
-						this.data.LikeNum++;
+						this.dataitem.IsLike=1;
+						this.dataitem.LikeNum++;
 					}
 				}
 			}
@@ -171,11 +174,14 @@
 		border-bottom-color: #eee;
 		padding: 20upx 0;
 	}
-
+	/* #ifndef MP-WEIXIN */
 	.list-cell:last-child .media-list {
 		border-bottom: none;
 	}
-
+	/* #endif */
+	media-list:last-child .media-list{
+		border-bottom: none;
+	}
 	.media-hd {
 		height: 80upx;
 		margin-bottom: 10upx;
