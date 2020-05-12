@@ -2,7 +2,7 @@
   <div>
       <swiper class="swiper" @change="changeBanner" indicator-dots indicator-active-color="#ff6f00">
         <div class="numpage">{{bannerindex+1}}/{{BannerNum}}</div>
-        <swiper-item class="flexc" v-for="(item,index) in proInfo.ProductImgList" :key="index">
+        <swiper-item class="flexc" v-for="(item,index) in proInfo.PicData" :key="index">
           <img mode='aspectFill' :src="item.PicUrl" alt="">
         </swiper-item>
       </swiper>
@@ -10,7 +10,7 @@
         <div v-if="isLimint==1" :class="['limitTiem jus-b ali-c',starTimetype!=1?'no':'']">
             <div class="limt-left">
               <div class="active-price jus-a ali-c">
-                  <h3><span>¥</span>{{proInfo.TimePrice}}</h3>
+                  <h3><span>¥</span>{{proInfo.Price}}</h3>
                    <p>¥{{proInfo.MarketPrice}}</p>
               </div>
               <div class="percentage">
@@ -32,7 +32,7 @@
             <p class="price" v-if="isLimint==0">
               <span>￥</span><span>{{proInfo.ProductPrice}}</span><span>￥{{proInfo.MarketPrice}}</span>
             </p>
-            <p class="tit">{{proInfo.ProductName}}</p>
+            <p class="tit">{{proInfo.Name}}</p>
           </div>
           <div class="right">
             <button open-type='share' class="sharebutton"><img src="http://jd.wtvxin.com/images/images/index/fenxiang.png" alt=""></button>
@@ -40,7 +40,7 @@
         </div>
         <div class="jus-b ali-c">
           <span class="txtinfo">已售：{{proInfo.SalesVolume}}</span>
-          <span class="txtinfo">好评：{{proInfo.PraiseRate}}%</span>
+          <!-- <span class="txtinfo">好评：{{proInfo.PraiseRate}}%</span> -->
         </div>
       </div>
       <div class="list-box">
@@ -97,12 +97,14 @@
         <div class="list ali-c jus-b">
           <div class="left ali-c">
             <span>服务</span>
-            <img src="http://jd.wtvxin.com/images/images/index/ok.png" alt="">
-            <p>品质保证</p>
-            <img src="http://jd.wtvxin.com/images/images/index/ok.png" alt="">
-            <p>破损补寄</p>
-            <img src="http://jd.wtvxin.com/images/images/index/ok.png" alt="">
-            <p>及时发货</p>
+            <div class="service-list flex-center-between">
+              <block v-for="(item,index) in proInfo.ServiceInfo" :key="index">
+                <div class="flex-center item" v-if="index<3">
+                  <img src="http://jd.wtvxin.com/images/images/index/ok.png" alt="">
+                  <p>{{item.Name}}</p>
+                </div>
+              </block>
+            </div>
           </div>
         </div>
       </div>
@@ -177,19 +179,20 @@
           <p :class="['flex1 flexc',starTimetype!=1?'dis':'']" @click="showSku(2)">立即购买</p>
         </div>
       </div>
+      <!-- sku -->
       <div class="topbtn" @click="Top" v-if="isTop"></div>
       <div v-if="showPopupSku" @click="hidePopup" class="mengban"></div>
         <div class="main" id="main" :style="mainHeight" :class="showPopupSku?'show':''">
             <div class="top-box">
                 <div class="one jus-b">
                     <div class="img-box jus-c ali-c">
-                        <img :src="SpecInfo.SpecImage||(proInfo.ProductImgList&&proInfo.ProductImgList[0].PicUrl)" alt="">
+                        <img :src="SpecInfo.SpecImage||(proInfo.PicData&&proInfo.PicData[0].PicUrl)" alt="">
                     </div>
                     <div class="right jus-b">
                         <div>
-                            <p class="tit">{{proInfo.ProductName}}</p>
-                            <span v-if="isLimint">{{proInfo.TimePrice}}</span>
-                            <span v-else><span class="fuhao">￥</span>{{SpecInfo.PunitPrice===undefined?proInfo.ProductPrice:SpecInfo.PunitPrice}}</span>
+                            <p class="tit">{{proInfo.Name}}</p>
+                            <span v-if="isLimint">{{proInfo.Price}}</span>
+                            <span v-else><span class="fuhao">￥</span>{{SpecInfo.PunitPrice===undefined?proInfo.Price:SpecInfo.Price}}</span>
                             <p class="font_four">库存：{{reStock}}</p>
                                 <!-- :SpecInfo.PunitPrice -->
                         </div>
@@ -263,10 +266,11 @@
 </template>
 
 <script>
-import {post,get,previewImg,filePath,navigateBack} from '@/utils'
+import {post,get,previewImg,filePath,navigate,navigateBack} from '@/utils'
 export default {
   data () {
     return {
+      navigate,
       previewImg,
       userId: "",
       token: "",
@@ -304,10 +308,12 @@ export default {
   onLoad(optins){
     this.userId = wx.getStorageSync("userId");
     this.token = wx.getStorageSync("token");
+    this.proId=optins.id;
   },
   onShow(){
+    this.userId = wx.getStorageSync("userId");
+    this.token = wx.getStorageSync("token");
     this.shopid = wx.getStorageSync("shopid");
-    this.proId=this.$root.$mp.query.id;
     this.isLimint=this.$root.$mp.query.isLimint||0;
     this.goodsNum = 1;
     this.specList=[];
@@ -343,9 +349,7 @@ export default {
       })
     },
     gokefu(){
-      wx.navigateTo({
-        url:"/pages/service/chatRoomSon2/main"
-      });
+      navigate("other/kefu/kefu");
     },
     cliTag(name,value){//点击选择规格标签--name:规格名称 value:所选规格值
       this.$set(this.SpecValue,name,value)
@@ -528,35 +532,35 @@ export default {
         userId: this.userId,
         token: this.token,
         // ShopId:this.shopid,
-        Id: this.proId||480
+        Id: this.proId
       })
       if(res.code!==0){
         navigateBack();
       }
-        res.data.ContentDetail = res.data.ContentDetail.replace(/<img/g,'<img style="max-width:100%;"');
-        this.proInfo=res.data;
-        this.BannerNum=res.data.ProductImgList.length;
-        this.IsCollect=res.data.IsCollectionPro;
-        this.specList = JSON.parse(res.data.SpecificationValue);
-        this.reStock=res.data.Stock;
-        this.maxbuy=res.data.MaxBuyNum;//最大购买量
-        this.minbuy=res.data.MinBuyNum; //最小购买量
-        this.percentage=res.data.SalesVolume/res.data.Stock*100;
-        if(!res.data.ProductSpecList.length){
-          this.isMatch=true;
-        }
-        if(this.proInfo.CouponList.length){
-          this.proInfo.CouponList.forEach(item=>{
-            item.EndTime=item.EndTime.split("T")[0];
-          })
-        }
         const data = res.data;
+        data.ContentDetail = data.ContentDetail.replace(/<img/g,'<img style="max-width:100%;"');
+        this.proInfo=data;
+        this.BannerNum=data.PicData.length;
+        this.IsCollect=data.IsCollection.Value;
+        this.specList = JSON.parse(data.SpecificationValue);
+        this.reStock=data.Stock;
+        this.maxbuy=data.MaxBuyNum;//最大购买量
+        this.minbuy=data.MinBuyNum; //最小购买量
+        this.percentage=data.SalesVolume/data.Stock*100;
+        // if(!data.ProductSpecList.length){
+        //   this.isMatch=true;
+        // }
+        // if(this.proInfo.CouponList.length){
+        //   this.proInfo.CouponList.forEach(item=>{
+        //     item.EndTime=item.EndTime.split("T")[0];
+        //   })
+        // }
         // 评价
-        data.EvaluateList.map(item=>{
-          item.imgList = item.EvaluateImgList.split(',');
-        })
+        // data.EvaluateList.map(item=>{
+        //   item.imgList = item.EvaluateImgList.split(',');
+        // })
+        //比较秒杀是否开始
         if(this.isLimint==1){
-          //比较秒杀是否开始
 					let dateBegin = new Date(this.proInfo.FlashSaleStartTime.replace(/T/g, " "));
 					let dateNow = new Date(); //获取当前时间
 					let beginDiff = dateNow.getTime() - dateBegin.getTime(); //时间差的毫秒数 
@@ -632,11 +636,11 @@ export default {
     },
     //添加取消收藏
 			async collect(){
-				let res = await post("Goods/ProductCollection", {
-					proId: this.proId,
-					userId:this.userId,
-          token:this.token,
-          ShopId:this.shopid
+				let res = await post("User/AddCollections", {
+          UserId:this.userId,
+          Token:this.token,
+          Type:0,
+          Id:this.proId
 				  });
 				if(res.code==0){
 					if(this.IsCollect){
@@ -666,7 +670,7 @@ export default {
   },
   onShareAppMessage: function() {
     return {
-      title: this.proInfo.ProductName, //转发页面的标题
+      title: this.proInfo.Name, //转发页面的标题
       imageUrl:this.proInfo.ProductImgList[0].PicUrl,
       path: '/pages/goodsSon/goodsDetail/main?id='+this.proId+'&isLimint='+this.isLimint
     }
@@ -907,13 +911,19 @@ export default {
         color: #999999;
         margin-right: 43rpx;
       }
-      img{
-        width: 31rpx;
-        height: 31rpx;
-        margin-right: 11rpx
-      }
-      p{
-        margin-right: 43rpx;
+      .service-list{
+        width:588upx;
+          img{
+            width: 31rpx;
+            height: 31rpx;
+            margin-right: 11rpx
+          }
+          p{
+            margin-right: 43rpx;
+            &:last-child{
+              margin-right:0;
+            }
+          }
       }
     }
     .right{

@@ -97,7 +97,10 @@
 				</div>
 			</div>
 			<div class="list flex-center-between" id="sort">
-				<div class="item" :class="{'border-r':index%2==0}" v-for="(item,index) in list" :key="index">
+				<div class="item" :class="{'border-r':index%2==0}" 
+					v-for="(item,index) in list" :key="index"
+					@click="navigate('product/productDetail/productDetail',{id:item.Id})"
+					>
 					<img :src="item.PicNo" alt="">
 					<div class="content">
 						<div class="tit ellipsis">{{item.Name}}</div>
