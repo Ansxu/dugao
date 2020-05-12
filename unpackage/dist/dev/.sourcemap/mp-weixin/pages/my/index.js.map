@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///E:/wu3.23/杜高/dugao/main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA,wCAAmB;AACnB;AACA,yF;AACAA,UAAU,CAACC,cAAD,CAAV,C","file":"pages/my/index.js","sourcesContent":["import 'uni-pages';import '@dcloudio/uni-stat';\nimport Vue from 'vue'\nimport Page from './pages/my/index.vue'\ncreatePage(Page)"],"sourceRoot":""}
