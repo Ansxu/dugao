@@ -150,6 +150,7 @@ export function navigateBack(){
 }
 // 跳转url,带参
 export function navigate(url,params,isLogin){
+  console.log('要跳转到的地址'+url)
   // 判断是否已登录
   if(isLogin&&!judgeLogin()){
     return;

@@ -10,7 +10,7 @@
 						<div class="item" :class="{'active':index==navindex}" 
 							v-for="(item,index) in nav" :key="index"
 							@click="onNavIndex(index)"
-							>{{item}}
+							>{{item.Name}}
 						</div>
 						<!-- 滑动的下标 -->
 						<div class="active-border" :style="'left:'+navWidth[navindex]"></div>
@@ -23,51 +23,46 @@
 		</div>
 		<div class="banner">
 			<swiper indicator-dots autoplay>
-				<swiper-item  v-for="(item,index) in 3" :key="index">
-					<img src="@/static/home/banner.png" alt="">
+				<swiper-item  v-for="(item,index) in banner" :key="index">
+					<img :src="item.Pic" alt="">
 				</swiper-item>
 			</swiper>
 		</div>
 		<div class="share mlr30">
 			<div class="title flex-center-between">
-				<h1>施肥方案分享</h1>
-				<div class="more flex-center">
+				<h1>{{schemeTitle}}</h1>
+				<div class="more flex-center" @click="navigate('scheme/fertilizer')">
 					更多
 					<img src="@/static/icons/arrow.png" alt="">
 				</div>
 			</div>
 			<div class="list flex-center-between">
-				<div class="item" v-for="(item,index) in 4" :key="index">
-					<img src="@/static/home/share-list1.png" alt="">
-					<div class="content flex-end">
-						<p class="ellipsis">促根促长解决方案促根促长解决方案</p>
-					</div>
-				</div>
+				<block  v-for="(item,index) in schemeList" :key="index">
+					<fertilizer-item :item='item'></fertilizer-item>
+				</block>
 			</div>
 		</div>
 		<div class="gap20"></div>
 		
 		<div class="video mlr30">
 			<div class="title flex-center-between">
-				<h1>施肥方案分享</h1>
-				<div class="more flex-center">
+				<h1>施肥视频分享</h1>
+				<div class="more flex-center" @click="navigate('scheme/videozone')">
 					更多
 					<img src="@/static/icons/arrow.png" alt="">
 				</div>
 			</div>
 			<div class="list flex-center-between">
-				<div class="item" v-for="(item,index) in 2" :key="index">
+				<div class="item" v-for="(item,index) in videoList" :key="index">
 					<div class="imgBox">
-						<img src="@/static/home/share-list1.png" alt="">
+						<img :src="item.Logo" alt="">
 						<div class="content flex-center-center">
 							<div class="video-mask flex-center-center">
 								<img src="@/static/icons/video-arrow.png" alt="">
 							</div>
 						</div>
 					</div>
-					<div class="text ellipsis">
-						叶面肥冲施肥果树通用型肥冲施肥果树通用型
-					</div>
+					<div class="text ellipsis">{{item.Title}}</div>
 				</div>
 			</div>
 		</div>
@@ -75,70 +70,126 @@
 		
 		<div class="sort">
 			<div class="sort-nav flex-center-between">
-				<div class="item flex-center">
-					<p>全部</p>
+				<div class="item flex-center" :class="{'avtive':sortType===0}" @click="clickSort(0)">
+					<p>默认</p>
 					<!-- <span class="flex-column-center-center">
 						<img src="@/static/icons/arrow-top.png" alt="">
 						<img src="@/static/icons/arrow-top.png" alt="">
 					</span> -->
 				</div>
-				<div class="item flex-center">
+				<div class="item flex-center" :class="{'avtive':sortType===1}" @click="clickSort(1)">
 					<p>销量</p>
-					<span class="flex-column-center-center">
-						<img src="@/static/icons/arrow-top.png" alt="">
-						<img src="@/static/icons/arrow-top.png" alt="">
-					</span>
+					<div class="flex-column-center-center arrow">
+						<span class="arrow-top" :class="{'active-arrow':sortType===1&&sortMode===0}"></span>
+						<span class="arrow-bottom" :class="{'active-arrow':sortType===1&&sortMode===1}"></span>
+						<!-- <img src="@/static/icons/arrow-top.png" alt="">
+						<img src="@/static/icons/arrow-top.png" alt=""> -->
+					</div>
 				</div>
-				<div class="item flex-center">
+				<div class="item flex-center" :class="{'avtive':sortType===2}" @click="clickSort(2)">
 					<p>价格</p>
-					<span class="flex-column-center-center">
-						<img src="@/static/icons/arrow-top.png" alt="">
-						<img src="@/static/icons/arrow-top.png" alt="">
-					</span>
-				</div>
-			</div>
-			<div class="list flex-center-between">
-				<div class="item" :class="{'border-r':index%2==0}" v-for="(item,index) in 10" :key="index">
-					<img src="@/static/home/list1.png" alt="">
-					<div class="content">
-						<div class="tit ellipsis">优根腐植酸肥料植物优根腐植酸肥料植物</div>
-						<div class="price flex-end">
-							<div class="main-price flex-end"><span>¥</span>298.00</div>
-							<div class="o-price">¥398.00</div>
-						</div>
-						<div class="num">已售235件</div>
+					<div class="flex-column-center-center arrow">
+						<!-- <img src="@/static/icons/arrow-top.png" alt="">
+						<img src="@/static/icons/arrow-top.png" alt=""> -->
+						<span class="arrow-top" :class="{'active-arrow':sortType===2&&sortMode===0}"></span>
+						<span class="arrow-bottom" :class="{'active-arrow':sortType===2&&sortMode===1}"></span>
 					</div>
 				</div>
 			</div>
+			<div class="list flex-center-between" id="sort">
+				<div class="item" :class="{'border-r':index%2==0}" v-for="(item,index) in list" :key="index">
+					<img :src="item.PicNo" alt="">
+					<div class="content">
+						<div class="tit ellipsis">{{item.Name}}</div>
+						<div class="price flex-ends">
+							<div class="main-price flex-end"><span>¥</span>{{item.MarketPrice}}</div>
+							<div class="o-price">¥{{item.Price}}</div>
+						</div>
+						<div class="num">已售{{item.SalesVolume}}件</div>
+					</div>
+				</div>
+			</div>
+			<noData v-if="list.length<1"></noData>
+			<uni-load-more :loadingType="loadMore" v-else></uni-load-more>
 		</div>
 	</view>
 </template>
 
 <script>
 import {post,navigate} from '@/utils';
+import noData from '@/components/noData/noData.vue';
+import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 	export default {
+		components:{noData,fertilizerItem},
 		data() {
 			return {
 				navigate,
 				nav:[],
 				navWidth:[],
-				navindex:0,
+				navindex:0,//分类下标
+				banner:[],
+				//方案
+				schemeTitle:'',
+				schemeList:[],
+				// 视频
+				videoTitle:'',
+				videoList:[],
 
-				interval:null,
+				page:1,
+				pageSize:12,
+				sortType:0,//排序类型0-默认1-人气2-价格
+				sortMode:0,//排序方式 0-升序（从小到大） 1-降序（从大到小）
+				list:[],
+				loadMore:0,//0-loading前；1-loading中；2-没有更多了
+
 			}
 		},
 		onLoad() {
-			this.getData();
-			setTimeout(()=>{
-				this.nav=['改良土壤','土壤','改良土','改良土壤','改壤','改良土','改良土壤','改壤']
-				this.$nextTick(()=>{
-					this.getScrollWidth();
-				})
-			},2000)
+			// this.getData();
+			this.getBanner();
+			this.getClassify();
+			this.getScheme();//方案
+			this.getVideo();//视频
 		},
 		methods: {
-			getData(){
-				
+			getBanner(){
+				post('Banner/BannerList',{Cid:1}).then(res=>{
+					this.banner = res.data;
+				})
+			},
+			//方案
+			getScheme(){
+				post('Find/FindList',{
+					Page:1,
+					PageSize:4,
+					MyType:3,
+					ClassId:16
+				}).then(res=>{
+					this.schemeList = res.data;
+					this.schemeTitle =  res.data[0].ClassName;
+				})
+			},
+			// 视频
+			getVideo(){
+				post('News/BrandgoodsList',{
+					Page:1,
+					PageSize:4,
+				}).then(res=>{
+					this.videoList = res.data;
+					this.videoTitle =  res.data[0].ClassName;
+				})
+			},
+			
+			// *********分类********************
+			getClassify(){
+				post('Goods/TypeList').then(res=>{
+					this.nav=[{Name:'全部',Id:0}]
+					this.nav.push(...res.data);
+					this.getPro();
+					this.$nextTick(()=>{
+						this.getScrollWidth();
+					})
+				})
 			},
 			// 获取导航的宽
 			getScrollWidth(){
@@ -156,9 +207,65 @@ import {post,navigate} from '@/utils';
 
 				}) ;
 			},
+			// 点击分类时
 			onNavIndex(index){
 				console.log(index,this.navWidth)
-				this.navindex = index
+				this.navindex = index;
+				this.page =1;
+				this.sortType=0;
+				this.sortMode=0;
+				this.getPro();
+				this.query('#sort');
+			},
+			// *********分类end********************
+			getPro(){
+				this.loadMore = 1;
+				post('Goods/GoodsList',{
+					TypeId:this.nav[this.navindex].Id,
+					Page:this.page,
+					PageSize:this.pageSize,
+					sort:this.sortType,
+					Order:this.sortMode
+				}).then(res=>{
+					this.loadMore = 0;
+					const data = res.data;
+					if(this.page===1){
+						this.list =[];
+					}
+					this.list.push(...data);
+					if(data.length<this.pageSize){
+						this.loadMore = 2;
+					}
+				})
+			},
+			// 点击筛选
+			clickSort(sortType){
+				if(this.sortType === sortType){
+					this.sortMode = this.sortMode?0:1;
+				}else{
+					this.sortMode = 0;
+				}
+				this.sortType = sortType;
+				this.getPro();
+			},
+			query(toViewid){
+				const query=wx.createSelectorQuery();  //创建节点查询器
+				query.select(toViewid).boundingClientRect()  //选择toViewid获取位置信息
+				query.selectViewport().scrollOffset()  //获取页面查询位置的
+				query.exec(function(res) {
+					console.log(res)
+					wx.pageScrollTo({
+					scrollTop: res[0].top+res[1].scrollTop-80,
+					duration: 300
+					})
+				})
+			}
+		},
+		// 上拉加载
+		onReachBottom: function() {
+			if (this.loadMore !== 2) {
+				this.page++;
+				this.getPro();
 			}
 		}
 	}
@@ -183,6 +290,12 @@ import {post,navigate} from '@/utils';
 	}
 	.nav-home{
 		// padding:20upx 0 30upx;
+		position:sticky;
+		top:0;
+		left:0;
+		width:100%;
+		background:#fff;
+		z-index:99;
 		.scroll-nav{
 			width:83%;
 			height:90upx;
@@ -244,26 +357,6 @@ import {post,navigate} from '@/utils';
 		.list{
 			flex-flow:row wrap;
 			padding-bottom:10upx;
-			.item{
-				width:335upx;height:168upx;
-				border-radius:10upx;
-				overflow:hidden;
-				position:relative;
-				margin-bottom:20upx;
-				img{
-					width:100%;
-					height:100%;
-				}
-				.content{
-					position:absolute;
-					left:0;top:0;
-					width:100%;height:100%;
-					background:rgba(0,0,0,.3);
-					color:$white;
-					line-height:1.2;
-					padding:20upx;
-				}
-			}
 		}
 	}
 	.video{
@@ -308,8 +401,18 @@ import {post,navigate} from '@/utils';
 	.sort{
 		.sort-nav{
 			padding:0 80upx;
-			height:85upx;
-			line-height:85upx;
+			height:80upx;
+			line-height:80upx;
+			position:sticky;
+			top:90upx;
+			left:0;
+			width:100%;
+			background:#fff;
+			border-top:1upx solid #f5f5f5;
+			border-bottom:1upx solid #f5f5f5;
+			.avtive{
+				color:$primary;
+			}
 			.item{
 				p{
 					// margin-right:;
@@ -323,13 +426,32 @@ import {post,navigate} from '@/utils';
 						}
 					}
 				}
+				.arrow{
+					margin-left:5upx;
+					.arrow-top{
+						border-right:10upx solid #fff;
+						border-bottom:10upx solid #999;
+						border-left:10upx solid #fff;
+						margin-bottom:3upx;
+					}
+					.arrow-bottom{
+						margin-top:3upx;
+						border-right:10upx solid #fff;
+						border-top:10upx solid #999;
+						border-left:10upx solid #fff;
+					}
+					.active-arrow{
+						border-top-color:$primary;
+						border-bottom-color:$primary;
+					}
+				}
 			}
 		}
 		.list{
 			flex-flow:row wrap;
 			.item{
 				width:50%;
-				border-top:1upx solid #e8e8e8;
+				border-bottom:1upx solid #e8e8e8;
 				padding-bottom:30upx;
 				&.border-r{
 					border-right:1upx solid #e8e8e8;
@@ -369,5 +491,15 @@ import {post,navigate} from '@/utils';
 				}
 			}
 		}
+	}
+	.flex-ends{
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display:flex;
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		-webkit-align-items: flex-end;
+		align-items:flex-end;
 	}
 </style>
