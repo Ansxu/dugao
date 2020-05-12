@@ -2,11 +2,10 @@
 	<view class="commentlist">
 		<!-- 评价列表 -->
 		<block v-if="hasData">
-		<view class="uni-comment">
+		<view class="uni-comment uni-bg-white">
 			<view class="uni-comment-list" v-for="(item,index) in replylist" :key="index">
 				<view class="uni-comment-face" @click="gotoUserhome(item.MemberId)">
-					<image class="img" v-if="item.MemberHead" :src="item.MemberHead" mode="aspectFill"></image>
-					<image class="img" v-else src="/static/default.png" mode="aspectFill"></image>
+					<image class="img" :src="item.MemberHead||'http://ddyp.wtvxin.com/static/default.png'" mode="aspectFill"></image>
 				</view>
 				<view class="uni-comment-body">
 					<view class="uni-comment-top">
@@ -398,7 +397,6 @@
 <style>
 /* 评论样式 */
 .commentlist {
-	background: #fff;
 	min-height: 100%;
 }
 

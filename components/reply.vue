@@ -11,14 +11,12 @@
 			<view class="uni-comment">
 				<view class="uni-comment-list" v-for="(item,index) in replylist" :key="index">
 					<view class="uni-comment-face" @click="gotoUserhome(item.MemberId)">
-						<image class="img" v-if="item.MemberHead" :src="item.MemberHead" mode="aspectFill"></image>
-						<image class="img" v-else src="/static/default.png" mode="aspectFill"></image>
+						<image class="img" :src="item.MemberHead||'http://ddyp.wtvxin.com/static/default.png'" mode="aspectFill"></image>
 					</view>
 					<view class="uni-comment-body">
 						<view class="uni-comment-top">
 							<text class="name">
-								<block v-if="item.MemberName">{{item.MemberName}}</block>
-								<block v-else>匿名</block>
+								{{item.MemberName||'匿名'}}
 							</text>
 							<view :class="['zan',item.IsLike==1?'active':'']" @click="like(item.Id,2,index)">{{item.LikeNum}}</view>
 						</view>
@@ -29,7 +27,7 @@
 							</view>
 							<view v-if="item.imgArr.length>3" class="count">{{item.imgArr.length}}</view>
 						</view>
-						<view class="comment-date">
+						<view class="comment-date flex">
 							<view class="date">{{item.AddTime}}</view><view>▪</view><view class="replay-btn" @click="Sendreplay(item.Id,item.MemberName,false)">回复TA</view>
 						</view>
 						<view class="replaybox" v-if="item.MyCommnetList.length>0">

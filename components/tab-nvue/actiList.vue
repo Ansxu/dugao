@@ -19,7 +19,7 @@
 				</view>
 				<view class="media-foot">
 					<view class="media-info">
-						<text class="info-text">{{dataitem.AddTime}}开始</text>
+						<text class="info-text">{{dataitem.AddTime}}</text>
 					</view>
 					<view class="media-info-r">
 						<text class="info-text scan">{{dataitem.JoinNum}}人参与</text>
@@ -36,7 +36,7 @@
 	 import {host,post} from '@/utils';
 	export default {
 		props: {
-			dataitem: {
+			datajson: {
 				type: Object,
 				default: function(e) {
 					return {
@@ -48,11 +48,13 @@
 		created(){
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
+			this.dataitem=this.datajson;
 		},
 		data(){
 			return{
 				userId: "",
 				token: "",
+				dataitem:{}
 			}
 		},
 		computed: {},

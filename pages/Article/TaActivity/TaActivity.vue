@@ -21,11 +21,11 @@
 					</view>
 				</block>
 			</view>
-			<view class="uni-tab-bar-loading">
-				<uni-load-more :loadingType="loadingType"></uni-load-more>
-			</view>
+			
 		</view>
-		
+		<view class="uni-tab-bar-loading" v-if="hasData">
+			<uni-load-more :loadingType="loadingType"></uni-load-more>
+		</view>
 		<noData :isShow="noDataIsShow"></noData>
 	</view>
 </template>

@@ -72,7 +72,7 @@
 </template>
 
 <script>
-	import {host,post,get,valPhone,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,valPhone} from '@/common/util.js';
 	export default {
 		data() {
 			return {
@@ -87,12 +87,11 @@
 			};
 		},
 		onLoad(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
-			this.userId = uni.getStorageSync("userId");
-			this.token = uni.getStorageSync("token");
 			this.ActId=e.id;
 		},
 		onShow() {
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
 			this.Name="",
 			this.Card="",
 			this.Phone="",
@@ -186,7 +185,7 @@
 .content{ background: #fff; min-height: 100%;}
 .uni-list:after{ display: none;}
 .list-cell-l{ color: #999;}
-.list-cell-r{ width: 500upx; color: #333; text-align: right;}
+.list-cell-r{ width: 560upx; color: #333; text-align: right; padding-right: 0;}
 .agree .list-cell-l{ margin-left: 54upx;}
 .agree .checkbox{ margin-left: -54upx;}
 .tipsbox{ padding: 20upx;}

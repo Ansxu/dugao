@@ -33,7 +33,7 @@
 			<view class="uni-list-cell location">
 				<view class="uni-list-cell-navigate uni-navigate-right" @tap="chooseLocation">
 					<view class="list-cell-l">
-						<text class="iconfont icon-dizhi1"></text>所在位置
+						<text class="iconfont icon-dizhi"></text>所在位置
 					</view>
 					<block v-if="hasLocation === false">
 						<view class="list-cell-r">不显示当前位置</view>
@@ -71,6 +71,17 @@
 <script>
 	import {host,post,get,formatLocation} from '@/common/util.js';
 	import cpimg from "@/components/cpimg.vue";
+	import { pathToBase64, base64ToPath} from '@/common/image-tools.js';
+	var sourceType = [
+		['camera'],
+		['album'],
+		['camera', 'album']
+	]
+	var sizeType = [
+		['compressed'],
+		['original'],
+		['compressed', 'original']
+	]
 	export default {
 		components: {
 			cpimg
@@ -85,6 +96,12 @@
 				locationAddress: '',
 				imageList: [],
 				base64Arr:[],
+				sourceTypeIndex: 2,
+				sourceType: ['拍照', '相册', '拍照或相册'],
+				sizeTypeIndex: 2,
+				sizeType: ['压缩', '原图', '压缩或原图'],
+				countIndex: 8,
+				count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 				inputTxtLength:0,//当前输入字数
 				role:0,//观看权限
 				roletxt:["公开","好友","私密"],
@@ -94,11 +111,11 @@
 			};
 		},
 		onLoad() {
-			this.userId = uni.getStorageSync("userId");
-			this.token = uni.getStorageSync("token");
+			
 		},
 		onShow(){
-			
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
 		},
 		onUnload() {
 			this.imageList = [],
@@ -109,9 +126,41 @@
 		},
 		methods: {
 			// 添加图片
-			chooseImage() {
+			chooseImage:async function() {
+				//#ifndef MP-WEIXIN
 				let that = this
 				that.$refs.cpimg._changImg()
+				//#endif
+				//#ifdef MP-WEIXIN
+				if (this.imageList.length >= 9) {
+					let isContinue = await this.isFullImg();
+					if (!isContinue) {
+						return;
+					}
+				}
+				uni.chooseImage({
+					sourceType: sourceType[this.sourceTypeIndex],
+					sizeType: sizeType[this.sizeTypeIndex],
+					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
+					success: (res) => {
+						this.imageList = this.imageList.concat(res.tempFilePaths);
+						if (this.imageList.length >= 9) {
+						  this.isShowBtnUpload = false;
+						  this.imageList.splice(9);
+						}
+					}
+				})
+				//#endif
+			},
+			async base64Img(arr) {
+				let base64Arr = [];
+				for (let i = 0; i < arr.length; i += 1) {
+				const res = await pathToBase64(arr[i]);
+				base64Arr.push({
+				  PicUrl: res
+				});
+			  }
+			  return base64Arr;
 			},
 			cpimgOk(file) {
 				let that = this;
@@ -126,7 +175,24 @@
 			cpimgErr(e) {
 				console.log(e)
 			},
-
+			isFullImg: function() {
+				return new Promise((res) => {
+					uni.showModal({
+						content: "已经有9张图片了,是否清空现有图片？",
+						success: (e) => {
+							if (e.confirm) {
+								this.imageList = [];
+								res(true);
+							} else {
+								res(false)
+							}
+						},
+						fail: () => {
+							res(false)
+						}
+					})
+				})
+			},
 			previewImage: function(e) {
 				var current = e.target.dataset.src
 				uni.previewImage({
@@ -135,11 +201,40 @@
 				})
 			},
 			chooseLocation: function () {
+				var _this=this;
+				// uni.openSetting();
+				uni.getSetting({
+					success(res) {	
+						console.log(res)
+						if (!res.authSetting["scope.userLocation"]) {  //3.1 每次进入程序判断当前是否获得授权，如果没有就去获得授权，如果获得授权，就直接获取当前地理位置
+							_this.getAuthorizeInfo()
+						}else{
+							_this.getLocationInfo()
+						}
+					}
+				});
+				
+			},
+			getLocationInfo(){
 				uni.chooseLocation({
 					success: (res) => {
 						this.hasLocation = true,
 							this.location = formatLocation(res.longitude, res.latitude),
 							this.locationAddress = res.address
+					}
+				})
+			},
+			getAuthorizeInfo(){  //1. uniapp弹窗弹出获取授权（地理，个人微信信息等授权信息）弹窗
+				var _this=this;
+				uni.authorize({
+					scope: "scope.userLocation",
+					success() { //1.1 允许授权
+						_this.getLocationInfo();
+					},
+					fail(){    //1.2 拒绝授权
+						console.log("你拒绝了授权，无法获得周边信息")
+						
+						//uni.openSetting();
 					}
 				})
 			},
@@ -158,13 +253,11 @@
 			selectRole(index){
 				this.role=index;
 			},
-			limitInput(e) {
-				// console.log(e)
-				this.inputTxtLength = e.detail.cursor;
+			limitInput() {
+				this.inputTxtLength = this.title.length;
 			},
 			//发布
-			async UserPublishFind(base64img){ 
-				console.log(base64img)
+			async UserPublishFind(base64img){
 				let result = await post("Find/UserPublishFind", {
 					"UserId": this.userId,
 					"Token": this.token,
@@ -223,6 +316,9 @@
 					});
 				}
 				if(_this.verifysubmint()){
+					//#ifdef MP-WEIXIN
+					base64Arr=await this.base64Img(this.imageList)
+					//#endif
 					_this.UserPublishFind(JSON.stringify(base64Arr));
 				}
 			},
