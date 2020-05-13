@@ -15,16 +15,16 @@
 					</view>
 				</view>
 				<view class="media-location" v-if="dataitem.Location">
-					<text class="info-text iconfont icon-dizhi1">{{dataitem.Location}}</text>
+					<text class="info-text iconfont icon-shouhuodizhi">{{dataitem.Location}}</text>
 				</view>
 				<view class="media-foot">
 					<view class="media-info">
 						<text class="info-text">{{dataitem.AddTime}}</text>
 					</view>
 					<view class="media-info-r">
-						<text class="info-text scan">{{dataitem.JoinNum}}人参与</text>
-						<text class="info-text comment" @click.stop="gotocommentlist(dataitem.Id)">{{dataitem.CommentNum}}</text>
-						<text :class="['info-text zan',dataitem.IsLike==1?'active':'']" @click.stop="like(dataitem.Id)">{{dataitem.LikeNum}}</text>
+						<text class="info-text">{{dataitem.JoinNum}}人参与</text>
+						<text class="info-text" @click.stop="gotocommentlist(dataitem.Id)"><text class="iconfont icon-pinglun1"></text>{{dataitem.CommentNum}}</text>
+						<text class="info-text" @click.stop="like(dataitem.Id)"><text :class="['iconfont',dataitem.IsLike==1?'icon-zan1':'icon-zan']"></text>{{dataitem.LikeNum}}</text>
 					</view>
 				</view>
 			</view>
@@ -197,14 +197,29 @@
 		font-size: 24upx;
 	}
 	.media-location{ margin-top: 20upx;}
-	.media-location .icon-dizhi1:before{ color: #bbb; font-size: 36upx; line-height: 1; }
-	.comment{ padding-left: 40upx; background: url(http://www.sc-mall.net/static/pl_icon.png) left center no-repeat; background-size: 32upx;}
-	.zan{ padding-left: 40upx; background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat; background-size: 32upx;}
-	.zan.active{ background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat; background-size: 32upx;}
+	.media-location .icon-shouhuodizhi{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.media-location .icon-shouhuodizhi:before{ color: #bbb; font-size: 28upx; line-height: 1;margin-right: 8upx; }
 	.media-info-r{
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;
+		align-items: center;
 	}
-	.media-info-r .info-text{ margin-left: 20upx;}
+	.media-info-r .info-text{ margin-left: 20upx;
+	    display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.media-info-r .info-text .iconfont{
+		margin-right: 8upx;
+	}
+	.media-info-r .info-text .iconfont.icon-zan1{
+		color: #89674C;
+	}
 </style>
