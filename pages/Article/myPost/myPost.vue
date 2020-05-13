@@ -2,7 +2,7 @@
 	<view class="commentPage">
 		<view class="list uni-bg-white" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
-				<media-list :datajson="item" Grid="3" @click="goDetail" @flow="flow" @previewImg="previewImg"></media-list>
+				<media-list :datajson="item" Grid="3" :isBtn="false" @click="goDetail" @previewImg="previewImg"></media-list>
 			</block>
 		</view>
 		<view class="uni-tab-bar-loading" v-if="hasData">
@@ -35,7 +35,7 @@
 				hasData: false,
 				noDataIsShow: false,
 				page: 1,
-				pageSize: 10,
+				pageSize: 6,
 				allPage: 0,
 				count: 0,
 				mytype:0,//0我的,1TA的
@@ -81,6 +81,7 @@
 						this.hasData = true;
 						result.data.forEach(function(item) {
 							item.Addtime=dateUtils.format(item.Addtime);
+							item.imgArr = item.ImgList.split(',');
 						})
 					}
 					this.count = result.count;
@@ -114,7 +115,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -146,45 +147,6 @@
 				uni.navigateTo({
 					url: '/pages/Article/artPost/artPost'
 				})
-			},
-			//关注
-			async flow(){
-				let result = await post("Find/FollowOperation", {
-					"UserId": this.userId,
-					"Token": this.token,
-					"ToMemberId":this.Memberid
-				});
-				if (result.code === 0) {
-					uni.showToast({
-						title: result.msg
-					})
-					this.medialist.forEach(function(item){
-						if(item.IsFollow==0){
-							item.IsFollow=1;
-						}else{
-							item.IsFollow=0;
-						}
-					})
-				} else if (result.code === 2) {
-					let _this = this;
-					uni.showModal({
-						content: "您还没有登录，是否重新登录？",
-						success(res) {
-							if (res.confirm) {
-								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
-								});
-							} else if (res.cancel) {
-							}
-						}
-					});
-				} else {
-					uni.showToast({
-						title: result.msg,
-						icon: "none",
-						duration: 2000
-					});
-				}
 			}
 		},
 		onReachBottom: function() {

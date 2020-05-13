@@ -7,13 +7,13 @@
 						<block v-if="ActInfo.ImgList">
 							<image :src="imgArr[0]" mode="aspectFill"></image>
 						</block>
-						<image v-else src="/static/60x60.png" mode="aspectFill"></image>
+						<image v-else src="/static/logo.png" mode="aspectFill"></image>
 					</view>
 					<view class="uni-media-list-body">
 						<view class="uni-media-list-text-top">{{ActInfo.Title}}</view>
 						<view class="uni-media-list-info">
 							<view class="info"><text class="iconfont icon-shijian"></text>{{ActInfo.AddTime}}</view>
-							<view class="info"><text class="iconfont icon-dizhi1"></text>{{ActInfo.Location}}</view>
+							<view class="info"><text class="iconfont icon-dizhi"></text>{{ActInfo.Location}}</view>
 						</view>
 					</view>
 				</view>

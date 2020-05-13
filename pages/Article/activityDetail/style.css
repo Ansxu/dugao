@@ -107,21 +107,21 @@ background: #fff; border-bottom: 1px solid #eee;
 .foot-activity .btn-r .btn{ height: 60upx; line-height: 60upx; width: 100%; text-align: center; background: #fcf4e3; color: #89674c; border-radius: 30upx; }
 .foot-activity .btn-r .active.btn{background: #89674c;color: #fff;}
 .foot-activity .btn-r .disabled.btn{background: #ccc;color: #fff;}
-.zan{
-	padding-left: 20px;
-    background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat;
-    background-size: 16px;
-}
-.zan.active{
-	background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat;
-    background-size: 16px;
-}
 .foot-activity .zan{
 	margin: 10px 0 10px 10px;
     line-height: 30px;
     color: #999;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
 }
-
+.zan .iconfont{
+		margin-right: 8upx;
+	}
+.zan .iconfont.icon-zan1{
+	color: #89674C;
+}
 
 
 

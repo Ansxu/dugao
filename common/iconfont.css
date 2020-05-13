@@ -12,6 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-shijian:before {
+  content: "\e620";
+}
+.icon-eye:before {
+  content: "\e7d0";
+}
 .icon-haoyou:before {
   content: "\e624";
 }

@@ -13,8 +13,7 @@
 					<block v-else-if="dataitem.FindType==2">平台资讯</block>
 				</view>
 				<block v-if="dataitem.IsMy==0&&dataitem.FindType!=2&&isBtn==true">
-					<view class="flow-btn" v-if="dataitem.IsFollow==0" @click="flowbtn">关注</view>
-					<view class="flow-btn flowed" v-else @click="flowbtn">已关注</view>
+					<view :class="['flow-btn',dataitem.IsFollow==0?'':'flowed']" @click="flow(dataitem.FindType,dataitem.ShopId,dataitem.MemberId)">{{dataitem.IsFollow==0?'关注':'已关注'}}</view>
 				</block>
 			</view>
 			<view @click="bindClick(dataitem.FindType,dataitem.Id)">
@@ -42,16 +41,16 @@
 				</block>
 			
 			<view class="media-location" v-if="dataitem.Location">
-				<text class="info-text iconfont icon-dizhi1">{{dataitem.Location}}</text>
+				<text class="info-text iconfont icon-shouhuodizhi">{{dataitem.Location}}</text>
 			</view>
 			<view class="media-foot">
 				<view class="media-info">
 					<text class="info-text">{{dataitem.Addtime}}</text>
 				</view>
 				<view class="media-info-r">
-					<text class="info-text scan">{{dataitem.BrowseNum}}</text>
-					<text class="info-text comment" @click.stop="gotocommentlist">{{dataitem.CommentNum}}</text>
-					<text :class="['info-text zan',dataitem.IsLike==1?'active':'']" @click.stop="like(dataitem.Id)">{{dataitem.LikeNum}}</text>
+					<text class="info-text"><text class="iconfont icon-eye"></text>{{dataitem.BrowseNum}}</text>
+					<text class="info-text" @click.stop="gotocommentlist"><text class="iconfont icon-pinglun1"></text>{{dataitem.CommentNum}}</text>
+					<text class="info-text" @click.stop="like(dataitem.Id)"><text :class="['iconfont',dataitem.IsLike==1?'icon-zan1':'icon-zan']"></text>{{dataitem.LikeNum}}</text>
 				</view>
 			</view>
 			</view>
@@ -97,9 +96,6 @@
 		onLoad(){
 		},
 		methods: {
-			flowbtn() {
-				this.$emit('flow');
-			},
 			bindClick(artType,id) {
 				this.$emit('click',{artType,id});
 			},
@@ -147,7 +143,31 @@
 						this.dataitem.LikeNum++;
 					}
 				}
-			}
+			},
+			async flow(FindType,ShopId,MemberId){
+				let result;
+				if(FindType==0){
+					result = await post("Find/FollowOperation", {
+						"UserId": this.userId,
+						"Token": this.token,
+						"ToMemberId":MemberId
+					});
+				}else if(FindType==1){
+					result = await post("Goods/ShopCollection", {
+						"UserId": this.userId,
+						"Token": this.token,
+						"ShopId":ShopId
+					});
+				}
+				uni.showToast({
+					title: result.msg
+				})
+				if(this.dataitem.IsFollow==0){
+					this.dataitem.IsFollow=1;
+				}else{
+					this.dataitem.IsFollow=0;
+				}
+			},
 		}
 	}
 </script>
@@ -251,6 +271,7 @@
 		width: 100%;
 		height: 100%;
 		border-radius: 6px;
+		background: #eee;
 	}
 	.image-section-one {
 		display: block;
@@ -307,17 +328,31 @@
 		font-size: 24upx;
 	}
 	.media-location{ margin-top: 20upx;}
-	.media-location .icon-dizhi1:before{ color: #bbb; font-size: 36upx; line-height: 1; }
-	.comment{ padding-left: 40upx; background: url(http://www.sc-mall.net/static/pl_icon.png) left center no-repeat; background-size: 32upx;}
-	.zan{ padding-left: 40upx; background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat; background-size: 32upx;}
-	.zan.active{ background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat; background-size: 32upx;}
-	.scan{padding-left: 46upx; background: url(http://www.sc-mall.net/static/eye.png) left top no-repeat; background-size: 40upx;}
+	.media-location .icon-shouhuodizhi{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.media-location .icon-shouhuodizhi:before{ color: #bbb; font-size: 28upx; line-height: 1; margin-right: 8upx; }
 	.media-info-r{
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;
+		align-items: center;
 	}
-	.media-info-r .info-text{ margin-left: 20upx;}
+	.media-info-r .info-text{ margin-left: 20upx;
+	    display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.media-info-r .info-text .iconfont{
+		margin-right: 8upx;
+	}
+	.media-info-r .info-text .iconfont.icon-zan1{
+		color: #89674C;
+	}
 	/*3列样式*/
 	.Grid3.image-section {
 		margin-top: 20upx;

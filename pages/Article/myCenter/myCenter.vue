@@ -67,8 +67,7 @@
 					 发布
 				</view>
 				<view :class="['btn',Userinfo.IsFollow==1?'white':'']" v-if="Userinfo.IsMy==0" @click="Follow">
-					<block v-if="Userinfo.IsFollow==0">关注</block>
-					<block v-else>取消关注</block>
+					{{Userinfo.IsFollow==0?'关注':'取消关注'}}
 				</view>
 			</view>
 		</view>
@@ -150,11 +149,12 @@
 					"SearchKey": ""
 				});
 				if (result.code === 0) {
-					result.data.forEach(function(item) {
-						item.Addtime=dateUtils.format(item.Addtime);
-					})
 					if (result.data.length > 0) {
 						this.hasData = true;
+						result.data.forEach(function(item) {
+							item.Addtime=dateUtils.format(item.Addtime);
+							item.imgArr = item.ImgList.split(',')
+						})
 					}
 					this.medialist = result.data;
 					this.findcount=result.count;
