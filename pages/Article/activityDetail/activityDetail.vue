@@ -79,7 +79,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	import actreplyList from '@/components/actreplyList.vue';
 	import uParse from '@/components/uParse/src/wxParse.vue';
 	export default {
@@ -91,7 +91,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				ActivityId:"",
 				ActInfo:{},
 				imgArr:[],
@@ -99,7 +98,6 @@
 			};
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.ActivityId=e.id;
@@ -108,6 +106,12 @@
 			this.ActivityInfo();
 		},
 		methods: {
+			onShareAppMessage: function(e) {
+				return {
+					title: this.ActInfo.Title,
+					path: 'pages/Article/activityDetail/activityDetail?id='+this.ActivityId
+				}
+			},
 			/*获取活动详情*/
 			async ActivityInfo(){
 				let	result = await post("Find/ActivityInfo", {
@@ -128,7 +132,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -196,7 +200,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
