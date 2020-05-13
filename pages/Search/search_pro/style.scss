@@ -1,0 +1,131 @@
+	.searchBox{
+		padding:0 30upx;
+		margin-bottom:5upx; 
+		.search{
+			background:#f4f4f4;
+			color:#999;
+			border-radius:40upx;
+			height:65upx;
+			padding:0 30upx;
+			width:100%;
+			img{
+				width:26upx;
+				height:26upx;
+			}
+			input{
+				color:#333;
+				width:100%;
+				margin-left:8upx;
+			}
+		} 
+		.searchBtn{
+			width:100upx;
+			text-align:right;
+		}
+	}
+    
+	.sort{
+		.sort-nav{
+			padding:0 80upx;
+			height:80upx;
+			line-height:80upx;
+			// position:sticky;
+			// top:90upx;
+			// left:0;
+			width:100%;
+			background:#fff;
+			border-top:1upx solid #f5f5f5;
+			border-bottom:1upx solid #f5f5f5;
+			.avtive{
+				color:$primary;
+			}
+			.item{
+				p{
+					// margin-right:;
+				}
+				span{
+					img{
+						width:14upx;height:8upx;
+						margin:3upx 12upx;
+						&:last-child{
+							transform:rotate(180deg);
+						}
+					}
+				}
+				.arrow{
+					margin-left:5upx;
+					.arrow-top{
+						border-right:10upx solid #fff;
+						border-bottom:10upx solid #999;
+						border-left:10upx solid #fff;
+						margin-bottom:3upx;
+					}
+					.arrow-bottom{
+						margin-top:3upx;
+						border-right:10upx solid #fff;
+						border-top:10upx solid #999;
+						border-left:10upx solid #fff;
+					}
+					.active-arrow{
+						border-top-color:$primary;
+						border-bottom-color:$primary;
+					}
+				}
+			}
+		}
+		.list{
+			flex-flow:row wrap;
+			.item{
+				width:50%;
+				border-bottom:1upx solid #e8e8e8;
+				padding-bottom:30upx;
+				&.border-r{
+					border-right:1upx solid #e8e8e8;
+				}
+				img{
+					width:100%;
+					height:347upx;
+				}
+				.content{
+					padding:0 20upx;
+					.tit{
+						line-height:51upx;
+					}
+					.price{
+						height:51upx;
+						.main-price{
+							color:#ff6f00;
+							font-size:36upx;
+							span{
+								font-size:20upx;
+								line-height:1.8;
+							}
+						}
+						.o-price{
+							font-size:22upx;
+							margin-left:10upx;
+							line-height:1.8;
+							color:#999;
+							text-decoration:line-through;
+						}
+					}
+					.num{
+						line-height:44upx;
+						font-size:22upx;
+						color:#999;
+					}
+				}
+			}
+		}
+    }
+    
+	.flex-ends{
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display:flex;
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		-webkit-align-items: flex-end;
+		align-items:flex-end;
+	}

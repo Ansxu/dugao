@@ -1,8 +1,8 @@
 <template>
 	<view class="home">
-		<div class="search flex-center mlr20">
-			<img src="@/static/icons/search-icon.png" alt="">
-			<p>请输入要搜索的商品</p>
+		<div class="search flex-center-center mlr20" @click="navigate('Search/search_pro/search_pro')">
+			<uni-icons type="search" size="18" color="#666666"></uni-icons>
+			<p>搜索商品</p>
 		</div>
 		<div class="nav-home flex-center-between">
 			<scroll-view scroll-x="true" class="scroll-nav">
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div class="list flex-center-between">
-				<div class="item" v-for="(item,index) in videoList" :key="index">
+				<div class="item" v-for="(item,index) in videoList" :key="index" @click="navigate('scheme/videodetails',{id:item.Id})">
 					<div class="imgBox">
 						<img :src="item.Logo" alt="">
 						<div class="content flex-center-center">
@@ -288,7 +288,9 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 		img{
 			width:26upx;
 			height:26upx;
-			margin-right:8upx;
+		}
+		p{
+			margin-left:8upx;
 		}
 	}
 	.nav-home{

@@ -121,6 +121,7 @@
 			"path": "pages/Search/search/search",
 			"style": {
 				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": true,
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
@@ -163,6 +164,7 @@
 			"path": "pages/Search/search_pro/search_pro",
 			"style": {
 				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": true,
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{

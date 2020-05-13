@@ -1,22 +1,27 @@
 <template>
 	<view class="content" style="height: 100%;">
 		<!-- 固定在顶部的导航栏 -->
-		<uni-nav-bar color="#333333" background-color="#f5f5f5" shadow="false" fixed="true">
-			<!-- #ifndef MP-WEIXIN -->
-			<block slot="left">
+		<!--<uni-nav-bar color="#333333" background-color="#f5f5f5" shadow="false" fixed="true">
+			 #ifndef MP-WEIXIN -->
+			<!-- <block slot="left">
 				<view class="uni-icon uni-icon-arrowleft" style="color: #333;" @click="toback"></view>
-			</block>
+			</block> -->
 			<!-- #endif -->
-			<view class="input-view">
+			<!--<view class="input-view"  @click="navigate('Search/search_pro/search_pro')">
 				<uni-icons type="search" size="22" color="#666666"></uni-icons>
-				<input confirm-type="search" disabled="true" class="input" @click="gotoProductList(0)" type="text"
+				 <input confirm-type="search" disabled="true" class="input" @click="gotoProductList(0)" type="text"
 				 placeholder="输入搜索关键词" />
-			</view>
+				 <p>输入搜索关键词</p>
+			</view> -->
 			<!-- <block slot="right">
 				<view class="iconfont icon-xiaoxi" style="color: #333;"><text class="uni-badge" v-if="newscount!=0">{{newscount}}</text></view>
-			</block> -->
-		</uni-nav-bar>
-		<view  :style="{'height':barHeight+44+'px'}"></view>
+			</block> 
+		</uni-nav-bar>-->
+		<div class="search flex-center-center m20" @click="navigate('Search/search_pro/search_pro')">
+			<uni-icons type="search" size="18" color="#666666"></uni-icons>
+			<p>搜索商品</p>
+		</div>
+		<!-- <view  :style="{'height':barHeight+44+'px'}"></view> -->
 		<!-- 使用非原生导航栏后需要在页面顶部占位 -->
 		<view class="container">
 			<view class="page-body">
@@ -70,7 +75,7 @@
 	</view>
 </template>
 <script>
-	import {post,get} from '@/common/util.js';
+	import {post,get,navigate} from '@/common/util.js';
 	import uniNavBar from '@/components/uni-nav-bar.vue';
 	import uniIcons from '@/components/uni-icon.vue';
 	import noData from '@/components/noData.vue'; //暂无数据
@@ -101,6 +106,7 @@
 		},
 		data() {
 			return {
+				navigate,
 				barHeight:0,
 				userId: "",
 				token: "",
@@ -252,5 +258,15 @@
 	}
 	.nav-right .level__product-list /deep/ .uni-product .txtbox{
 		height: 200upx;
+	}
+	.search{
+		background:#fff;
+		color:#999;
+		border-radius:40upx;
+		padding:0 30upx;
+		height:65upx;
+		p{
+			margin-left:8upx;
+		}
 	}
 </style>

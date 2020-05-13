@@ -3,7 +3,7 @@
 	<view class="videozone bgfff">
 		<view class="ploe"></view>
 		<view class="video-padd">
-			<view class="video-top" v-for="(item,index) in list" :key="index">
+			<view class="video-top" v-for="(item,index) in list" :key="index" @click="navigate('scheme/videodetails',{id:item.Id})">
 				<view class="video-img">
 					<view class="video-img bgf5">
 						<img :src="item.Logo" mode=""/>

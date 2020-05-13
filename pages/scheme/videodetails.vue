@@ -1,82 +1,202 @@
 <template>
 	<!-- 视频详情 -->
-	<view class="">
+	<view class="bgfff">
 		<view class="video">
 			<video class=""
 				id="myVideo"
-				src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20181126.mp4"
+				:src="data.Video"
 				@error="videoErrorCallback"
 				controls
 			></video>
 		</view>
 		<view class="video-padd">
-			<view class="video-mark">儒家武林武功秘籍 功夫书籍</view>
-			<view class="video-flex">
-				<view class="video-right">2018-06-28</view>
-				<view class="">20人浏览</view>
+			<view class="video-mark">{{data.Title}}</view>
+			<view class="video-flex flex-center-between">
+				<view class="video-right">{{data.AddTime}}</view>
+				<view class="">{{data.Hits}}人浏览</view>
 				<view class="video-flexs">
-					<view class="">
-						<image class="videoimg" src="../../static/icons/like.png" mode=""></image>
+					<view class="" @click="videoLink">
+						<image class="videoimg" src="../../static/icons/like-red.png" mode="" v-if="data.IsLike" />
+						<image class="videoimg" src="../../static/icons/like.png" mode="" v-else />
 					</view>
-					<view class="">252</view>
+					<view class="">{{data.LikeNum}}</view>
 				</view>
 			</view>
-			<view class="video-brief">简介:重新发出来的新梢基本上都有花穗，并且花穗饱满，和第一次发出来的花穗质量相差无几，后来采收时130亩的夏黑葡萄每亩产量平均有2000多公斤，此次雪灾对徐老板的葡萄基本上没多少影响，也更加坚定了徐老板继续用杜高的决心。徐老板说:我投资这么大，我不敢换其它产品，我只用杜高产品。</view>
+			<view class="video-brief">{{data.Intro}}</view>	
+			<!-- 内容过长的显示 -->
+			<!-- <view class="video-brief maskInfoBox">{{data.Intro}}
+				<div class="maskBlock flex-column-center-end">
+					<p>点击预览全部</p> 
+					<uni-icons type="arrowdown" color="#999"></uni-icons>
+				</div>
+			</view> -->
 		</view>
 		<view class="ploe"></view>
-		<view class="">
+		<view class="comments">
 			<view class="video-comm">全部评论</view>
-			<view class="video-con">
+			<view class="video-con" v-for="(item,index) in comment" :key="index">
 				<view class="videohead">
-					<image src="" mode=""></image>
+					<image :src="item.Avatar" mode=""></image>
 				</view>
 				<view class="video-con bott">
 					<view class="video-box">
-						<view class="fz28">刘潇潇</view>
-						<view class="fz22">12分钟前</view>
-						<view class="fz28">枣上好，愿你开心一整天。</view>
+						<view class="fz28">{{item.NickName}}</view>
+						<view class="fz22">{{item.AddTime}}</view>
+						<view class="fz28">{{item.Comment}}</view>
 					</view>
 					<view class="video-con">
-						<view class="">
-							<image class="videoimgs" src="../../static/icons/like-red.png" mode=""></image>
+						<view class="" @click="link(item)">
+							<image class="videoimgs" src="../../static/icons/like-red.png" mode="" v-if="item.IsLike" />
+							<image class="videoimgs" src="../../static/icons/like.png" mode="" v-else />
 						</view>
-						<view class="fz22">252</view>
+						<view class="fz22">{{item.LikeNum}}</view>
 					</view>
 				</view>
 			</view>
-			<view class="video-con">
-				<view class="videohead">
-					<image src="" mode=""></image>
-				</view>
-				<view class="video-con bott">
-					<view class="video-box">
-						<view class="fz28">刘潇潇</view>
-						<view class="fz22">12分钟前</view>
-						<view class="fz28">枣上好，愿你开心一整天。</view>
-					</view>
-					<view class="video-con">
-						<view class="">
-							<image class="videoimgs" src="../../static/icons/like.png" mode=""></image>
-						</view>
-						<view class="fz22">252</view>
-					</view>
-				</view>
-			</view>
-			<view class="video-ex fz22">已显示全部评论</view>
+			<view class="video-ex fz22" v-if="comment.length<1">暂时还没有评论哦~</view>
+			<uni-load-more :loadingType="loadMore"  v-else></uni-load-more>
 			<view class="video-bottom">
-				<view class="video-leave">
+				<view class="video-leave flex-center">
 					<image class="videoimgss" src="../../static/icons/classify-icon.png" mode=""></image>
-					<input type="text" value="" placeholder="留下你精彩评论吧~"/>
+					<input type="text" v-model.trim="commentText" placeholder="留下你精彩评论吧~"/>
 				</view>
-				<view>发送</view>
+				<view @click="addComment">发送</view>
 			</view>
 		</view>
 	</view>
 </template>
 
-<script></script>
+<script>
+import {post,navigate,toast} from '@/utils'
+import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
+export default {
+	components:{fertilizerItem},
+	data(){
+		return {
+			navigate,
+			id:'',
+			userId: "",
+			token: "",
+			page:1,
+			pageSize:12,
+			loadMore:0,//0-loading前；1-loading中；2-没有更多了
+			data:{},
+			comment:[],
+			commentText:'',
+		}
+	},
+	onLoad(options){
+		this.userId = uni.getStorageSync("userId");
+		this.token = uni.getStorageSync("token");
+		this.id = options.id;
+		this.getData();
+		this.getComment();
+	},
+	onShow(){
+		this.userId = uni.getStorageSync("userId");
+		this.token = uni.getStorageSync("token");
+		this.commentText ='';
+	},
+	methods:{
+		getData(){
+			post('News/GetBrandgoods',{
+				UserId: this.userId,
+				Token: this.token,
+				Id: this.id
+			}).then(res=>{
+					this.data = res.data;
+			})
+		},
+		getComment(){
+			post('News/BrandgoodsCommentList',{
+				Page:this.page,
+				PageSize:this.pageSize,
+				Id: this.id
+			}).then(res=>{
+					this.loadMore = 0;
+					const data = res.data;
+					if(this.page===1){
+						this.comment =[];
+					}
+					this.comment.push(...data);
+					if(data.length<this.pageSize){
+						this.loadMore = 2;
+					}
+			})
+		},
+		// 发送评论
+		addComment(){
+			if(!this.commentText){
+				toast('请输入评论')
+				return}
+			post('News/BrandgoodsComment',{
+				UserId: this.userId,
+				Token: this.token,
+				Id: this.id,
+				Comment:this.commentText
+			},{isLogin:true}).then(res=>{
+				this.commentText ='';
+				this.page=1;
+				this.loadMore = 0;
+				setTimeout(()=> {
+					this.getComment();
+				}, 1000);
+				toast('评论成功',true)
+			})
+		},
+		// 视频点赞
+		videoLink(){
+			let url = ''
+			if(this.data.IsLike){
+				url = 'AddCollections'
+			}else{
+				url = 'BrandgoodsLikes'
+			}
+			post('News/'+url,{
+				UserId: this.userId,
+				Token: this.token,
+				Id: this.data.Id,
+			},{isLogin:true}).then(res=>{
+				this.data.IsLike = !this.data.IsLike;
+			})
+		},
+		// 评论点赞
+		link(item){
+			post('News/BrandgoodsCommentLikes',{
+				UserId: this.userId,
+				Token: this.token,
+				Id: item.Id,
+			},{isLogin:true}).then(res=>{
+				item.IsLike = !item.IsLike;
+			})
+		},
+		videoErrorCallback(){
+			toast('视频加载失败，请刷新页面重试！')
+		},
+	},
+	// 上拉加载
+	onReachBottom: function() {
+		if (this.loadMore !== 2) {
+			this.page++;
+			this.getComment();
+		}
+	},
+	onPullDownRefresh() {
+		//监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+		this.page=1;
+		this.loadMore = 0;
+		setTimeout(()=> {
+			this.getData();
+			this.getComment();
+			uni.stopPullDownRefresh();  //停止下拉刷新动画
+		}, 1000);
+	}
+}
+</script>
 
-<style scoped>
+
+
+<style scoped lang="scss">
 	.video video{
 		width: 100%;
 	}
@@ -93,11 +213,11 @@
 		color:rgba(153,153,153,1);
 	}
 	.video-right{
-		padding-right: 10%;
+		/* padding-right: 10%; */
 	}
 	.video-flexs{
 		display: flex;
-		padding-left: 44%;
+		/* padding-left: 44%; */
 	}
 	.videoimg{
 		width: 26upx;
@@ -112,6 +232,18 @@
 		font-size:28upx;
 		line-height:40upx;
 		margin: 30upx 0;
+		position:relative;
+	}
+	.maskInfoBox{
+		padding: 30upx 30upx 80upx;
+		.maskBlock{
+			position:absolute;
+			bottom:0;
+			left:0;
+			width:100%;height:150upx;
+			line-height:1.3;
+			background:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,1));
+		}
 	}
 	.ploe{
 		height:20upx;
@@ -163,30 +295,36 @@
 	.video-ex{
 		padding: 40upx 0;
 		text-align: center;
-		border-bottom: 1upx solid rgba(236,236,236,1);
 	}
 	.video-bottom{
 		display: flex;
 		padding: 19upx 30upx 10upx 30upx;
 		line-height:60upx;
+		position:fixed;
+		bottom:0;left:0;
+		background:#fff;
+		border-top:1upx solid #ececec;
 	}
-	.videoimgss{
-		width:29upx;
-		height:30upx;
-		padding: 17upx 20upx 0upx 30upx;
+	.comments{
+		padding-bottom:90upx;
 	}
 	.video-leave{
 		width:614upx;
 		height:60upx;
 		background:rgba(247,247,247,1);
 		border-radius:10upx;
-		display: flex;
 		margin-right: 20upx;
-	}
-	.video-leave input{
-		font-size:26upx;
-		font-weight:500;
-		color:rgba(153,153,153,1);
-		padding-top: 17upx;
+		padding:20rpx;
+		.videoimgss{
+			width:30upx;
+			height:25upx;
+			padding-right:20rpx;
+		}
+		input{
+			font-size:26upx;
+			width:100%;
+			height:35upx;
+			line-height:35upx;
+		}
 	}
 </style>
