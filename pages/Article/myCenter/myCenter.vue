@@ -76,7 +76,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	import mediaList from '@/components/tab-nvue/mediaList.vue';
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
@@ -88,7 +88,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				hasSetText:"我的主页",
 				hasData:false,
 				hasActData:false,
@@ -102,7 +101,6 @@
 			}
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.Memberid=e.Memberid;

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	import mediaList from '@/components/tab-nvue/mediaList.vue';
 	import noData from '@/components/noData.vue'; //暂无数据
 	import uniLoadMore from '@/components/uni-load-more.vue';
@@ -29,7 +29,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				hasSetText:"我的发布",
 				loadingType: 0, //0加载前，1加载中，2没有更多了
 				isLoad: false,
@@ -45,7 +44,6 @@
 			}
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			if(e.myType){

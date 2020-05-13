@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="uni-list" v-if="hasData">
+		<view class="uni-list uni-bg-white" v-if="hasData">
 			<view class="uni-list-cell" v-for="(item,index) in flowlist" :key="index">
 				<view class="uni-media-list" @click="gotoMemberhome(item.UserId,item.IsFollow)">
 					<view class="uni-media-list-logo">
@@ -170,7 +170,6 @@
 
 <style scoped>
 	.content {
-		background: #fff;
 		min-height: 100%;
 	}
 	.uni-list:after{display: none;}
