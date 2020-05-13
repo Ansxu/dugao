@@ -40,11 +40,12 @@
         </div>
         <div class="jus-b ali-c">
           <span class="txtinfo">已售：{{proInfo.SalesVolume}}</span>
-          <!-- <span class="txtinfo">好评：{{proInfo.PraiseRate}}%</span> -->
+          <span class="txtinfo">{{proInfo.Freight?`运费：${proInfo.Freight}元`:'包邮'}}</span>
+          <span class="txtinfo">{{proInfo.shipArea}}</span>
         </div>
       </div>
       <div class="list-box">
-        <div class="list ali-c jus-b" v-if="proInfo.Score!=0||(proInfo.CouponList.length&&proInfo.IsUseCoupons)" @click="openCoupon">
+        <div class="list ali-c jus-b" v-if="proInfo.CouponList.length" @click="openCoupon">
           <div class="left ali-c">
             <span>领券</span>
             <div>
@@ -335,20 +336,21 @@ export default {
     }
   },
   onLoad(optins){
-    this.userId = wx.getStorageSync("userId");
-    this.token = wx.getStorageSync("token");
+    this.userId = uni.getStorageSync("userId");
+    this.token = uni.getStorageSync("token");
     this.proId=optins.id;
   },
   onShow(){
-    this.userId = wx.getStorageSync("userId");
-    this.token = wx.getStorageSync("token");
-    this.shopid = wx.getStorageSync("shopid");
+    this.userId = uni.getStorageSync("userId");
+    this.token = uni.getStorageSync("token");
+    this.shopid = uni.getStorageSync("shopid");
     this.isLimint=this.$root.$mp.query.isLimint||0;
     this.goodsNum = 1;
     this.specList=[];
     this.SpecText="";
     this.SpecValue={};
     this.SpecInfo={};
+    this.showCoupon=false;
     this.showPopupSku = false;
     this.isMatch=false;
     this.timeStr=[];
@@ -356,7 +358,7 @@ export default {
     this.ProductInfo();
     this.GetAllCartNumber();
     setTimeout(() => {
-      var query = wx.createSelectorQuery();
+      var query = uni.createSelectorQuery();
       query.select("#main").boundingClientRect((rect)=> {
         this.seachHeight = rect.height*2
         this.mainHeight = 'height:'+this.seachHeight+'rpx;bottom:'+(-this.seachHeight-50)+'rpx'
@@ -373,7 +375,7 @@ export default {
   },
   methods: {
     goCart(){
-      wx.switchTab({
+      uni.switchTab({
         url:'/pages/card/index'
       })
     },
@@ -386,12 +388,12 @@ export default {
     },
     //领券
     async ReceiveCoupon(id){
-      let res=await post("Coupon/ReceiveCoupon",{
+      let res=await post("Coupon/GetCoupon",{
         UserId: this.userId,
         Token: this.token,
         CouponId: id
       })
-      wx.showToast({
+      uni.showToast({
         title: res.msg,
         icon: 'none',
       })
@@ -403,7 +405,7 @@ export default {
             this.goodsNum--
           }else{
             this.goodsNum=this.minbuy;
-            wx.showToast({
+            uni.showToast({
 							title: this.minbuy+'件起购',
 							icon:"none",
 							duration: 1500
@@ -415,7 +417,7 @@ export default {
         if(this.maxbuy==0){
           if(this.goodsNum>=this.reStock){
             this.goodsNum=this.reStock;
-            wx.showToast({
+            uni.showToast({
 							title: "库存不足！",
 							icon:"none",
 							duration: 1500
@@ -429,7 +431,7 @@ export default {
               this.goodsNum++
             }else{
               this.goodsNum=this.maxbuy;
-              wx.showToast({
+              uni.showToast({
                 title: "限购"+this.maxbuy+"件",
                 icon:"none",
                 duration: 1500
@@ -467,7 +469,7 @@ export default {
           ShareMemberId: this.ShareMemberid
         })
         if(res.code==0){
-           wx.showToast({
+           uni.showToast({
             title: res.msg,
             icon:"none",
             duration: 1500
@@ -478,14 +480,14 @@ export default {
           },1500)
          
         }else{
-          wx.showToast({
+          uni.showToast({
             title: res.msg,
             icon:"none",
             duration: 1500
           });
         }
       }else{
-        wx.showToast({
+        uni.showToast({
           title: "请选择产品规格",
           icon:"none",
           duration: 1500
@@ -495,18 +497,18 @@ export default {
     //立即购买
     gouBuy(){
       if(this.isMatch){
-        wx.setStorageSync("addressinfo",'');
-        wx.setStorageSync("invoiceinfo","");
-        navigate('product/confirmOrder/confirmOrder',{
-          cartItem:this.proId,
+        uni.setStorageSync("addressinfo",'');
+        uni.setStorageSync("invoiceinfo","");
+        navigate('card/submitOrder',{
+          id:this.proId,
           SpecText:this.SpecText,
           number:this.goodsNum,
-          orderSType:0,
           isLimint:this.isLimint,
-          ShareMemberId:this.ShareMemberid,
-        })
+          inCode:this.shareCode,
+          orderSType:0,//0立即购买，1购物车
+        },true)
       }else{
-        wx.showToast({
+        uni.showToast({
           title: "请选择产品规格",
           icon:"none",
           duration: 1500
@@ -514,13 +516,13 @@ export default {
       }
     },
     goUrl(url,param){
-      wx.navigateTo({
+      uni.navigateTo({
         url:url+'?id='+param
       })
     },
     //返回顶部
     Top(){
-      wx.pageScrollTo({
+      uni.pageScrollTo({
         scrollTop: 0,
         duration: 200
       });
@@ -540,6 +542,7 @@ export default {
       }
         const data = res.data;
         data.ContentDetail = data.ContentDetail.replace(/<img/g,'<img style="max-width:100%;"');
+        data.shipArea = data.AreaSite.substr(0,data.AreaSite.lastIndexOf(','));
         this.proInfo=data;
         this.BannerNum=data.PicData.length;
         this.IsCollect=data.IsCollection.Value;
@@ -645,12 +648,12 @@ export default {
     },
     // 已结束
     onTimeEnd(){
-        wx.showToast({
+        uni.showToast({
           title:'抢购已结束！',
           icon:'none'
         })
         setTimeout(()=>{
-          wx.navigateBack();
+          uni.navigateBack();
         },1500)
     },
     //获取购物车数
@@ -674,14 +677,14 @@ export default {
 				  });
 				if(res.code==0){
 					if(this.IsCollect){
-						wx.showToast({
+						uni.showToast({
 							title: "已取消收藏！",
 							icon:"none",
 							duration: 1500
 						});
 						this.IsCollect=false;
 					}else{
-						wx.showToast({
+						uni.showToast({
 							title: "添加收藏成功！",
 							icon:"none",
 							duration: 1500
@@ -1554,7 +1557,7 @@ export default {
 .specs div {
   font-size: 24rpx;
   margin-top: 20rpx;
-  padding: 5rpx 20rpx;
+  padding: 10rpx 20rpx;
   background: #f3f3f3;
 }
 .spec {
