@@ -1,16 +1,16 @@
 <template>
-	<view class="commentPage uni-bg-white">
-		<view class="list" v-if="hasData">
+	<view class="commentPage">
+		<view class="list uni-bg-white" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
-				<media-list :data="item" Grid="3" @click="goDetail" @flow="flow" @previewImg="previewImg"></media-list>
+				<media-list :datajson="item" Grid="3" @click="goDetail" @flow="flow" @previewImg="previewImg"></media-list>
 			</block>
-			<view class="uni-tab-bar-loading">
-				<uni-load-more :loadingType="loadingType"></uni-load-more>
-			</view>
+		</view>
+		<view class="uni-tab-bar-loading" v-if="hasData">
+			<uni-load-more :loadingType="loadingType"></uni-load-more>
 		</view>
 		<noData :isShow="noDataIsShow"></noData>
 		<!-- 发布按钮 -->
-		<view v-if="mytype==0" @click="fubuBtn" class="fubuBtn iconfont icon-fabu"></view>
+		<view v-if="mytype==0" @click="fubuBtn" class="fubuBtn iconfont icon-bianji1"></view>
 	</view>
 </template>
 
@@ -212,7 +212,7 @@
 </script>
 
 <style scoped>
-.commentPage{ background: #fff; min-height: 100%; padding: 0; margin: 0 auto;}
+.commentPage{ min-height: 100%; padding: 0; margin: 0 auto;}
 .fubuBtn{
 	position: fixed;
 	right: 20upx;

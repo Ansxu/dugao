@@ -3,19 +3,19 @@
 		<!-- 个人简介 -->
 		<view class="userTop">
 			<view class="infobox uni-center">
-				<view class="tx">
-					<image class="img" v-if="Userinfo.Headimgurl" :src="Userinfo.Headimgurl" mode="aspectFill"></image>
-					<image class="img" v-else src="/static/default.png"></image>
+				<view class="tx" @click="editInfo">
+					<image class="img" :src="Userinfo.Headimgurl||'http://ddyp.wtvxin.com/static/default.png'" mode="aspectFill"></image>
 				</view>
 				<view class="username">
-					<text class="txt uni-ellipsis">{{Userinfo.NickName}}</text><text :class="['iconfont',Userinfo.Sex=='男'?'icon-nan':'icon-nv']"></text>
+					<text class="txt uni-ellipsis">{{Userinfo.NickName}}</text>
+					<text :class="['iconfont',Userinfo.Sex=='男'?'icon-nan':'icon-nv']"></text>
 				</view>
-				<view class="userdesc" @click="editInfo">
-					<text class="txt uni-ellipsis">{{Userinfo.Introduction}}</text>
-					<text class="iconfont icon-fankui" v-if="Userinfo.IsMy==1"></text>
+				<view class="userdesc" v-if="false">
+					<text class="txt uni-ellipsis">{{Userinfo.Introduction||'主人太懒了，什么都没有留下~'}}</text>
+					<text class="iconfont icon-bianji1" v-if="Userinfo.IsMy==1"></text>
 				</view>
 				<view class="location uni-ellipsis" v-if="Userinfo.City">
-					<text class="iconfont icon-dizhi1"></text>{{Userinfo.City}}
+					<text class="iconfont icon-dizhi"></text>{{Userinfo.City}}
 				</view>
 				<view class="infobox-ft uni-flex">
 					<view class="uni-flex-item">获赞 <text class="txt">{{Userinfo.LikeNum}}</text></view>
@@ -35,7 +35,7 @@
 			</view>
 			<view class="list" v-if="hasData">
 				<block v-for="(item,index) in medialist" :key="index">
-					<media-list :data="item" Grid="3" :isBtn="false" @click="goDetail" @previewImg="previewImg"></media-list>
+					<media-list :datajson="item" Grid="3" :isBtn="false" @click="goDetail" @previewImg="previewImg"></media-list>
 				</block>
 			</view>
 			<view v-else style="text-align: center; color: #999; padding: 20upx;">暂无数据</view>
@@ -55,7 +55,7 @@
 						<view class="mark" v-if="item2.IsOver==1">已结束</view>
 						<view class="mark active" v-if="item2.IsOver==0">进行中</view>
 						<image v-if="item2.PicImg" class="img" :src="item2.PicImg" mode="aspectFill"></image>
-						<image v-else src="/static/60x60.png" mode="aspectFill"></image>
+						<image v-else src="/static/logo.png" mode="aspectFill"></image>
 					</view>
 				</block>
 			</view>
@@ -63,8 +63,8 @@
 		</view>
 		<view class="foot-fiexd">
 			<view class="foot">
-				<view class="btn iconfont icon-fabu" v-if="Userinfo.IsMy==1" @click="fubuBtn">
-					发布
+				<view class="btn iconfont icon-bianji1" v-if="Userinfo.IsMy==1" @click="fubuBtn">
+					 发布
 				</view>
 				<view :class="['btn',Userinfo.IsFollow==1?'white':'']" v-if="Userinfo.IsMy==0" @click="Follow">
 					<block v-if="Userinfo.IsFollow==0">关注</block>
@@ -283,7 +283,7 @@
 			editInfo(){
 				if(this.myType==0){
 					uni.navigateTo({
-						url:"/pages/member/EditInfo/EditInfo"
+						url:"/pages/member/editinfo/editinfo"
 					})
 				}
 			},

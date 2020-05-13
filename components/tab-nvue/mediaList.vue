@@ -5,7 +5,7 @@
 				<view class="media-author" @click="gotoPensonal">
 					<image class="img" v-if="dataitem.Avatar" :src="dataitem.Avatar" mode="aspectFill"></image>
 					<image class="img" v-else-if="dataitem.FindType==2" src="/static/logo.png" mode="aspectFill"></image>
-					<image class="img" v-else src="/static/default.png"></image>
+					<image class="img" v-else src="http://ddyp.wtvxin.com/static/default.png"></image>
 				</view>
 				<view class="author-name uni-ellipsis" @click="gotoPensonal">
 					<block v-if="dataitem.NickName">{{dataitem.NickName}}</block>
@@ -46,7 +46,7 @@
 			</view>
 			<view class="media-foot">
 				<view class="media-info">
-					<text class="info-text">{{dataitem.AddTime}}</text>
+					<text class="info-text">{{dataitem.Addtime}}</text>
 				</view>
 				<view class="media-info-r">
 					<text class="info-text scan">{{dataitem.BrowseNum}}</text>
@@ -70,7 +70,7 @@
 				type:Boolean,
 				default:true
 			},
-			dataitem: {
+			datajson: {
 				type: Object,
 				default: function(e) {
 					return {
@@ -82,14 +82,17 @@
 		created(){
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
+			this.dataitem=this.datajson;
 		},
 		data(){
 			return{
 				userId: "",
 				token: "",
+				dataitem:{}
 			}
 		},
 		computed: {
+			
 		},
 		onLoad(){
 		},
@@ -171,11 +174,14 @@
 		border-bottom-color: #eee;
 		padding: 20upx 0;
 	}
-
+	/* #ifndef MP-WEIXIN */
 	.list-cell:last-child .media-list {
 		border-bottom: none;
 	}
-
+	/* #endif */
+	media-list:last-child .media-list{
+		border-bottom: none;
+	}
 	.media-hd {
 		height: 80upx;
 		margin-bottom: 10upx;

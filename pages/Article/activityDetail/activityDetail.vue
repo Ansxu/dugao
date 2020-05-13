@@ -11,7 +11,6 @@
 				</swiper-item>
 			</swiper>
 			</block>
-			<image v-else class="img" style="display: block;" src="/static/60x60.png" mode="aspectFill"></image>
 		</view>
 		<view class="artCon">
 			<view class="artCon-item artInfo">

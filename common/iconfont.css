@@ -12,6 +12,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-haoyou:before {
+  content: "\e624";
+}
+
+.icon-suo:before {
+  content: "\e66b";
+}
+
+.icon-gongkai:before {
+  content: "\e66d";
+}
+.icon-nv:before {
+  content: "\e62d";
+}
 .icon-goods:before {
   content: "\e61e";
 }

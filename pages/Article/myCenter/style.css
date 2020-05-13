@@ -38,7 +38,7 @@
 	background: #89674c; color: #fff; font-size: 30upx;}
 .foot-fiexd .foot .btn.white{ background: #fff; color: #89674c; border-top: 1px solid #eee;}	
 .content .uni-list-cell::after{ left: 0;}
-.content .uni-list-cell .list-cell-r{ font-size: 26upx; color: #999; margin-right: 40upx;}
+.content .uni-list-cell .list-cell-r{ font-size: 26upx; color: #999;}
 .foot-fiexd .foot .icon-fabu:before{
 	margin-right: 10upx;
 	font-size: 40upx;

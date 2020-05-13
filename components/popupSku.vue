@@ -374,7 +374,7 @@
 								}else{
 									money=this.price;
 								}
-								let objUrl = '/pages/submitOrder/submitOrder?id='+this.proId+'&SpecText='+this.SpecText+'&number='+this.number+'&orderSType=0'+'&GroupId='+this.proInfo.GroupId+"&inCode="+this.inviteCode;
+								let objUrl = '/pages/card/submitOrder?id='+this.proId+'&SpecText='+this.SpecText+'&number='+this.number+'&orderSType=0'+'&GroupId='+this.proInfo.GroupId+"&inCode="+this.inviteCode;
 								uni.navigateTo({
 									url: objUrl
 								})
@@ -444,7 +444,7 @@
 						}else{
 							money=this.price;
 						}
-						let objUrl = '/pages/submitOrder/submitOrder?id='+this.proId+'&SpecText='+this.SpecText+'&number='+this.number+'&orderSType=0'+'&isLimint='+this.isLimint+"&inCode="+this.inviteCode;
+						let objUrl = '/pages/card/submitOrder?id='+this.proId+'&SpecText='+this.SpecText+'&number='+this.number+'&orderSType=0'+'&isLimint='+this.isLimint+"&inCode="+this.inviteCode;
 						uni.navigateTo({
 							url: objUrl
 						})

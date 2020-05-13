@@ -17,7 +17,7 @@
 	}
 
 	.uni-media-list-body {
-		height: 140upx;
+		height: auto;
 		padding: 6upx 0;
 		box-sizing: border-box;
 	}

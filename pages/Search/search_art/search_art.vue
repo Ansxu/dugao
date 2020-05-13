@@ -1,14 +1,13 @@
 <template>
-	<view class="uni-bg-white" style="min-height: 100%;">
+	<view style="min-height: 100%;">
 		<!-- #ifdef MP-WEIXIN -->
-		<view class="MP-header header-search flex-center-between plr30">
+		<view class="MP-header header-search flex-center-between plr30 uni-bg-white">
 			<view class="input-view flex-center">
 				<view class="uni-icon uni-icon-search"></view>
 				<input confirm-type="search" class="input" type="text" placeholder="想搜什么？" v-model="SearchKey" />
 			</view>
 			<view class="searchbtn c_theme" @click="search">搜索</view>
 		</view>
-		<view style="height: 60upx;"></view>
 		<!-- #endif -->
 		<view class="uni-tab-bar">
 			<view class="uni-swiper-tab tabList">
@@ -26,27 +25,24 @@
 		</view>
 		<view class="tabCon" v-if="hasData">
 			<view class="uni-list">
-				<block v-for="(item,index) in medialist" :key="index">
-					<view class="uni-list-cell" @click="gotoDetail(item.Id,item.FindType)">
-						<view class="uni-media-list">
-							<view class="uni-media-list-logo">
-								<image v-if="item.PicImg" :src="item.PicImg" mode="aspectFill"></image>
-								<image v-else src="/static/60x60.png" mode="aspectFill"></image>
+				<view class="uni-list-cell" v-for="(item,index) in medialist" :key="index" @click="gotoDetail(item.Id,item.FindType)">
+					<view class="uni-media-list">
+						<view class="uni-media-list-logo" v-if="item.PicImg">
+							<image :src="item.PicImg" mode="aspectFill"></image>
+						</view>
+						<view class="uni-media-list-body">
+							<view class="uni-media-list-text-top" v-if="item.Title">
+								{{item.Title}}
 							</view>
-							<view class="uni-media-list-body">
-								<view class="uni-media-list-text-top" v-if="item.Title">
-									{{item.Title}}
-								</view>
-								<view class="uni-media-list-text-top" v-else>
-									{{item.ContentDetails}}
-								</view>
-								<view class="uni-media-list-info">
-									{{item.ContentAbstract}}
-								</view>
+							<view class="uni-media-list-text-top" v-else>
+								{{item.ContentDetails}}
+							</view>
+							<view class="uni-media-list-info">
+								{{item.ContentAbstract}}
 							</view>
 						</view>
 					</view>
-				</block>
+				</view>
 			</view>
 			<view class="uni-tab-bar-loading">
 				<uni-load-more :loadingType="loadingType"></uni-load-more>
@@ -281,8 +277,14 @@
 	.wxParse *{display: inline-block !important;}
 	/* #ifdef MP-WEIXIN */
 	.MP-header{ padding-bottom: 0;}
-	.uni-swiper-tab{ top: 60upx;}
-	.tabCon{ padding-top: 80upx;}
+	.uni-swiper-tab{ top: 60upx; border-bottom: 1px solid #e6e6e6;}
+	.MP-header .input-view{
+		background: #f5f5f5;
+		width: 90%;
+		border-radius: 100px;
+		padding: 4upx 20upx;
+
+	}
 	/* #endif */
 	.header-search{
 		input{
