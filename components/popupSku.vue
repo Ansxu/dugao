@@ -62,6 +62,7 @@
 </template>
 <script>
 	import {post,get,toLogin} from '@/common/util.js';
+	import {bus} from '@/common/bus.js'
 	import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 	export default {
 		props: {
@@ -148,6 +149,7 @@
 			},
 			change: function(num) {
 				this.number=num[0];
+				bus.$emit('Cartnum',1);
 			},
 			moveHandle() {},
 			selectAllStock() {
@@ -411,6 +413,8 @@
 						icon:"none",
 						duration: 2000
 					});
+					bus.$emit('Cartnum',1);
+					console.log(23)
 					this.$emit('hidePopup');
 				} else if (result.code === 2) {
 					let _this =this;

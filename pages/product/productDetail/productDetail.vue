@@ -340,19 +340,20 @@
 					</view>
 					<!-- 实心 icon-collect-->
 				</view>
-				<view class="foot-item"  @click="tolink('/pages/card/index','tabBar')">
+				<view class="foot-item flex"  @click="tolink('/pages/card/index','tabBar')">
 					<view class="bd" style="padding-top: 20upx;">
 						<img style="width: 40upx;height: 40upx;" src="http://jd.wtvxin.com/images/images/index/cart.png" alt="" />
 						<view style="font-size: 22upx;padding:0 10upx;">购物车</view>
 					</view>
 					<!-- 实心 icon-collect-->
+					<view class="hint" v-if="Cartnum">{{Cartnum}}</view>
 				</view>
 				<!-- 有拼团样式 -->
 				<view class="foot-item foot-item-btns" v-if="proInfo.IsAloneBuy == 0">
 					<view class="btn btn_1 flex" @click="showSku(proInfo.IsAloneBuy == 0 ? 0 : 2)">
-						<view class="num" v-if="isLimint == 0">¥{{ proInfo.Price }}</view>
-						<view class="num" v-else>¥{{ proInfo.TimePrice }}</view>
-						<view class="txt">单独购买</view>
+						<!-- <view class="num" v-if="isLimint == 0">¥{{ proInfo.Price }}</view> -->
+						<!-- <view class="num" v-else>¥{{ proInfo.TimePrice }}</view> -->
+						<view class="txt">立即购买</view>
 					</view>
 					<view class="btn btn_2 flex" @click="showSku(0)" v-if="proInfo.IsAloneBuy == 0 && GroupId == 0"><view class="txt">加入购物车</view></view>
 					<view class="btn btn_2 flex" style="flex:1.5" @click="showSku(1)" v-if="GroupId > 0">
@@ -428,6 +429,7 @@ import uParse from '@/components/uParse/src/wxParse.vue';
 import uniPopup from '@/components/uni-popup/uni-popup.vue';
 import popupsku from '@/components/popupSku.vue';
 import uniRate from '@/components/uni-rate.vue';
+import {bus} from '@/common/bus.js'
 export default {
 	components: {
 		uParse,
@@ -483,7 +485,8 @@ export default {
 			showsearchres: false, //搜索结果
 			showsearchtext: '',
 			ReferralCode: '', //自己的邀请码
-			inviteCode: '' //他人的邀请码
+			inviteCode: '' ,//他人的邀请码
+			Cartnum:'',   //购物车数量
 		};
 	},
 	onLoad(e) {
@@ -520,6 +523,7 @@ export default {
 		this.showsearchtext = '';
 		this.Goodsxq();
 		this.getCommentList();
+		this.cartnum();
 	},
 	onNavigationBarButtonTap(e) {
 		if (e.index === 0) {
@@ -863,6 +867,19 @@ export default {
 			this.price = msg[3];
 			this.plusprice = msg[4];
 		},
+		// 购物车数量(商品)
+		async cartnum(){
+			let result = await post('Cart/GoodsCartNum', {
+				UserId:this.userId,
+				token:this.token
+			});
+			if(result.code == 0){
+				this.Cartnum = result.data.Count
+			}
+			bus.$on('Cartnum',(e) =>{
+				this.cartnum()
+			})
+		},
 		//添加取消收藏
 		async collect() {
 			let objUrl = '';
@@ -1157,5 +1174,16 @@ button::after {
 	p{
 		padding: 0 30upx 0 10upx ;
 	}
+}
+.hint{
+	width: 26upx;
+	height: 26upx;
+	background: #FF6F00;
+	border-radius: 50%;
+	font-size: 20upx;
+	margin-top: 20upx;
+	margin-left: -40upx;
+	text-align: center;
+	color: #fff;
 }
 </style>

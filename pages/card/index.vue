@@ -295,19 +295,20 @@
 
 		//获取购物车列表
 			async getCartList(){
+				let ProData = []
+				this.cartlist =[]
 				let result = await post("Cart/GoodsCartList", {
 					UserId: this.userId,
 					Token: this.token
 				});
 				if(result.code==0){
-					let ProData = []
 					this.gologin=true
 					this.cartinfo=result.data;
 					ProData=result.data.ProData;
 					this.cartlist.push(ProData)
-					console.log(this.cartlist,'this.cartlist')
 					this.selectlen=0;
 					this.cartlen=0;
+					if(result.data.ProData)
 					if(result.data.CartData.length>0){
 						this.checklen=result.data.CartData.length;
 						this.hascartlist=true;
