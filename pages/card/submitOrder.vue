@@ -102,7 +102,7 @@
 						</view> -->
 						<view class="orderinfo" style="border: none;">
 							<view class="orderleft">买家留言</view>
-							<input class="inputtxt" placeholder="填写内容需与商家协商并确认,45字以内" type="text" v-model="remarkTxtArr[index]"/>
+							<input class="inputtxt" placeholder="填写内容需与商家协商并确认,45字以内" type="text" v-model="Remark"/>
 						</view>
 						
 						<!-- <view class="allprice">
@@ -187,7 +187,7 @@
 						</view> -->
 						<view class="orderinfo" style="border: none;">
 							<view class="orderleft">买家留言</view>
-							<input class="inputtxt" placeholder="填写内容需与商家协商并确认,45字以内" type="text" v-model="remarkTxtArr[index]"/>
+							<input class="inputtxt" placeholder="填写内容需与商家协商并确认,45字以内" type="text" v-model="Remark"/>
 						</view>
 						
 						<!-- <view class="allprice">
@@ -337,12 +337,11 @@
 				IsSalesOffice:null,//去过或咨询售楼处 1-有 0-没有
 				shopDataArr:[],//购物车默认选择店铺优惠券
 				inCode:0,//立即购买得邀请码分享好友得佣金
-				ShopId:'',
+				Remark:'', //买家留言
 			};
 		},
 		onLoad: function(e) {
 			console.log(e)
-			this.ShopId = e.shopid
 			// #ifdef APP-PLUS
 			this.orderSType=e.orderSType
 			this.CartIds=e.cartItem
@@ -555,16 +554,17 @@
 			},
 			//购物车提交订单
 			async BuyCart() {
-				let result = await post("Order/ShopsBuyCart", {
+				let result = await post("Order/BuyCart", {
 					UserId: this.userId,
 					Token: this.token,
-					CartIds: this.CartIds,
-					AddressId: this.addressId,
-					IsPayWallet:this.isPayWallet,
-					IsPayScore:this.isPayScore,
-					CouponId:this.couponId,
+					CartIds: this.CartIds,        //购物车Id组
+					AddressId: this.addressId,    //地址Id
+					IsPayWallet:this.isPayWallet, //使用余额支付 1-使用 0-不使用
+					IsPayScore:this.isPayScore,   //使用积分抵扣 1-使用 0-不使用
+					CouponId:this.couponId,       //优惠劵
+					Remark:this.Remark,           //买家备注
 					ShopData:this.shopDataArr,
-					AreaCode:uni.getStorageSync("AreaCode")
+					AreaCode:uni.getStorageSync("AreaCode")  //邀请码
 				})
 				if (result.code == 0) {
 					uni.showToast({
@@ -683,7 +683,7 @@
 				CouponId:this.couponId,
 				ShopCouponId:this.popCouponIdArr[0],
 				InvoiceId:this.InvoiceIdArr[0],
-				Remark:this.remarkTxtArr[0],
+				Remark:this.Remark,
 				ContactName:this.ContactName,
 				Tel:this.Tel,
 				InviteCode:this.inCode,
@@ -789,7 +789,7 @@
 					  	json["ShopId"] = this.info.ShopId;
 						json["CouponId"]=this.info.CouponId;
 						json["InvoiceId"]= this.InvoiceIdArr[i];
-					  	json["Remark"] = this.remarkTxtArr[i];
+					  	json["Remark"] = this.Remark;
 					  	DataArr.push(json);
 					  }
 					  // console.log({

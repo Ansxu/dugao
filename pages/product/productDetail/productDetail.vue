@@ -401,17 +401,7 @@
 		</view>
 		<!-- 详情底部 end -->
 		<view class="topbtn" @click="Top" v-if="isTop"></view>
-		<popupsku
-			:proInfo="proInfo"
-			v-if="isProData"
-			:show="showPopupSku"
-			:showbtntype="showbtntype"
-			:fromPinTuan="fromPinTuan"
-			v-on:hidePopup="hidePopup"
-			v-on:getsku="getsku(arguments)"
-			:isLimint="isLimint * 1"
-			:inviteCode="inviteCode"
-		></popupsku>
+		<popupsku :proInfo="proInfo"  v-if="isProData" :show="showPopupSku" :showbtntype="showbtntype" :fromPinTuan="fromPinTuan" v-on:hidePopup="hidePopup" v-on:getsku="getsku(arguments)" :isLimint="isLimint*1" :inviteCode="inviteCode"></popupsku>
 		<!-- 弹出产品参数 -->
 		<uni-popup position="bottom" mode="fixed" :show="showPopupinfo" :h5Top="true" @hidePopup="hidePopup">
 			<view class="uni-modal-Attr">
@@ -866,6 +856,7 @@ export default {
 			this.showPopupinfo = false;
 		},
 		getsku: function(msg) {
+			console.log(msg,'msg')
 			this.number = msg[0];
 			this.SpecText = msg[1];
 			this.canaddcar = msg[2];
