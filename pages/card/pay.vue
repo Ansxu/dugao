@@ -218,7 +218,7 @@
 				if (result.code === 0) {
 					this.showPay=false;
 					uni.redirectTo({
-						url: "/pages/payresult/payresult?allprice="+this.orderInfo.TotalPrice+"&orderNo="+this.orderNo+"&GroupId="+this.GroupId
+						url: "/pages/card/paysuccess?allprice="+this.orderInfo.TotalPrice+"&orderNo="+this.orderNo+"&GroupId="+this.GroupId
 					})
 				}else if(result.code === 102){
 					uni.showModal({

@@ -2,7 +2,7 @@
 	<!-- 购物车支付成功 -->
 	<view>
 		<view class="payinfo">
-		  <view class="p1 flex flex-center"><view class="iconfont icon-gou2"></view>支付成功</view>
+		  <view class="p1 flex-center"><view class="iconfont icon-gou2"></view>支付成功</view>
 		  <view class="p2"><span class="yuan">￥</span>669.00</view>
 		  <view class="btns">
 			<view class="btn toindex" @click="tolink('/pages/tabBar/index/index',true)">返回首页</view>
@@ -93,7 +93,7 @@
 <style scoped lang="scss">
 	@import "../../common/product.scss";
   .payinfo{background: #ff6f00; text-align: center; color: #fff; padding: 20upx 0 40upx;}
-  .payinfo .p1{font-size: 42upx;}
+  .payinfo .p1{font-size: 42upx;justify-content: center;}
   .payinfo .p1 .iconfont{ margin-right: 20upx;}
   .payinfo .icon-gou2,.payinfo .icon-cha{ font-size: 56upx; line-height:1; }
   .payinfo .p2{ font-size: 60upx; line-height: 1.5}
