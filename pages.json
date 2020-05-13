@@ -606,6 +606,12 @@
 					"style": {
 						"navigationBarTitleText": "产品分类"
 					}
+				},
+				{
+					"path": "confirmOrder/confirmOrder",
+					"style": {
+						"navigationBarTitleText": "确认订单"
+					}
 				}
 			]
 		}

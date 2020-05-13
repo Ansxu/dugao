@@ -105,8 +105,8 @@
 					<div class="content">
 						<div class="tit ellipsis">{{item.Name}}</div>
 						<div class="price flex-ends">
-							<div class="main-price flex-end"><span>¥</span>{{item.MarketPrice}}</div>
-							<div class="o-price">¥{{item.Price}}</div>
+							<div class="main-price flex-end"><span>¥</span>{{item.Price}}</div>
+							<div class="o-price">¥{{item.MarketPrice}}</div>
 						</div>
 						<div class="num">已售{{item.SalesVolume}}件</div>
 					</div>

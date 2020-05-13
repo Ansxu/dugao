@@ -129,7 +129,7 @@
 
 <script>
 import {post,get,trim} from '@/utils'
-import uniPopup from '@/components/uni-popup.vue';
+import uniPopup from '@/components/uni-popup/uni-popup.vue';
 export default {
   components: {
     uniPopup
