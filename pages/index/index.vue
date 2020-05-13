@@ -97,13 +97,16 @@
 				</div>
 			</div>
 			<div class="list flex-center-between" id="sort">
-				<div class="item" :class="{'border-r':index%2==0}" v-for="(item,index) in list" :key="index">
+				<div class="item" :class="{'border-r':index%2==0}" 
+					v-for="(item,index) in list" :key="index"
+					@click="navigate('product/productDetail/productDetail',{id:item.Id})"
+					>
 					<img :src="item.PicNo" alt="">
 					<div class="content">
 						<div class="tit ellipsis">{{item.Name}}</div>
 						<div class="price flex-ends">
-							<div class="main-price flex-end"><span>¥</span>{{item.MarketPrice}}</div>
-							<div class="o-price">¥{{item.Price}}</div>
+							<div class="main-price flex-end"><span>¥</span>{{item.Price}}</div>
+							<div class="o-price">¥{{item.MarketPrice}}</div>
 						</div>
 						<div class="num">已售{{item.SalesVolume}}件</div>
 					</div>
