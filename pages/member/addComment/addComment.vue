@@ -8,8 +8,10 @@
 					</view>
 					<view class="rate-item">
 						<view class="title">描述相符</view>
-						<uni-rate size="18" margin="10" color="#bbb" :starType="1" :showtxt="true" active-color="#ffc405" value="5"
-						 @change="onChange"></uni-rate>
+						<div class="star">
+							<uni-rate size="18" margin="10" color="#bbb" :starType="1" :showtxt="true" active-color="#ffc405" value="5"
+							@change="onChange($event,1)"></uni-rate>
+						</div>
 					</view>
 				</view>
 				<!--遇到的问题-->
@@ -19,7 +21,7 @@
 		  	          <p v-for="(item,oll) in plist" :key="oll" class="pp_item" :class="{'active':oll==1}">{{item.name}}</p>
 		  	      </div>
 		  	  </div> -->
-				<textarea cols="30" rows="10" maxlength="299" class="com_text" v-model="text" placeholder="填写您对商品的评价~"></textarea>
+				<textarea cols="30" rows="10" maxlength="300" class="com_text" v-model="text" placeholder="填写您对商品的评价~"></textarea>
 				<view class="counter"><text class="num">{{inputTxtLength}}</text>/300</view>
 				<div class="p3" style="padding-bottom: 30upx;">
 					<!-- <div>上传图片（不超过5张）</div> -->
@@ -43,16 +45,16 @@
 				<view class="rateContent">
 					<view class="rate-item flex flex-start">
 						<view class="title">物流服务</view>
-						<view class="grade">
+						<view class="grade star">
 							<uni-rate size="18" margin="10" color="#bbb" :starType="2" :showtxt="true" active-color="#ffc405" value="5"
-							 @change="onChange"></uni-rate>
+							 @change="onChange($event,2)"></uni-rate>
 						</view>
 					</view>
 					<view class="rate-item flex flex-start">
 						<view class="title">服务态度</view>
-						<view class="grade">
+						<view class="grade star">
 							<uni-rate size="18" margin="10" color="#bbb" :starType="3" :showtxt="true" active-color="#ffc405" value="5"
-							 @change="onChange"></uni-rate>
+							 @change="onChange($event,3)"></uni-rate>
 						</view>
 					</view>
 				</view>
@@ -71,7 +73,7 @@
 		pathToBase64,
 		base64ToPath
 	} from '@/common/image-tools.js';
-	import uniRate from '@/components/uni-rate.vue';
+	import uniRate from '@/components/uni-rate/uni-rate.vue';
 	var sourceType = [
 		['camera'],
 		['album'],
@@ -110,6 +112,7 @@
 		},
 		onLoad(e) {
 			this.imgList = []
+			console.log(e,'e')
 			// #ifdef APP-PLUS
 			 this.OrderNo = e.id
 			 this.OrderDetailId  = e.detailId
@@ -226,15 +229,15 @@
 					})
 				})
 			},
-			//设置评价等级
-			onChange(e) {
-				if (e.type === 1) {
+			//设置评价等级,type:1-描述，2-物流，3--服务
+			onChange(e,type) {
+				if (type === 1) {
 					this.proRank = e.value;
 				}
-				if (e.type === 2) {
+				if (type === 2) {
 					this.serRank = e.value;
 				}
-				if (e.type === 3) {
+				if (type === 3) {
 					this.logRank = e.value;
 				}
 			},
@@ -322,6 +325,7 @@
 		padding: 20upx;
 		height: 200upx;
 		width: 100%;
+		box-sizing: border-box;
 	}
 
 	.picbox {
@@ -352,8 +356,8 @@
 	}
 
 	.pic_itim {
-		width: 220upx;
-		height: 220upx;
+		width: 180upx;
+		height: 180upx;
 	}
 
 	.porela {
@@ -385,6 +389,7 @@
 
 	.rateContent .rate-item {
 		margin: 10upx 0;
+		
 	}
 
 	.rateContent .rate-item .title {
@@ -396,5 +401,13 @@
 		text-align: right;
 		font-size: 24upx;
 		color: #B2B2B2;
+	}
+	.star{
+		margin-top:12upx;
+	}
+	.rateContent{
+		.star{
+			margin-top:17upx;
+		}
 	}
 </style>

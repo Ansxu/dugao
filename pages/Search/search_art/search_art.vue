@@ -9,7 +9,7 @@
 			<view class="searchbtn c_theme" @click="search">搜索</view>
 		</view>
 		<!-- #endif -->
-		<view class="uni-tab-bar">
+		<view class="uni-tab-bar" v-if="false">
 			<view class="uni-swiper-tab tabList">
 				<view :class="['swiper-tab-list',tabIndex==0?'active':'']" @click="tapTab(0)">
 					<view class="s">
@@ -230,15 +230,15 @@
 						url: '/pages/Article/activityDetail/activityDetail?id='+id
 					})
 				}else{
-					if(FindType==0){
-						uni.navigateTo({
-							url: '/pages/Article/artDetail/artDetail?id='+id
-						})
-					}else{
+					// if(FindType==0){
+					// 	uni.navigateTo({
+					// 		url: '/pages/Article/artDetail/artDetail?id='+id
+					// 	})
+					// }else{
 						uni.navigateTo({
 							url: '/pages/Article/NewsDetail/NewsDetail?id='+id
 						})
-					}
+					// }
 				}
 			},
 			// #ifdef MP-WEIXIN
@@ -276,7 +276,7 @@
 	@import "./style";
 	.wxParse *{display: inline-block !important;}
 	/* #ifdef MP-WEIXIN */
-	.MP-header{ padding-bottom: 0;}
+	.MP-header{ padding-bottom: 20upx;border-bottom: 1px solid #e6e6e6;}
 	.uni-swiper-tab{ top: 60upx; border-bottom: 1px solid #e6e6e6;}
 	.MP-header .input-view{
 		background: #f5f5f5;

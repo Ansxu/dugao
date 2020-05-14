@@ -28,8 +28,9 @@
 		host,
 		post,
 		get,
-		valPhone
+		valPhone,
 	} from '@/common/util.js';
+	import {navigateBack} from '@/utils';
 	export default{
 		data(){
 			return {
@@ -117,11 +118,7 @@
 						icon: "success",
 						duration: 2000,
 						success: function() {
-							setTimeout(function() {
-								uni.switchTab({
-									url: "/pages/my/my"
-								})
-							}, 2000);
+							navigateBack();
 						}
 					});
 				}

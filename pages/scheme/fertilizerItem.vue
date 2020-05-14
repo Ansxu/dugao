@@ -1,5 +1,5 @@
 <template>
-	<div class="item" @click="goFindDetail(item.Id,item.FindType)">
+	<div class="item" @click="goFindDetail(item.Id)">
 		<img :src="item.PicImg" alt="">
 		<div class="content flex-end">
 			<p class="ellipsis">{{item.Title}}</p>
@@ -26,12 +26,8 @@
 		},
 		methods: {
 			//链接发现详情页
-			goFindDetail(fid,artType) {
-				if(artType==0){//用户发布详情
-					navigate( 'Article/artDetail/artDetail',{id:+fid})
-				}else{//资讯详情、店铺
-					navigate( 'Article/NewsDetail/NewsDetail',{id:+fid})
-				}
+			goFindDetail(fid) {
+				navigate( 'Article/NewsDetail/NewsDetail',{id:+fid})
 			},
 		}
 	}
