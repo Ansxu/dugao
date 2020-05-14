@@ -86,7 +86,6 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 					Page:this.page,
 					PageSize:this.pageSize,
 					sort:this.sortType,
-					// IsHits:this.sortType===1?1:0,
 					Order:this.sortMode,
 					Keywords:this.searchText
 				}).then(res=>{

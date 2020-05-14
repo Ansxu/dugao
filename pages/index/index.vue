@@ -280,7 +280,7 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 	}
 	.search{
 		background:#f4f4f4;
-		color:#ccc;
+		color:#999;
 		border-radius:40upx;
 		margin:0 30upx 5upx;
 		padding:0 30upx;
