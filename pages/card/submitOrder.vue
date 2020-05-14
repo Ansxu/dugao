@@ -45,7 +45,8 @@
 						<view class="txtBox">
 							<view class="title">{{item2.Name}}</view>
 							<view class="pronumber">
-								<view class="protype" v-if="item2.SpecText">{{item2.SpecText}}</view><view class="number">x{{item2.Number}}</view>
+								<view class="protype" v-if="item2.SpecText">{{item2.SpecText}}</view>
+								<view class="number">x{{item2.Number}}</view>
 							</view>
 							<view class="pronumber">
 								<view class="price" >￥{{item2.Price}}</view>
