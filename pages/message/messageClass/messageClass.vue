@@ -61,6 +61,8 @@
 			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 		},
 		onShow() {
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
 			// if (toLogin(this.curPage)) {
 				this.NoticeTypeList();
 			// }

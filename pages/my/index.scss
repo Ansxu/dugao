@@ -587,7 +587,13 @@ button.fill {
 	background: $primary;height: 280rpx;
     display:flex;
     align-items:center;
-    justify-content:center;
+	justify-content:center;
+	position:relative;
+	.iconBtnBox{
+		right:30upx;
+		top:30upx;
+		position:absolute;
+	}
 }
 
 .lz-vip{

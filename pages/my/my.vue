@@ -3,9 +3,12 @@
 		<view style="width: 100%;background:#ff4e4f;" :style="{'height':barHeight+'px'}"></view>
 		
 		<view class="memberTop">
-			<!-- <view class="iconBtnBox">
-				<view @click="navigate('message/messageClass/messageClass')" class="iconfont icon-xiaoxi iconBtn"><text class="uni-badge" v-if="newscount!=0">{{newscount}}</text></view>
-			</view> -->
+			<view class="iconBtnBox">
+				<view @click="navigate('message/messageClass/messageClass')" class="iconfont icon-xiaoxi iconBtn">
+					<text class="uni-badge" v-if="newscount!=0">{{newscount}}</text>
+				</view>
+				<!-- <uni-icons type="chat"></uni-icons> -->
+			</view>
 			<view class="conBox">
 				<view class="tx_info flex-column-center">
 					<view @click="navigate('member/editinfo/editinfo',{Memberid:memberInfo.Id},true)">
@@ -40,35 +43,35 @@
 					<view class="item flex1" @click="navigate('member/order/order?tabIndex=1')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/pend-pay.png" mode="widthFix"></image>
-							<view class="circleNum" v-if="memberInfo.num_dfk>0">{{memberInfo.num_dfk}}</view>
+							<view class="circleNum" v-if="memberInfo.num_dfk">{{memberInfo.num_dfk}}</view>
 						</view>
 						<view class="txt">待付款</view>
 					</view>
 					<view class="item flex1" @click="navigate('member/order/order?tabIndex=6')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/wait-ship.png" mode="widthFix"></image>
-							<view class="circleNum" v-if="memberInfo.num_audit>0">{{memberInfo.num_audit}}</view>
+							<view class="circleNum" v-if="memberInfo.num_dfh">{{memberInfo.num_dfh}}</view>
 						</view>
 						<view class="txt">待发货</view>
 					</view>
 					<view class="item flex1" @click="navigate('member/order/order?tabIndex=2')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/ship.png" mode="widthFix"></image>
-							<view class="circleNum" v-if="memberInfo.num_dfh>0">{{memberInfo.num_dfh}}</view>
+							<view class="circleNum" v-if="memberInfo.num_dsh">{{memberInfo.num_dsh}}</view>
 						</view>
 						<view class="txt">已发货</view>
 					</view>
 					<view class="item flex1" @click="navigate('member/order/order?tabIndex=3')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/evaluation.png" mode="widthFix"></image>
-							<view class="circleNum" v-if="memberInfo.num_dsh>0">{{memberInfo.num_dsh}}</view>
+							<view class="circleNum" v-if="memberInfo.num_dpj">{{memberInfo.num_dpj}}</view>
 						</view>
 						<view class="txt">评价</view>
 					</view>
 					<view class="item flex1" @click="navigate('member/orderTui/orderTui')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/after-sale.png" mode="widthFix"></image>
-							<view class="circleNum" v-if="memberInfo.num_dpj>0">{{memberInfo.num_dpj}}</view>
+							<view class="circleNum" v-if="memberInfo.num_sale">{{memberInfo.num_sale}}</view>
 						</view>
 						<view class="txt">售后</view> 
 					</view>
@@ -185,13 +188,17 @@
 					"UserId": this.userId,
 					"Token": this.token
 				})
-				console.log(this)
 					this.memberInfo = result.data;
 					this.$store.commit("update", {
 					  Wallet:result.data.Wallet
 					});  
 					// 推荐码
 					uni.setStorageSync('ReferralCode',result.data.ReferralCode)
+					
+					let info = uni.getStorageSync("userInfo");
+					info.avatarUrl = result.data.Avatar;
+					info.NickName = result.data.NickName;
+					uni.setStorageSync("userInfo", info);
 			},
 			// #ifndef MP
 			QQSevice(){
