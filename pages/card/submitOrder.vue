@@ -38,7 +38,7 @@
 					</view>
 					<view class="outside procontent" v-for="(item2,index2) in info.ProData" :key="index2">
 						<view class="pictrueAll">
-							<view class="pictrue" @click="golink('/pages/product/productDetail/productDetail')">
+							<view class="pictrue">
 								<image :src="item2.PicNo" mode="aspectFill" ></image>
 							</view>
 						</view>
@@ -123,7 +123,7 @@
 					</view>
 					<view class="outside procontent" v-for="(item2,index2) in info.ProData" :key="index2">
 						<view class="pictrueAll">
-							<view class="pictrue" @click="golink('/pages/product/productDetail/productDetail')">
+							<view class="pictrue">
 								<image :src="item2.PicNo" mode="aspectFill" ></image>
 							</view>
 						</view>
@@ -148,7 +148,7 @@
 								<view class="uni-icon uni-icon-arrowright"></view>
 							</view>
 						</view>
-						<view class="orderinfo" v-if="info.IsInvoice==1" @click="ChooseInvoice(0)">
+						<view class="orderinfo" @click="ChooseInvoice(0)">
 							<view class="orderleft">开票类型</view>
 							<view class="orderright">
 								<view class="infotxt flex flex-end">{{Invoicetxt[index]||'不开发票'}}

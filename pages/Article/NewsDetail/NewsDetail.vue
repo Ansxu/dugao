@@ -95,6 +95,12 @@
 			this.showPopupShare=!this.showPopupShare;
 		},
 		methods:{
+			onShareAppMessage: function(e) {
+				return {
+					title: this.NewsInfo.Title,
+					path: 'pages/Article/NewsDetail/NewsDetail?id='+this.Findid
+				}
+			},
 			//统一的关闭popup方法
 			hidePopup: function() {
 				this.showPopupShare = false;
@@ -178,7 +184,7 @@
 				_this.FindNewsInfo();
 				uni.stopPullDownRefresh();  //停止下拉刷新动画
 			}, 1000);
-		}
+		},
 	}
 </script>
 

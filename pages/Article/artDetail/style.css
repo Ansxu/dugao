@@ -125,38 +125,16 @@
 
 .info-text {
 	display: flex;
-	margin-right: 20upx;
+	margin-left: 20upx;
 	color: #999999;
 	font-size: 24upx;
 }
-
-.icon-dizhi1:before {
+.info-text .iconfont{ margin-right: 8upx;}
+.icon-shouhuodizhi:before {
 	color: #bbb;
 	font-size: 36upx;
 	line-height: 1;
-}
-
-.comment {
-	padding-left: 40upx;
-	background: url(http://www.sc-mall.net/static/pl_icon.png) left center no-repeat;
-	background-size: 32upx;
-}
-
-.zan {
-	padding-left: 40upx;
-	background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat;
-	background-size: 32upx;
-}
-
-.zan.active {
-	background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat;
-	background-size: 32upx;
-}
-
-.scan {
-	padding-left: 46upx;
-	background: url(http://www.sc-mall.net/static/eye.png) left top no-repeat;
-	background-size: 40upx;
+	margin-right: 8upx;
 }
 
 .media-info-r {

@@ -32,10 +32,10 @@
 					</view>
 					<view class="media-foot">
 						<view class="media-location">
-							<text class="info-text iconfont icon-dizhi1" v-if="NewsInfo.Location">{{NewsInfo.Location}}</text>
+							<text class="info-text iconfont icon-shouhuodizhi flex-start" v-if="NewsInfo.Location">{{NewsInfo.Location}}</text>
 						</view>
 						<view class="media-info-r">
-							<text class="info-text scan">{{NewsInfo.BrowseNum}}</text>
+							<text class="info-text flex-start"><text class="iconfont icon-eye"></text>{{NewsInfo.BrowseNum}}</text>
 						</view>
 					</view>
 				</view>

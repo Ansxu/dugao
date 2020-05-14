@@ -9,9 +9,10 @@
 				</view>
 				<view class="uni-comment-body">
 					<view class="uni-comment-top">
-						<text class="name" v-if="item.MemberName">{{item.MemberName}}</text>
-						<text class="name" v-else>匿名</text>
-						<view :class="['zan',item.IsLike==1?'active':'']" @click="like(item.Id,2,index)">{{item.LikeNum}}</view>
+						<text class="name">
+							{{item.MemberName||'匿名'}}
+						</text>
+						<view class="zan flex-start" @click="like(item.Id,2,index)"><text :class="['iconfont',item.IsLike==1?'icon-zan1':'icon-zan']"></text>{{item.LikeNum}}</view>
 					</view>
 					<view class="uni-comment-content">{{item.Comment}}</view>
 					<view v-if="item.ImgList" class="image-section">
@@ -20,7 +21,7 @@
 						</view>
 						<view v-if="item.imgArr.length>3" class="count">{{item.imgArr.length}}</view>
 					</view>
-					<view class="comment-date">
+					<view class="comment-date flex">
 						<view class="date">{{item.AddTime}}</view><view>▪</view><view class="replay-btn" @click="Sendreplay(item.Id,item.MemberName,false)">回复TA</view>
 					</view>
 					<view class="replaybox" v-if="item.MyCommnetList.length>0">
@@ -76,8 +77,8 @@
 						<view :class="['sendBtn',Comment==''?'dis':'']" @click="Send">发表</view>
 					</block>
 					<block v-if="!IsShowReplyBox">
-						<view class="info-text comment">{{NewsInfo.CommentNum}}</view>
-						<view :class="['info-text zan',NewsInfo.IsLike==1?'active':'']" @click="like(Findid,0)">{{NewsInfo.LikeNum}}</view>
+						<view class="info-text"><text class="iconfont icon-pinglun1"></text>{{NewsInfo.CommentNum}}</view>
+						<view class="info-text" @click="like(Findid,0)"><text :class="['iconfont',NewsInfo.IsLike==1?'icon-zan1':'icon-zan']"></text>{{NewsInfo.LikeNum}}</view>
 					</block>
 				</view>
 			</view>
@@ -86,7 +87,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	import noData from '@/components/noData.vue'; //暂无数据
 	import uniLoadMore from '@/components/uni-load-more.vue'; //加载更多
 	export default {
@@ -98,7 +99,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				Findid:"",
 				NewsInfo:{},
 				loadingType: 0, //0加载前，1加载中，2没有更多了
@@ -121,7 +121,6 @@
 			};
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.Findid=e.id;
@@ -208,7 +207,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -258,7 +257,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -357,7 +356,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -431,23 +430,8 @@
 	color: #89674c;
 	font-size: 26upx;
 }
-.comment {
-	padding-left: 40upx;
-	background: url(http://www.sc-mall.net/static/pl_icon.png) left center no-repeat;
-	background-size: 32upx;
-}
 
-.zan {
-	padding-left: 40upx;
-	background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat;
-	background-size: 32upx;
-}
-
-.zan.active {
-	background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat;
-	background-size: 32upx;
-}
-.uni-comment .comment-date uni-view {
+.uni-comment .comment-date uni-view,.uni-comment .comment-date view {
 	font-size: 24upx;
 	color: #999;
 	display: inline-block;
@@ -462,7 +446,14 @@
 	font-size: 24upx;
 	color: #999;
 }
-
+.zan .iconfont{
+	margin-right: 8upx;
+	color: #999;
+	font-size: 32upx;
+}
+.zan .iconfont.icon-zan1{
+	color: #89674C;
+}
 .replaybox {
 	background: #f6f8f7;
 	padding: 20upx;
@@ -532,11 +523,15 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
-.foot-reply .btn-r .info-text{ display: block; width: 90upx; text-align: center; padding: 48upx 0 0; margin: 0;}
-.foot-reply .btn-r .comment {
-    background-position: center 14upx;
+.foot-reply .btn-r .info-text{ width: 90upx; text-align: center; margin: 0;
+display: flex; 
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
-.foot-reply .btn-r .zan{ background-position: center 14upx;}
+.foot-reply .btn-r .info-text .iconfont.icon-zan1{
+	color: #89674c;
+}
 .foot-reply .sendBtn{ background: #89674c; color: #fff; border-radius: 6px; height: 60upx; line-height: 60upx; padding: 0 20upx; margin: 20upx 20upx 20upx 0;}
 .foot-reply .sendBtn.dis{opacity: .4;}
 .image-section {

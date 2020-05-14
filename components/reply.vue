@@ -18,7 +18,7 @@
 							<text class="name">
 								{{item.MemberName||'匿名'}}
 							</text>
-							<view :class="['zan',item.IsLike==1?'active':'']" @click="like(item.Id,2,index)">{{item.LikeNum}}</view>
+							<view class="zan flex-start" @click="like(item.Id,2,index)"><text :class="['iconfont',item.IsLike==1?'icon-zan1':'icon-zan']"></text>{{item.LikeNum}}</view>
 						</view>
 						<view class="uni-comment-content">{{item.Comment}}</view>
 						<view v-if="item.ImgList" class="image-section">
@@ -87,8 +87,8 @@
 						<view :class="['sendBtn',Comment==''?'dis':'']" @click="Send">发表</view>
 					</block>
 					<block v-if="!IsShowReplyBox">
-						<view class="info-text comment">{{comment_count}}</view>
-						<view :class="['info-text zan',iszan==1?'active':'']" @click="like(FkId,0)">{{zan}}</view>
+						<view class="info-text"><text class="iconfont icon-pinglun1"></text>{{comment_count}}</view>
+						<view class="info-text" @click="like(FkId,0)"><text :class="['iconfont',iszan==1?'icon-zan1':'icon-zan']"></text>{{zan}}</view>
 					</block>
 				</view>
 			</view>
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	export default {
 		props:{
 			newsInfo: {
@@ -106,7 +106,6 @@
 			}
 		},
 		created(){
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.CommnetList();
@@ -172,7 +171,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -220,7 +219,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -324,7 +323,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -381,22 +380,7 @@
 		color: #89674c;
 		font-size: 26upx;
 	}
-	.comment {
-		padding-left: 40upx;
-		background: url(http://www.sc-mall.net/static/pl_icon.png) left center no-repeat;
-		background-size: 32upx;
-	}
-
-	.zan {
-		padding-left: 40upx;
-		background: url(http://www.sc-mall.net/static/zan.png) left top no-repeat;
-		background-size: 32upx;
-	}
-
-	.zan.active {
-		background: url(http://www.sc-mall.net/static/zan2.png) left top no-repeat;
-		background-size: 32upx;
-	}
+	
 	.uni-comment .comment-date uni-view,.uni-comment .comment-date view {
 		font-size: 24upx;
 		color: #999;
@@ -412,7 +396,14 @@
 		font-size: 24upx;
 		color: #999;
 	}
-
+	.zan .iconfont{
+		margin-right: 8upx;
+		color: #999;
+		font-size: 32upx;
+	}
+	.zan .iconfont.icon-zan1{
+		color: #89674C;
+	}
 	.replaybox {
 		background: #f6f8f7;
 		padding: 20upx;
@@ -482,11 +473,15 @@
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	.foot-reply .btn-r .info-text{ display: block; width: 90upx; text-align: center; padding: 48upx 0 0; margin: 0;}
-	.foot-reply .btn-r .comment {
-		background-position: center 14upx;
+	.foot-reply .btn-r .info-text{  width: 90upx; text-align: center; margin: 0;
+	display: flex; 
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	}
-	.foot-reply .btn-r .zan{ background-position: center 14upx;}
+	.foot-reply .btn-r .info-text .iconfont.icon-zan1{
+		color: #89674c;
+	}
 	.foot-reply .sendBtn{ background: #89674c; color: #fff; border-radius: 6px; height: 60upx; line-height: 60upx; padding: 0 20upx; margin: 20upx 20upx 20upx 0;}
 	.foot-reply .sendBtn.dis{opacity: .4;}
 	.image-section {

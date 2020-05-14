@@ -113,7 +113,7 @@
       <div class="comment">
         <div class="tit ali-c jus-b">
           <p class="left">商品评价<span>({{proInfo.EvaluateCount}})</span></p>
-          <div class="right" v-if="proInfo.EvaluateCount>0" @click="goUrl('/pages/goodsSon/allcomment/main',proId)">
+          <div class="right" v-if="proInfo.EvaluateCount>0" @click="goUrl('/pages/product/evaluation/evaluation',proId)">
             <span>查看全部</span>
             <img src="http://jd.wtvxin.com/images/images/index/more_r.png" alt="">
           </div>
@@ -173,6 +173,7 @@
             <img src="http://jd.wtvxin.com/images/images/index/cart.png" alt="">
             <p>购物车</p>
             <span class="num flexc" v-if="CartNumber>0">{{CartNumber}}</span>
+			
           </div>
         </div>
         <div class="right flex">
@@ -658,14 +659,13 @@ export default {
     },
     //获取购物车数
     async GetAllCartNumber(){
-      // let res=await post("Cart/GetAllCartNumber",{
-      //   userId: this.userId,
-      //   token: this.token,
-      //   ShopId:this.shopid
-      // })
-      // if(res.code==0){
-      //   this.CartNumber=res.data.AllNumber;
-      // }
+      let res=await post("Cart/GoodsCartNum",{
+        userId: this.userId,
+        token: this.token
+      })
+      if(res.code==0){
+        this.CartNumber=res.data.Count;
+      }
     },
     //添加取消收藏
 			async collect(){
@@ -1574,5 +1574,15 @@ export default {
   border-radius: 10rpx;
   background: #fff7f4;
 }
-// skuend
+.hint{
+	width: 26upx;
+	height: 26upx;
+	background: #FF6F00;
+	border-radius: 50%;
+	font-size: 20upx;
+	margin-top: 20upx;
+	margin-left: -40upx;
+	text-align: center;
+	color: #fff;
+}
 </style>

@@ -25,7 +25,7 @@
 						<text class="iconfont icon-shijian"></text>{{ActInfo.AddTime}} 至 {{ActInfo.EndTime}}
 					</view>
 					<view class="info-text" v-if="ActInfo.Location">
-						<text class="iconfont icon-dizhi1"></text>{{ActInfo.Location}}
+						<text class="iconfont icon-dizhi"></text>{{ActInfo.Location}}
 					</view>
 					<view class="info-text" v-if="ActInfo.Quota">
 						<text class="iconfont icon-haoyou"></text>{{ActInfo.Quota}}名额
@@ -62,10 +62,10 @@
 		<!-- 底部-->
 		<view class="foot-fiexd">
 			<view class="foot-activity">
-				<view class="tips">
+				<view class="tips flex">
 					<block v-if="ActInfo.IsOver==1">活动已结束</block>
 					<block v-else>{{ActInfo.JoinNum}}人已参与</block>
-					<text :class="['info-text zan',ActInfo.IsLike==1?'active':'']" @click="like(ActInfo.Id)">{{ActInfo.LikeNum}}</text>
+					<text class="info-text zan" @click="like(ActInfo.Id)"><text :class="['iconfont',ActInfo.IsLike==1?'icon-zan1':'icon-zan']"></text>{{ActInfo.LikeNum}}</text>
 				</view>
 				<view class="btn-r">
 					<view class="active btn" @click="goTocomment" v-if="ActInfo.IsOver==1&&ActInfo.IsJoin==1">晒图</view>
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	import actreplyList from '@/components/actreplyList.vue';
 	import uParse from '@/components/uParse/src/wxParse.vue';
 	export default {
@@ -91,7 +91,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				ActivityId:"",
 				ActInfo:{},
 				imgArr:[],
@@ -99,7 +98,6 @@
 			};
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.ActivityId=e.id;
@@ -108,6 +106,12 @@
 			this.ActivityInfo();
 		},
 		methods: {
+			onShareAppMessage: function(e) {
+				return {
+					title: this.ActInfo.Title,
+					path: 'pages/Article/activityDetail/activityDetail?id='+this.ActivityId
+				}
+			},
 			/*获取活动详情*/
 			async ActivityInfo(){
 				let	result = await post("Find/ActivityInfo", {
@@ -128,7 +132,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}
@@ -196,7 +200,7 @@
 						success(res) {
 							if (res.confirm) {
 								uni.navigateTo({
-								  url: "/pages/login/login?askUrl="+_this.curPage
+								  url: "/pages/login/login"
 								});
 							} else if (res.cancel) {
 							}

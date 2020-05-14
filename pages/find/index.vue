@@ -22,7 +22,7 @@
 		<view class="list" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
 				<block v-if="tabIndex!=6">
-				<media-list :datajson="item" Grid="2" @click="goDetail" @flow="flow(item.FindType,item.ShopId,item.MemberId,index)" @previewImg="previewImg"></media-list>	 
+				<media-list :datajson="item" Grid="2" @click="goDetail" @previewImg="previewImg"></media-list>	 
 				</block>
 				<block v-else>
 				<actiList :datajson="item"></actiList>
@@ -192,33 +192,6 @@
 				}else{//资讯详情、店铺
 					navigate( 'Article/NewsDetail/NewsDetail',{id:+e.id})
 				}
-			},
-			//关注
-			async flow(FindType,ShopId,MemberId,index){
-				let result;
-				if(FindType==0){
-					result = await post("Find/FollowOperation", {
-						"UserId": this.userId,
-						"Token": this.token,
-						"ToMemberId":MemberId
-					});
-				}else if(FindType==1){
-					result = await post("Goods/ShopCollection", {
-						"UserId": this.userId,
-						"Token": this.token,
-						"ShopId":ShopId
-					});
-				}
-				uni.showToast({
-					title: result.msg
-				})
-				if(this.medialist[index].IsFollow==0){
-					this.medialist[index].IsFollow=1;
-				}else{
-					this.medialist[index].IsFollow=0;
-				}
-
-				
 			},
 			//预览图片
 			previewImg(obj){

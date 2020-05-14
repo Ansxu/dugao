@@ -653,6 +653,7 @@ radio-group label, checkbox-group label{
 .uni-media-list-logo image {
 	height: 100%;
 	width: 100%;
+	background-color: #eee;
 }
 .uni-media-list-body {
 	height: 84upx;

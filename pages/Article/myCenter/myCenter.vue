@@ -67,8 +67,7 @@
 					 发布
 				</view>
 				<view :class="['btn',Userinfo.IsFollow==1?'white':'']" v-if="Userinfo.IsMy==0" @click="Follow">
-					<block v-if="Userinfo.IsFollow==0">关注</block>
-					<block v-else>取消关注</block>
+					{{Userinfo.IsFollow==0?'关注':'取消关注'}}
 				</view>
 			</view>
 		</view>
@@ -76,7 +75,7 @@
 </template>
 
 <script>
-	import {host,post,get,dateUtils,toLogin,getCurrentPageUrlWithArgs} from '@/common/util.js';
+	import {host,post,get,dateUtils,toLogin} from '@/common/util.js';
 	import mediaList from '@/components/tab-nvue/mediaList.vue';
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
@@ -88,7 +87,6 @@
 			return {
 				userId: "",
 				token: "",
-				curPage:"",
 				hasSetText:"我的主页",
 				hasData:false,
 				hasActData:false,
@@ -102,7 +100,6 @@
 			}
 		},
 		onLoad: function(e) {
-			this.curPage = getCurrentPageUrlWithArgs().replace(/\?/g, '%3F').replace(/\=/g, '%3D').replace(/\&/g, '%26');
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.Memberid=e.Memberid;
@@ -152,11 +149,12 @@
 					"SearchKey": ""
 				});
 				if (result.code === 0) {
-					result.data.forEach(function(item) {
-						item.Addtime=dateUtils.format(item.Addtime);
-					})
 					if (result.data.length > 0) {
 						this.hasData = true;
+						result.data.forEach(function(item) {
+							item.Addtime=dateUtils.format(item.Addtime);
+							item.imgArr = item.ImgList.split(',')
+						})
 					}
 					this.medialist = result.data;
 					this.findcount=result.count;
