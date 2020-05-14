@@ -8,7 +8,7 @@
 				</view>
 				<view class="username">
 					<text class="txt uni-ellipsis">{{Userinfo.NickName}}</text>
-					<text :class="['iconfont',Userinfo.Sex=='男'?'icon-nan':'icon-nv']"></text>
+					<text v-if="Userinfo.Sex!='保密'" :class="['iconfont',Userinfo.Sex=='男'?'icon-nan':'icon-nv']"></text>
 				</view>
 				<view class="userdesc" v-if="false">
 					<text class="txt uni-ellipsis">{{Userinfo.Introduction||'主人太懒了，什么都没有留下~'}}</text>
@@ -103,6 +103,8 @@
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			this.Memberid=e.Memberid;
+		},
+		onShow(){
 			this.UserHomePageInfo();
 			this.JoinActivityList();
 		},
