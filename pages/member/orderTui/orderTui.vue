@@ -22,30 +22,37 @@
 					</view>
 				</view>
 				<view class="text_right mt2">实付：¥<span class="font32 uni-bold">{{item.RefundMoney}}</span></view>
-				<view class="btn flex justifyContentEnd">
-					<view class="btn_r"  @click.stop="goUrl('/pages/member/orderTuidetail/orderTuidetail?orderNo='+item.OrderNo+'&RefundId='+item.RefundId)">售后详情</view>
-					<view class="btn_c"  @click.stop="cancel(item)">取消售后</view>
+				<view class="btn flex justifyContentEnd" >
+					<view class="btn_r"
+					  @click.stop="goUrl('/pages/member/orderTuidetail/orderTuidetail?orderNo='+item.OrderNo+'&RefundId='+item.RefundId)"
+					 	>售后详情
+					</view>
+					<view class="btn_c" v-if="item.OrderStatusId===5||item.OrderStatusId===6||item.OrderStatusId===16"  @click.stop="cancel(item)">取消售后</view>
 				</view>
 			</view>
-			<noData :isShow="isnNoData"></noData>
+			<noData v-if="!list.length"></noData>
+			<uni-load-more :loadingType="loadingType" v-else></uni-load-more>
 		</view>
 	</view>
 </template>
 
 <script>
 	import {host,post,get,toLogin} from '@/common/util.js';
-	import noData from '@/components/noData.vue'; //暂无数据
-	export default{
+	import noData from '@/components/noData/noData.vue';
+	import uniLoadMore from '@/components/uni-load-more.vue';
+
+	export default {
 		components: {
-			noData
+			noData,uniLoadMore
 		},
 		data(){
 			return{
 				page:1,
-				pagesize:3,
+				pagesize:12,
 				list:[],
 				isnNoData:false,
 				isOver:false,
+				loadingType: 0, //0加载前，1加载中，2没有更多了
 			}
 		},
 		onShow() {
@@ -76,13 +83,21 @@
 				PageSize:this.pagesize,
 			  }).then(res=>{
 				if(res.code===0){
+					this.loadMore = 0;
+					const data = res.data;
+					if(this.page===1){
+						this.schemeList =[];
+					}
 				  this.list.push(...res.data)
-				  if(res.count == 0){
-					this.isnNoData = true
-				  }
-				  if(res.count<=this.isOver){
-					this.isOver = true;console.log(this.isOver)
-				  }
+					if(data.length<this.pageSize){
+						this.loadMore = 2;
+					}
+				//   if(res.count == 0){
+				// 	this.isnNoData = true
+				//   }
+				//   if(res.count<=this.isOver){
+				// 	this.isOver = true;console.log(this.isOver)
+				//   }
 				}
 			  })
 			},
@@ -107,9 +122,11 @@
 										title:'取消成功！'
 									})
 									setTimeout(()=>{
-										uni.redirectTo({
-											url:'/pages/member/order/order'
-										})
+										that.init();
+										that.getList();
+										// uni.redirectTo({
+										// 	url:'/pages/member/order/order'
+										// })
 									},1500)
 								}
 							})
@@ -118,12 +135,23 @@
 				})
 			}
 		},
-		onReachBottom(){console.log(this.isOver,this.isnNoData)
-		    if(!this.isOver&&!this.isnNoData){
-		      this.page++
-		      this.getList()
-		    }
-		  },
+		// 上拉加载
+		onReachBottom: function() {
+			if (this.loadMore !== 2) {
+				this.page++;
+				that.getList();
+			}
+		},
+		onPullDownRefresh() {
+			//监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+				this.page=1;
+				this.loadMore = 0;
+			setTimeout(()=> {
+				that.init();
+				that.getList();
+				uni.stopPullDownRefresh();  //停止下拉刷新动画
+			}, 1000);
+		}
 	}
 	
 </script>

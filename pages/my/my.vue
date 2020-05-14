@@ -188,6 +188,7 @@
 					"UserId": this.userId,
 					"Token": this.token
 				})
+				this.getMessage();
 					this.memberInfo = result.data;
 					this.$store.commit("update", {
 					  Wallet:result.data.Wallet
@@ -199,6 +200,15 @@
 					info.avatarUrl = result.data.Avatar;
 					info.NickName = result.data.NickName;
 					uni.setStorageSync("userInfo", info);
+
+			},
+			getMessage(){
+				post('News/NewsCount',{
+					"UserId": this.userId,
+					"Token": this.token
+				}).then(res=>{
+					this.newscount = res.data;
+				})
 			},
 			// #ifndef MP
 			QQSevice(){
