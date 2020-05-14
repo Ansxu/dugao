@@ -3,9 +3,9 @@
 	<view>
 		<view class="payinfo">
 		  <view class="p1 flex-center"><view class="iconfont icon-gou2"></view>支付成功</view>
-		  <view class="p2"><span class="yuan">￥</span>669.00</view>
+		  <view class="p2"><span class="yuan">￥</span>{{TotalPrice}}</view>
 		  <view class="btns">
-			<view class="btn toindex" @click="tolink('/pages/tabBar/index/index',true)">返回首页</view>
+			<view class="btn toindex" @click="tolink('/pages/index/index',true)">返回首页</view>
 			<view class="btn todetail" @click="toOrder">查看订单</view>
 		  </view>
 		</view>
@@ -44,6 +44,7 @@
 				orderNo:"",
 				Noarr:[],
 				GroupId:0,//大于0 是拼团
+				TotalPrice:''
 			}
 		},
 		onLoad(e) {
@@ -51,6 +52,8 @@
 			this.orderNo=e.orderNo;
 			this.GroupId=e.query.GroupId;
 			// #endif
+			this.TotalPrice = e.allprice
+			console.log(e.allprice)
 		},
 		onShow(){
 			this.userId = uni.getStorageSync("userId");
@@ -60,6 +63,7 @@
 			this.GroupId=this.$root.$mp.query.GroupId;
 			// #endif
 			this.Noarr=this.orderNo.split(",");
+			console.log()
 		},
 		methods: {
 			//跳转

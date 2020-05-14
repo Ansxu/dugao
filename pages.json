@@ -612,6 +612,12 @@
 					"style": {
 						"navigationBarTitleText": "确认订单"
 					}
+				},
+				{
+					"path": "evaluation/evaluation",
+					"style": {
+						"navigationBarTitleText": "全部评价"
+					}
 				}
 			]
 		}
