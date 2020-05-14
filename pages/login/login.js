@@ -58,7 +58,7 @@ export default function logins(params) {
                                     console.log(_res,'login')
                                     // 设置一些缓存，注册或者支付要使用的，直接在缓存获取
                                     uni.setStorageSync("unionid", _res.data.unionid);
-                                    uni.setStorageSync("openId", _res.data.OpenId);
+                                    uni.setStorageSync("openId", _res.data.openId);
                                     // uni.setStorageSync("Token", _res.data.WxToken); //保存的令牌 accessToken
                                     // 登录成功
                                     if (_res.code === LoginSuccessCode) {

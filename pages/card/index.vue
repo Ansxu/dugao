@@ -75,7 +75,7 @@
 							<button type="primary" size="middle" class="btnPay radius100" @click="settle">结算({{selectlen}})</button>
 						</view>
 						<view class="deletbox" v-else>
-							<button class="delet2" @click="golink('/pages/tabBar/my/collect')">我的收藏</button>
+							<button class="delet2" @click="golink('/pages/my/collect')">我的收藏</button>
 							<button class="delet" @click="DelCartBtn">删除</button>
 						</view>
 					</view>

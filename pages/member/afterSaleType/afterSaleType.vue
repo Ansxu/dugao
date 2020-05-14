@@ -47,12 +47,13 @@
 </template>
 
 <script>
-import {switchPath,post,navigate} from '@/common/util.js'
+import {redirect,post} from '@/utils'
+
 export default {
 
   data () {
     return {
-      navigate,
+      redirect,
       indexId:0,
       OrderNumber:"",
       info:{}
@@ -83,7 +84,7 @@ export default {
       })
     },
     goUrl(type){
-      navigate('member/applyReturn/applyReturn',{indexId:this.indexId,id:this.OrderNumber,type})
+      redirect('member/applyReturn/applyReturn',{indexId:this.indexId,id:this.OrderNumber,type})
     },
     
   },

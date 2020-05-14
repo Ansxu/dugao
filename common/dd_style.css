@@ -1338,6 +1338,7 @@ button.fill {
 
 .cartFoot .inner .inner1 {
 	color: #333333;
+	align-items: center;
 }
 .cartFoot .inner .inner1 .hj{ line-height: 1;}
 .cartFoot .inner .inner1 .msg {

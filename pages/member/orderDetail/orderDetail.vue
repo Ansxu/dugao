@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="or_item bg_fff radius">
-            <div class="pp3 flex bor_tit" v-for="(item, index) in info.OrderDetails" :key="index" @click.stop="goUrl('/pages/homePage/details?id='+item.ProductId)">
+            <div class="pp3 flex bor_tit" v-for="(item, index) in info.OrderDetails" :key="index" @click.stop="goUrl('/pages/product/productDetail/productDetail?id='+item.ProductId)">
                 <image mode="aspectFit" :src="item.PicNo" alt="" class="shop mr2"></iamge>
                 <div class="flex1 flex  mr2">
                     <div class="or_left flex flexColumn justifyContentBetween">
@@ -101,7 +101,7 @@
           <p class="btn btn_gray" v-if="info.StatusName=='已发货'||info.StatusName=='已收货'" @click="goUrl('/pages/member/logistics/logistics?orderNo='+info.OrderNumber)">查看物流</p>
           <p class="btn btn_gray" v-if="info.IsCancel==1" @click="chooseOrders(info.OrderNumber,1)">取消订单</p>
           <p class="btn btn_gray" v-if="info.IsDel==1" @click="chooseOrders(info.OrderNumber,2)">删除订单</p>
-          <p class="btn btn_red" v-if="info.Ispay==1" @click="goUrl('/pages/pay/pay?orderNo='+info.OrderNumber)">立即支付</p>
+          <p class="btn btn_red" v-if="info.Ispay==1" @click="goUrl('/pages/card/pay?orderNo='+info.OrderNumber)">立即支付</p>
           <p class="btn btn_red" v-if="info.IsConfirmReceipt==1" @click="chooseOrders(info.OrderNumber,3)">确认收货</p>
       </div>
   </div>
@@ -164,13 +164,13 @@ export default {
           paySign: payData.paySign,
           success(res) {
               uni.redirectTo({
-                url: "/pages/goodsSon/paysuccess/main?OrderNo="+no
+                url: "/pages/card/pay?OrderNo="+no
               })
             },
           fail(res) {
             console.log(res);
             uni.redirectTo({
-              url: "/pages/goodsSon/paysuccess/main?OrderNo="+no+"&msg=fail"
+              url: "/pages/card/pay?OrderNo="+no+"&msg=fail"
             })
           }
         })
@@ -352,10 +352,11 @@ export default {
  }
  .order_info p{
    padding:5upx 0;
+   display: flex;
  }
  .copy{
-   padding:0upx 20upx;border:1upx solid red;color:#ff6f00;font-size:20upx;
-   border-radius: 5upx;
+   padding:2upx 20upx 0 20upx;border:1upx solid red;color:#ff6f00;font-size:20upx;
+   border-radius: 5upx;margin: 0 20rpx;
  }
 
  .bg_statu{

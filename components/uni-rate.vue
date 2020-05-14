@@ -1,9 +1,11 @@
 <template>
 	<view class="uni-rate">
 		<view class="uni-rate-icon" v-for="(star,index) in stars" :key="index" :style="{marginLeft:margin+'px'}" @click="onClick(index)">
-			<font-icon :size="size" :color="color" :type="isFill === false || isFill === 'false' ? 'collect1' : 'collect'"></font-icon>
+			<div>
+				<font-icons :size="size" :color="color" :type="isFill === false || isFill === 'false' ? 'collect1' : 'collect'"></font-icons>
+			</div>
 			<view class="uni-rate-icon-on" :style="{width:star.activeWitch}">
-				<font-icon :size="size" :color="activeColor" type="collect"></font-icon>
+				<font-icons :size="size" :color="activeColor" type="collect"></font-icons>
 			</view>
 		</view>
 		<view class="ratetxt" v-if="showtxt">{{ratetxt[txtindex]}}</view>
@@ -11,12 +13,8 @@
 </template>
 
 <script>
-	import fontIcon from '@/components/font-icon.vue'
 	export default {
 		name: "uni-rate",
-		components: {
-			fontIcon
-		},
 		props: {
 			starType: {
 				type: Number,

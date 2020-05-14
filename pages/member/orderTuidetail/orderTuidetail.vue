@@ -41,7 +41,7 @@
 			<view class="kefuitem" @click="toKefu"><view class="uni-icon uni-icon-contact kefuicon"></view><text>在线客服</text></view>
 			<!--#endif-->
 		</view>
-		<view class="submitbtn" @click="submitbtn" >请填写寄回信息单号</view>
+		<view class="submitbtn" @click="submitbtn"  v-if="info.OrderStatusId===5||info.OrderStatusId===6||info.OrderStatusId===16">请填写寄回信息单号</view>
 		<!-- 填写寄回信息 -->
         <view class="shadeAll" v-show="isShowShade2">
 			<view style="width: 100%;height: 100%;" @click="closeshade"></view>

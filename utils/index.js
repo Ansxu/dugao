@@ -187,6 +187,7 @@ export function switchTab(url,params,isLogin){
 
 // 关闭当前页面跳转url,带参
 export function redirect(url,params,isLogin){
+  console.log(url,'url')
   if(isLogin&&!judgeLogin()){
     return;
   }

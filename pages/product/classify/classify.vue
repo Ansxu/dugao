@@ -2,11 +2,11 @@
 	<view class="content" style="height: 100%;">
 		<!-- 固定在顶部的导航栏 -->
 		<!--<uni-nav-bar color="#333333" background-color="#f5f5f5" shadow="false" fixed="true">
-			 #ifndef MP-WEIXIN -->
+			 ifndef MP-WEIXIN -->
 			<!-- <block slot="left">
 				<view class="uni-icon uni-icon-arrowleft" style="color: #333;" @click="toback"></view>
-			</block> -->
-			<!-- #endif -->
+			</block> 
+			 #endif -->
 			<!--<view class="input-view"  @click="navigate('Search/search_pro/search_pro')">
 				<uni-icons type="search" size="22" color="#666666"></uni-icons>
 				 <input confirm-type="search" disabled="true" class="input" @click="gotoProductList(0)" type="text"
