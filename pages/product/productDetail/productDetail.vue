@@ -69,7 +69,7 @@
                   </div>
                 </block>
               </div>
-              <p v-if="proInfo.Score!=0">购物返<text class="red">{{proInfo.Score}}</text>积分</p>
+              <!-- <p v-if="proInfo.Score!=0">购物返<text class="red">{{proInfo.Score}}</text>积分</p> -->
             </div>
           </div>
           <div class="right ali-c">
