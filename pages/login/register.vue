@@ -44,7 +44,7 @@
               <radio color="#ff6f00" :checked="checkedStatus"></radio>
               <text style="font-size:28upx">我已阅读并同意</text>
             </label>
-            <text class="primary" @click="goUrl('deal')">《杜高用户协议》</text>
+            <text class="primary" @click="goUrl()">《杜高用户协议》</text>
           </div>
         </div>
         <div class="ftbtn">
@@ -203,8 +203,8 @@ export default {
     onCheckedStatus(e) {
       this.checkedStatus = !this.checkedStatus;
     },
-    goUrl(url) {
-      navigate(`/pages/member2/${url}/main`);
+    goUrl() {
+      navigate(`message/agreement/agreement`);
     }
   },
   computed: {}

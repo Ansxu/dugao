@@ -28,7 +28,7 @@
 		<view class="CommentList uni-bg-white" v-if="hasData">
 			<view class="minute" v-for="(item,index) in datalist" :key="index">
 				<view class="given flex flex-between">
-					<view class="flex flex-start">
+					<view class="flex flex-center">
 						<view class="tx">
 							<image :src="item.Avatar||'http://shop.dadanyipin.com/static/default.png'" mode="aspectFill"></image>
 						</view>
@@ -39,7 +39,7 @@
 					</view>
 					<view class="min">{{item.AddTime}}</view>
 				</view>
-				<view class="carport">{{item.ContentText}}</view>
+				<div class="carport">{{item.ContentText}}</div>
 				<view class="commentpic" v-if="item.PicData.length">
 					<block v-for="(i,e) in item.imgArr" :key="e">
 					  <image :src="i" alt="" class="shop_pic" @click="previewImg(item.imgArr,i)" mode="aspectFill"></image>
@@ -79,7 +79,7 @@
 				hasData: false,
 				noDataIsShow: false,
 				page: 1,
-				pageSize: 5,
+				pageSize: 12,
 				datalist:[]
 			}
 		},
@@ -232,6 +232,7 @@
 		font-weight:500;
 		color:rgba(51,51,51,1);
 		line-height:50upx;
+		word-break:break-all;
 	}
 	.commentpic{
 		display: flex;

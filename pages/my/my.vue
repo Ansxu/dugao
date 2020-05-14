@@ -5,7 +5,7 @@
 		<view class="memberTop">
 			<view class="iconBtnBox">
 				<view @click="navigate('message/messageClass/messageClass')" class="iconfont icon-xiaoxi iconBtn">
-					<text class="uni-badge" v-if="newscount!=0">{{newscount}}</text>
+					<text class="uni-badge" v-if="newscount">{{newscount}}</text>
 				</view>
 				<!-- <uni-icons type="chat"></uni-icons> -->
 			</view>
