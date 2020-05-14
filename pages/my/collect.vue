@@ -3,7 +3,7 @@
 		<!-- <view class="carthead"  :style="{'padding-top':barHeight+'px'}">
 			<text>收藏</text>
 		</view> -->
-		<view class="uni-tab-bar bg_fff">
+		<view class="uni-tab-bar bg_fff" v-if="false">
 			<scroll-view id="tab-bar" :class="['uni-swiper-tab tabList li_50',isMultipleStore>0?'':'w50']">
 				<view :class="['swiper-tab-list',tabIndex==0 ? 'active' : '']" id="list0" @click="tapTab(0)">
 					<view class="s">商品</view>
@@ -13,7 +13,7 @@
 				</view>
 			</scroll-view>
 		</view>
-		<view class="hasContentPage">
+		<view > <!-- class="hasContentPage" -->
 			<view class="collect_list uni-mt10" v-if="hasData">
 				<!--店铺收藏-->
 				<view class="list" v-if="tabIndex==1">
@@ -296,7 +296,7 @@
 						icon: "none",
 						duration: 1500
 					});
-					setTimeout(res=>{
+					setTimeout(function(){
 						_this.collectionsList();
 					 },1500)
 				}

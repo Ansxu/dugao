@@ -71,7 +71,7 @@
 		},
 		data(){
 			return{
-				tabList:[{id:0,name:'全部'},{id:1,name:'待付款'},{id:6,name:'待审核'},{id:2,name:'待发货'},{id:3,name:'待收货'},{id:4,name:'待评价'}],
+				tabList:[{id:0,name:'全部'},{id:1,name:'待付款'},{id:2,name:'待发货'},{id:3,name:'已发货'},{id:4,name:'待评价'}],
 				tabIndex:0,
 				page:1,
 				pagesize:8,
@@ -97,6 +97,7 @@
 			this.token = uni.getStorageSync("token");
 			// #ifndef APP-PLUS
 			this.tabIndex = this.$mp.query.tabIndex
+			console.log(this.$mp,'this.$mp.query.tabIndex')
 			// #endif
 			this.list = []
 			this.page = 1

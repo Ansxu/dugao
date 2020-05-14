@@ -1,6 +1,6 @@
 <template>
   <div>
-      <swiper class="swiper" @change="changeBanner" indicator-dots indicator-active-color="#ff6f00">
+      <swiper class="swiper" @change="changeBanner" indicator-active-color="#ff6f00">
         <div class="numpage">{{bannerindex+1}}/{{BannerNum}}</div>
         <swiper-item class="flexc" v-for="(item,index) in proInfo.PicData" :key="index">
           <img mode='aspectFill' :src="item.PicUrl" alt="">
