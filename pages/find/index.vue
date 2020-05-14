@@ -3,30 +3,26 @@
 		<!-- 固定在顶部的导航栏 -->
 		<uni-nav-bar color="#333333" background-color="#ffffff" shadow="false" fixed="true">
 			<block slot="left">
-				<view class="tx" @click="toMyCenter">
+				<view class="uni-icon uni-icon-search" style="color: #333;" @click="search"></view>
+				<!-- <view class="tx" @click="toMyCenter">
 					<image :src="avatarUrl||'http://ddyp.wtvxin.com/static/default.png'"></image>
-				</view>
+				</view> -->
 			</block>
 			<view class="uni-head-tab">
-				<view v-for="tab in tabBars" :key="tab.type" :class="['tab-item',tabIndex==tab.type ? 'active' : '']"
-				 @click="tapTab(tab.type)">
-					<view class="s"> {{tab.name}} </view>
+				<view v-if="index<4" v-for="(item,index) in tabBars" :key="index" :class="['tab-item',tabIndex==index ? 'active' : '']"
+				 @click="tapTab(item.Id,index)">
+					<view class="s"> {{item.Name}} </view>
 				</view>
 			</view>
 			<block slot="right">
-				<view class="uni-icon uni-icon-search" style="color: #333;" @click="search"></view>
+				
 			</block>
 		</uni-nav-bar>
 		<view style="height:44px;"></view>
 		<!-- 使用非原生导航栏后需要在页面顶部占位 -->
 		<view class="list" v-if="hasData">
 			<block v-for="(item,index) in medialist" :key="index">
-				<block v-if="tabIndex!=6">
-				<media-list :datajson="item" Grid="2" @click="goDetail" @previewImg="previewImg"></media-list>	 
-				</block>
-				<block v-else>
-				<actiList :datajson="item"></actiList>
-				</block>
+				<media-list :datajson="item" Grid="1" @click="goDetail"></media-list>
 			</block>
 		</view>
 		<view class="uni-tab-bar-loading" v-if="hasData">
@@ -37,7 +33,7 @@
 		<view style="height:50px;"></view>
 		<!-- #endif -->
 		<!-- 发布按钮 -->
-		<view @click="Issue" class="fubuBtn iconfont icon-bianji1"></view>
+		<!-- <view @click="Issue" class="fubuBtn iconfont icon-bianji1"></view> -->
 	</view>
 </template>
 
@@ -45,7 +41,6 @@
 	import {host,post,get,dateUtils,editTime,navigate} from '@/utils';
 	import uniNavBar from '@/components/uni-nav-bar.vue';
 	import mediaList from '@/components/tab-nvue/mediaList.vue';//发现列表
-	import actiList from '@/components/tab-nvue/actiList.vue';//活动（体验）
 	import noData from '@/components/noData.vue'; //暂无数据
 	import uniLoadMore from '@/components/uni-load-more.vue'; //加载更多
 	import '@/common/head.css';
@@ -53,7 +48,6 @@
 		components: {
 			uniNavBar,
 			mediaList, 
-			actiList,
 			noData,
 			uniLoadMore
 		},
@@ -70,36 +64,21 @@
 				allPage: 0,
 				count: 0,
 				medialist: [],
-				tabIndex: 0, //0我的，1指定用户，2推荐，3资讯，4搜索，5店铺,6活动
-				tabBars: [{
-						name: '推荐',
-						type: 2
-					},
-					{
-						name: '此刻',
-						type: 4
-					},
-					{
-						name: '体验',
-						type: 6
-					},
-					{
-						name: '资讯',
-						type: 3
-					}
-				],
+				tabIndex: 0,
+				tabId:0,
+				tabBars: [],
 				avatarUrl:"",
 			}
 		},
 		onLoad: function() {
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
+			this.FindClassList();
 		},
 		onShow(){
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
-			this.avatarUrl=uni.getStorageSync("userInfo").avatarUrl;
-			this.tapTab(2);
+			//this.avatarUrl=uni.getStorageSync("userInfo").avatarUrl;
 		},
 		methods: {
 			search() {
@@ -112,39 +91,29 @@
 				navigate('Article/myCenter/myCenter',{Memberid:this.userId},true)
 			},
 			/*获取发现列表*/
-			
+			async FindClassList(){
+				let result = await post("Find/FindClassList", {
+					"page": 1,
+					"pageSize": 4
+				});
+				if(result.code==0){
+					this.tabBars=result.data;
+					this.tabId=result.data[0].Id;
+					this.tapTab(this.tabId,0);
+				}
+			},
 			async FindList() {
-				let result;
-				let that =this;
-				if(this.tabIndex==6){
-					result = await post("Find/ActivityList", {
-						"UserId": this.userId,
-						"Token": this.token,
-						"page": this.page,
-						"pageSize": this.pageSize,
-						"myType": 0,//0全部，1热门，2置顶，3推荐
-						"SearchKey": ""
-					});
-				}else{
-					result = await post("Find/FindList", {
-						"UserId": this.userId,
-						"Token": this.token,
-						"page": this.page,
-						"pageSize": this.pageSize,
-						"myType": this.tabIndex,
-						"MemberId": "",
-						"SearchKey": ""
-					});
-				}  
+				let result = await post("Find/FindList", {
+					"UserId": this.userId,
+					"Token": this.token,
+					"page": this.page,
+					"pageSize": this.pageSize,
+					"ClassId": this.tabId,
+				});
 				if (result.code === 0) {
 					const data= result.data;
 					data.forEach(function(item) {
-						if(that.tabIndex==6){
-							item.AddTime=dateUtils.format(item.AddTime);
-						}else{
-							item.Addtime=dateUtils.format(item.Addtime);
-							item.imgArr = item.ImgList.split(',')
-						}
+						item.Addtime=dateUtils.format(item.Addtime);
 					})
 					if (data.length > 0) {
 						this.hasData = true;
@@ -173,8 +142,9 @@
 					 this.FindList();
 				}
 			},
-			tapTab(type) {
-				this.tabIndex = type;
+			tapTab(id,index) {
+				this.tabIndex = index;
+				this.tabId=id;
 				this.loadingType = 0;
 				this.hasData = false;
 				this.noDataIsShow = false;
@@ -187,11 +157,7 @@
 			},
 			//链接详情页
 			goDetail(e) {
-				if(e.artType==0){//用户发布详情
-					navigate( 'Article/artDetail/artDetail',{id:+e.id})
-				}else{//资讯详情、店铺
-					navigate( 'Article/NewsDetail/NewsDetail',{id:+e.id})
-				}
+				navigate( 'Article/NewsDetail/NewsDetail',{id:+e.id})
 			},
 			//预览图片
 			previewImg(obj){

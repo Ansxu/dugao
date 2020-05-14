@@ -165,7 +165,6 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 				post('Find/FindList',{
 					Page:1,
 					PageSize:4,
-					MyType:3,
 					ClassId:16
 				}).then(res=>{
 					this.schemeList = res.data;

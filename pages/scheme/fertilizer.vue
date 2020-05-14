@@ -36,7 +36,6 @@ export default {
 			post('Find/FindList',{
 				Page:this.page,
 				PageSize:this.pageSize,
-				MyType:3,
 				ClassId:16
 			}).then(res=>{
 					this.loadMore = 0;

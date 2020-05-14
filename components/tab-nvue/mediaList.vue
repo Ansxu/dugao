@@ -1,7 +1,7 @@
 <template>
 	<view class="list-cell">
 		<view class="media-list">
-			<view class="media-hd" v-if="dataitem.FindType!=2">
+			<view class="media-hd" v-if="false">
 				<view class="media-author" @click="gotoPensonal">
 					<image class="img" v-if="dataitem.Avatar" :src="dataitem.Avatar" mode="aspectFill"></image>
 					<image class="img" v-else-if="dataitem.FindType==2" src="/static/logo.png" mode="aspectFill"></image>
@@ -30,7 +30,7 @@
 					</view>
 				</block>
 				<!-- 一排3列 -->
-				<block v-else>
+				<block v-if="Grid==='3'">
 					<view v-if="dataitem.imgArr" :class="['image-section Grid3',dataitem.imgArr.length==1?'image-section-one':'']">
 						<view class="image-list" v-show="source&&i<3" v-for="(source, i) in dataitem.imgArr" :key="i" >
 							<image class="img" :src="source" v-if="dataitem.imgArr.length==1" mode="widthFix" @click.stop="previewImg(dataitem.imgArr,i)" />
@@ -39,7 +39,13 @@
 						<view v-if="dataitem.imgArr.length>3" class="count">{{dataitem.imgArr.length}}</view>
 					</view>
 				</block>
-			
+				<block v-else>
+					<view v-if="dataitem.PicImg" class="image-section image-section-one">
+						<view class="image-list">
+							<image class="img" :src="dataitem.PicImg" mode="widthFix" />
+						</view>
+					</view>
+				</block>
 			<view class="media-location" v-if="dataitem.Location">
 				<text class="info-text iconfont icon-shouhuodizhi">{{dataitem.Location}}</text>
 			</view>

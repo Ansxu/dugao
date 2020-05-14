@@ -22,7 +22,7 @@
 				</view>
 			</view>
 			
-			<view class="media-hd">
+			<view class="media-hd" v-if="false">
 				<view class="media-author" @click="gotoPensonal">
 					<image class="img" v-if="NewsInfo.Avatar" :src="NewsInfo.Avatar" mode="aspectFill"></image>
 					<image class="img" v-else-if="NewsInfo.FindType==2" src="/static/logo.png" mode="aspectFill"></image>
