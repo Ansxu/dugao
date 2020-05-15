@@ -147,12 +147,14 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			// this.getData();
 			this.getBanner();
 			this.getClassify();
 			this.getScheme();//方案
 			this.getVideo();//视频
+			//设置分享码
+			options.inviteCode&&(uni.setStorageSync('inviteCode',options.inviteCode));
 		},
 		methods: {
 			getBanner(){

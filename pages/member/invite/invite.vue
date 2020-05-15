@@ -284,8 +284,8 @@ export default {
         ctx.setFillStyle('#333333')
         ctx.fillText(tel, 80, 420)
         ctx.setFontSize(9)
-		ctx.setFillStyle('#5A4ABA')
-		this.drawRoundedRect(ctx,"#7364ca","#7364ca",74,435,90,18,9);
+		ctx.setFillStyle('#ff6f00')
+		this.drawRoundedRect(ctx,"#ff6f00","#ff6f00",74,435,90,18,9);
         ctx.setFillStyle('#ffffff')
         ctx.fillText(code, 84, 447.5)
 		
@@ -438,7 +438,7 @@ export default {
 	  console.log(this.info.ReferralCode,"this.info.ReferralCode")
     return {
       title: "大单易拼", //转发页面的标题
-      path: '/pages/tabBar/index/index?inviteCode='+this.info.ReferralCode
+      path: '/pages/index/index?inviteCode='+this.info.ReferralCode
     }
   },
   onPullDownRefresh(){

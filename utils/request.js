@@ -44,6 +44,7 @@ function request(url, method, data) {
           'content-type': 'application/json;charset=utf-8' // 默认值
         },
         success: function (res) {
+          uni.hideLoading();
           if(res.statusCode===200){
             const ret = res.data;
             switch (ret.code) {
@@ -91,12 +92,10 @@ function request(url, method, data) {
           }
         },
         fail: function (error) {
+          uni.hideLoading();
           toast('服务器繁忙，请稍后重试')
           navigateBack();
           reject(error)
-        },
-        complete: function () {
-          uni.hideLoading();
         }
       })
     })
