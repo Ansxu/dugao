@@ -38,7 +38,7 @@
 						<view class="item__hd" v-if="isShowDel" @click="shiftChecked(index)">
 							<view :class="['IconsCK IconsCK-radio',item.checked?'checked':'' ]"></view>
 						</view>
-						<view class="item__bd flex" @click="tolink('/pages/homePage/details?id='+item.ProId)">
+						<view class="item__bd flex" @click="tolink('/pages/product/productDetail/productDetail?id='+item.ProId)">
 							<image :src="item.PicNo"></image>
 							<view class="flex flexColumn flex1">
 								<view class="uni-bold">{{item.Name}}</view>
@@ -129,13 +129,15 @@
 			// #ifdef H5
 			this.barHeight = 0;
 			// #endif
-		},
-		onShow() {
 			this.tabIndex = uni.getStorageSync("collectIndex")
-			this.initData();
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
+			this.initData();
 			this.collectionsList();
+		},
+		onShow() {
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
 			
 		},
 		methods: {
@@ -326,7 +328,9 @@
 
 <style scoped lang="scss">
 	@import "../../common/dd_style.css"; 
-
+	.item__bd{
+		width:100%;
+	}
 	.hasContentPage {
 		position: relative;
 		top:88upx;

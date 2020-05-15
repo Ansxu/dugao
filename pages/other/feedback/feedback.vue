@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import {post,get} from "@/utils";
+import {post,get,verifyPhone} from "@/utils";
 import { pathToBase64 } from "@/utils/image-tools";
 import pickers from '@/components/pickers';
 export default {
@@ -144,6 +144,8 @@ export default {
             })
             return false;
         }
+        if(!verifyPhone(this.Mobile)){ return}
+
         return true;
     },
     async submit(){

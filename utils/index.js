@@ -214,3 +214,15 @@ export function CreatOnlyVal() {
   });
   return uuid;
 }
+// 复制
+export function copy(data){
+  uni.setClipboardData({
+    data,
+    success(){
+      toast('复制成功',{icon:true})
+    },
+    fail(){
+      toast('复制失败，请重试！')
+    }
+  })
+}

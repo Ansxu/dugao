@@ -47,21 +47,21 @@
 						</view>
 						<view class="txt">待付款</view>
 					</view>
-					<view class="item flex1" @click="navigate('member/order/order?tabIndex=6')">
+					<view class="item flex1" @click="navigate('member/order/order?tabIndex=2')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/wait-ship.png" mode="widthFix"></image>
 							<view class="circleNum" v-if="memberInfo.num_dfh">{{memberInfo.num_dfh}}</view>
 						</view>
 						<view class="txt">待发货</view>
 					</view>
-					<view class="item flex1" @click="navigate('member/order/order?tabIndex=2')">
+					<view class="item flex1" @click="navigate('member/order/order?tabIndex=3')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/ship.png" mode="widthFix"></image>
 							<view class="circleNum" v-if="memberInfo.num_dsh">{{memberInfo.num_dsh}}</view>
 						</view>
 						<view class="txt">已发货</view>
 					</view>
-					<view class="item flex1" @click="navigate('member/order/order?tabIndex=3')">
+					<view class="item flex1" @click="navigate('member/order/order?tabIndex=4')">
 						<view class="iconImg">
 							<image class="icon" src="/static/my/evaluation.png" mode="widthFix"></image>
 							<view class="circleNum" v-if="memberInfo.num_dpj">{{memberInfo.num_dpj}}</view>

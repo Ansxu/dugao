@@ -27,7 +27,9 @@
 					  @click.stop="goUrl('/pages/member/orderTuidetail/orderTuidetail?orderNo='+item.OrderNo+'&RefundId='+item.RefundId)"
 					 	>售后详情
 					</view>
-					<view class="btn_c" v-if="item.OrderStatusId===5||item.OrderStatusId===6||item.OrderStatusId===16"  @click.stop="cancel(item)">取消售后</view>
+					<view class="btn_c" v-if="item.OrderStatusId===5||item.OrderStatusId===6||item.OrderStatusId===16
+						||item.OrderStatusId===9||item.OrderStatusId===10"
+						@click.stop="cancel(item)">取消售后</view>
 				</view>
 			</view>
 			<noData v-if="!list.length"></noData>
@@ -139,7 +141,7 @@
 		onReachBottom: function() {
 			if (this.loadMore !== 2) {
 				this.page++;
-				that.getList();
+				this.getList();
 			}
 		},
 		onPullDownRefresh() {
@@ -147,8 +149,8 @@
 				this.page=1;
 				this.loadMore = 0;
 			setTimeout(()=> {
-				that.init();
-				that.getList();
+				this.init();
+				this.getList();
 				uni.stopPullDownRefresh();  //停止下拉刷新动画
 			}, 1000);
 		}

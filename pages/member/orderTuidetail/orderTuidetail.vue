@@ -22,6 +22,9 @@
 			<view class="contentitem">
 				<text>退款/退货原因：</text><text>{{orderinfo.RefuseReason}}</text>
 			</view>
+			<view class="contentitem" v-if="orderinfo.Remark">
+				<text>退款说明：</text><text>{{orderinfo.Remark}}</text>
+			</view>
 			<view class="contentitem">
 				<text>退款金额：</text><text class="price">{{orderinfo.RefundMoney}}</text>
 			</view>
@@ -30,6 +33,12 @@
 			</view>
 			<view class="contentitem">
 				<text>申请时间：</text><text>{{orderinfo.TimeStr}}</text>
+			</view>
+			<view class="contentitem flex-center" v-if="orderinfo.OrderNo">
+				<text>退货物流单号：</text>
+				<div>
+					<text>{{orderinfo.OrderNo}} </text><span @click="copy(orderinfo.OrderNo)">复制</span>
+				</div>
 			</view>
 		</view>
 		<view class="kefubox">
@@ -41,7 +50,10 @@
 			<view class="kefuitem" @click="toKefu"><view class="uni-icon uni-icon-contact kefuicon"></view><text>在线客服</text></view>
 			<!--#endif-->
 		</view>
-		<view class="submitbtn" @click="submitbtn"  v-if="info.OrderStatusId===5||info.OrderStatusId===6||info.OrderStatusId===16">请填写寄回信息单号</view>
+		<view class="submitbtn" @click="submitbtn"  
+			v-if="orderinfo.Status===9||orderinfo.Status===10"
+			>请填写寄回信息单号
+		</view>
 		<!-- 填写寄回信息 -->
         <view class="shadeAll" v-show="isShowShade2">
 			<view style="width: 100%;height: 100%;" @click="closeshade"></view>
@@ -87,12 +99,13 @@
 </template>
 
 <script>
-	import {host,post,get} from '@/common/util.js';
+	import {host,post,get,copy} from '@/utils';
 	import pickers from '@/components/pickers';
 	export default {
 	components: {pickers},
 		data() {
 			return {
+				copy,
 				isShowShade:false,//寄回信息弹窗
 				isShowShade2:false,//快递公司弹窗
 				userId:"",
@@ -292,7 +305,7 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .warp{
 	width: 100%;
 	height: 100%;
@@ -349,6 +362,15 @@
 	padding:20upx;
 	border-radius: 8upx;
 	background-color: #fff;
+}
+.contentitem{
+	span{
+		padding:0 10upx;
+		color:$primary;
+		line-height:1.5;
+		border:1upx solid $primary;
+		margin-left:20upx;
+	}
 }
 .contentitem text{
 	color: #999;

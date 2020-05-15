@@ -90,6 +90,9 @@ export default {
 		// 第二步发送验证码
 		async bindSendCode(){
 			if(!verifyPhone(this.phone)) return;
+			if(this.phone==this.protophone){
+				toast('请填写新的手机号');return;
+			}
 			const res = await post('User/GetBindTelCode',{
 				UserId:this.userId,
 				Token:this.token,
@@ -116,9 +119,12 @@ export default {
 			}
 		},
 		async submit(){
-			// 第一步
-			if(this.step===1){
-				if(!this.protoPhoneCode){toast('请输入验证码');return;}
+				// 第一步
+				if(this.step===1){
+					if(!this.protoPhoneCode){toast('请输入验证码');return;}
+				if(this.phone==this.protophone){
+					toast('请填写新的手机号');return;
+				}
 				const res  = await post('User/VerifyCode',{
 					UserId:this.userId,
 					Token:this.token,
