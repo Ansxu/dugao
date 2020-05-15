@@ -455,10 +455,10 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 			flex-flow:row wrap;
 			.item{
 				width:50%;
-				border-bottom:1upx solid #e8e8e8;
+				border-bottom:1upx solid #F5F5F5;
 				padding-bottom:30upx;
 				&.border-r{
-					border-right:1upx solid #e8e8e8;
+					border-right:1upx solid #F5F5F5;
 				}
 				img{
 					width:100%;
