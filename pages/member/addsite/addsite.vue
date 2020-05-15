@@ -158,9 +158,9 @@
 	    	}
 	    	if (!/^1[345678]\d{9}$/.test(this.tel)) {
 	    		wx.showToast({
-	    			title: "手机号不合法",
+	    			title: "请输入正确的手机号码",
 	    			icon: "none",
-	    			duration: 1000
+	    			duration: 1500
 	    		});
 	    		return false;
 	    	}
@@ -281,9 +281,9 @@
 		      duration: 1000
 		    });
 			console.log(132131321313213)
-			// setTimeout(function() {
-			// 	uni.navigateBack({})
-			// },1000)
+			setTimeout(function() {
+				uni.navigateBack({})
+			},1000)
 		  }
 		},
 	  },

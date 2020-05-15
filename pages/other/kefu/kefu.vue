@@ -78,8 +78,11 @@
 	background: #ee9b11;
 	margin:80upx auto;
 	border-radius:15upx;
-	padding:10upx 0;text-align: center;
+	/* padding:10upx 0; */
+	text-align: center;
 	color:#ffffff;
 	text-decoration: none;
+	height: 80rpx;
+	line-height: 40px;
 }
 </style>
