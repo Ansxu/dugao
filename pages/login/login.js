@@ -48,6 +48,7 @@ export default function logins(params) {
                                     "content-type": "application/x-www-form-urlencoded"
                                 },
                                 success: function (res) {
+                                    uni.hideLoading();
                                     //后台返回的MemberOpenId,可更改标识
                                     if (res.data.code==='undefined'||res.data.code===undefined) {
                                       toast('登录失败！请重新尝试')
@@ -94,11 +95,11 @@ export default function logins(params) {
                                     }
                                 },
                                 fail: function (error) {
-                                  toast('登录失败！请重新尝试')
+                                    uni.hideLoading();
+                                    toast('登录失败！请重新尝试')
                                     reject();
                                 },
                                 complete: function () {
-                                    uni.hideLoading();
                                 }
                             });
                         

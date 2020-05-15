@@ -86,9 +86,8 @@ export default {
   },
   onShow() {
     // 邀请码
-    if(uni.getStorageSync('theyCode') !='undefined'){
-      this.inviteCode = uni.getStorageSync('theyCode')
-    }else{
+    if(uni.getStorageSync('inviteCode') !='undefined'){
+      this.inviteCode = uni.getStorageSync('inviteCode')
     }
   },
   methods: {
@@ -108,6 +107,7 @@ export default {
       const openId = uni.getStorageSync("openId");
       // const token = uni.getStorageSync("uniToken");
       const unionid = uni.getStorageSync("unionid");
+      try{
       const res = await post("Login/BindOrRegister", {
         mobile: this.phoneNumber,
         yzCode: this.verifyCode,
@@ -126,13 +126,12 @@ export default {
         InviteCode:this.inviteCode
       });
       const _res = res.data;
-      if(res.code===0){
         toast('绑定手机成功',{icon:true})
         uni.setStorageSync("userId", _res.UserId); //保存用户Id到本地缓存
         uni.setStorageSync("token", _res.Token); //保存的令牌 accessToken
         navigateBack()
-      }else{
-        toast(res.msg)
+      }catch(err){
+        console.log(err)
       }
     },
     // 发送验证码
@@ -171,16 +170,16 @@ export default {
     },
     // 注册校验
     registerCheck() {
-      if (!this.checkedStatus) {
-        toast("请阅读并同意用户协议");
-        return false;
-      }
 
       if (!this.phoneNumber || !this.verifyCode) {
         toast("请填写手机号和验证码");
         return false;
       }
       if(!verifyPhone(this.phoneNumber))return;
+      if (!this.checkedStatus) {
+        toast("请阅读并同意用户协议");
+        return false;
+      }
       // if (!this.password) {
       //   uni.showToast({
       //     title: "请填写密码！",

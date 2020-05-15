@@ -280,7 +280,6 @@
 		      icon: "none",
 		      duration: 1000
 		    });
-			console.log(132131321313213)
 			setTimeout(function() {
 				uni.navigateBack({})
 			},1000)

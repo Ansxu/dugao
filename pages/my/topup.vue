@@ -7,7 +7,7 @@
 				<view class="withdraw">充值金额</view>
 				<view class="drawing">
 					<view class="sign">¥</view>
-					<input class="sign signs" type="digit" v-model="money" placeholder="请输入要充值的金额" placeholder-class="sign2"/>
+					<input class="sign signs" placeholder-class="place-holder" type="digit" v-model="money" placeholder="请输入要充值的金额" placeholder-class="sign2"/>
 				</view>
 			</view>
 			<view class="carry">该卡本次最多可充值¥20000</view>
@@ -192,15 +192,18 @@
 </script>
 
 <style scoped lang="scss">
+	.place-holder{
+		font-size:20upx;
+	}
 	.wallet{
 	}
 	.walletbox{
 		background: #FFFFFF;
-		padding: 30rpx;
+		padding: 30upx;
 	}
 	.across{
 		justify-content: space-between;
-		padding-bottom: 30rpx;
+		// padding-bottom: 30upx;
 		border-bottom:1px solid rgba(236,236,236,1);
 	}
 	.drawing{
@@ -208,7 +211,7 @@
 		align-items: center;
 	}
 	.present{
-		padding: 60rpx 30rpx 0 30rpx;
+		padding: 60upx 30upx 0 30upx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -218,25 +221,24 @@
 	}
 	.recharge{
 		width:100%;
-		height:88rpx;
+		height:88upx;
 		background:#ff6f00;
-		border-radius:10rpx;
-		font-size:32rpx;
+		border-radius:10upx;
+		font-size:32upx;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 	.withdraw{
-		font-size:30rpx;
+		font-size:30upx;
 		font-family:PingFang;
 		font-weight:bold;
 		color:rgba(51,51,51,1);
-		line-height:120rpx;
+		line-height:80upx;
 	}
 	.sign{
-		font-size:50rpx;
+		font-size:40upx;
 		font-family:PingFang;
-		font-weight:bold;
 		color:rgba(51,51,51,1);
 	}
 	.sign2{
@@ -251,14 +253,14 @@
 		height: 80upx;
 	}
 	.carry{
-		font-size:24rpx;
+		font-size:24upx;
 		font-family:PingFang;
 		font-weight:500;
 		color:#999999;
-		padding-top: 25rpx;
+		padding-top: 25upx;
 	}
 		
-	.pay-hd{ padding: 20upx 0 0; font-size: 32upx; font-weight: 600}
+	.pay-hd{ padding: 20upx 0 0; font-size: 30upx; font-weight: 600}
 	.pay-bd .line-item .icon {
 	    height: 72upx;
 	    width: 72upx;
