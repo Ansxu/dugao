@@ -228,9 +228,23 @@ export default {
               navigateBack();
             }
           });
+		  this.getWallet()
         }
       });
-    }
+    },
+	getWallet() {
+	  post('User/GetCenterInfo',{
+	      UserId: this.userId,
+	      Token: this.token
+	    },
+	  ).then(result => {
+	    if (result.code === 0) {
+			this.$store.commit("update", {
+			  Wallet:result.data.Wallet
+			}); 
+	    }
+	  });
+	},
   }
 };
 </script>

@@ -182,14 +182,6 @@ export default {
       }
       if(this.mobile == ""){
         uni.showToast({
-          title: "请输入支行名称!",
-          icon: "none",
-          duration: 1500
-        });
-        return false;
-      }
-      if(this.mobile == ""){
-        uni.showToast({
           title: "请输入手机号码!",
           icon: "none",
           duration: 1500

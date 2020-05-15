@@ -231,8 +231,13 @@ export default {
       }).then(res=>{
         uni.showToast({
           title: res.msg,
-          icon: 'none',
+          icon: 'none'
         })
+		setTimeout(function(){
+			uni.switchTab({
+				url: '/pages/my/my'
+			 });
+		},1000)
       })
     },
 
