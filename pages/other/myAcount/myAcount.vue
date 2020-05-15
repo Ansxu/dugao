@@ -15,21 +15,21 @@
 	  	            <img src="http://jyy.wtvxin.com/static/images/icons/w1.png" alt="" class="ww_wa">
 	  	            <span class="mr2">今日收益</span>
 	  	        </div>
-	  	        <span class="cr font30">{{info.JTAmount}}元</span>
+	  	        <span class="cr font30">{{info.JTAmount ? info.JTAmount : 0}}元</span>
 	  	    </div>
 	  	    <div class="flex justifyContentBetween  wa_item pp3">
 	  	        <div class="flex flexAlignCenter">
 	  	            <img src="http://jyy.wtvxin.com/static/images/icons/w2.png" alt="" class="ww_wa">
 	  	            <span class="mr2">昨日收益</span>
 	  	        </div>
-	  	        <span class="cr font30">{{info.ZTAmount}}元</span>
+	  	        <span class="cr font30">{{info.ZTAmount ? info.ZTAmount : 0}}元</span>
 	  	    </div>
 	  	    <div class="flex justifyContentBetween  wa_item pp3">
 	  	        <div class="flex flexAlignCenter">
 	  	            <img src="http://jyy.wtvxin.com/static/images/icons/w3.png" alt="" class="ww_wa">
 	  	            <span class="mr2">累计收益</span>
 	  	        </div>
-	  	        <span class="cr font30">{{info.LJAmount}}元</span>
+	  	        <span class="cr font30">{{info.LJAmount ? info.LJAmount : 0}}元</span>
 	  	    </div>
 			<div class="flex justifyContentBetween  wa_item pp3 flexAlignCenter" @click="switchPath('/pages/other/getCome/getCome',$event)">
 				  <div class="flex flexAlignCenter">
@@ -102,7 +102,7 @@ export default {
 				url:'/pages/other/withdraw/withdraw?type=1'
 			})
 		}else{
-			uni.showToast({
+			uni.showToast({  
 				title:'您当前的收益无法提现！',
 				icon:'none'
 			})
