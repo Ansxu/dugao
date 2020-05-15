@@ -9,11 +9,11 @@
 		</block>
 		<block v-else>
 			<view class="item bg_fff flex flexAlignCenter justifyContentBetween mt2">
-				<input type="text" placeholder="请输入手机号" class="flex1 font26">
+				<input type="text" placeholder="请输入手机号" class="flex1 font26" v-model="phone">
 			</view>
 			<view class="item bg_fff flex flexAlignCenter justifyContentBetween">
-				<input type="text" placeholder="请输入验证码" class="flex1 font26">
-				<text class="color_red" @click="sendCode(1)">{{codeMsg}}</text>
+				<input type="text" placeholder="请输入验证码" class="flex1 font26" v-model="phoneCode">
+				<text class="color_red" @click="bindSendCode(1)">{{codeMsg}}</text>
 			</view>
 		</block>
 		<view class="btn_fix" @click="submit">{{step===1?'下一步':'确定'}}</view>
@@ -60,25 +60,47 @@ export default {
 				this.protoPhone = res.data.Mobile;
 			})
 		},
-		//0-绑定手机号,1-手机号修改
+		// 第一步发送验证码
 		async sendCode(type){
-			// if(!type&&!verifyPhone(this.phone)){
-			// 	return;
-			// }
 			const res = await post('User/GetBindTelCode',{
 				UserId:this.userId,
 				Token:this.token,
-				Mobile:this.step===1?this.protoPhone:this.phone,
-				Type:type,  //0-绑定手机号,1-手机号修改
+				Mobile:this.protoPhone,
+				Type:2,
 			})
 			if(res.code == 0){
 				this.has_click = true;
 				this.count = this.TIME_COUNT;
-				uni.showToast({
-					title: "发送成功，请注意查收!",
-					icon: "none",
-					duration: 2000
-				});
+				toast('发送成功，请注意查收!')
+				clearInterval(this.timer);
+				this.timer = setInterval(() => {
+					if (this.count > 0 && this.count <= this.TIME_COUNT) {
+						this.count--;
+						this.codeMsg = this.count + "s后重新获取";
+					} else {
+						this.has_click = false;
+						clearInterval(this.timer);
+						this.timer = null;
+						this.codeMsg = "获取验证码";
+					}
+				}, 1000);
+				
+			}
+		},
+		// 第二步发送验证码
+		async bindSendCode(){
+			if(!verifyPhone(this.phone)) return;
+			const res = await post('User/GetBindTelCode',{
+				UserId:this.userId,
+				Token:this.token,
+				Mobile:this.phone,
+				Type:1,  //0-绑定手机号,1-手机号修改
+			})
+			if(res.code == 0){
+				this.has_click = true;
+				this.count = this.TIME_COUNT;
+				toast('发送成功，请注意查收!')
+				clearInterval(this.timer);
 				this.timer = setInterval(() => {
 					if (this.count > 0 && this.count <= this.TIME_COUNT) {
 						this.count--;
@@ -94,20 +116,37 @@ export default {
 			}
 		},
 		async submit(){
+			// 第一步
 			if(this.step===1){
+				if(!this.protoPhoneCode){toast('请输入验证码');return;}
+				const res  = await post('User/VerifyCode',{
+					UserId:this.userId,
+					Token:this.token,
+					Mobile:this.protoPhone,
+					Type:0,
+					VerifyCode:this.protoPhoneCode
+				})
+				this.has_click = false;
+				clearInterval(this.timer);
+				this.timer = null;
+				this.codeMsg = "获取验证码";
 				this.step=2;
-				return;
 			}
-			const res = await post('User/UpdateMobile',{
-				UserId:this.userId,
-				Token:this.token,
-				Mobile:this.phone,
-				VerifyCode:this.phoneCode,
-				Type:0,  //0-绑定手机号,1-手机号修改
-			}).then(res=>{
-				toast('绑定成功',true);
-				navigateBack();
-			})
+			// 第二部
+			else{
+				if(!verifyPhone(this.phone)) return;
+				if(!this.phoneCode){toast('请输入验证码');return;}
+				const res = await post('User/UpdateMobile',{
+					UserId:this.userId,
+					Token:this.token,
+					Mobile:this.phone,
+					VerifyCode:this.phoneCode,
+					Type:1, 
+				}).then(res=>{
+					toast('绑定成功',{icon:true});
+					navigateBack();
+				})
+			}
 		}
 	}
 }
