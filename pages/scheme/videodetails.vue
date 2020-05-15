@@ -57,8 +57,9 @@
 			<uni-load-more :loadingType="loadMore"  v-else></uni-load-more>
 			<view class="video-bottom">
 				<view class="video-leave flex-center">
-					<image class="videoimgss" src="../../static/icons/classify-icon.png" mode=""></image>
-					<input type="text" v-model.trim="commentText" placeholder="留下你精彩评论吧~"/>
+					<!-- <image class="videoimgss" src="../../static/icons/classify-icon.png" mode=""></image> -->
+					<uni-icons type="compose" color="#999" size="18"></uni-icons>
+					<input  type="text" v-model.trim="commentText" placeholder="留下你精彩评论吧~"/>
 				</view>
 				<view @click="addComment">发送</view>
 			</view>
@@ -109,6 +110,8 @@ export default {
 		},
 		getComment(){
 			post('News/BrandgoodsCommentList',{
+				UserId: this.userId,
+				Token: this.token,
 				Page:this.page,
 				PageSize:this.pageSize,
 				Id: this.id
@@ -146,28 +149,32 @@ export default {
 		},
 		// 视频点赞
 		videoLink(){
-			let url = ''
-			if(this.data.IsLike){
-				url = 'AddCollections'
-			}else{
-				url = 'BrandgoodsLikes'
-			}
-			post('News/'+url,{
+			post('News/BrandgoodsLikesOperation',{
 				UserId: this.userId,
 				Token: this.token,
 				Id: this.data.Id,
 			},{isLogin:true}).then(res=>{
 				this.data.IsLike = !this.data.IsLike;
+				if(this.data.IsLike){
+					this.data.LikeNum+=1;
+				}else{
+					this.data.LikeNum-=1;
+				}
 			})
 		},
 		// 评论点赞
 		link(item){
-			post('News/BrandgoodsCommentLikes',{
+			post('News/BG_CommentOperation',{
 				UserId: this.userId,
 				Token: this.token,
 				Id: item.Id,
 			},{isLogin:true}).then(res=>{
 				item.IsLike = !item.IsLike;
+				if(item.IsLike){
+					item.LikeNum+=1;
+				}else{
+					item.LikeNum-=1;
+				}
 			})
 		},
 		videoErrorCallback(){
@@ -325,6 +332,7 @@ export default {
 			width:100%;
 			height:35upx;
 			line-height:35upx;
+			padding-left:10rpx;
 		}
 	}
 </style>

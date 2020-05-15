@@ -168,6 +168,9 @@
 			// #endif
 		},
 		onShow() {
+			this.newscount='';
+			this.OrderInfo={};
+			this.memberInfo={};
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			if (judgeLogin()) {
