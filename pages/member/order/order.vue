@@ -29,6 +29,7 @@
 							<text class="color_gray">x{{ite.Number}}</text>
 							<text>¥{{ite.ActualPay}}</text>
 						</view>
+						<text style="color: #ff6f00;">{{item.StatusName == ite.OrderStatusName ? '' : ite.OrderStatusName}}</text>
 					</view>
 				</view>
 				<view class="text_right mt2">总计：¥<span class="font32 uni-bold">{{item.Total}}</span></view>
