@@ -32,7 +32,7 @@
 						<label class="weui-label">详细地址</label>
 					</view>
 					<view class="weui-cell__bd">
-						<textarea class="weui-Area" v-model="fullAddress" placeholder="道路、门牌号、小区、楼栋号、单元、室等" />
+						<input type="text" class="weui-Area" v-model="fullAddress" placeholder="道路、门牌号、小区、楼栋号、单元、室等" />
 						</view>
 				</view>
 				<view class="weui-cell">

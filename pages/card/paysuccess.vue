@@ -15,27 +15,30 @@
 		  </view>
 		  <view class="for_bd">
 			<view class="proList flex flexWrap justifyContentBetween">
-				<view class="item" v-for="(item,index) in 4" :key="index">
-					<image src="http://shop.dadanyipin.com/static/of/4.png" class="item_img"></image>
+				<view class="item" v-for="(item,index) in list" :key="index" @click="tolink('/pages/product/productDetail/productDetail?id='+ item.Id)">
+					<image :src="item.PicNo" class="item_img"></image>
 					<view class="item_info flex flexColumn flexAlignCenter">
-						<view class="item_title">超越极限音波拉皮-颈部</view>
+						<view class="item_title">{{item.Name}}</view>
 						<view class="flexAlignEnd justifyContentBetween item_total">
 							<view class="flex flexAlignEnd">
-								<span class="item_price">￥980</span>
-								<span class="item_market line-through">￥2980</span>
+								<span class="item_price">￥{{item.Price}}</span>
+								<span class="item_market line-through">￥{{item.MarketPrice}}</span>
 							</view>
-							<view class="item_market">已售35件</view>
+							<view class="item_market">已售{{item.SalesVolume}}件</view>
 						</view>
 					</view>
 				</view>
 			</view>
 		  </view>
 		</view>
+		<noData v-if="list.length<1"></noData>
+		<uni-load-more :loadingType="loadMore" v-else></uni-load-more>
 	</view>
 </template>
 
 <script>
 	import {post,get} from '@/common/util.js';
+	import noData from '@/components/noData/noData.vue';
 	export default {
 		data() {
 			return {
@@ -44,7 +47,11 @@
 				orderNo:"",
 				Noarr:[],
 				GroupId:0,//大于0 是拼团
-				TotalPrice:''
+				TotalPrice:'',
+				Page:1,
+				pageSize:10,
+				list:[],
+				loadMore:0,//0-loading前；1-loading中；2-没有更多了
 			}
 		},
 		onLoad(e) {
@@ -54,15 +61,17 @@
 			// #endif
 			this.TotalPrice = e.allprice
 			console.log(e.allprice)
+			this.getList()
 		},
 		onShow(){
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			// #ifndef APP-PLUS
-			this.orderNo=this.$root.$mp.query.orderNo;
-			this.GroupId=this.$root.$mp.query.GroupId;
+			// this.orderNo=this.$root.$mp.query.orderNo;
+			// this.GroupId=this.$root.$mp.query.GroupId;
 			// #endif
-			this.Noarr=this.orderNo.split(",");
+			// this.Noarr=this.orderNo.split(",");
+			
 			console.log()
 		},
 		methods: {
@@ -90,6 +99,29 @@
 					})
 				}
 			},
+			getList(){
+				post('Goods/GoodsList',{
+					Page:this.Page,
+					pageSize:this.pageSize,
+					IsRecommend:1
+				}).then(res=>{
+					this.loadMore = 0;
+					const data = res.data;
+					if(this.page===1){
+						this.list =[];
+					}
+					this.list.push(...data);
+					if(data.length<this.pageSize){
+						this.loadMore = 2;
+					}
+				})
+			},
+		},
+		onReachBottom: function() {
+			if (this.loadMore !== 2) {
+				this.Page++;
+				this.getList();
+			}
 		}
 	}
 </script>

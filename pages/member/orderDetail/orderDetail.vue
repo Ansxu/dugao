@@ -46,15 +46,15 @@
                     <span>支付方式</span>
                     <span>在线支付</span>
                 </p>
-                <p class="flex justifyContentBetween mt1">
+                <p class="flex justifyContentBetween mt2">
                     <span>商品总价</span>
                     <span>¥{{info.TotalAmount}}</span>
                 </p>
-                <p class="flex justifyContentBetween">
+                <p class="flex justifyContentBetween mt2">
                     <span>优惠</span>
                     <span>¥{{info.DiscountedAmount}}</span>
                 </p>
-                <p class="flex justifyContentBetween mt1" v-if="info.IsNeedAudit==0">
+                <p class="flex justifyContentBetween mt2" v-if="info.IsNeedAudit==0">
                     <span>运费</span>
                     <span>¥{{info.ExpressPrice}}</span>
                 </p>
@@ -75,11 +75,11 @@
 			  <input type="text" class="font20 yy_ma mt1" @focus="blur()" :disabled="disabled" 
 			   v-model="info.OrderNumber" style="opacity: 0;position: fixed;top: -10000px;">
 			  <!-- #endif -->
-              <p>订单编号：{{info.OrderNumber}} <span class="copy" @click="cop()">复制</span> </p>
-              <p>创建时间：{{info.OrderTime}}</p>
+              <p class="mt1">订单编号：{{info.OrderNumber}} <span class="copy" @click="cop()">复制</span> </p>
+              <p class="mt1">创建时间：{{info.OrderTime}}</p>
               <!-- <p>取消时间：2019-12-20 09:18:30</p>
               <p>发货时间：2019-12-20 09:18:30</p> -->
-              <p>成交时间：{{info.Paytime}}</p>
+              <p class="mt1">成交时间：{{info.Paytime}}</p>
 			  <p v-if="info.OrderDetails[0].ConsumeCode">特 权 码  ：{{info.OrderDetails[0].ConsumeCode}}</p>
           </div>
       </div>
