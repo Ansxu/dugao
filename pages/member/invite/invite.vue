@@ -128,8 +128,8 @@ export default {
 		    scene: "WXSceneSession",
 		    type: 0,
 		    href: "http://shop.dadanyipin.com/#/pages/tabBar/index/index?inviteCode="+this.info.ReferralCode,
-		    title: "大单易拼等你来！",
-		    summary: "我正在使用大单易拼，赶紧跟我一起来体验！",
+		    title: "杜高等你来！",
+		    summary: "我正在使用杜高，赶紧跟我一起来体验！",
 		    imageUrl: this.codeurl,
 		    success: function (res) { 
 		        console.log("success:" + JSON.stringify(res));
@@ -437,7 +437,7 @@ export default {
   onShareAppMessage: function() {
 	  console.log(this.info.ReferralCode,"this.info.ReferralCode")
     return {
-      title: "大单易拼", //转发页面的标题
+      title: "杜高生物", //转发页面的标题
       path: '/pages/index/index?inviteCode='+this.info.ReferralCode
     }
   },

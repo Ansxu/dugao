@@ -353,7 +353,7 @@
 		onLoad: function(e) {
 			console.log(e)
 			// #ifdef APP-PLUS
-			this.orderSType=e.orderSType
+			this.orderSType=e.orderSType*1;
 			this.CartIds=e.cartItem
 			this.ProId=e.id
 			this.GroupId=e.GroupId||0
@@ -371,7 +371,7 @@
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			// #ifndef APP-PLUS
-			this.orderSType= this.$root.$mp.query.orderSType;
+			this.orderSType= this.$root.$mp.query.orderSType*1;
 			this.CartIds=this.$root.$mp.query.cartItem;
 			this.ProId=this.$root.$mp.query.id;
 			this.GroupId=this.$root.$mp.query.GroupId||0;
@@ -827,6 +827,7 @@
 			//提交订单
 			confirm(){console.log(this.yanzheng())
 				if(this.addressId>0||(this.addressId==0&&(this.info.IsSalesOffice==1||this.info.IsAloneBuy==1))){
+					console.log(this.orderSType,'order')
 					if(!this.orderSType){
 					//   if(this.GroupId>0){
 					// 	  if(!this.yanzheng()){
@@ -842,7 +843,7 @@
 					// 		  	url:"/pages/homePage/writeInfo?IsSalesOffice="+this.info.IsSalesOffice
 					// 		  })
 					// 	  }else{
-							  this.BuyNowSubmitOrder();//立即购买
+						this.BuyNowSubmitOrder();//立即购买
 					// 	  }
 					//   }
 					}else{

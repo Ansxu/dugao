@@ -10,8 +10,8 @@
         <div v-if="isLimint==1" :class="['limitTiem jus-b ali-c',starTimetype!=1?'no':'']">
             <div class="limt-left">
               <div class="active-price jus-a ali-c">
-                  <h3><span>¥</span>{{proInfo.Price}}</h3>
-                   <p>¥{{proInfo.MarketPrice}}</p>
+                  <h3><span>¥</span>{{proInfo.Price||''}}</h3>
+                   <p>¥{{proInfo.MarketPrice||''}}</p>
               </div>
               <div class="percentage">
                 <span :style="['width:'+percentage+'%']"><i>已抢{{proInfo.SalesVolume}}件</i></span>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="jus-b ali-c">
-          <span class="txtinfo">已售：{{proInfo.SalesVolume}}</span>
+          <span class="txtinfo">已售：{{proInfo.SalesVolume||''}}</span>
           <span class="txtinfo">{{proInfo.Freight?`运费：${proInfo.Freight}元`:'包邮'}}</span>
           <span class="txtinfo">{{proInfo.shipArea}}</span>
         </div>
@@ -112,7 +112,7 @@
 
       <div class="comment">
         <div class="tit ali-c jus-b">
-          <p class="left">商品评价<span>({{proInfo.EvaluateCount}})</span></p>
+          <p class="left">商品评价<span>({{proInfo.EvaluateCount||''}})</span></p>
           <div class="right" v-if="proInfo.EvaluateCount>0" @click="goUrl('/pages/product/evaluation/evaluation',proId)">
             <span>查看全部</span>
             <img src="http://jd.wtvxin.com/images/images/index/more_r.png" alt="">
@@ -532,6 +532,7 @@ export default {
       this.bannerindex=e.detail.current;
     },
     async ProductInfo(){
+      try{
       let res=await post("Goods/Goodsxq",{
         userId: this.userId,
         token: this.token,
@@ -609,7 +610,9 @@ export default {
         })
         this.$set(this,'sku',sku);
         this.isUseSku();
-        
+        }catch(e){
+          navigateBack();
+        }
     },
     //倒计时
     GetRTime(endTime) {
