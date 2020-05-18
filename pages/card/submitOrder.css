@@ -158,6 +158,9 @@
 	color: #999;
 	margin-right: 18upx;
 }
+.orderinfo .orderright .actives{
+	color:#ff3333;
+}
 .orderinfo .orderright .number{
 	width: 60upx;
 	color: #333;

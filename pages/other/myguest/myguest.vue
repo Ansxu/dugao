@@ -148,6 +148,8 @@ export default {
   }
   .ava{
     width:80rpx;height:80rpx;
+    border-radius:50%;
+    margin-right:15upx;
   }
   .name_pill{
     color:#ffffff;background: #f4b644;
@@ -162,6 +164,8 @@ export default {
     color:#fff;
     .ava1{
       width:100rpx;height:100rpx;
+      border-radius:50%;
+      margin-right:15upx;
     }
     .gu_num{
       height:175rpx;
