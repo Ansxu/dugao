@@ -46,7 +46,7 @@
 										</view>
 										</view>
 										<view class="flex-item selNumRow">
-											<uni-number-box :disabled="false" :value="item2.Number" :min="item2.MinBuyNum" :max="item2.MaxBuyNum" v-on:change="change" :shopindex="index" :index="index2"></uni-number-box>
+											<uni-number-box :disabled="false" :value="item2.Number" :min="item2.MinBuyNum" :max="item2.MaxBuyNum" v-on:change="debounces" :shopindex="index" :index="index2"></uni-number-box>
 										</view>
 									</view>
 									<view class="flex">
@@ -130,7 +130,7 @@
 </template>
 
 <script>
-	import {post,get} from '@/common/util.js';
+	import {post,get,debounce} from '@/utils';
 	import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	import noData from '@/components/noData.vue'; //暂无数据
@@ -169,7 +169,7 @@
 				allPrice:0,//累计选中产品的金额
 				CouponList:{},//弹出优惠券列表
 				isLimint:0,//0非限时购产品，1限时购产品
-				Isinvalidstr:['可购买','告罄','已下架','预售','库存不足','规格不存在']
+				Isinvalidstr:['可购买','告罄','已下架','预售','库存不足','规格不存在'],
 			}
 		},
 		onLoad() {
@@ -213,9 +213,12 @@
 					});
 				}
 			},
+			debounces(msg){
+				debounce(()=>{this.change(msg)})
+			},
 			//加减商品的数量
 			change(msg){
-				console.log(msg,'msg')
+				console.log(msg,'msg',this)
 				let number=msg[0];
 				let index1=msg[1];
 				let index2=msg[2];
@@ -230,21 +233,21 @@
 			},
 			//编辑商品规格数量
 			async eaditCart(Arr,index1,index2,number) {
-				let res = await post("Cart/EditCart", {
-					UserId: this.userId,
-					Token: this.token,
-					data: Arr
-				});
-				if (res.code === 0) {
-					if(number){
-						this.cartlist[index1][index2].Number = number;
-						this.cartlist[index1][index2].select = true;
-					}
-					else{
-						this.getCartList()
-					}
-				    this.AllPrice();
-				} 
+					let res = await post("Cart/EditCart", {
+						UserId: this.userId,
+						Token: this.token,
+						data: Arr
+					});
+					if (res.code === 0) {
+						if(number){
+							this.cartlist[index1][index2].Number = number;
+							// this.cartlist[index1][index2].select = true;
+						}
+						else{
+							this.getCartList()
+						}
+						this.AllPrice();
+					} 
 			},
 			//删除购物车
 			async DelCart(Arr){

@@ -57,10 +57,13 @@
 						<view class="orderinfo"  @click="openshopCoupon(info.UseCouponList,info.CouponId,index)">
 							<view class="orderleft">优惠劵</view>
 							<view class="orderright">
-								<view class="infotxt">{{info.yhPrice || '暂无可用优惠劵'}}</view>
-								<block v-for="(e,i) in info.UseCouponList" :key="i">
-									<view class="infotxt" v-if="e.Id==info.CouponId">{{e.Id==info.CouponId?'￥'+info.yhPrice:'不使用'}}</view>
-								</block>
+								<view class="infotxt actives" v-if="couponPrice">-￥{{couponPrice}}</view>
+								<view class="infotxt" v-else>暂无可用优惠劵</view>
+								<!-- <block v-for="(e,i) in info.UseCouponList" :key="i">
+									<view class="infotxt" v-if="e.Id==info.CouponId">
+										{{e.Id==info.CouponId?'￥'+info.yhPrice:'不使用'}}
+									</view>
+								</block> -->
 								<view class="uni-icon uni-icon-arrowright"></view>
 							</view>
 						</view>
@@ -84,7 +87,7 @@
 						<view class="orderinfo">
 							<view class="orderleft">运费</view>
 							<view class="orderright" style="color: #FF3333;">
-								{{info.Freight ? '￥'+info.Freight:'-￥0.00'}}
+								{{info.Freight ? '￥'+info.Freight:'包邮'}}
 							</view>
 						</view>
 						<!-- <view class="orderinfo">
@@ -93,9 +96,9 @@
 						</view> -->
 						
 						<view class="orderinfo">
-							<view class="orderleft">优惠劵</view>
+							<view class="orderleft">优惠</view>
 							<view class="orderright">
-								{{info.yhPrice>0?'￥'+info.yhPrice:'-￥0.00'}}</view>
+								{{couponPrice?'-￥'+couponPrice:'-￥0.00'}}</view>
 						</view>
 						<!-- <view class="orderinfo" v-if="item.zkPrice>0">
 							<view class="orderleft">折扣金额</view>
@@ -139,13 +142,15 @@
 						</view>
 					</view>
 					<view class="procontent orderbox mb10 b_radius">
-						<view class="orderinfo" @click="openCoupon(info.CouponsList,info.CouponId)">
+						<view class="orderinfo" @click="openshopCoupon(info.CouponsList,info.CouponId,0)">
 							<view class="orderleft">优惠劵</view>
 							<view class="orderright">
-								<view class="infotxt">{{info.yhPrice || '暂无可用优惠劵'}}</view>
+								<!-- <view class="infotxt">{{couponPrice || '暂无可用优惠劵'}}</view>
 								<block v-for="(e,i) in info.UseCouponList" :key="i">
 									<view class="infotxt" v-if="e.Id==info.CouponId">{{e.Id==info.CouponId?'￥'+info.yhPrice:'不使用'}}</view>
-								</block>
+								</block> -->
+								<view class="infotxt actives" v-if="couponPrice">-￥{{couponPrice}}</view>
+								<view class="infotxt" v-else>暂无可用优惠劵</view>
 								<view class="uni-icon uni-icon-arrowright"></view>
 							</view>
 						</view>
@@ -169,7 +174,7 @@
 						<view class="orderinfo">
 							<view class="orderleft">运费</view>
 							<view class="orderright" style="color: #FF3333;">
-								{{info.Freight ? '￥'+info.Freight:'-￥0.00'}}
+								{{info.Freight ? '￥'+info.Freight:'包邮'}}
 							</view>
 						</view>
 						<!-- <view class="orderinfo">
@@ -178,9 +183,9 @@
 						</view> -->
 						
 						<view class="orderinfo">
-							<view class="orderleft">优惠劵</view>
+							<view class="orderleft">优惠</view>
 							<view class="orderright">
-								{{info.yhPrice>0?'￥'+info.yhPrice:'-￥0.00'}}</view>
+								{{couponPrice?'-￥'+couponPrice:'-￥0.00'}}</view>
 						</view>
 						<!-- <view class="orderinfo" v-if="item.zkPrice>0">
 							<view class="orderleft">折扣金额</view>
@@ -280,12 +285,13 @@
 					<view class="coupon">
 						<view class="couponitem" @click="selectCoupon(-1)">
 							<view class="couponname">不使用</view>
-							<view style="margin: 0;" :class="['IconsCK IconsCK-radio',popCouponId<0?'checked':'']"></view>
+							<view style="margin: 0;" :class="['IconsCK IconsCK-radio',llCouponId<0?'checked':'']"></view>
 						</view>
 						<view class="couponitem" v-for="(item,index) in popcouponData" :key="index" @click="selectCoupon(item.Id)">
-							<view class="couponname">{{item.Title}}
+							<view class="couponname">
+								{{item.Title}}
 							</view>
-							<view style="margin: 0;" :class="['IconsCK IconsCK-radio',popCouponId==item.Id?'checked':'']"></view>
+							<view style="margin: 0;" :class="['IconsCK IconsCK-radio',llCouponId==item.Id?'checked':'']"></view>
 						</view>
 					</view>
 				</scroll-view>
@@ -296,7 +302,7 @@
 </template>
 
 <script>
-	import {post,get} from '@/utils';
+	import {post,get,navigateBack} from '@/utils';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	export default {
 		components: {
@@ -320,6 +326,7 @@
 				isAddress:false,
 				addressId:0,//地址id
 				couponId:0,//平台优惠券id
+				ShopCouponId:0,//店铺优惠券
 				hasCouponpt:false,
 				isPayWallet:0,//是否使用余额支付
 				isPayScore:0,//是否使用积分抵扣
@@ -327,9 +334,11 @@
 				InvoiceIdArr:[],
 				Invoicetxt:[],
 				remarkTxtArr:[],
+				couponPrice:0,//优惠价格
 				popCouponType:0,//弹出优惠券类型，0平台券，1店铺券
 				popcouponData:[],//弹出优惠券数据
 				popCouponId:-1,//弹出选中优惠券id
+				llCouponId:-1,//临时优惠券id
 				popCouponIdArr:[],
 				popshopCouponIndex:0,
 				CouponStr:'',
@@ -439,13 +448,13 @@
 			
 			closeCoupon(){
 				this.showCoupon=false;
-				this.popcouponData=[];
+				// this.llCouponId=id;
 			},
 			openshopCoupon(data,id,index){  
 				this.popCouponType=1;
 				this.showCoupon=true;
-				this.popcouponData=data;
-				this.popCouponId=id;
+				// this.popcouponData=data;
+				// this.popCouponId=id;
 				this.popshopCouponIndex=index;//index-0立即购买  其他购物车店铺list
 			},
 			openCoupon(data,id){
@@ -456,48 +465,79 @@
 			},
 			//选择优惠券
 			selectCoupon(id){
-				this.popCouponId=id;
+				this.llCouponId=id;
 				console.log(id,"////////")
 			
 			},
 			selectCouponok(){
-				if(this.popCouponType==0){//0平台券，1店铺券
-				console.log(this.popCouponId,"11111111111")
-					this.couponId=this.popCouponId;
-					
-				}else{  
-					if(this.orderSType ==  0){ //0立即购买，1购物车
-						this.popCouponIdArr[0] = this.popCouponId
-					}else{
-						this.shopDataArr[this.popshopCouponIndex].CouponId=this.popCouponId;
-						// console.log(this.shopDataArr[this.popshopCouponIndex].CouponId,"999999999999")
-						if(this.popCouponId == -1){
-							this.$set(this.info.CartList[this.popshopCouponIndex],'yhPrice','不使用')
-						}else{
-							// console.log(this.popcouponData,"****************")
-							// console.log(this.popshopCouponIndex,"//////////")
-							this.popcouponData.map(item=>{
-								if(item.Id == this.popshopCouponIndex){
-									this.$set(this.info.CartList[this.popshopCouponIndex],'yhPrice',item.Denomination)
-								}
-							})
-							
+				if(this.llCouponId ===this.popCouponId){
+					return;
+				}
+				this.popCouponId =this.llCouponId;
+				this.couponId=-1;
+				this.ShopCouponId=-1;
+				const info =this.info;
+				if(info.UseCouponList&&info.UseCouponList.length>0){
+					info.UseCouponList.map(item=>{
+						if(item.Id===this.popCouponId){
+							this.ShopCouponId = this.popCouponId;
 						}
-					}
+					})
 				}
-				if(this.orderSType==1){ //购物车
-					for (let i = 0; i < this.info.CartList.length; i++) {
-						let json = {};
-						json["ShopId"] = this.info.ShopId;
-						json["CouponId"]=this.shopDataArr[i].CouponId;
-						this.shopDataArr.push(json);
-						console.log(this.shopDataArr,'this.shopDataArr')
-					}
+				if(info.CouponsList&&info.CouponsList.length>0){
+					info.CouponsList.map(item=>{
+						if(item.Id===this.popCouponId){
+							this.couponId = this.popCouponId;
+						}
+					})
+				}
+				this.showCoupon=false;
+				// 立即购买
+				if(!this.orderSType){
+					this.BuyNowGoods();
+				}
+				// 购物车
+				else{
 					this.GoodsCartList();
-				}else{
-					this.BuyNowGoods();//立即购买确认订单
 				}
-				this.closeCoupon();
+				// if(this.popCouponType==0){//0平台券，1店铺券
+				// console.log(this.popCouponId,"11111111111")
+				// 	this.couponId=this.popCouponId;
+					
+				// }else{  
+				// 	if(this.orderSType ==  0){ //0立即购买，1购物车
+				// 		this.popCouponIdArr[0] = this.popCouponId
+				// 	}else{
+				// 		this.shopDataArr[this.popshopCouponIndex].CouponId=this.popCouponId;
+				// 		// console.log(this.shopDataArr[this.popshopCouponIndex].CouponId,"999999999999")
+				// 		if(this.popCouponId == -1){
+				// 			this.$set(this.info.CartList[this.popshopCouponIndex],'yhPrice','不使用')
+				// 		}else{
+				// 			// console.log(this.popcouponData,"****************")
+				// 			// console.log(this.popshopCouponIndex,"//////////")
+				// 			this.popcouponData.map(item=>{
+				// 				if(item.Id == this.popshopCouponIndex){
+				// 					this.$set(this.info.CartList[this.popshopCouponIndex],'yhPrice',item.Denomination)
+				// 				}
+				// 			})
+							
+				// 		}
+				// 	}
+				// }
+				// if(this.orderSType==1){ //购物车
+				// 	for (let i = 0; i < this.info.CartList.length; i++) {
+				// 		let json = {};
+				// 		json["ShopId"] = this.info.ShopId;
+				// 		json["CouponId"]=this.shopDataArr[i].CouponId;
+				// 		this.shopDataArr.push(json);
+				// 		console.log(this.shopDataArr,'this.shopDataArr')
+				// 	}
+				// 	this.GoodsCartList();
+				// }else{
+				// 	this.BuyNowGoods();//立即购买确认订单
+				// }
+				// this.closeCoupon();
+
 			},
 			//选择发票
 			ChooseInvoice(index){
@@ -511,6 +551,23 @@
 			  _this.$set(_this.Invoicetxt,i,"可开票");
 			  uni.setStorageSync("invoiceinfo","");
 			},
+			// 初始化优惠券数据
+			onCouponData(data){
+				let arr1= data.UseCouponList||[];
+				let arr2= data.CouponsList||[];
+				this.popcouponData=arr1.concat(...arr2);
+				let id = 0;
+				if(data.CouponId>0){
+					id = data.CouponId;
+				}
+				if(data.ShopCouponId&&data.ShopCouponId>0){
+					id = data.ShopCouponId;
+				}
+				this.popCouponId = id;
+				this.llCouponId = id;
+				console.log(data.PlatDisPrice,data.PlatDisPrice+0)
+				this.couponPrice = data.yhPrice+data.zkPrice+(data.PlatDisPrice||0);
+			},
 			//购物车下单获取
 			async GoodsCartList(){
 			  let result=await post("Cart/GoodsCartList",{
@@ -518,21 +575,21 @@
 				Token: this.token,
 				CartIdList:this.CartIds,
 				AddressId:this.addressId,
-				CouponId:this.couponId,
-				ShopData:this.shopDataArr
+				CouponId:this.ShopCouponId,
+				// ShopData:this.shopDataArr
 			  })
 			  if(result.code==0){
-				  console.log(111)
 				this.info=result.data;
-				if(result.data.CouponId>0){ //平台优惠
-					this.couponId = result.data.CouponId
-				}
+				// if(result.data.CouponId>0){ //平台优惠
+				// 	this.couponId = result.data.CouponId
+				// }
 				//默认优惠券
 				// for (let i = 0; i < this.info.ProData.length; i++) {
 					let json = {};
 					json["ShopId"] = this.info.ShopId;
 					json["CouponId"]=this.info.CouponId;
 					this.shopDataArr.push(json);
+					this.onCouponData(result.data);
 				// }
 				// console.log( this.info.ProData,' this.info.ProData')
 				// if(result.data.CouponsList.length){
@@ -562,9 +619,9 @@
 					AddressId: this.addressId,    //地址Id
 					IsPayWallet:this.isPayWallet, //使用余额支付 1-使用 0-不使用
 					IsPayScore:this.isPayScore,   //使用积分抵扣 1-使用 0-不使用
-					CouponId:this.couponId,       //优惠劵
+					CouponId:this.info.CouponId,       //优惠劵
 					Remark:this.Remark,           //买家备注
-					ShopData:this.shopDataArr,
+					// ShopData:this.shopDataArr,
 					AreaCode:uni.getStorageSync("AreaCode")  //邀请码
 				})
 				if (result.code == 0) {
@@ -593,43 +650,48 @@
 					Total:this.Total,//购买总数量
 					SpecText:this.SpecText//产品规格文本
 				}];
-			  let result=await post("Order/BuyNowGoods",{
-				UserId: this.userId,
-				Token: this.token,
-				AddressId:this.addressId,
-				CouponId:this.couponId,
-				ShopCouponId:this.popCouponId,
-				data:dataArr,
-			  })
-			  if(result.code==0){
-				  let _this=this;
-				_this.info=result.data;console.log(_this.info)
-				//店铺优惠券
-				this.popCouponIdArr[0] = result.data.ShopCouponId
-				//平台优惠券
-				this.couponId = result.data.CouponId
-				if(result.data.ShopCouponId == -1){
-					this.CouponStr = '不使用'
-				}else{
-					this.CouponStr = '￥' + result.data.yhPrice
-				}
-				// if(result.data.CouponsList.length){
-				// 	this.hasCouponpt=true;
-				// }else{
-				// 	this.hasCouponpt=false;
-				// }
-				// if(result.data.UseCouponList.length){
-				// 	this.hasCoupon=true;
-				// }else{
-				// 	this.hasCoupon=false;
-				// }
-				_this.$set(_this.info,"countItem",_this.infoAllNumber)
-			  }else{
-				uni.showToast({
-				  title: result.msg,
-				  icon: "none",
-				  duration: 1000
-				});
+				try{
+					let result=await post("Order/BuyNowGoods",{
+						UserId: this.userId,
+						Token: this.token,
+						AddressId:this.addressId,
+						CouponId:this.couponId,
+						ShopCouponId:this.ShopCouponId,
+						data:dataArr,
+					})
+					if(result.code==0){
+						let _this=this;
+						_this.info=result.data;console.log(_this.info)
+						//店铺优惠券
+						this.popCouponIdArr[0] = result.data.ShopCouponId
+						//平台优惠券
+						this.couponId = result.data.CouponId
+						if(result.data.ShopCouponId == -1){
+							this.CouponStr = '不使用'
+						}else{
+							this.CouponStr = '￥' + result.data.yhPrice
+						}
+						this.onCouponData(result.data);
+						// if(result.data.CouponsList.length){
+						// 	this.hasCouponpt=true;
+						// }else{
+						// 	this.hasCouponpt=false;
+						// }
+						// if(result.data.UseCouponList.length){
+						// 	this.hasCoupon=true;
+						// }else{
+						// 	this.hasCoupon=false;
+						// }
+						_this.$set(_this.info,"countItem",_this.infoAllNumber)
+					}else{
+						uni.showToast({
+						title: result.msg,
+						icon: "none",
+						duration: 1000
+						});
+					}
+			  }catch(err){
+				  navigateBack();
 			  }
 			},
 			//拼团订单渲染
@@ -681,8 +743,8 @@
 				Number:this.Total,
 				SpecText:this.SpecText,
 				AddressId:this.addressId,
-				CouponId:this.couponId,
-				ShopCouponId:this.popCouponIdArr[0],
+				CouponId:this.info.CouponId>0?this.info.CouponId:0,
+				ShopCouponId:this.info.ShopCouponId>0?this.info.ShopCouponId:0,
 				InvoiceId:this.InvoiceIdArr[0],
 				Remark:this.Remark,
 				ContactName:this.ContactName,
@@ -765,7 +827,7 @@
 			//提交订单
 			confirm(){console.log(this.yanzheng())
 				if(this.addressId>0||(this.addressId==0&&(this.info.IsSalesOffice==1||this.info.IsAloneBuy==1))){
-					if(this.orderSType==0){
+					if(!this.orderSType){
 					//   if(this.GroupId>0){
 					// 	  if(!this.yanzheng()){
 					// 		  uni.navigateTo({

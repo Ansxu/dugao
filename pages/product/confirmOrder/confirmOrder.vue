@@ -20,7 +20,10 @@
           </div>
       </div>
       <div class="pro plr30">
-        <h3 class="flex-center-start" @click="goshop">{{shopName}}<span class="icon"><van-icon name="arrow" color="#999"/></span></h3>
+        <h3 class="flex-center-start">{{shopName}}<span class="icon">
+          <!-- <van-icon name="arrow" color="#999"/> -->
+          </span>
+        </h3>
         <block v-if="sourceType==1">
           <div class="item flex-center-between" v-for="(item,index) in prolist" :key="index">
             <img :src="item.ProductImg" :alt="item.ProductName">
@@ -224,11 +227,6 @@ export default {
       this.isContentFocus = true; //聚焦时隐藏内容文本标签
       this.isInputContentFocus = false;
       this.isFocus = false; //失去焦点
-    },
-    goshop(){
-      wx.switchTab({
-        url: '/pages/index/main'
-      })
     },
     goUrl(url){
       wx.navigateTo({

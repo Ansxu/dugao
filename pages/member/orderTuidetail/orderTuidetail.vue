@@ -51,7 +51,7 @@
 			<!--#endif-->
 		</view>
 		<view class="submitbtn" @click="submitbtn"  
-			v-if="orderinfo.Status===9||orderinfo.Status===10"
+			v-if="(orderinfo.Status===9||orderinfo.Status===10)&&!orderinfo.ExpressId"
 			>请填写寄回信息单号
 		</view>
 		<!-- 填写寄回信息 -->
