@@ -18,7 +18,7 @@
           <div class="list bp-box jus-b ali-c" v-for="(item, index) in datalist" :key="index">
             <div class="flex flexAlignCenter">
                 <img :src="item.Avatar" alt="" class="ava">
-                <div class="mr2">
+                <div class="mr2 ml2">
                   <span>{{item.NickName}}</span>
                   <p>{{item.AddTime}}</p>
                 </div>
@@ -235,5 +235,8 @@ export default {
 }
 .ava{
   width:80rpx;height:80rpx;
+}
+.ml2{
+	margin-left: 20rpx;
 }
 </style>

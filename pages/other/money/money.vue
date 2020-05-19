@@ -103,8 +103,10 @@
 				this.TypeId = id
 				this.datalist = []
 				this.setDate() //重置月份
+				this.page = 1
 				this.queryRecord()
 				// console.log(this.TypeId)
+				
 			},
 			choseTime() {
 				this.showDate = true
@@ -143,7 +145,7 @@
 						}
 						if (this.page > 1) {
 							this.datalist = this.datalist.concat(
-								res.data
+								res.data.list
 							);
 						}
 						if (len < this.pageSize) {

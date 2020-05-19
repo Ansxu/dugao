@@ -122,6 +122,14 @@ export default {
     },
     valOther() {
       let price = Number(this.amount);
+	  if(typeof(price) != Number){
+		uni.showToast({
+		  		title:"请输入正确的提现金额！",
+		  		icon: "none",
+		  		duration: 1500
+		  	})
+		return false;
+	  }
 	  if(price == ''){
 		  uni.showToast({
 		  	title:"请输入提现金额！",
