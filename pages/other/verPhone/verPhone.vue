@@ -49,6 +49,9 @@ export default {
 		this.userId = uni.getStorageSync("userId");
 		this.token = uni.getStorageSync("token");
 		this.getProtoPhone();
+		if(this.timer){
+			clearInterval(this.timer);
+		}
 	},
 	methods:{
 		getProtoPhone(){
@@ -62,6 +65,7 @@ export default {
 		},
 		// 第一步发送验证码
 		async sendCode(type){
+			if(this.timer)return;
 			const res = await post('User/GetBindTelCode',{
 				UserId:this.userId,
 				Token:this.token,
@@ -89,6 +93,7 @@ export default {
 		},
 		// 第二步发送验证码
 		async bindSendCode(){
+			if(this.timer)return;
 			if(!verifyPhone(this.phone)) return;
 			if(this.phone==this.protophone){
 				toast('请填写新的手机号');return;
@@ -149,7 +154,7 @@ export default {
 					VerifyCode:this.phoneCode,
 					Type:1, 
 				}).then(res=>{
-					toast('绑定成功',{icon:true});
+					toast('修改成功',{icon:true});
 					navigateBack();
 				})
 			}

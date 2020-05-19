@@ -5,7 +5,7 @@
 				<image src="http://shop.dadanyipin.com/static/of/yd.png"></image>
 				<view class="flex1">
 					<view class="uni-bold">{{logistics.companyName}}</view>
-					<view class="font18">官方电话 95546 ></view>
+					<view class="font18" @click="call('153')">官方电话 95546 <uni-icons type="arrowright" :size="10"></uni-icons></view>
 				</view>
 			</view> -->
 			<view class="flex flexAlignCenter posnum">
@@ -50,10 +50,11 @@
 </template>
 
 <script>
-	import {post,get} from '@/common/util.js';
+	import {post,get,call} from '@/utils';
 	export default {
 		data() {
 			return {
+				call,
 				userId: "",
 				token: "",
 				disabled:false,
@@ -149,6 +150,7 @@
 	}
 	.logistics,.postmas{
 		border-radius:15upx;
+		background: #fff;
 	}
 	.postmas{
 		margin:20upx 0;
@@ -163,10 +165,14 @@
 	}
 	.posnum{
 		padding:20upx 30upx;
-		background: #fafafa;border-radius: 0 0 15upx 15upx;
+		background: #fafafa;
+		border-radius:0 0 15upx 15upx;
 		.copy{
-			padding:0 20upx;border:1upx solid #999999;border-radius:8upx;
-			margin-left:20upx;
+			padding:0 20upx;border:1upx solid #c8c8c8;border-radius:8upx;
+			margin-left:20upx;line-height:1.5;color:#666;
 		}
+	}
+	.inner{
+		background-color:none!important;
 	}
 </style>

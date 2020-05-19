@@ -34,6 +34,7 @@
                       <p>{{item.ProductName}}</p>
                       <p class="c-999">{{item.SpecText}}</p>
                       <p class="cr font30">￥{{item.ActualPay}}</p>
+						          <text style="color: #ff6f00;">{{info.StatusName == item.OrderStatusName ? '' : item.OrderStatusName}}</text>
                     </div>
                     <div class="mr3 flex flexColumn flexAlignEnd">
                       <span>x{{item.Number}}</span>

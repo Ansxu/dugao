@@ -226,3 +226,14 @@ export function copy(data){
     }
   })
 }
+export function call(phone){
+  uni.makePhoneCall({
+    phoneNumber:phone+'',
+    success(res){
+
+    },
+    fail(){
+      toast('呼叫失败，请重试！')
+    }
+  })
+}

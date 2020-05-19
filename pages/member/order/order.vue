@@ -54,7 +54,7 @@
 			  <view class="tit">请选择要操作的商品</view>
 			  <view class="list ali-c jus-b" v-for="(item, index) in needChangeGoods" @click.stop="changeGoods(item.Id)" :key="index">
 				<image :src="item.PicNo" mode="aspectFit" alt=""></image>
-				<view class="flex1 uni-ellipsis">{{item.ProductName}}ert士大夫电风扇广泛受到广泛受到</view>
+				<view class="flex1 uni-ellipsis">{{item.ProductName}}</view>
 			  </view>
 			</view>
 		  </view>

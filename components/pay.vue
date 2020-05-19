@@ -8,7 +8,7 @@
 				<text class="font26">￥</text>{{allprice}}
 			</view>
             <view class="pay-password">
-				<input type="number" maxlength="6" class="real-ipt" v-model="Password">
+				<input type="number" maxlength="6" class="real-ipt" v-model="Password" :focus="true">
                 <view class="surface-ipts">
                     <view class="surface-ipt">
                         <input type="password" disabled=true v-model="PasswordArr[0]">
@@ -42,7 +42,7 @@
 			};
 		},
 		watch: {
-			Password(newVal) {console.log(newVal)
+			Password(newVal) {
 				this.PasswordArr=newVal.split("");
 				if(this.PasswordArr[0]==undefined){//app兼容
 					this.PasswordArr[0]=''
@@ -58,9 +58,9 @@
 					this.PasswordArr[5]=''
 				}
 			},
-			allprice(newVal) {
-				console.log(newVal)
-			},
+			// allprice(newVal) {
+			// 	console.log(newVal)
+			// },
 		},
 		methods:{
 			hide(){
@@ -100,6 +100,7 @@
     background: #ffffff;
     border-radius: 25upx;
     border: 1px solid #f2f2f2;
+    margin-bottom:380upx;
 }
 .dialog-title{
     height: 100upx;
@@ -172,7 +173,7 @@
     text-align: center;
     padding: 0;
 }
-..pay-password .surface-ipts .surface-ipt input:last-child{
+.pay-password .surface-ipts .surface-ipt input:last-child{
 	margin-right:0;
 }
 .pay-password .surface-ipts /deep/ .uni-input-input{font-size: 80upx; height: 90upx;}
