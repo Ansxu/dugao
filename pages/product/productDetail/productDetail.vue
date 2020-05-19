@@ -357,7 +357,9 @@ export default {
     this.timeStr=[];
     clearInterval(this.timer);
     this.ProductInfo();
-    this.GetAllCartNumber();
+    if(this.userId&&this.token){
+      this.GetAllCartNumber();
+    }
     setTimeout(() => {
       var query = uni.createSelectorQuery();
       query.select("#main").boundingClientRect((rect)=> {

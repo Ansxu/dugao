@@ -154,7 +154,7 @@
 								<view class="uni-icon uni-icon-arrowright"></view>
 							</view>
 						</view>
-						<view class="orderinfo" @click="ChooseInvoice(0)">
+						<!-- <view class="orderinfo" @click="ChooseInvoice(0)">
 							<view class="orderleft">开票类型</view>
 							<view class="orderright">
 								<view class="infotxt flex flex-end">{{Invoicetxt[index]||'不开发票'}}
@@ -162,7 +162,7 @@
 								</view>
 								<view class="uni-icon uni-icon-arrowright"></view>
 							</view>
-						</view>
+						</view> -->
 					</view>
 					<view class="orderbox procontent b_radius">
 						<view class="orderinfo">
