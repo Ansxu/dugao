@@ -67,10 +67,10 @@
 			this.userId = uni.getStorageSync("userId");
 			this.token = uni.getStorageSync("token");
 			// #ifndef APP-PLUS
-			// this.orderNo=this.$root.$mp.query.orderNo;
-			// this.GroupId=this.$root.$mp.query.GroupId;
+			this.orderNo=this.$root.$mp.query.orderNo;
+			this.GroupId=this.$root.$mp.query.GroupId;
 			// #endif
-			// this.Noarr=this.orderNo.split(",");
+			this.Noarr=this.orderNo.split(",");
 			
 			console.log()
 		},

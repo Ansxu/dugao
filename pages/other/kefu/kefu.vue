@@ -7,10 +7,10 @@
 			<view class="kefu_detail">在线客服<view>(09:00~22:00)</view></view>
 		</view>
 		<view class="kefu_desc">所有常见问题都有相应的解决方案，请参考常见问题自主解决，如 果常见问题无法解决您的问题在咨询客服，由于客服咨询量较大， 请尽可能的描述清楚您的问题，以便快速解决</view>
-		<view class="kefu_btn" @click="gokefu()">
+		<!-- <view class="kefu_btn" @click="gokefu()">
 			在线客服
-		</view>
-	
+		</view>   -->   
+		<button type="primary" open-type="contact" bindcontact="handleContact">在线客服</button>
 	
 	</view>
 </template>
@@ -24,6 +24,12 @@
 				
 			}
 		},
+		
+		    handleContact (e) {
+		        console.log(e.detail.path)
+		        console.log(e.detail.query)
+		    },
+			
 		onLoad(e){
 			// #ifdef APP-PLUS
 			// this.qqnum = e.qqnum
@@ -84,5 +90,18 @@
 	text-decoration: none;
 	height: 80rpx;
 	line-height: 40px;
+}
+button, input[type='number'], input[type='text'], input[type='password'], input[type='email'], input[type='search'], ._select, textarea {
+margin: 80upx auto;
+font-family: inherit;
+-webkit-appearance: none;
+width: 90%;
+}
+button[type=primary] {
+color: #fff;
+background-color: #ee9b11;
+}
+button::after {
+	border: none;
 }
 </style>
