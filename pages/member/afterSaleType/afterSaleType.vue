@@ -3,9 +3,9 @@
       <view class="mt2 bg_fff pp3 flex justifyContentBetween">
           <image :src="info.PicNo" alt="" class="shop mr2"></image>
           <view class="flex1">
-              <view class="uni-bold">{{info.ProductName}}</view>
-              <view class="cg font24 mt1 color_gray">{{info.SpecText}}</view>
-			   <view class="cg font24 mt1 color_red">￥{{info.ActualPay}}元</view>
+              <view class="uni-bold">{{info.ProductName||''}}</view>
+              <view class="cg font24 mt1 color_gray">{{info.SpecText||''}}</view>
+			   <view class="cg font24 mt1 color_red">￥{{info.ActualPay||''}}</view>
           </view>
       </view>
       <view class="pw3 mt2 bg_fff">

@@ -1,5 +1,5 @@
 <template>
-  <div class="ticket pw3">
+  <div class="ticket pw3" v-if="info.StatusName">
       <div class="bg_statu pp3 boxSize">
           <p class="order_statu mt1">{{info.StatusName}}</p>
           <!-- <p class="font22 mt1">剩余00:59:13自动取消订单</p> -->
