@@ -1,6 +1,6 @@
 <template>
 	<!-- 视频详情 -->
-	<view class="bgfff">
+	<view class="bgfff" v-if="data.Id">
 		<view class="video">
 			<video class=""
 				id="myVideo"
