@@ -26,8 +26,10 @@
               </view>
           </view>
           <view class="menu_item flex justifyContentBetween flexAlignCenter" v-if="type!=1">
+			  <!-- type:1,//1:申请换货;2:申请退货退款;3:仅退款（无需退货 -->
               <view>退款金额</view>
-              <view class="cr">¥{{info.ActualPay}}</view>
+              <view class="cr" v-if="type==2">¥{{info.ActualPay}}</view>
+			  <view class="cr" v-if="type==3">¥{{data.length >= 1 ? total : info.ActualPay}}</view>
           </view>
           <view class="mt2">
               <view>{{type==1?'换货':'退款'}}说明</view>
@@ -69,6 +71,8 @@ export default {
       // list:[{code:0,message:'请选择'}],
 	   list:[],
       typeTxt:"请选择",
+	  data:[],
+	  total:0,
     }
   },
 	onLoad(e){
@@ -129,6 +133,13 @@ export default {
         OrderNo:this.OrderNumber
       }).then(res=>{
         this.info = res.data.OrderDetails[this.indexId];
+		this.data = res.data.OrderDetails;
+		let expressPrice = res.data.ExpressPrice
+		if(this.data.length > 1){
+			this.total =  Number(this.info.ActualPay)
+		}else{
+			this.total = Number(expressPrice) + Number(this.info.ActualPay)
+		}
       })
     },
     submitSerty(){

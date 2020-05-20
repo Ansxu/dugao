@@ -22,7 +22,18 @@
 			</view> -->
 			<view class="listbox" v-for="(val, key) in footprintlist" :key="key">
 				<view class="choose" v-if="isShowDel" @click.stop="shiftChecked(key)"><view class="IconsCK IconsCK-radio" :class="{ checked: val.checked }"></view></view>
-				<view class="drawing">
+				<view class="drawing" v-if="isShowDel">
+					<view class=""><image class="imgs" :src="val.PicFrist" mode=""></image></view>
+					<view class="brace">
+						<view class="being">{{ val.ProName }}</view>
+						<view class="correct">
+							<span class="spanl">¥</span>
+							{{ val.Price }}
+							<span class="spanr" v-show="false">¥1888</span>
+						</view>
+					</view>
+				</view>
+				<view class="drawing" v-else @click.stop="tolick(val.ProId)">
 					<view class=""><image class="imgs" :src="val.PicFrist" mode=""></image></view>
 					<view class="brace">
 						<view class="being">{{ val.ProName }}</view>
@@ -92,6 +103,11 @@ export default {
 		toback() {
 			uni.switchTab({
 				url: '/pages/tabBar/my/my'
+			});
+		},
+		tolick(id){
+			uni.navigateTo({
+				url:'/pages/product/productDetail/productDetail?id=' + id
 			});
 		},
 		//点击编辑 完成
@@ -307,6 +323,7 @@ export default {
 }
 .drawing {
 	display: flex;
+	width: 100%;
 }
 .imgs {
 	width: 160rpx;

@@ -312,7 +312,7 @@
 					this.selectlen=0;
 					this.cartlen=0;
 					if(result.data.ProData)
-					if(result.data.CartData.length>0){
+					if(result.data.ProData.length>0){
 						this.checklen=result.data.CartData.length;
 						this.hascartlist=true;
 						this.noDataIsShow=false;
