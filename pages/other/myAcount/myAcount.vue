@@ -40,7 +40,7 @@
 			</div>
 	  	</div>
 	  	<div class="wa_list bg_fff uni-mt10">
-			<div class="flex justifyContentBetween  wa_item pp3 bg_fff flexAlignCenter" @click="switchPath('/pages/other/money/money??type=1',$event)">
+			<div class="flex justifyContentBetween  wa_item pp3 bg_fff flexAlignCenter" @click="switchPath('/pages/other/money/money?type=1',$event)">
 			  <div class="flex flexAlignCenter">
 				  <img src="http://jyy.wtvxin.com/static/images/icons/w5.png" alt="" class="ww_wa">
 				  <span class="mr2">提现记录</span>
