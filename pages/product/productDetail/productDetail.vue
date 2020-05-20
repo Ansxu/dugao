@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="proInfo.Id">
       <swiper class="swiper" @change="changeBanner" indicator-active-color="#ff6f00">
         <div class="numpage">{{bannerindex+1}}/{{BannerNum}}</div>
         <swiper-item class="flexc" v-for="(item,index) in proInfo.PicData" :key="index">

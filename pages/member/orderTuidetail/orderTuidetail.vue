@@ -1,5 +1,5 @@
 <template>
-	<view class="warp">
+	<view class="warp" v-if="orderinfo.Status">
 		<view style="height:20upx"></view>
 		<view class="outside">
 			<view class="pictrueAll">

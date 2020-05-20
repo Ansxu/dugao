@@ -177,12 +177,12 @@ export default {
 <style lang='scss' scoped>
 	@import '../../../common/lz.css';
 .list{
-  height: 120rpx;
+  height: 130rpx;
   border-bottom: 1rpx solid #ededed;
   div{
     span{
       font-size: 28rpx;
-      color: #333;
+      color: #666;
     }
     p{
       margin-top: 15rpx;
@@ -190,8 +190,9 @@ export default {
       color:#999!important
     }
   }
-  p{
+  .cr{
     font-size: 28rpx;
+    color:#ff3333;
   }
 }
 .time-box{
@@ -201,9 +202,9 @@ export default {
   padding: 0 30rpx;
   .time{
     width: 170rpx;
-    height: 44rpx;
+    height: 55rpx;
     background-color: #ffffff;
-    border-radius: 22rpx;
+    border-radius: 30rpx;
     img{
       width: 16rpx;
       height: 10rpx;
@@ -235,6 +236,8 @@ export default {
 }
 .ava{
   width:80rpx;height:80rpx;
+  border-radius:50%;
+  margin-right:20upx;
 }
 .ml2{
 	margin-left: 20rpx;
