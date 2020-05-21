@@ -12,8 +12,8 @@
 						<img src="@/static/icons/video-arrow.png" mode=""/>
 					</view>
 				</view>
-				<view class="video-topic">
-					<view class="video-fz30">{{item.Title}}</view>
+				<view class="video-topic flex-column-start-between">
+					<view class="video-fz30 ellipsis-col2">{{item.Title}}</view>
 					<view class="video-flex">
 						<view class="">{{item.Hits}}人浏览</view>
 						<view class="">{{item.AddTime}}</view>
@@ -130,12 +130,12 @@ export default {
 		font-size:30upx;
 		font-weight:bold;
 		color:rgba(51,51,51,1);
-		line-height:50upx;
+		line-height:45upx;
 	}
 	.video-flex{
+		line-height:1.8;
 		display: flex;
 		font-size:22upx;
 		color:rgba(153,153,153,1);
-		padding-top: 30upx;
 	}
 </style>
