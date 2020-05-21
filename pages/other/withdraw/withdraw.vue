@@ -122,13 +122,13 @@ export default {
     },
     valOther() {
       let price = Number(this.amount);
-	  let reg = /^\d+(\.\d{1,2})?$/; 
-	  if(!reg.test(price)){
+	   let reg = /^\d+(\.\d{1,2})?$/; 
+	  	if(!reg.test(price)){
 		uni.showToast({
-		  		title:"请输入正确的提现金额！",
-		  		icon: "none",
-		  		duration: 1500
-		  	})
+		  	title:"请输入正确的提现金额！",
+		  	icon: "none",
+		  	duration: 1500
+		})
 		return false;
 	  }
 	  if(price == ''){
@@ -226,20 +226,21 @@ export default {
           BankId: that.bankCardId
         },
         that.curPage
-      ).then(result => {
-        if (result.code === 0) {
+      ).then(res => {
+        if (res.code === 0) {
+			console.log(res.code)
           //提现成功
-          uni.showToast({
-            title: "申请成功！",
-            icon: "none",
-            duration: 1500,
-            success: function() {
-              navigateBack();
-            }
-          });
-		  this.getWallet()
+		  uni.showToast({
+		    title: '提交成功，待审核',
+		    icon: "none",
+		    duration: 1500
+		  });
+		  setTimeout(function() {
+		    navigateBack();
+		  },1000)
         }
       });
+	  this.getWallet()
     },
 	getWallet() {
 	  post('User/GetCenterInfo',{
