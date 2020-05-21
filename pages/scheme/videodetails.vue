@@ -7,6 +7,7 @@
 				:src="data.Video"
 				@error="videoErrorCallback"
 				controls
+				:poster="data.Logo"
 			></video>
 		</view>
 		<view class="video-padd">

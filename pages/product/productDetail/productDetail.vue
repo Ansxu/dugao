@@ -279,7 +279,7 @@
           </scroll-view>
         </div>
       </uni-popup>
-      <!-- <sku :sku="sku" :skuAll="skuAll" 
+      <!-- <sku :sku="skus" :skuAll="skuAll" 
       :product="{img:proInfo.PicData&&proInfo.PicData[0].PicUrl,price:proInfo.Price,num:proInfo.Stock}"
 
         
@@ -289,9 +289,9 @@
 
 <script>
 import {post,get,previewImg,filePath,navigate,navigateBack} from '@/utils'
-import sku from '@/components/sku/popsku.vue'
+// import sku from '@/components/sku/popsku.vue'
 export default {
-  components:{sku},
+  // components:{sku},
   data () {
     return {
       navigate,
@@ -329,7 +329,8 @@ export default {
       minbuy:1, //最小购买量
 
       skuAll:[],
-      sku:{},
+      sku:[],
+      skus:[],
       
       selectSku: {
         //选中的sku组合
@@ -602,21 +603,24 @@ export default {
           })
         })
         this.skuAll = skuAll;
-        let sku ={};
+        let sku =[];
         const SpecificationValue = JSON.parse(data.SpecificationValue)
         Object.keys(SpecificationValue).map((item,index)=>{
           const arrr = SpecificationValue[item];
-          sku[item]=[];
+          let list=[];
           arrr.map(arrItem=>{
-              sku[item].push({
+              list.push({
                 selectStatus:false, //选中状态
-                status:true,  //可选状态
+                status:false,  //可选状态
                 val:arrItem.name,
               })
           })
+          sku.push({title:item,list});
         })
-        this.$set(this,'sku',sku);
-        this.isUseSku();
+        console.log(sku,this.skus);
+        this.skus = sku;
+        // this.$set(this,'sku',sku);
+        // this.isUseSku();
         }catch(e){
           navigateBack();
         }

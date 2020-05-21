@@ -25,16 +25,16 @@
                         <span :class="{'active':ite.name==SpecValue[index]}" @click="cliTag(index,ite.name)" class="ali-c jus-c" v-for="(ite, ind) in item" :key="ind">{{ite.name}}</span>
                     </div>
                 </div> -->
-                <div class="sku" v-for="(sku,val) in sku" :key="val">
-                  <div class="spcestitle">{{val}}</div>
+                <div class="sku" v-for="(sku,skuIndex) in sku" :key="skuIndex">
+                  <div class="spcestitle">{{sku.title}}</div>
                   <div class="specs">
                     <div
                       class="spec"
                       :class="{'specactive':item.selectStatus}"
                       :style="item.status?'color:#999;':''"
-                      v-for="(item,index) in sku"
+                      v-for="(item,index) in sku.list"
                       :key="index"
-                      @click="clickSelectSku(item,val,index)"
+                      @click="clickSelectSku(skuIndex,index,item)"
                     >
                       <!-- @click="onSelectSku(val,index)" -->
                       <text>{{item.val}}{{item.selectStatus}}</text>
@@ -112,9 +112,9 @@
 export default {
   props: {
     sku: {
-      type: Object,
+      type: Array,
       dafault() {
-        return {};
+        return [];
       }
     },
     skuAll: {
@@ -130,6 +130,14 @@ export default {
           img:''
         };
       }
+    }
+  },
+  watch:{
+    sku:{
+      handler(e){
+        console.log(e,'e')
+      },
+      deep:true
     }
   },
   data() {
@@ -170,12 +178,17 @@ export default {
     hidePopup(){
       this.showPop =false;
     },
-    clickSelectSku(item,val,index){
-      item.selectStatus = !item.selectStatus;
+    clickSelectSku(skuIndex,index,item){
+      // let obj = item;
+      // obj.selectStatus = !obj.selectStatus;
+      // this.sku[skuIndex].list[index] = obj;
+      let list = this.sku[skuIndex].list;
+      list[index].selectStatus = !item.selectStatus;
+      console.log(list,'list')
+      this.$set(this.sku[skuIndex],'title','123');
       console.log(this.sku,'this.sku')
-      this.$set(this.sku[val],index,item);
 
-      console.log(this.sku,'item')
+      // console.log(item,'item')
     },
     // 选择sku
     onSelectSku(val, index) {
