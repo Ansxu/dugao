@@ -122,7 +122,8 @@ export default {
     },
     valOther() {
       let price = Number(this.amount);
-	  if(typeof(price) != Number){
+	  let reg = /^\d+(\.\d{1,2})?$/; 
+	  if(!reg.test(price)){
 		uni.showToast({
 		  		title:"请输入正确的提现金额！",
 		  		icon: "none",

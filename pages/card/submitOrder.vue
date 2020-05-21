@@ -32,9 +32,9 @@
 					<view class="shopbox procontent">
 						<view class="iconfont icon-dianpu"></view>
 						<text class="shopName" style="padding-right: 71%;">{{info.ShopName}}</text>
-						<view class="next">
+						<!-- <view class="next">
 							<view class="uni-icon uni-icon-arrowright"></view>
-						</view>
+						</view> -->
 					</view>
 					<view class="outside procontent" v-for="(item2,index2) in info.ProData" :key="index2">
 						<view class="pictrueAll">
@@ -46,7 +46,7 @@
 							<view class="title">{{item2.Name}}</view>
 							<view class="pronumber">
 								<view class="protype" v-if="item2.SpecText">{{item2.SpecText}}</view>
-								<view class="number">x{{item2.Number}}</view>
+								<view :class="['number',item2.SpecText ? '' : 'ploe']">x{{item2.Number}}</view>
 							</view>
 							<view class="pronumber">
 								<view class="price" >￥{{item2.Price}}</view>
@@ -121,9 +121,9 @@
 					<view class="shopbox procontent">
 						<view class="iconfont icon-dianpu"></view>
 						<text class="shopName" style="padding-right: 71%;">{{info.ShopName}}</text>
-						<view class="next">
+						<!-- <view class="next">
 							<view class="uni-icon uni-icon-arrowright"></view>
-						</view>
+						</view> -->
 					</view>
 					<view class="outside procontent" v-for="(item2,index2) in info.ProData" :key="index2">
 						<view class="pictrueAll">
@@ -134,7 +134,8 @@
 						<view class="txtBox">
 							<view class="title">{{item2.Name}}</view>
 							<view class="pronumber">
-								<view class="protype" v-if="item2.SpecText">{{item2.SpecText}}</view><view class="number">x{{item2.Number}}</view>
+								<view class="protype" v-if="item2.SpecText">{{item2.SpecText}}</view>
+								<view :class="['number',item2.SpecText ? '' : 'ploe']">x{{item2.Number}}</view>
 							</view>
 							<view class="pronumber">
 								<view class="price" >￥{{item2.Price}}</view>
@@ -896,4 +897,5 @@
 	@import "../../common/dd_style.css";
 	@import "./submitOrder";
 	@import "../../common/dd_style.css";
+	.ploe{margin-left: 460rpx !important;}
 </style>

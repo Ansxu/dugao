@@ -92,7 +92,7 @@
 			if (this.wType == 1) {
 				this.TypeId = 6;
 				uni.setNavigationBarTitle({
-					title: "提现记录"
+					title: "收益提现记录"
 				});
 			}
 			this.queryRecord()

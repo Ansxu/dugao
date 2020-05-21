@@ -27,7 +27,7 @@
 						<view class="color_gray font18">{{ite.SpecText}}</view> 
 						<view class="flex justifyContentBetween flexAlignCenter mt1">
 							<text class="color_gray">x{{ite.Number}}</text>
-							<text>¥{{ite.ActualPay}}</text>
+							<text>¥{{ite.Price}}</text>
 						</view>
 						<text style="color: #ff6f00;">{{item.StatusName == ite.OrderStatusName ? '' : ite.OrderStatusName}}</text>
 					</view>
