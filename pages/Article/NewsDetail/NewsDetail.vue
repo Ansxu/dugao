@@ -119,6 +119,8 @@
 					this.NewsInfo=result.data;
 					this.dataInfo = true;
 					this.NewsInfo.Addtime=dateUtils.format(this.NewsInfo.Addtime);
+					let content = this.NewsInfo.ContentDetails;
+					this.NewsInfo.ContentDetails = content.replace(/<img/g,'<img style="max-width:100%;"');
 					this.arthtml=this.NewsInfo.ContentDetails.replace(/<section/gi,'<div').replace(/section>/gi,'div>');
 				}else if (result.code === 2) {
 					//未登录

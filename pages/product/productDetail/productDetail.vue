@@ -279,12 +279,17 @@
           </scroll-view>
         </div>
       </uni-popup>
+      <!-- <sku :sku="sku" :skuAll="skuAll" 
+      :product="{img:proInfo.PicData&&proInfo.PicData[0].PicUrl,price:proInfo.Price,num:proInfo.Stock}"
+
+        
+      ></sku> -->
   </div>
 </template>
 
 <script>
 import {post,get,previewImg,filePath,navigate,navigateBack} from '@/utils'
-import sku from '@/components/sku/sku.vue'
+import sku from '@/components/sku/popsku.vue'
 export default {
   components:{sku},
   data () {
@@ -360,14 +365,14 @@ export default {
     if(this.userId&&this.token){
       this.GetAllCartNumber();
     }
-    setTimeout(() => {
-      var query = uni.createSelectorQuery();
-      query.select("#main").boundingClientRect((rect)=> {
-        this.seachHeight = rect.height*2
-        this.mainHeight = 'height:'+this.seachHeight+'rpx;bottom:'+(-this.seachHeight-50)+'rpx'
-        console.log('gaodu',rect.height)
-      }).exec();
-    }, 200);
+    // setTimeout(() => {
+    //   var query = uni.createSelectorQuery();
+    //   query.select("#main").boundingClientRect((rect)=> {
+    //     this.seachHeight = rect.height*2
+    //     this.mainHeight = 'height:'+this.seachHeight+'rpx;bottom:'+(-this.seachHeight-50)+'rpx'
+    //     console.log('gaodu',rect.height)
+    //   }).exec();
+    // }, 200);
   },
   watch:{
     goodsNum(e){
