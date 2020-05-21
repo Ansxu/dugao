@@ -299,7 +299,7 @@ export default {
 }
 .btns{
 	height:88upx;line-height: 88upx;color:#ffffff;
-	margin-top:60upx;
+	margin:60upx 30upx;
   .btn{
 	  height:88upx;line-height: 88upx;
     border-radius: 16upx;margin:0 auto;

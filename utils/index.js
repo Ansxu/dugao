@@ -57,7 +57,7 @@ export function trim(str) {
 }
 //验证手机号
 export function verifyPhone(tel) {
-  var r_phone = /^1(3|4|5|6|7|8)\d{9}$/;
+  var r_phone = /^1(3|4|5|6|7|8|9)\d{9}$/;
   // var phoneNumber = $.trim($('#phoneNumber').val());
   if (trim(tel) == "") {
     toast( "手机号不能为空!");
