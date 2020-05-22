@@ -33,7 +33,7 @@
                     <div class="or_left flex flexColumn justifyContentBetween">
                       <p>{{item.ProductName}}</p>
                       <p class="c-999">{{item.SpecText}}</p>
-                      <p class="cr font30">￥{{item.UnitPrice}}</p>
+                      <p class="cr font30">￥{{item.Price}}</p>
 						          <text style="color: #ff6f00;">{{info.StatusName == item.OrderStatusName ? '' : item.OrderStatusName}}</text>
                     </div>
                     <div class="mr3 flex flexColumn flexAlignEnd">

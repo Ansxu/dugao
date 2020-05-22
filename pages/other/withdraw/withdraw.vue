@@ -35,20 +35,18 @@ import { post,navigateBack} from "@/utils";
 export default {
   onLoad(e) {
 	  // #ifdef APP-PLUS
-	  this.wType=e.type||0;
 	  // #endif
 	  
   },
   onShow() {
     this.Wallet = this.$store.state.Wallet;
-	// #ifndef APP-PLUS
 	this.wType=this.$root.$mp.query.type||0;
-	// #endif
 	if(this.wType==1){
 		uni.setNavigationBarTitle({
 		  title: "佣金提现"
 		}); 
-	}
+  }
+  console.log(this.wType,'wtype')
     this.amount = '';
     //  console.log("余额"+this.Wallet);
 	if(this.$store.state.myCardInfo.id){
@@ -113,9 +111,8 @@ export default {
     },
     shiftCardList() {
       this.hasDefaultCard = false;
-	  console.log(this.hasDefaultCard,"shiftCardList")
       this.$store.commit("setSelectMyCard", {
-        url: "/pages/other/withdraw/withdraw?type="+this.type,
+        url: "/pages/other/withdraw/withdraw?type="+this.wType,
         status: true
       });
       uni.redirectTo({ url: "/pages/Wallet/bankCard/bankCard" });
