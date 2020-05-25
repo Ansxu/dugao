@@ -52,6 +52,7 @@
 				<span class="txtinfo">{{ proInfo.Freight ? `运费：${proInfo.Freight}元` : '包邮' }}</span>
 				<span class="txtinfo">{{ proInfo.ShopData && proInfo.ShopData.FhAddress }}</span>
 			</div>
+			<div class="Synopsis">{{proInfo.Synopsis}}</div>
 		</div>
 		<div class="list-box">
 			<div class="list ali-c jus-b" v-if="proInfo.CouponList.length" @click="openCoupon">
@@ -108,6 +109,12 @@
 						</block>
 					</div>
 				</div>
+			</div>
+			<div class="list ali-c jus-b" v-if="proInfo.ParameterJsonArr" @click="ParameterJsonArr = true">
+				<div class="left ali-c">
+					<span>商品参数</span>
+				</div>
+				<div class="right ali-c"><img src="http://jd.wtvxin.com/images/images/icons/right.png" alt="" /></div>
 			</div>
 		</div>
 
@@ -280,11 +287,24 @@
 				</scroll-view>
 			</div>
 		</uni-popup>
-		<!-- <sku :sku="sku" :skuAll="skuAll" 
-      :product="{img:proInfo.PicData&&proInfo.PicData[0].PicUrl,price:proInfo.Price,num:proInfo.Stock}"
-
-        
-      ></sku> -->
+		
+		<!-- 产品参数弹窗 -->
+		<uni-popup mode="fixed" :show="ParameterJsonArr" :h5Top="true" position="bottom" @hidePopup="ParameterJsonArr =false">
+			<div class="parameter" style="z-index: 10000;">
+				<div class="titlebox">
+					<div class="title">商品参数</div>
+					<div @click="ParameterJsonArr =false" class="close">×</div>
+				</div>
+				<scroll-view scroll-y style="width: 100%;height: 560rpx;">
+					<div class="ticket">
+						<div class="item flex-start" v-for="(val,key,index) in proInfo.ParameterJsonArr" :key="index">
+							<div class="key">{{key}}</div>
+							<div class="val">{{val}}</div>
+						</div>
+					</div>
+				</scroll-view>
+			</div>
+		</uni-popup>
 	</div>
 </template>
 
@@ -339,7 +359,8 @@ export default {
 				num: '',
 				price: '',
 				text: '' //sku组合用下划线分隔_
-			}
+			},
+			ParameterJsonArr:false,//'产品参数弹窗'
 		};
 	},
 	onLoad(optins) {
@@ -360,6 +381,7 @@ export default {
 		this.showCoupon = false;
 		this.showPopupSku = false;
 		this.isMatch = false;
+		this.ParameterJsonArr = false;
 		this.timeStr = [];
 		clearInterval(this.timer);
 		this.ProductInfo();
@@ -555,6 +577,7 @@ export default {
 				const data = res.data;
 				data.ContentDetail = data.ContentDetail.replace(/<img/g, '<img style="max-width:100%;"');
 				data.shipArea = data.AreaSite.substr(0, data.AreaSite.lastIndexOf(','));
+				data.ParameterJsonArr = JSON.parse(data.ParameterJson)
 				this.proInfo = data;
 				this.BannerNum = data.PicData.length;
 				this.IsCollect = data.IsCollection.Value;
@@ -1611,5 +1634,53 @@ export default {
 	margin-left: -40upx;
 	text-align: center;
 	color: #fff;
+}
+.Synopsis{
+	color:#666;
+	line-height:2;
+	margin-top:10upx;
+}
+.parameter{
+	background-color: #f5f5f5;
+	width: 100%;
+		padding:0 20upx;
+	.titlebox {
+		width: 100%;
+		height: 100rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.title {
+			font-size: 34rpx;
+		}
+		.close {
+			height: 50rpx;
+			width: 50rpx;
+			text-align: center;
+			position: absolute;
+			right: 20rpx;
+			top: 20rpx;
+			font-size: 40rpx;
+			line-height: 46rpx;
+			color: #999;
+			border-radius: 50%;
+		}
+	}
+	.ticket{
+		.item{
+			border-bottom:1upx solid #e8e8e8;
+			padding:15upx 0 ;
+			.key{
+				width:120upx;
+				margin-right:20upx;
+				color:#888;
+				flex:0 0 auto;
+			}
+			div{
+				line-height:1.4;word-break: break-all;
+				text-align:left;
+			}
+		}
+	}
 }
 </style>
