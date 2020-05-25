@@ -52,7 +52,7 @@
 		  <view class="change-goods flexc" v-if="showChange" @click="showChange=false">
 			<view class="main">
 			  <view class="tit">请选择要操作的商品</view>
-			  <view class="list ali-c jus-b" v-for="(item, index) in needChangeGoods" @click.stop="changeGoods(item.Id)" :key="index">
+			  <view class="list ali-c jus-b" v-for="(item, index) in needChangeGoods" @click.stop="changeGoods(item.Id)" :key="index" v-show="item.IsComment">
 				<image :src="item.PicNo" mode="aspectFit" alt=""></image>
 				<view class="flex1 uni-ellipsis">{{item.ProductName}}</view>
 			  </view>
@@ -107,11 +107,6 @@
 			if (toLogin()) {
 			    this.getList();
 			}
-		},
-		onLoad(e){
-			// #ifdef APP-PLUS
-				 this.tabIndex = e.tabIndex
-			// #endif
 		},
 		methods:{
 			goUrl(url){
@@ -213,6 +208,7 @@
 			  }
 			},
 			changeGoods(detailId){
+				this.showChange =false;
 			  this.goUrl('/pages/member/addComment/addComment?id='+this.changeNumId+'&detailId='+detailId)
 			},
 		},
@@ -224,6 +220,16 @@
 			} else {
 				this.loadingType = 2;
 			}
+		},
+		onPullDownRefresh(){
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
+			this.list = []
+			this.page = 1
+			this.noDataIsShow = false;
+			this.hasData = false;
+			this.getList();
+			uni.stopPullDownRefresh()
 		}
 	}
 	

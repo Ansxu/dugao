@@ -111,7 +111,7 @@ export default {
               //   url: '/pages/my/main'
               // })
               wx.navigateBack();
-            }, 300);
+            }, 2000);
           }
         })
       }else{

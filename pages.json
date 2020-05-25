@@ -350,8 +350,8 @@
 					"path":"order/order",
 					"style": {
 						"navigationBarTitleText": "我的订单",
-						"navigationBarBackgroundColor": "#ffffff"
-						// "enablePullDownRefresh" : true
+						"navigationBarBackgroundColor": "#ffffff",
+						"enablePullDownRefresh" : true
 					}
 				},
 				{
