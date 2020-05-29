@@ -76,9 +76,17 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 			};
 		},
 		onLoad(){
-			this.getData();
+			this.init();
 		},
 		methods: {
+			init(){
+				this.page=1;
+				this.sortType=0;
+				this.sortMode=0;
+				this.loadMore=0;
+				this.searchText = '';
+				this.getData();
+			},
 			getData(){
 				this.loadMore = 1;
 				post('Goods/GoodsList',{
@@ -118,6 +126,12 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 				this.loadMore=0;
 				this.getData();
 			}
+		},
+		onPullDownRefresh(){
+			this.userId = uni.getStorageSync("userId");
+			this.token = uni.getStorageSync("token");
+			this.init();
+			uni.stopPullDownRefresh();
 		},
 		// 上拉加载
 		onReachBottom: function() {

@@ -28,7 +28,7 @@
 				</swiper-item>
 			</swiper>
 		</div>
-		<div class="share mlr30">
+		<div class="share mlr30" v-if="showScheme">
 			<div class="title flex-center-between">
 				<h1>{{schemeTitle}}</h1>
 				<div class="more flex-center" @click="navigate('scheme/fertilizer')">
@@ -42,9 +42,9 @@
 				</block>
 			</div>
 		</div>
-		<div class="gap20"></div>
+		<div class="gap20" v-if="showVideo"></div>
 		
-		<div class="video mlr30">
+		<div class="video mlr30" v-if="showVideo">
 			<div class="title flex-center-between">
 				<h1>施肥视频分享</h1>
 				<div class="more flex-center" @click="navigate('scheme/videozone')">
@@ -134,9 +134,11 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 				//方案
 				schemeTitle:'',
 				schemeList:[],
+				showScheme:false,
 				// 视频
 				videoTitle:'',
 				videoList:[],
+				showVideo:false,
 
 				page:1,
 				pageSize:12,
@@ -169,6 +171,7 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 					PageSize:4,
 					ClassId:16
 				}).then(res=>{
+					this.showScheme = res.isShow;
 					this.schemeList = res.data;
 					this.schemeTitle =  res.data[0].ClassName;
 				})
@@ -179,6 +182,7 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 					Page:1,
 					PageSize:4,
 				}).then(res=>{
+					this.showVideo = res.isShow;
 					this.videoList = res.data;
 					this.videoTitle =  res.data[0].ClassName;
 				})
@@ -264,6 +268,17 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 					})
 				})
 			}
+		},
+		onPullDownRefresh(){
+			this.page=1;
+			this.sortType=0;
+			this.sortMode=0;
+			this.loadMore=0;
+			this.getBanner();
+			this.getClassify();
+			this.getScheme();//方案
+			this.getVideo();//视频
+			uni.stopPullDownRefresh();
 		},
 		// 上拉加载
 		onReachBottom: function() {
