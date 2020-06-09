@@ -2,14 +2,13 @@
 
 //API接口地址
 // 线上
-// const host = 'https://api.naomiebie.cn/api/';//
-// const filePath = 'http://top.naosongduan.cn';//文件域名
+const host = 'https://api.szdocom.com/api/';//
+const filePath = 'https://api.szdocom.com';//文件域名
 // const hostPath = 'http://top.naosongduan.cn/h5/index.html';//主机路径
 // 测试
-const host = 'http://dgapi.wtvxin.com/api/';//
+// const host = 'http://dgapi.wtvxin.com/api/';//
  // const host = 'https://scapi.sc-mall.net/api/';  //发现页面套用社交云商接口地址
-
-const filePath = 'http://dgapi.wtvxin.com';//文件域名
+// const filePath = 'http://dgapi.wtvxin.com';//文件域名
 const hostPath = 'http://hnapi.wtvxin.com/index.html';//主机路径
 const LoginPath = "login/login";//登录路径
 const RegisterPath = "login/register";//注册路径

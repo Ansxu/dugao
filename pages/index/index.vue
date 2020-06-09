@@ -479,7 +479,7 @@ import fertilizerItem from '@/pages/scheme/fertilizerItem.vue';
 				}
 				img{
 					width:100%;
-					height:347upx;
+					height:375upx;
 				}
 				.content{
 					padding:0 20upx;

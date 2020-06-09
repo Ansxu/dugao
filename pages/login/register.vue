@@ -86,7 +86,7 @@ export default {
   },
   onShow() {
     // 邀请码
-    if(uni.getStorageSync('inviteCode') !='undefined'){
+    if(uni.getStorageSync('inviteCode')){
       this.inviteCode = uni.getStorageSync('inviteCode')
     }
   },

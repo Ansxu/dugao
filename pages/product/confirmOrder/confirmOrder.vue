@@ -509,7 +509,7 @@ export default {
         this.ConfirmWeiXinSmallPay();
       }else if(res.code==200){
         wx.redirectTo({ 
-          url: "/pages/goodsSon/paysuccess/main?orderNo=" + res.data+'&status='+res.code+'&price=0'
+          url: "/pages/product/paysuccess/main?orderNo=" + res.data+'&status='+res.code+'&price=0'
         });
       }else{
         wx.showToast({
@@ -572,7 +572,7 @@ export default {
         UserId: this.userId,
         Token: this.token,
         WxCode:this.WxCode,
-				WxOpenid:this.WxOpenid,
+		WxOpenid:this.WxOpenid,
       })
       let payData=JSON.parse(result.data.JsParam)
       if(result.code==0){
@@ -585,13 +585,13 @@ export default {
           paySign: payData.paySign,
           success(res) {
               wx.redirectTo({
-                url: "/pages/goodsSon/paysuccess/main?OrderNo="+_this.OrderNo
+                url: "/pages/product/paysuccess/main?OrderNo="+_this.OrderNo
               })
             },
           fail(res) {
             console.log(res);
             wx.redirectTo({
-              url: "/pages/goodsSon/paysuccess/main?OrderNo="+_this.OrderNo+"&msg=fail"
+              url: "/pages/product/paysuccess/main?OrderNo="+_this.OrderNo+"&msg=fail"
             })
           }
         })

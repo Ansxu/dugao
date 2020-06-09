@@ -1283,7 +1283,7 @@ export default {
 	}
 }
 .swiper {
-	height: 700rpx;
+	height: 750rpx;
 	position: relative;
 	.numpage {
 		position: absolute;
